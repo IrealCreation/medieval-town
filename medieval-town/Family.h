@@ -11,6 +11,8 @@ namespace Models
 	{
 		public:
 			Family(const std::string& name);
+			void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+
 			std::string getName() const;
 			int getGold() const;
 			int getPrestige() const;
@@ -18,8 +20,11 @@ namespace Models
 			void addPrestige(int amount);
 			void removeGold(int amount);
 			void removePrestige(int amount);
+
 			void addBuilding(const Building& building);
+			void removeBuilding(const Building& building);
 			void addConstruction(const Construction& construction);
+			void removeConstruction(const Construction& construction);
 
 		protected:
 			std::string name;

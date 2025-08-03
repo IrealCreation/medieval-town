@@ -9,6 +9,8 @@ namespace Models
 	{
 	public:
 		Building(const BuildingType& type, const Location& location, Family* family);
+		void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+
 		std::string getName();
 		void setName(const std::string& name);
 

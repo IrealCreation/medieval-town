@@ -7,11 +7,16 @@ class GameManager
 {
 public:
 	GameManager();
-	void startGame();
+
+	// Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+	void LogicTick();
 
 	Models::Town getTown();
 
-	void newBuilding(const Models::BuildingType& type, const Models::Location& location, const Models::Family& family);
+	// Débute la construction d'un bâtiment
+	void startConstruction(const Models::BuildingType& type, const Models::Location& location, Models::Family& family);
+	// Termine la construction d'un bâtiment
+	void constructionDone(Models::Construction& construction);
 
 protected:
 	Models::Town town; // La ville dans laquelle se déroule la partie

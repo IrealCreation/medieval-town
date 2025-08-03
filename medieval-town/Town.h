@@ -10,7 +10,11 @@ namespace Models
 	{
 		public:
 			Town(const std::string& name);
+			void startTown(); // Inititialisation du début de partie
+			void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+
 			std::string getName() const;
+			int getDate() const;
 
 			void addFamily(const Family& family);
 			void removeFamily(const Family& family);
@@ -29,6 +33,7 @@ namespace Models
 			std::vector<Family> families; // Liste des familles dirigeantes de la ville
 			std::vector<Building> buildings; // Liste des bâtiments de la ville
 			std::vector<Construction> constructions; // Liste des chantiers de construction de la ville
+			int date; // Date actuelle de la ville (en jours depuis le début de la partie)
 	};
 }
 

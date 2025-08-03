@@ -10,6 +10,11 @@ namespace Models
 	{
 	public:
 		Construction(const BuildingType& type, const Location& location, Family& family);
+		void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+
+		BuildingType getType() const; // Type de bâtiment en cours de construction
+		Family getFamily() const; // Famille propriétaire du bâtiment (peut être nullptr si pas de propriétaire)
+
 		int getDaysDone() const; // Jours de construction effectués
 		int getDaysRemaining() const; // Jours restants avant la fin de la construction
 		int percentDone() const; // Pourcentage de la construction effectuée
