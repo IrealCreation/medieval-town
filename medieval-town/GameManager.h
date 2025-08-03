@@ -3,6 +3,7 @@
 #include "BuildingType.h"
 #include "Family.h"
 
+// Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class GameManager
 {
 public:
@@ -17,7 +18,7 @@ public:
 	Models::Town getTown();
 
 	// Débute la construction d'un bâtiment
-	void startConstruction(const Models::BuildingType& type, const Models::Location& location, Models::Family& family);
+	void startConstruction(const Models::BuildingType& type, const Models::Location& location, Models::Family* family);
 	// Termine la construction d'un bâtiment
 	void constructionDone(Models::Construction& construction);
 

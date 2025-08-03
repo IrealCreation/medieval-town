@@ -10,7 +10,8 @@ namespace Models
 	class Family
 	{
 		public:
-			Family(const std::string& name);
+			Family(const std::string name);
+
 			void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 			std::string getName() const;
@@ -21,17 +22,17 @@ namespace Models
 			void removeGold(int amount);
 			void removePrestige(int amount);
 
-			void addBuilding(const Building& building);
-			void removeBuilding(const Building& building);
-			void addConstruction(const Construction& construction);
-			void removeConstruction(const Construction& construction);
+			void addBuilding(Building& building);
+			void removeBuilding(Building& building);
+			void addConstruction(Construction& construction);
+			void removeConstruction(Construction& construction);
 
 		protected:
 			std::string name;
 			int gold;
 			int prestige;
-			std::vector<Building> buildings; // Liste des bâtiments de la famille
-			std::vector<Construction> constructions; // Liste des chantiers de construction de la famille
+			std::vector<Building&> buildings; // Liste des bâtiments de la famille (en référence pour éviter les copies)
+			std::vector<Construction&> constructions; // Liste des chantiers de construction de la famille (en référence pour éviter les copies)
 	};
 
 }

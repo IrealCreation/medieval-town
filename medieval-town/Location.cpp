@@ -13,6 +13,6 @@ namespace Models
 	float Location::getDistance(const Location& other) const {
 		float dx = x - other.x;
 		float dy = y - other.y;
-		return std::sqrt(dx * dx + dy * dy);
+		return std::sqrt(dx * dx + dy * dy); // Vive Pythagore !
 	}
 }

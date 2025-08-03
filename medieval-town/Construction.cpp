@@ -3,8 +3,8 @@
 
 namespace Models
 {
-	Construction::Construction(const BuildingType& type, const Location& location, Family& family)
-		: Location(location), type(type), family(&family), dateStart(0), daysDone(0) {}
+	Construction::Construction(const BuildingType& type, const Location& location, Family* family)
+		: Location(location), type(type), family(family), dateStart(0), daysDone(0) {}
 	void Construction::LogicTick()
 	{
 		// Incrémenter le nombre de jours de construction effectués

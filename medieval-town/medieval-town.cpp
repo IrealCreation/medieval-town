@@ -18,3 +18,10 @@ int main()
 //   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
 //   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
 //   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.
+
+/*
+Quand stocker une valeur dans une propriété d'une classe en valeur / référence / pointeur ?
+    Valeur : quand cette classe stocke la version "originale" de l'objet et qu'elle manage son cycle de vie, ou qu'elle doit en conserver une copie indépendante du contexte extérieur
+    Référence : quand cette classe ne stocke pas la version "originale" ni une copie indépendante, que la propriété est non-nullable et ne changera pas de valeur pour un autre objet différent
+    Pointeur : quand cette propriété est nullable et/ou qu'on doit pouvoir la switcher vers un autre objet
+*/

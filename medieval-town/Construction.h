@@ -9,10 +9,10 @@ namespace Models
 	class Construction : public Location
 	{
 	public:
-		Construction(const BuildingType& type, const Location& location, Family& family);
+		Construction(const BuildingType& type, const Location& location, Family* family);
 		void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
-		BuildingType& getType() const; 
+		const BuildingType& getType() const;
 		Family* getFamily() const; 
 
 		int getDaysDone() const; // Jours de construction effectués

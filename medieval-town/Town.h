@@ -16,20 +16,22 @@ namespace Models
 			std::string getName() const;
 			int getDate() const;
 
-			void addFamily(const Family& family);
+			void addFamily(const Family family);
 			void removeFamily(const Family& family);
 			std::vector<Family> getFamilies() const;
 
-			void addBuilding(const Building& building);
+			void addBuilding(const Building building);
 			void removeBuilding(const Building& building);
 			std::vector<Building> getBuildings() const;
 
-			void addConstruction(const Construction& construction);
+			void addConstruction(const Construction construction);
 			void removeConstruction(const Construction& construction);
 			std::vector<Construction> getConstructions() const;
 
 		private:
 			std::string name;
+
+			// Les vecteurs ci-dessous contiennent les objets eux-mêmes, pas des pointeurs ou des références. C'est donc ici qu'est géré leur cycle de vie.
 			std::vector<Family> families; // Liste des familles dirigeantes de la ville
 			std::vector<Building> buildings; // Liste des bâtiments de la ville
 			std::vector<Construction> constructions; // Liste des chantiers de construction de la ville
