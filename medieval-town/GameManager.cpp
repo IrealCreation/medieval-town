@@ -1,5 +1,9 @@
 #include "GameManager.h"
 
+GameManager& GameManager::getInstance()
+{
+	return GameManager::instance;
+}
 void GameManager::LogicTick()
 {
 	town.LogicTick();
@@ -18,12 +22,13 @@ void GameManager::constructionDone(Models::Construction& construction)
 {
 	// On crée le nouveau bâtiment à partir du chantier de construction
     Models::Building building(construction.getType(), construction, &construction.getFamily());
-
 	town.addBuilding(building);
 	construction.getFamily().addBuilding(building);
 	
 	// On supprime le chantier de construction
 	town.removeConstruction(construction);
 	construction.getFamily().removeConstruction(construction);
+
+	// UE : despawn l'objet Construction, spawn l'objet Building, petite animation de construction achevée
 }
 

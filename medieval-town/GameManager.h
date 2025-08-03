@@ -8,6 +8,9 @@ class GameManager
 public:
 	GameManager();
 
+	// Référence au GameManager unique de la partie
+	static GameManager& getInstance();
+
 	// Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 	void LogicTick();
 
@@ -20,5 +23,6 @@ public:
 
 protected:
 	Models::Town town; // La ville dans laquelle se déroule la partie
+	static GameManager instance; // Instance unique du GameManager
 };
 

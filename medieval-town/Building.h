@@ -15,8 +15,8 @@ namespace Models
 		void setName(const std::string& name);
 
 	private:
-		BuildingType type;
-		Family* family; // Famille propriétaire du bâtiment (peut être nullptr si pas de propriétaire)
+		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par référence et en const
+		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
 		std::string name; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
 		int dateCreation; // Date de création du bâtiment (fin du chantier de construction)
 	};
