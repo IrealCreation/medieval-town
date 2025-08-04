@@ -2,10 +2,25 @@
 //
 
 #include <iostream>
+#include "GameManager.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Lancement de Medieval Town\n";
+
+    GameManager gameManager = GameManager();
+	gameManager.startGame();
+
+	std::cout << "La ville " << gameManager.getTown().getName() << " a été créée avec succès.\n";
+
+    std::cout << "Familles en jeu : ";
+    bool* first = new bool(true); // Smart pointer pour pouvoir facilement libérer la mémoire
+    for (const auto& family : gameManager.getTown().getFamilies()) {
+        
+        std::cout << (first ? "" : ",") << family.getName();
+        *first = false;
+    }
+    delete first;
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

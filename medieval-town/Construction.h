@@ -10,7 +10,7 @@ namespace Models
 	{
 	public:
 		Construction(const BuildingType& type, const Location& location, Family* family);
-		void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		const BuildingType& getType() const;
 		Family* getFamily() const; 

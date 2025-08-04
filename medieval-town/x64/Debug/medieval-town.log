@@ -1,0 +1,1088 @@
+﻿  Building.cpp
+  BuildingType.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(12,68): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,28): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(25,21): error C2061: erreur de syntaxe : identificateur 'Building'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(26,24): error C2061: erreur de syntaxe : identificateur 'Building'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,16): error C2065: 'Building' : identificateur non déclaré
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,25): error C2059: erreur de syntaxe : '>'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20): error C2338: static_assert failed: 'The C++ Standard forbids allocators for reference elements because of [allocator.requirements].'
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(35,31):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,26):
+          voir la référence à l'instanciation alias modèle 'std::_Rebind_alloc_t<_Alloc,_Ty>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Construction &>,
+              _Ty=Models::Construction &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,50):
+          voir la référence à l'instanciation classe modèle 'std::allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Construction &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(746,27):
+          voir la référence à l'instanciation classe modèle 'std::_Default_allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Construction &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(649,1):
+          voir la référence à l'instanciation classe modèle 'std::allocator<Models::Construction &>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(934,69): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(935,75): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(953,60): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(957,66): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(970,45): error C2528: « _Ptr » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(976,70): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(989,96): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(651,42): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(652,48): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(671,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(685,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(448,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(599,50):
+          voir les informations de référence sur le modèle de variable 'const bool _Is_simple_alloc_v<std::allocator<Models::Construction &> >' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(780,13): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(784,101): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(600,67): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::insert'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1794,34): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1798,40): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(2206,41):
+          voir la référence à l'instanciation classe modèle 'std::_Compressed_pair<std::allocator<Models::Construction &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' en cours de compilation
+          with
+          [
+              _Ty=Models::Construction &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1512,10):
+          voir la référence à l'instanciation classe modèle 'std::_Vector_val<std::_Simple_types<_Ty>>' en cours de compilation
+          with
+          [
+              _Ty=Models::Construction &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(388,1):
+          voir la référence à l'instanciation classe modèle 'std::_Simple_types<_Ty>' en cours de compilation
+          with
+          [
+              _Ty=Models::Construction &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(793,45): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Building.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'BuildingType.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.cpp(4,16): error C2511: 'Models::BuildingType::BuildingType(const std::string &,int,int,const std::map<Models::Pop,int,std::less<Models::Pop>,std::allocator<std::pair<const Models::Pop,int>>> &,const std::map<Models::Pop,int,std::less<Models::Pop>,std::allocator<std::pair<const Models::Pop,int>>> &,const std::map<Models::Pop,int,std::less<Models::Pop>,std::allocator<std::pair<const Models::Pop,int>>> &,int,int,int,Models::ServiceType)' : impossible de trouver la fonction membre surchargée dans 'Models::BuildingType'
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(37,8):
+      voir la déclaration de 'Models::BuildingType'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.cpp(11,64): error C2550: 'Models::BuildingType::{ctor}' : les listes d'initialiseurs de constructeur ne sont autorisées que dans la définition d'un constructeur
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.cpp(49,51): error C2556: 'Models::ServiceType Models::BuildingType::getServiceType(void) const' : la fonction surchargée ne diffère que par le type de retour de 'Models::ServiceType &Models::BuildingType::getServiceType(void) const'
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(54,24):
+      voir la déclaration de 'Models::BuildingType::getServiceType'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.cpp(49,28): error C2040: 'Models::BuildingType::getServiceType' : les niveaux d'indirection de 'Models::ServiceType (void) const' et de 'Models::ServiceType &(void) const' sont différents
+  Construction.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(11,64): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(27,25): error C2061: erreur de syntaxe : identificateur 'Construction'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(28,28): error C2061: erreur de syntaxe : identificateur 'Construction'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20): error C2338: static_assert failed: 'The C++ Standard forbids allocators for reference elements because of [allocator.requirements].'
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,27):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building &,std::allocator<Models::Building &>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,26):
+          voir la référence à l'instanciation alias modèle 'std::_Rebind_alloc_t<_Alloc,_Ty>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>,
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,50):
+          voir la référence à l'instanciation classe modèle 'std::allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(746,27):
+          voir la référence à l'instanciation classe modèle 'std::_Default_allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(649,1):
+          voir la référence à l'instanciation classe modèle 'std::allocator<Models::Building &>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(934,69): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(935,75): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(953,60): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(957,66): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(970,45): error C2528: « _Ptr » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(976,70): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(989,96): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(651,42): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(652,48): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(671,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(685,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(448,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(599,50):
+          voir les informations de référence sur le modèle de variable 'const bool _Is_simple_alloc_v<std::allocator<Models::Building &> >' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(780,13): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(784,101): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(600,67): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::insert'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1794,34): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1798,40): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(2206,41):
+          voir la référence à l'instanciation classe modèle 'std::_Compressed_pair<std::allocator<Models::Building &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1512,10):
+          voir la référence à l'instanciation classe modèle 'std::_Vector_val<std::_Simple_types<_Ty>>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(388,1):
+          voir la référence à l'instanciation classe modèle 'std::_Simple_types<_Ty>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(793,45): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(35,16): error C2065: 'Construction' : identificateur non déclaré
+  (compiler le fichier source 'Construction.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(35,29): error C2059: erreur de syntaxe : '>'
+  (compiler le fichier source 'Construction.cpp')
+  
+  Family.cpp
+  GameManager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(11,64): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(12,68): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,28): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20): error C2338: static_assert failed: 'The C++ Standard forbids allocators for reference elements because of [allocator.requirements].'
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,27):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building &,std::allocator<Models::Building &>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,26):
+          voir la référence à l'instanciation alias modèle 'std::_Rebind_alloc_t<_Alloc,_Ty>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>,
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,50):
+          voir la référence à l'instanciation classe modèle 'std::allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(746,27):
+          voir la référence à l'instanciation classe modèle 'std::_Default_allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(649,1):
+          voir la référence à l'instanciation classe modèle 'std::allocator<Models::Building &>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(934,69): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(935,75): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(953,60): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(957,66): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(970,45): error C2528: « _Ptr » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(976,70): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(989,96): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(651,42): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(652,48): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(671,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(685,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(448,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(599,50):
+          voir les informations de référence sur le modèle de variable 'const bool _Is_simple_alloc_v<std::allocator<Models::Building &> >' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(780,13): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(784,101): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(600,67): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::insert'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1794,34): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1798,40): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(2206,41):
+          voir la référence à l'instanciation classe modèle 'std::_Compressed_pair<std::allocator<Models::Building &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1512,10):
+          voir la référence à l'instanciation classe modèle 'std::_Vector_val<std::_Simple_types<_Ty>>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(388,1):
+          voir la référence à l'instanciation classe modèle 'std::_Simple_types<_Ty>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(793,45): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'GameManager.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::insert'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(36,35): error C2661: 'Models::Construction::Construction' : aucune fonction surchargée ne nécessite 3 arguments
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(36,35):
+      lors de la tentative de mise en correspondance de la liste des arguments '(const Models::BuildingType, const Models::Location, Models::Family *)'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(43,82): error C2039: 'getFamily' n'est pas membre de 'Models::Construction'
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(9,8):
+      voir la déclaration de 'Models::Construction'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(45,15): error C2039: 'getFamily' n'est pas membre de 'Models::Construction'
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(9,8):
+      voir la déclaration de 'Models::Construction'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(49,15): error C2039: 'getFamily' n'est pas membre de 'Models::Construction'
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(9,8):
+      voir la déclaration de 'Models::Construction'
+  
+  Location.cpp
+  medieval-town.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(11,64): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(12,68): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,28): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20): error C2338: static_assert failed: 'The C++ Standard forbids allocators for reference elements because of [allocator.requirements].'
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,27):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building &,std::allocator<Models::Building &>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,26):
+          voir la référence à l'instanciation alias modèle 'std::_Rebind_alloc_t<_Alloc,_Ty>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>,
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,50):
+          voir la référence à l'instanciation classe modèle 'std::allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(746,27):
+          voir la référence à l'instanciation classe modèle 'std::_Default_allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(649,1):
+          voir la référence à l'instanciation classe modèle 'std::allocator<Models::Building &>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(934,69): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(935,75): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(953,60): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(957,66): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(970,45): error C2528: « _Ptr » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(976,70): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(989,96): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(651,42): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(652,48): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(671,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(685,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(448,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(599,50):
+          voir les informations de référence sur le modèle de variable 'const bool _Is_simple_alloc_v<std::allocator<Models::Building &> >' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(780,13): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(784,101): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(600,67): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::insert'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1794,34): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1798,40): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(2206,41):
+          voir la référence à l'instanciation classe modèle 'std::_Compressed_pair<std::allocator<Models::Building &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1512,10):
+          voir la référence à l'instanciation classe modèle 'std::_Vector_val<std::_Simple_types<_Ty>>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(388,1):
+          voir la référence à l'instanciation classe modèle 'std::_Simple_types<_Ty>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(793,45): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'medieval-town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'medieval-town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::insert'
+  
+  Town.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(77,19):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\BuildingType.h(61,23):
+          voir la référence à l'instanciation classe modèle 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(247,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(235,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(253,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&...)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(241,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::try_emplace'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(311,26): error C2535: 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,bool> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(299,26):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(317,14): error C2535: 'std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>> std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign(const std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<Models::Pop &,int>>>>,Models::Pop &,_Mappedty &&)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(305,14):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::insert_or_assign'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(345,18): error C2535: 'int &std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator [](Models::Pop &)' : fonction membre déjà définie ou déclarée
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\map(174,18):
+      voir la déclaration de 'std::map<Models::Pop &,int,std::less<Models::Pop &>,std::allocator<std::pair<Models::Pop &,int>>>::operator []'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(11,64): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(19,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(12,68): error C2061: erreur de syntaxe : identificateur 'Family'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(16,28): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C2143: erreur de syntaxe : absence de ';' avant '*'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,9): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(24,17): error C2238: jetons inattendus avant ';'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20): error C2338: static_assert failed: 'The C++ Standard forbids allocators for reference elements because of [allocator.requirements].'
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(926,20):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(34,27):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building &,std::allocator<Models::Building &>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,26):
+          voir la référence à l'instanciation alias modèle 'std::_Rebind_alloc_t<_Alloc,_Ty>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>,
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(442,50):
+          voir la référence à l'instanciation classe modèle 'std::allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(746,27):
+          voir la référence à l'instanciation classe modèle 'std::_Default_allocator_traits<_Alloc>' en cours de compilation
+          with
+          [
+              _Alloc=std::allocator<Models::Building &>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(649,1):
+          voir la référence à l'instanciation classe modèle 'std::allocator<Models::Building &>' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(934,69): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(935,75): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(953,60): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(957,66): error C2528: « address » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(970,45): error C2528: « _Ptr » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(976,70): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(989,96): error C2528: « allocate » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(651,42): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(652,48): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(671,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(685,1): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(448,19): error C2338: static_assert failed: 'The C++ Standard forbids containers of non-object types because of [container.requirements].'
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(783,89):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(599,50):
+          voir les informations de référence sur le modèle de variable 'const bool _Is_simple_alloc_v<std::allocator<Models::Building &> >' en cours de compilation
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(780,13): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(784,101): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(600,67): error C2528: « <template-parameter> » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Building &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Building &,std::allocator<Models::Building &>>::insert'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1794,34): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1798,40): error C2528: « data » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(792,39):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(2206,41):
+          voir la référence à l'instanciation classe modèle 'std::_Compressed_pair<std::allocator<Models::Building &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1512,10):
+          voir la référence à l'instanciation classe modèle 'std::_Vector_val<std::_Simple_types<_Ty>>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(388,1):
+          voir la référence à l'instanciation classe modèle 'std::_Simple_types<_Ty>' en cours de compilation
+          with
+          [
+              _Ty=Models::Building &
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(793,45): error C2528: « abstract declarator » : vous ne pouvez pas créer de pointeur vers une référence
+  (compiler le fichier source 'Town.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535: 'void std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back(_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(874,23): error C2535:         ]
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::push_back'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)' : fonction membre déjà définie ou déclarée
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:             _Ty=Models::Construction &
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1004,27): error C2535:         ]
+  (compiler le fichier source 'Town.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1000,27):
+      voir la déclaration de 'std::vector<Models::Construction &,std::allocator<Models::Construction &>>::insert'
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(9,37): error C7535: 'Models::Town::Town': le constructeur de délégation s'appelle lui-même
+  Génération de code en cours...

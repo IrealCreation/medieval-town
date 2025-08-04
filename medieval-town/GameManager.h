@@ -12,8 +12,11 @@ public:
 	// Référence au GameManager unique de la partie
 	static GameManager& getInstance();
 
+	// Début de la partie
+	void startGame();
+
 	// Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
-	void LogicTick();
+	void logicTick();
 
 	Models::Town getTown();
 

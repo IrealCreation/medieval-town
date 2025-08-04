@@ -9,9 +9,10 @@ namespace Models
 	class Town
 	{
 		public:
-			Town(const std::string& name);
+			Town(); // Constructeur par défaut (ça fait plaisir au GameManager)
+			Town(const std::string name);
 			void startTown(); // Inititialisation du début de partie
-			void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+			void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 			std::string getName() const;
 			int getDate() const;

@@ -1,12 +1,31 @@
 #include "GameManager.h"
 
+GameManager::GameManager()
+{
+	GameManager::instance = *this;
+}
+
 GameManager& GameManager::getInstance()
 {
 	return GameManager::instance;
 }
-void GameManager::LogicTick()
+
+void GameManager::startGame()
 {
-	town.LogicTick();
+	// Création de la ville
+	this->town = Models::Town("Villebéon");
+	town.startTown();
+
+	// Création des familles
+	Models::Family family1("Salviati");
+	this->town.addFamily(family1);
+	Models::Family family2("Legrand");
+	this->town.addFamily(family2);
+}
+
+void GameManager::logicTick()
+{
+	town.logicTick();
 }
 Models::Town GameManager::getTown()
 {

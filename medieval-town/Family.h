@@ -12,7 +12,7 @@ namespace Models
 		public:
 			Family(const std::string name);
 
-			void LogicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+			void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 			std::string getName() const;
 			int getGold() const;
