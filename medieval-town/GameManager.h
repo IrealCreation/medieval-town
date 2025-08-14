@@ -1,11 +1,22 @@
 #pragma once
 #include "Town.h"
 #include "BuildingType.h"
+#include "Building.h"
 #include "Family.h"
+#include "Location.h"
+#include "Construction.h"
+
+//// Forward declarations pour éviter les dépendances circulaires
+//namespace Models {
+//	class Town;
+//	class BuildingType;
+//	class Family;
+//}
 
 // Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class GameManager
 {
+
 public:
 	GameManager();
 

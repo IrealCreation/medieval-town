@@ -4,7 +4,7 @@ namespace Models {
 	BuildingType::BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost,
 		const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 		const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
-		int constructionTime, ServiceType serviceType)
+		int constructionTime, ServiceType& serviceType)
 		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
 		goldCostPerPopulation(goldCostPerPopulation), goldGainPerPopulation(goldGainPerPopulation),
 		prestigeGainPerPopulation(prestigeGainPerPopulation), range(range), maxCapacity(maxCapacity),
@@ -46,7 +46,7 @@ namespace Models {
 	int BuildingType::getConstructionTime() const {
 		return constructionTime;
 	}
-	ServiceType BuildingType::getServiceType() const {
+	const ServiceType& BuildingType::getServiceType() const {
 		return serviceType;
 	}
 	bool BuildingType::isPopServed(Pop pop) const {

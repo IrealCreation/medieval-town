@@ -1,10 +1,12 @@
 #pragma once
 #include "Location.h"
-#include "BuildingType.h"
-#include "Family.h"
 
 namespace Models
 {
+	// Forward declarations pour éviter les dépendances circulaires
+	class Family; 
+	class BuildingType;
+
 	// Chantier de construction d'un bâtiment
 	class Construction : public Location
 	{

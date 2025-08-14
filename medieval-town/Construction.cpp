@@ -1,5 +1,7 @@
 #include "Construction.h"
 #include "GameManager.h"
+#include "Location.h"
+#include "BuildingType.h"
 
 namespace Models
 {
