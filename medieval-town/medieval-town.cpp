@@ -2,8 +2,7 @@
 //
 
 #include <iostream>
-#include "GameManager.cpp"
-#include "Family.h"
+#include "GameManager.h"
 
 int main()
 {

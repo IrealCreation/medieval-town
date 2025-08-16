@@ -1,13 +1,17 @@
 #include "Town.h"
-#include "Family.h"
 
 namespace Models
 {
-	Town::Town() : name("Default") 
+	Town::Town()
 	{
+		name = "Default";
 		date = 0; // Initialisation de la date à 0
 	}
-	Town::Town(std::string name) : Town(name) {}
+	Town::Town(std::string newName)
+	{
+		Town();
+		name = newName;
+	}
 
 	void Town::logicTick()
 	{
@@ -47,7 +51,7 @@ namespace Models
 	{
 		constructions.push_back(construction);
 	}
-	void Town::removeConstruction(const Construction& construction)
+	void Town::removeConstruction(const Construction* construction)
 	{
 		auto it = std::find(constructions.begin(), constructions.end(), construction);
 		constructions.erase(it);

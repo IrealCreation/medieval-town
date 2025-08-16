@@ -12,7 +12,7 @@ namespace Models
 		float getY() const;
 		float getDistance(const Location& other) const;
 
-	private:
+	protected:
 		float x;
 		float y;
 	};

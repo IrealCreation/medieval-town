@@ -1,94 +1,62 @@
 ﻿  Building.cpp
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.cpp(8,17): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.cpp(8,14): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   Construction.cpp
   Family.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19): error C2678: '==' binaire : aucun opérateur trouvé qui accepte un opérande de partie gauche de type 'Models::Building' (ou il n'existe pas de conversion acceptable)
-  (compiler le fichier source 'Family.cpp')
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-      est peut-être 'built-in C++ operator==(_Ty, _Ty)'
-          with
-          [
-              _Ty=Models::Building *
-          ]
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1038,30):
-      ou       'bool std::operator ==(const std::allocator<_Ty> &,const std::allocator<_Other> &) noexcept'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::allocator<_Ty> &,const std::allocator<_Other> &) noexcept' : nous n’avons pas pu déduire modèle de l'argument 'const std::allocator<_Ty> &' de 'Models::Building'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4251,5):
-      ou       'bool std::operator ==(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)' : nous n’avons pas pu déduire modèle de l'argument 'const std::move_iterator<_Iter> &' de 'Models::Building'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1676,5):
-      ou       'bool std::operator ==(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)' : nous n’avons pas pu déduire modèle de l'argument 'const std::reverse_iterator<_BidIt> &' de 'Models::Building'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(490,27):
-      ou       'bool std::operator ==(const std::pair<_Ty1,_Ty2> &,const std::pair<_Uty1,_Uty2> &)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::pair<_Ty1,_Ty2> &,const std::pair<_Uty1,_Uty2> &)' : nous n’avons pas pu déduire modèle de l'argument 'const std::pair<_Ty1,_Ty2> &' de 'Models::Building'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-      lors de la tentative de mise en correspondance de la liste des arguments '(Models::Building, const _Ty)'
-          with
-          [
-              _Ty=Models::Building *
-          ]
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.cpp(37,18):
-          voir la référence à l'instanciation de la fonction modèle '_FwdIt std::remove<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,Models::Building*>(_FwdIt,const _FwdIt,Models::Building *const &)' en cours de compilation
-          with
-          [
-              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Models::Building>>>,
-              _Ty=Models::Building
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2222,25): error C2280: 'Models::Building &Models::Building::operator =(const Models::Building &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Family.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      le compilateur a généré 'Models::Building::operator =' ici
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      'Models::Building &Models::Building::operator =(const Models::Building &)' : la fonction a été supprimée implicitement, car 'Models::Building' a un membre de données 'Models::Building::type' de type référence
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(21,23):
-      voir la déclaration de 'Models::Building::type'
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,28): error C2676: '==' binaire : 'Models::Construction' ne définit pas cet opérateur ou une conversion vers un type acceptable pour l'opérateur prédéfini
-  (compiler le fichier source 'Family.cpp')
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(1038,30):
-      est peut-être 'bool std::operator ==(const std::allocator<_Ty> &,const std::allocator<_Other> &) noexcept'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::allocator<_Ty> &,const std::allocator<_Other> &) noexcept' : nous n’avons pas pu déduire modèle de l'argument 'const std::allocator<_Ty> &' de 'Models::Construction'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4251,5):
-      ou       'bool std::operator ==(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)' : nous n’avons pas pu déduire modèle de l'argument 'const std::move_iterator<_Iter> &' de 'Models::Construction'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1676,5):
-      ou       'bool std::operator ==(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)' : nous n’avons pas pu déduire modèle de l'argument 'const std::reverse_iterator<_BidIt> &' de 'Models::Construction'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(490,27):
-      ou       'bool std::operator ==(const std::pair<_Ty1,_Ty2> &,const std::pair<_Uty1,_Uty2> &)'
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,19):
-          'bool std::operator ==(const std::pair<_Ty1,_Ty2> &,const std::pair<_Uty1,_Uty2> &)' : nous n’avons pas pu déduire modèle de l'argument 'const std::pair<_Ty1,_Ty2> &' de 'Models::Construction'.
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2221,28):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.cpp(44,18):
-          voir la référence à l'instanciation de la fonction modèle '_FwdIt std::remove<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,Models::Construction>(_FwdIt,const _FwdIt,const _Ty &)' en cours de compilation
-          with
-          [
-              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Models::Construction>>>,
-              _Ty=Models::Construction
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(2222,25): error C2280: 'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Family.cpp')
+  GameManager.cpp
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(43,123): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\GameManager.cpp(43,101): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : tentative de référencement d'une fonction supprimée
+  (compiler le fichier source 'GameManager.cpp')
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
       le compilateur a généré 'Models::Construction::operator =' ici
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
       'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : la fonction a été supprimée implicitement, car 'Models::Construction' a un membre de données 'Models::Construction::type' de type référence
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(25,23):
       voir la déclaration de 'Models::Construction::type'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(47,30):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
+          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>> &std::vector<Models::Construction,std::allocator<Models::Construction>>::operator =(const std::vector<Models::Construction,std::allocator<Models::Construction>> &)'
+              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(49,2):
+              voir la première référence à « std::vector<Models::Construction,std::allocator<Models::Construction>>::operator = » dans « Models::Town::operator = »
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
+          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Construction,std::allocator<Models::Construction>>::_Assign_counted_range<Models::Construction*>(_Iter,const unsigned __int64)' en cours de compilation
+          with
+          [
+              _Iter=Models::Construction *
+          ]
   
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Building &Models::Building::operator =(const Models::Building &)' : tentative de référencement d'une fonction supprimée
+  (compiler le fichier source 'GameManager.cpp')
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
+      le compilateur a généré 'Models::Building::operator =' ici
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
+      'Models::Building &Models::Building::operator =(const Models::Building &)' : la fonction a été supprimée implicitement, car 'Models::Building' a un membre de données 'Models::Building::type' de type référence
+      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(21,23):
+      voir la déclaration de 'Models::Building::type'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(46,26):
+          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>>' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
+          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>> &std::vector<Models::Building,std::allocator<Models::Building>>::operator =(const std::vector<Models::Building,std::allocator<Models::Building>> &)'
+              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(49,2):
+              voir la première référence à « std::vector<Models::Building,std::allocator<Models::Building>>::operator = » dans « Models::Town::operator = »
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
+          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Building,std::allocator<Models::Building>>::_Assign_counted_range<Models::Building*>(_Iter,const unsigned __int64)' en cours de compilation
+          with
+          [
+              _Iter=Models::Building *
+          ]
+  
+  Location.cpp
+  medieval-town.cpp
+  Town.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4886,16): error C2280: 'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Family.cpp')
+  (compiler le fichier source 'Town.cpp')
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
       le compilateur a généré 'Models::Construction::operator =' ici
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
@@ -97,17 +65,17 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
       voir la déclaration de 'Models::Construction::type'
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4886,16):
       le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(37,29):
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(47,30):
           voir la référence à l'instanciation classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1744,27):
-          pendant la compilation de la fonction membre classe modèle 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(false)'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1724,27):
+          pendant la compilation de la fonction membre classe modèle 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(false)'
           with
           [
               _Ty=Models::Construction
           ]
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.cpp(45,22):
-              voir la première référence à « std::vector<Models::Construction,std::allocator<Models::Construction>>::erase » dans « Models::Family::removeConstruction »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1760,43):
+              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(57,22):
+              voir la première référence à « std::vector<Models::Construction,std::allocator<Models::Construction>>::erase » dans « Models::Town::removeConstruction »
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1737,14):
           voir la référence à l'instanciation de la fonction modèle '_OutIt *std::_Move_unchecked<Models::Construction*,Models::Construction*>(_InIt,_InIt,_OutIt)' en cours de compilation
           with
           [
@@ -116,7 +84,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
           ]
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4886,16): error C2280: 'Models::Building &Models::Building::operator =(const Models::Building &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Family.cpp')
+  (compiler le fichier source 'Town.cpp')
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
       le compilateur a généré 'Models::Building::operator =' ici
       C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
@@ -125,144 +93,22 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
       voir la déclaration de 'Models::Building::type'
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(4886,16):
       le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(36,25):
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(46,26):
           voir la référence à l'instanciation classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1744,27):
-          pendant la compilation de la fonction membre classe modèle 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(false)'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1724,27):
+          pendant la compilation de la fonction membre classe modèle 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::erase(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>) noexcept(false)'
           with
           [
               _Ty=Models::Building
           ]
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.cpp(38,18):
-              voir la première référence à « std::vector<Models::Building,std::allocator<Models::Building>>::erase » dans « Models::Family::removeBuilding »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1760,43):
+              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(43,18):
+              voir la première référence à « std::vector<Models::Building,std::allocator<Models::Building>>::erase » dans « Models::Town::removeBuilding »
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1737,14):
           voir la référence à l'instanciation de la fonction modèle '_OutIt *std::_Move_unchecked<Models::Building*,Models::Building*>(_InIt,_InIt,_OutIt)' en cours de compilation
           with
           [
               _OutIt=Models::Building *,
               _InIt=Models::Building *
           ]
-  
-  GameManager.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'GameManager.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
-      le compilateur a généré 'Models::Construction::operator =' ici
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
-      'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : la fonction a été supprimée implicitement, car 'Models::Construction' a un membre de données 'Models::Construction::type' de type référence
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(25,23):
-      voir la déclaration de 'Models::Construction::type'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(42,30):
-          voir la référence à l'instanciation classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
-          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>> &std::vector<Models::Construction,std::allocator<Models::Construction>>::operator =(const std::vector<Models::Construction,std::allocator<Models::Construction>> &)'
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(44,2):
-              voir la première référence à « std::vector<Models::Construction,std::allocator<Models::Construction>>::operator = » dans « Models::Town::operator = »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
-          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Construction,std::allocator<Models::Construction>>::_Assign_counted_range<Models::Construction*>(_Iter,const unsigned __int64)' en cours de compilation
-          with
-          [
-              _Iter=Models::Construction *
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Building &Models::Building::operator =(const Models::Building &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'GameManager.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      le compilateur a généré 'Models::Building::operator =' ici
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      'Models::Building &Models::Building::operator =(const Models::Building &)' : la fonction a été supprimée implicitement, car 'Models::Building' a un membre de données 'Models::Building::type' de type référence
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(21,23):
-      voir la déclaration de 'Models::Building::type'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(41,26):
-          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
-          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>> &std::vector<Models::Building,std::allocator<Models::Building>>::operator =(const std::vector<Models::Building,std::allocator<Models::Building>> &)'
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(44,2):
-              voir la première référence à « std::vector<Models::Building,std::allocator<Models::Building>>::operator = » dans « Models::Town::operator = »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
-          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Building,std::allocator<Models::Building>>::_Assign_counted_range<Models::Building*>(_Iter,const unsigned __int64)' en cours de compilation
-          with
-          [
-              _Iter=Models::Building *
-          ]
-  
-  medieval-town.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'medieval-town.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
-      le compilateur a généré 'Models::Construction::operator =' ici
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(29,2):
-      'Models::Construction &Models::Construction::operator =(const Models::Construction &)' : la fonction a été supprimée implicitement, car 'Models::Construction' a un membre de données 'Models::Construction::type' de type référence
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(25,23):
-      voir la déclaration de 'Models::Construction::type'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(42,30):
-          voir la référence à l'instanciation classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
-          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Construction,std::allocator<Models::Construction>> &std::vector<Models::Construction,std::allocator<Models::Construction>>::operator =(const std::vector<Models::Construction,std::allocator<Models::Construction>> &)'
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(44,2):
-              voir la première référence à « std::vector<Models::Construction,std::allocator<Models::Construction>>::operator = » dans « Models::Town::operator = »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
-          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Construction,std::allocator<Models::Construction>>::_Assign_counted_range<Models::Construction*>(_Iter,const unsigned __int64)' en cours de compilation
-          with
-          [
-              _Iter=Models::Construction *
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27): error C2280: 'Models::Building &Models::Building::operator =(const Models::Building &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'medieval-town.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      le compilateur a généré 'Models::Building::operator =' ici
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(25,2):
-      'Models::Building &Models::Building::operator =(const Models::Building &)' : la fonction a été supprimée implicitement, car 'Models::Building' a un membre de données 'Models::Building::type' de type référence
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(21,23):
-      voir la déclaration de 'Models::Building::type'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1420,27):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(41,26):
-          voir la référence à l'instanciation classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1480,26):
-          pendant la compilation de la fonction membre classe modèle 'std::vector<Models::Building,std::allocator<Models::Building>> &std::vector<Models::Building,std::allocator<Models::Building>>::operator =(const std::vector<Models::Building,std::allocator<Models::Building>> &)'
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(44,2):
-              voir la première référence à « std::vector<Models::Building,std::allocator<Models::Building>>::operator = » dans « Models::Town::operator = »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1496,9):
-          voir la référence à l'instanciation de la fonction modèle 'void std::vector<Models::Building,std::allocator<Models::Building>>::_Assign_counted_range<Models::Building*>(_Iter,const unsigned __int64)' en cours de compilation
-          with
-          [
-              _Iter=Models::Building *
-          ]
-  
-  Town.cpp
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(10,37): error C7535: 'Models::Town::Town': le constructeur de délégation s'appelle lui-même
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(29,13): error C2027: utilisation du type non défini 'Models::Building'
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(8,8):
-      voir la déclaration de 'Models::Building'
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\type_traits(994,28): error C2139: 'Models::Building' : une classe non définie n'est pas autorisée en tant qu'argument pour un trait de type intrinsèque du compilateur '__is_nothrow_assignable'
-  (compiler le fichier source 'Town.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(8,8):
-      voir la déclaration de 'Models::Building'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\type_traits(994,28):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1725,9):
-          voir les informations de référence sur le modèle de variable 'const bool is_nothrow_move_assignable_v<Models::Building>' en cours de compilation
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(46,13): error C2027: utilisation du type non défini 'Models::Construction'
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(9,8):
-      voir la déclaration de 'Models::Construction'
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\type_traits(994,28): error C2139: 'Models::Construction' : une classe non définie n'est pas autorisée en tant qu'argument pour un trait de type intrinsèque du compilateur '__is_nothrow_assignable'
-  (compiler le fichier source 'Town.cpp')
-      C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(9,8):
-      voir la déclaration de 'Models::Construction'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\type_traits(994,28):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(1725,9):
-          voir les informations de référence sur le modèle de variable 'const bool is_nothrow_move_assignable_v<Models::Construction>' en cours de compilation
   
   Génération de code en cours...

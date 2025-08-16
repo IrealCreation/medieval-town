@@ -15,7 +15,7 @@ namespace Models
 		if (daysDone >= type.getConstructionTime()) 
 		{
 			// Fin de la construction
-			GameManager::getInstance().constructionDone(*this);
+			GameManager::getInstance().constructionDone(this);
 		}
 	}
 	const BuildingType& Construction::getType() const

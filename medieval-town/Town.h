@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "BuildingType.h"
+#include "Building.h"
+#include "Family.h"
+#include "Location.h"
+#include "Construction.h"
 
 namespace Models
 {
@@ -30,7 +35,7 @@ namespace Models
 			std::vector<Building> getBuildings() const;
 
 			void addConstruction(const Construction construction);
-			void removeConstruction(const Construction& construction);
+			void removeConstruction(const Construction* construction);
 			std::vector<Construction> getConstructions() const;
 
 		private:
