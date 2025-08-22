@@ -15,4 +15,9 @@ namespace Models
 		float dy = y - other.y;
 		return std::sqrt(dx * dx + dy * dy); // Vive Pythagore !
 	}
+
+	// Comparateur d'égalité entre deux Locations pour std::find et std::remove
+	bool operator== (Location const& lhs, Location const& rhs) {
+		return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+	}
 }

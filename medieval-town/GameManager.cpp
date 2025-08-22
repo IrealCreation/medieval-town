@@ -1,4 +1,10 @@
 #include "GameManager.h"
+#include "Town.h"
+#include "BuildingType.h"
+#include "Building.h"
+#include "Family.h"
+#include "Location.h"
+#include "Construction.h"
 
 GameManager::GameManager()
 {

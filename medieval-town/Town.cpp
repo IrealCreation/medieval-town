@@ -1,4 +1,9 @@
 #include "Town.h"
+#include "BuildingType.h"
+#include "Building.h"
+#include "Construction.h"
+#include "Family.h"
+#include "Location.h"
 
 namespace Models
 {

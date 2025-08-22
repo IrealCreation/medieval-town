@@ -1,17 +1,14 @@
 #pragma once
-#include "Town.h"
-#include "BuildingType.h"
-#include "Building.h"
-#include "Family.h"
-#include "Location.h"
-#include "Construction.h"
+#include "Town.h" // Ajout de l'inclusion du header Town.h
 
-//// Forward declarations pour éviter les dépendances circulaires
-//namespace Models {
-//	class Town;
-//	class BuildingType;
-//	class Family;
-//}
+// Forward declarations pour éviter les dépendances circulaires
+namespace Models {
+	class BuildingType;
+	class Building;
+	class Family;
+	class Location;
+	class Construction;
+}
 
 // Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class GameManager
@@ -40,4 +37,3 @@ protected:
 	Models::Town town; // La ville dans laquelle se déroule la partie
 	static GameManager instance; // Instance unique du GameManager
 };
-

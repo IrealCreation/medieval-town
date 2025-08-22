@@ -1,6 +1,5 @@
 #include "Building.h"
 #include "BuildingType.h"
-#include "Location.h"
 #include "Family.h"
 
 namespace Models {

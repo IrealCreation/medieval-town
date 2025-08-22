@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Location.h"
+#include "Location.h" // Classe parent : on doit inclure son header
 
 namespace Models
 {
