@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "GameManager.h"
+#include "Family.h"
 
 int main()
 {
