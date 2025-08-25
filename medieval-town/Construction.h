@@ -11,7 +11,7 @@ namespace Models
 	class Construction : public Location
 	{
 	public:
-		Construction(const BuildingType& type, const Location& location, Family* family);
+		Construction(const BuildingType& type, Family* family, int x, int y, int rotation);
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		const BuildingType& getType() const;

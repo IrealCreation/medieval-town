@@ -10,15 +10,17 @@ namespace Models
 	class Location
 	{
 	public:
-		Location(float x, float y);
+		Location(float x, float y, float rotation);
 
 		float getX() const;
 		float getY() const;
+		float getRotation() const;
 		float getDistance(const Location& other) const;
 
 	protected:
 		float x;
 		float y;
+		float rotation;
 	};
 }
 

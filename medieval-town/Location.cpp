@@ -3,12 +3,15 @@
 
 namespace Models
 {
-	Location::Location(float x, float y) : x(x), y(y) {}
+	Location::Location(float x, float y, float rotation) : x(x), y(y), rotation(rotation) {}
 	float Location::getX() const {
-		return x;
+		return this->x;
 	}
 	float Location::getY() const {
-		return y;
+		return this->y;
+	}
+	float Location::getRotation() const {
+		return this->rotation;
 	}
 	float Location::getDistance(const Location& other) const {
 		float dx = x - other.x;

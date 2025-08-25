@@ -4,6 +4,8 @@
 #include "Construction.h"
 #include "Family.h"
 #include "Location.h"
+#include <iterator>
+#include <algorithm>
 
 namespace Models
 {
@@ -35,48 +37,43 @@ namespace Models
 		return date;
 	}
 
-	void Town::addBuilding(const Building building)
+	void Town::addBuilding(const unique_ptr<Building> building)
 	{
 		// On ajoute à la fin du vecteur
 		buildings.push_back(building);
 	}
-	void Town::removeBuilding(const Building& building)
+	void Town::removeBuilding(Building* building)
 	{
+		/*
 		// On utilise std::find pour trouver le bâtiment dans le vecteur
 		auto it = std::find(buildings.begin(), buildings.end(), building);
 		// On retire le bâtiment du vecteur
 		buildings.erase(it);
-	}
-	std::vector<Building> Town::getBuildings() const
-	{
-		return buildings;
+		*/
 	}
 
-	void Town::addConstruction(const Construction construction)
+	void Town::addConstruction(const unique_ptr<Construction> construction)
 	{
 		constructions.push_back(construction);
 	}
-	void Town::removeConstruction(const Construction* construction)
+	void Town::removeConstruction(Construction* construction)
 	{
+		/*
 		auto it = std::find(constructions.begin(), constructions.end(), construction);
 		constructions.erase(it);
-	}
-	std::vector<Construction> Town::getConstructions() const
-	{
-		return constructions;
+		*/
 	}
 
-	void Town::addFamily(const Family family)
+	void Town::addFamily(const unique_ptr<Family> family)
 	{
 		families.push_back(family);
 	}
-	void Town::removeFamily(const Family& family)
-	{
-		auto it = std::find(families.begin(), families.end(), family);
-		families.erase(it);
-	}
-	std::vector<Family> Town::getFamilies() const
-	{
-		return families;
+	vector<Family*> Town::getFamilies() {
+		// On transforme notre tableau de unique_ptr en un tableau de raw pointers
+		std::vector<Family*> tmp_families;
+		std::transform(this->families.begin(), this->families.end(),
+			std::back_inserter(tmp_families),
+			[](const std::unique_ptr<Family>& mon_in) { return mon_in.get(); });
+		return tmp_families;
 	}
 }

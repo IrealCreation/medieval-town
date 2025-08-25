@@ -1,11 +1,11 @@
 #include "Construction.h"
-#include "GameManager.h"
+#include "LogicManager.h"
 #include "BuildingType.h"
 
 namespace Models
 {
-	Construction::Construction(const BuildingType& type, const Location& location, Family* family)
-		: Location(location), type(type), family(family), dateStart(0), daysDone(0) {}
+	Construction::Construction(const BuildingType& type, Family* family, int x, int y, int rotation)
+		: Location(x, y, rotation), type(type), family(family), dateStart(0), daysDone(0) {}
 	void Construction::logicTick()
 	{
 		// Incrémenter le nombre de jours de construction effectués
@@ -14,7 +14,7 @@ namespace Models
 		if (daysDone >= type.getConstructionTime()) 
 		{
 			// Fin de la construction
-			GameManager::getInstance().constructionDone(this);
+			LogicManager::getInstance().constructionDone(this);
 		}
 	}
 	const BuildingType& Construction::getType() const

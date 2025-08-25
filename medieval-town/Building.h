@@ -11,7 +11,7 @@ namespace Models
 	class Building : public Location
 	{
 	public:
-		Building(const BuildingType& type, Family* family, float x, float y);
+		Building(const BuildingType& type, Family* family, float x, float y, float rotation);
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		std::string getName();

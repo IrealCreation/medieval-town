@@ -3,8 +3,8 @@
 #include "Family.h"
 
 namespace Models {
-	Building::Building(const BuildingType& type, Family* family, float x, float y)
-		: Location(x, y), type(type), family(family), name(type.getName()), dateCreation(0) {}
+	Building::Building(const BuildingType& type, Family* family, float x, float y, float rotation)
+		: Location(x, y, rotation), type(type), family(family), name(type.getName()), dateCreation(0) {}
 
 	void Building::logicTick() {
 		
