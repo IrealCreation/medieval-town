@@ -39,8 +39,7 @@ namespace Models
 
 	void Town::addBuilding(const unique_ptr<Building> building)
 	{
-		// On ajoute à la fin du vecteur
-		buildings.push_back(std::move(building));
+		//buildings.push_back(std::move(building));
 	}
 	void Town::removeBuilding(Building* building)
 	{
@@ -54,7 +53,7 @@ namespace Models
 
 	void Town::addConstruction(const unique_ptr<Construction> construction)
 	{
-		constructions.push_back(std::move(construction));
+		//constructions.push_back(std::move(construction));
 	}
 	void Town::removeConstruction(Construction* construction)
 	{
@@ -66,7 +65,7 @@ namespace Models
 
 	void Town::addFamily(const unique_ptr<Family> family)
 	{
-		families.push_back(std::move(family));
+		families.emplace_back(std::move(family));
 	}
 	vector<Family*> Town::getFamilies() {
 		// On transforme notre tableau de unique_ptr en un tableau de raw pointers

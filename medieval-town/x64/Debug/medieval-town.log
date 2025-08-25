@@ -5,84 +5,6 @@ C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(11,10): warnin
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(12,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
   (compiler le fichier source 'Town.cpp')
   
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82): error C2280: 'std::unique_ptr<Models::Building,std::default_delete<Models::Building>>::unique_ptr(const std::unique_ptr<Models::Building,std::default_delete<Models::Building>> &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Town.cpp')
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3319,5):
-      voir la déclaration de 'std::unique_ptr<Models::Building,std::default_delete<Models::Building>>::unique_ptr'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3319,5):
-      'std::unique_ptr<Models::Building,std::default_delete<Models::Building>>::unique_ptr(const std::unique_ptr<Models::Building,std::default_delete<Models::Building>> &)' : la fonction a été supprimée explicitement
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(50,33):
-          voir la référence à l'instanciation classe modèle 'std::vector<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>,std::allocator<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
-          pendant la compilation de la fonction membre classe modèle 'void std::vector<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>,std::allocator<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>>>::push_back(const _Ty &)'
-          with
-          [
-              _Ty=std::unique_ptr<Models::Building,std::default_delete<Models::Building>>
-          ]
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(43,22):
-              voir la première référence à « std::vector<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>,std::allocator<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>>>::push_back » dans « Models::Town::addBuilding »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(871,9):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<const _Ty&>(const _Ty &)' en cours de compilation
-          with
-          [
-              _Ty=std::unique_ptr<Models::Building,std::default_delete<Models::Building>>
-          ]
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(780,20):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<const _Ty&>(const _Ty &)' en cours de compilation
-          with
-          [
-              _Ty=std::unique_ptr<Models::Building,std::default_delete<Models::Building>>
-          ]
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(798,27):
-          voir la référence à l'instanciation de la fonction modèle 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const _Ty&>(_Alloc &,_Objty *const ,const _Ty &)' en cours de compilation
-          with
-          [
-              _Alloc=std::allocator<std::unique_ptr<Models::Building,std::default_delete<Models::Building>>>,
-              _Ty=std::unique_ptr<Models::Building,std::default_delete<Models::Building>>,
-              _Objty=std::unique_ptr<Models::Building,std::default_delete<Models::Building>>
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82): error C2280: 'std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>::unique_ptr(const std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>> &)' : tentative de référencement d'une fonction supprimée
-  (compiler le fichier source 'Town.cpp')
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3319,5):
-      voir la déclaration de 'std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>::unique_ptr'
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3319,5):
-      'std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>::unique_ptr(const std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>> &)' : la fonction a été supprimée explicitement
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82):
-      le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(49,37):
-          voir la référence à l'instanciation classe modèle 'std::vector<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>,std::allocator<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
-          pendant la compilation de la fonction membre classe modèle 'void std::vector<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>,std::allocator<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>>>::push_back(const _Ty &)'
-          with
-          [
-              _Ty=std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>
-          ]
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(57,26):
-              voir la première référence à « std::vector<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>,std::allocator<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>>>::push_back » dans « Models::Town::addConstruction »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(871,9):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<const _Ty&>(const _Ty &)' en cours de compilation
-          with
-          [
-              _Ty=std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>
-          ]
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(780,20):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<const _Ty&>(const _Ty &)' en cours de compilation
-          with
-          [
-              _Ty=std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>
-          ]
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(798,27):
-          voir la référence à l'instanciation de la fonction modèle 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const _Ty&>(_Alloc &,_Objty *const ,const _Ty &)' en cours de compilation
-          with
-          [
-              _Alloc=std::allocator<std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>>,
-              _Ty=std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>,
-              _Objty=std::unique_ptr<Models::Construction,std::default_delete<Models::Construction>>
-          ]
-  
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82): error C2280: 'std::unique_ptr<Models::Family,std::default_delete<Models::Family>>::unique_ptr(const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &)' : tentative de référencement d'une fonction supprimée
   (compiler le fichier source 'Town.cpp')
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3319,5):
@@ -91,30 +13,22 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
       'std::unique_ptr<Models::Family,std::default_delete<Models::Family>>::unique_ptr(const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &)' : la fonction a été supprimée explicitement
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xmemory(723,82):
       le contexte d’instanciation du modèle (le plus ancien) est
-          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(48,31):
-          voir la référence à l'instanciation classe modèle 'std::vector<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>,std::allocator<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>>' en cours de compilation
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
-          pendant la compilation de la fonction membre classe modèle 'void std::vector<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>,std::allocator<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>>::push_back(const _Ty &)'
-          with
-          [
-              _Ty=std::unique_ptr<Models::Family,std::default_delete<Models::Family>>
-          ]
-              C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(69,21):
-              voir la première référence à « std::vector<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>,std::allocator<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>>::push_back » dans « Models::Town::addFamily »
-          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(871,9):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<const _Ty&>(const _Ty &)' en cours de compilation
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.cpp(68,11):
+          voir la référence à l'instanciation de la fonction modèle 'void std::vector<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>,std::allocator<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>>::emplace_back<const std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>(const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &&)' en cours de compilation
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(862,24):
+          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<const std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>(const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &&)' en cours de compilation
           with
           [
               _Ty=std::unique_ptr<Models::Family,std::default_delete<Models::Family>>
           ]
           C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(780,20):
-          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<const _Ty&>(const _Ty &)' en cours de compilation
+          voir la référence à l'instanciation de la fonction modèle '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<const std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>(const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &&)' en cours de compilation
           with
           [
               _Ty=std::unique_ptr<Models::Family,std::default_delete<Models::Family>>
           ]
           C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\vector(798,27):
-          voir la référence à l'instanciation de la fonction modèle 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const _Ty&>(_Alloc &,_Objty *const ,const _Ty &)' en cours de compilation
+          voir la référence à l'instanciation de la fonction modèle 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,const std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>(_Alloc &,_Objty *const ,const std::unique_ptr<Models::Family,std::default_delete<Models::Family>> &&)' en cours de compilation
           with
           [
               _Alloc=std::allocator<std::unique_ptr<Models::Family,std::default_delete<Models::Family>>>,
