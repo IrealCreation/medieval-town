@@ -20,6 +20,10 @@ namespace Models
 		name = newName;
 	}
 
+	void Town::startTown() {
+
+	}
+
 	void Town::logicTick()
 	{
 		// Passage d'un nouveau jour
@@ -37,9 +41,9 @@ namespace Models
 		return date;
 	}
 
-	void Town::addBuilding(const unique_ptr<Building> building)
+	void Town::addBuilding(unique_ptr<Building> building)
 	{
-		//buildings.push_back(std::move(building));
+		buildings.push_back(std::move(building));
 	}
 	void Town::removeBuilding(Building* building)
 	{
@@ -51,9 +55,9 @@ namespace Models
 		*/
 	}
 
-	void Town::addConstruction(const unique_ptr<Construction> construction)
+	void Town::addConstruction(unique_ptr<Construction> construction)
 	{
-		//constructions.push_back(std::move(construction));
+		constructions.push_back(std::move(construction));
 	}
 	void Town::removeConstruction(Construction* construction)
 	{
@@ -63,7 +67,7 @@ namespace Models
 		*/
 	}
 
-	void Town::addFamily(const unique_ptr<Family> family)
+	void Town::addFamily(unique_ptr<Family> family)
 	{
 		families.emplace_back(std::move(family));
 	}

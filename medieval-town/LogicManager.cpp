@@ -19,13 +19,13 @@ LogicManager& LogicManager::getInstance()
 void LogicManager::startGame()
 {
 	// Création de la ville
-	this->town = make_unique<Models::Town>("Villebéon");
+	this->town = make_unique<Models::Town>("Lorrez-le-Bocage");
 	town->startTown();
 
 	// Création des familles
 	unique_ptr<Models::Family> family1 = make_unique<Models::Family>("Salviati");
 	this->town->addFamily(std::move(family1));
-	unique_ptr<Models::Family> family2 = make_unique<Models::Family>("Salviati");
+	unique_ptr<Models::Family> family2 = make_unique<Models::Family>("Legrand");
 	this->town->addFamily(std::move(family2));
 }
 

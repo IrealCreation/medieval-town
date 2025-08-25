@@ -7,19 +7,23 @@ LogicManager LogicManager::instance;
 #include "Family.h"
 #include "Town.h"
 
+#include <windows.h> // Ajout nécessaire pour SetConsoleOutputCP et CP_UTF8
+
 int main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+
     std::cout << "Lancement de Medieval Town\n";
 
     LogicManager::getInstance().startGame();
 
 	std::cout << "La ville " << LogicManager::getInstance().getTown()->getName() << " a été créée avec succès.\n";
 
-    std::cout << "Familles en jeu : ";
+    std::wcout << "Familles en jeu : ";
     bool* first = new bool(true); // Smart pointer pour pouvoir facilement libérer la mémoire
     for (const auto family : LogicManager::getInstance().getTown()->getFamilies()) {
         
-        std::cout << (first ? "" : ",") << family->getName();
+        std::cout << (*first ? "" : ", ") << family->getName();
         *first = false;
     }
     delete first;
