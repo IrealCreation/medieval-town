@@ -5,7 +5,9 @@
 #include "Family.h"
 #include "Location.h"
 #include "Construction.h"
+#include <iostream> // Pour le log()
 
+using std::string;
 using std::make_unique;
 using std::make_shared;
 
@@ -31,7 +33,18 @@ void LogicManager::startGame()
 
 void LogicManager::logicTick()
 {
+	this->log("--- Jour " + std::to_string(this->town->getDate()) + " ---");
+
 	this->town->logicTick();
+
+	// Log de l'état des familles
+	for (const auto family : this->getTown()->getFamilies()) {
+		this->log("Famille " + family->getName() + " : or " + std::to_string(family->getGold()) + " - prestige : " + std::to_string(family->getPrestige()));
+	}
+}
+
+void LogicManager::log(string message) {
+	std::cout << message << "\n";
 }
 
 Models::Town* LogicManager::getTown()

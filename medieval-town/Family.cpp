@@ -5,7 +5,8 @@
 namespace Models
 {
 	Family::Family(const std::string name)
-		: name(name), gold(0), prestige(0) {}
+		: name(name), gold(1000), prestige(100) {}
+
 	void Family::logicTick() {
 		// Logique de progression du jeu pour la famille, par exemple, mise à jour des ressources
 	}

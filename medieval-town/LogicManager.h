@@ -1,7 +1,9 @@
 #pragma once
+#include <string>
 #include <memory>
 using std::unique_ptr;
 using std::shared_ptr;
+using std::string;
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
@@ -30,6 +32,10 @@ public:
 	// Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 	void logicTick();
 
+	// Log de debug
+	void log(string message);
+
+	// Retourne un raw pointer vers la ville ; le cycle de vie de la ville reste géré par le LogicManager
 	Models::Town* getTown();
 
 	// Débute la construction d'un bâtiment
@@ -42,5 +48,5 @@ protected:
 
 	unique_ptr<Models::Town> town; // La ville dans laquelle se déroule la partie
 
-	static LogicManager instance; // Instance unique du GameManager
+	static LogicManager instance; // Instance unique du LogicManager
 };

@@ -15,18 +15,27 @@ int main()
 
     std::cout << "Lancement de Medieval Town\n";
 
-    LogicManager::getInstance().startGame();
+    LogicManager& logicManager = LogicManager::getInstance();
 
-	std::cout << "La ville " << LogicManager::getInstance().getTown()->getName() << " a été créée avec succès.\n";
+    logicManager.startGame();
+
+	std::cout << "La ville " << logicManager.getTown()->getName() << " a été créée avec succès.\n";
 
     std::wcout << "Familles en jeu : ";
-    bool* first = new bool(true); // Smart pointer pour pouvoir facilement libérer la mémoire
-    for (const auto family : LogicManager::getInstance().getTown()->getFamilies()) {
+    bool* first = new bool(true); // Smart pointer qu'on supprimera juste après la boucle
+    for (const auto family : logicManager.getTown()->getFamilies()) {
         
         std::cout << (*first ? "" : ", ") << family->getName();
         *first = false;
     }
     delete first;
+    std::cout << "\n";
+
+    // Boucle des ticks tant que le joueur presse Entrée
+    do
+    {
+        logicManager.logicTick();
+    } while (std::cin.get() == '\n');
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
