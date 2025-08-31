@@ -1,157 +1,67 @@
-﻿  Construction.cpp
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x151 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x183 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x88 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x94 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xf8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1c4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1d3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x277 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x312 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x34d et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3ac et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3e5 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3f0 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x412 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x457 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4a9 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x58 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x7f et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xea et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xf9 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x97 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xa3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x167 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x22e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2a3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2fd et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x34a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x359 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x40c et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x447 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x463 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4fe et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x5a4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'Construction.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.cpp(8,20): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.cpp(8,17): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.cpp(8,14): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  LogicManager.cpp
+﻿  LogicManager.cpp
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1b7 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x226 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3d3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x6b5 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x753 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x762 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x76a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x9bb et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x97 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x6b4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x754 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x90d et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xa57 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xbae et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xb8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xa3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xc4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x167 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x172 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x22e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x183 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x255 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2a3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x31c et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2fd et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x358 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x34a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x391 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x359 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3eb et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x40c et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x438 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x447 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x463 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4fa et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4fe et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x535 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x5a4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x551 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+  (compiler le fichier source 'LogicManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x5ec et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+  (compiler le fichier source 'LogicManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x64d et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+  (compiler le fichier source 'LogicManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x723 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+  (compiler le fichier source 'LogicManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x7ae et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
+  (compiler le fichier source 'LogicManager.cpp')
+  
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x7b8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x172 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
@@ -319,213 +229,16 @@ C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warnin
 C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x467 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
   (compiler le fichier source 'LogicManager.cpp')
   
-  medieval-town.cpp
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x97 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(66,144): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(66,115): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(66,93): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(84,36): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(84,54): warning C4244: 'argument' : conversion de 'float' en 'int', perte possible de données
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  (compiler le fichier source 'LogicManager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56):
+      le contexte d’instanciation du modèle (le plus ancien) est
+          C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.cpp(77,43):
+          voir la référence à l'instanciation de la fonction modèle 'std::unique_ptr<Models::Building,std::default_delete<Models::Building>> std::make_unique<Models::Building,const Models::BuildingType&,Models::Family*&,int&,int&,int&,0>(const Models::BuildingType &,Models::Family *&,int &,int &,int &)' en cours de compilation
   
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xa3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x167 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x22e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2a3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2fd et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x34a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x359 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x40c et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x447 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x463 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4fe et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\LogicManager.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x5a4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x69 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x75 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xe1 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x178 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x187 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3b5 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3d1 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3df et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x459 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Family.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x467 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x172 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x17e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x219 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x268 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26f et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2da et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x322 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x331 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x51e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x54a et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x661 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x6b6 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(11,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x9b et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xa7 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1a8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1b7 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x284 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2bd et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2c8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x2ea et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x338 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x33e et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x388 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Building.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x393 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x26 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x58 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x7f et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xea et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Location.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xf9 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Town.h(12,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x88 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x94 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0xf8 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1c4 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x1d3 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x277 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x312 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x34d et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3ac et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3e5 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x3f0 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x412 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x457 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-C:\Users\riki0\Desktop\Projets\medieval-town\medieval-town\Construction.h(1,1): warning C4828: Le fichier contient un caractère qui débute à l'offset 0x4a9 et qui est non conforme dans le jeu de caractères source actuel (page de codes 65001).
-  (compiler le fichier source 'medieval-town.cpp')
-  
-  Génération de code en cours...
   medieval-town.vcxproj -> C:\Users\riki0\Desktop\Projets\medieval-town\x64\Debug\medieval-town.exe

@@ -4,13 +4,13 @@
 
 namespace Models {
 	// TODO: bouger les enums dans un fichier à part
-	enum Pop {
+	enum class Pop {
 		Gueux,
 		Bourgeois,
 		Noble
 	};
 
-	enum ServiceType {
+	enum class ServiceType {
 		// Religion
 		Priere,
 		Monachisme,
@@ -39,6 +39,8 @@ namespace Models {
 			const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 			const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
 			int constructionTime, ServiceType& serviceType);
+		// Constructeur minimal pour tests
+		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, ServiceType serviceType); // Bug quand ServiceType passé par référence
 
 		// Getters
 		virtual std::string getName() const;

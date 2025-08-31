@@ -52,24 +52,42 @@ Models::Town* LogicManager::getTown()
 	return this->town.get();
 }
 
-void LogicManager::startConstruction(const Models::BuildingType* type, Models::Family* family, int x, int y, int rotation)
+void LogicManager::startConstruction(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
 {
-	unique_ptr<Models::Construction> construction = make_unique<Models::Construction>(*type, family, x, y, rotation);
+	unique_ptr<Models::Construction> construction = make_unique<Models::Construction>(type, family, x, y, rotation);
 	family->addConstruction(construction.get());
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
+
 void LogicManager::constructionDone(Models::Construction* construction)
 {
-	// On crée le nouveau bâtiment à partir du chantier de construction
-	unique_ptr <Models::Building> building = make_unique<Models::Building>(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
-	construction->getFamily()->addBuilding(building.get());
-	town->addBuilding(std::move(building));
+	// On crée le nouveau Building qui vient remplacer la Construction
+	this->createBuilding(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
 	
 	// On supprime le chantier de construction
 	construction->getFamily()->removeConstruction(construction);
 	town->removeConstruction(construction);
 
-	// UE : despawn l'objet Construction, spawn l'objet Building, petite animation de construction achevée
+	// UE : despawn l'objet Construction, petite animation de construction achevée
+}
+
+void LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
+{
+	unique_ptr <Models::Building> building = make_unique<Models::Building>(type, family, x, y, rotation);
+	this->log("Construction de " + building->getName() + " par " + family->getName());
+
+	// Coût pour la famille
+	family->removeGold(type.getGoldConstructionCost());
+
+	// On ajoute le Building dans les caches de localisation
+	mapBuildingLocation[building->getX()][building->getY()] = building.get();
+	// On ajoute le Building dans la famille (s'il en a une)
+	if (family != nullptr)
+		family->addBuilding(building.get());
+	// On déplace le pointeur unique dans la Town
+	town->addBuilding(std::move(building));
+
+	// UE : spawn l'objet Building
 }
 

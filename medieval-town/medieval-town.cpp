@@ -3,9 +3,15 @@
 
 #include <iostream>
 #include "LogicManager.h"
-LogicManager LogicManager::instance;
+LogicManager LogicManager::instance; // Instanciation du LogicManager
 #include "Family.h"
 #include "Town.h"
+#include "BuildingType.h"
+#include <memory>
+using std::unique_ptr;
+using std::shared_ptr;
+using std::make_unique;
+using std::make_shared;
 
 #include <windows.h> // Ajout nécessaire pour SetConsoleOutputCP et CP_UTF8
 
@@ -30,6 +36,12 @@ int main()
     }
     delete first;
     std::cout << "\n";
+
+    // Initialisation d'un BuildingType
+    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>("Puits", 50, 1, Models::ServiceType::Eau);
+
+    // Construction d'un bâtiment
+    logicManager.createBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies().front(), 0, 0, 0);
 
     // Boucle des ticks tant que le joueur presse Entrée
     do
