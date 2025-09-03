@@ -29,7 +29,14 @@ namespace Models
 		// Passage d'un nouveau jour
 		date++;
 
-		// TODO: tick des constructions, buildings, families
+		// Tick des constructions
+		for (const auto& construction : constructions) {
+			construction->logicTick();
+		}
+		// Tick des bâtiments
+		for (const auto& building : buildings) {
+			building->logicTick();
+		}
 	}
 
 	std::string Town::getName() const
@@ -61,10 +68,11 @@ namespace Models
 	}
 	void Town::removeConstruction(Construction* construction)
 	{
-		/*
-		auto it = std::find(constructions.begin(), constructions.end(), construction);
+		// On récupère l'itérateur vers l'unique_ptr correspondant au raw pointer
+		auto it = std::find_if(constructions.begin(), constructions.end(), [&construction](const unique_ptr<Construction>& c) {
+			return c.get() == construction;
+		});
 		constructions.erase(it);
-		*/
 	}
 
 	void Town::addFamily(unique_ptr<Family> family)

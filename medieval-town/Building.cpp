@@ -7,7 +7,13 @@ namespace Models {
 		: Location(x, y, rotation), type(type), family(family), name(type.getName()), dateCreation(0) {}
 
 	void Building::logicTick() {
-		
+		// TODO: calculer les effets du bâtiment en fonction des populations servies
+
+		if (family) {
+			// Le bâtiment a une famille propriétaire
+			// DEBUG: on utilise le coût d'entretien comme gain d'or pour la famille
+			family->addGold(type.getGoldMaintenanceCost());
+		}
 	}
 
 	std::string Building::getName() {

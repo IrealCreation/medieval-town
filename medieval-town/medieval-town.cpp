@@ -38,10 +38,10 @@ int main()
     std::cout << "\n";
 
     // Initialisation d'un BuildingType
-    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>("Puits", 50, 1, Models::ServiceType::Eau);
+    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>("Puits", 50, 1, 4, Models::ServiceType::Eau);
 
     // Construction d'un bâtiment
-    logicManager.createBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies().front(), 0, 0, 0);
+    logicManager.startConstruction(*buildingType_Puits, logicManager.getTown()->getFamilies().front(), 0, 0, 0);
 
     // Boucle des ticks tant que le joueur presse Entrée
     do

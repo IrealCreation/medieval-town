@@ -17,10 +17,6 @@ namespace Models {
 	class Construction;
 }
 
-// Permet de créer des tableaux à trois dimensions : X, Y, Building
-//typedef std::map<int, Models::Building*> MapBuildingLocation;
-//typedef std::map<int, MapBuildingLocation> MapBuildingLocationXY;
-
 // Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class LogicManager
 {
@@ -58,7 +54,7 @@ protected:
 
 	static LogicManager instance; // Instance unique du LogicManager
 
-	// Cache de localisation pour plus facilement accéder aux bâtiments en fonction de leur emplacement
-	// Liste des Buildings [x => [y => Building]]
-	map<int, map<int, Models::Building*>> mapBuildingLocation;
+	// Cache de localisation pour plus facilement accéder aux éléments en fonction de leur emplacement
+	// Liste des Locations [x => [y => Location*]]
+	map<int, map<int, Models::Location*>> mapLocations;
 };

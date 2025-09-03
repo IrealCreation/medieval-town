@@ -8,6 +8,7 @@ namespace Models
 	class Family;
 	class BuildingType;
 
+	// Bâtiment prodiguant des services aux alentours. C'est un lieu (Location) qui a un type (BuildingType) et éventuellement une famille propriétaire (Family)
 	class Building : public Location
 	{
 	public:

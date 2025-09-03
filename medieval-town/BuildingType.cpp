@@ -11,8 +11,8 @@ namespace Models {
 		constructionTime(constructionTime), serviceType(serviceType) {}
 
 	// Constructeur minimal pour tests
-	BuildingType::BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, ServiceType serviceType)
-		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost), serviceType(serviceType) {}
+	BuildingType::BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, ServiceType serviceType)
+		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost), constructionTime(constructionTime), serviceType(serviceType) {}
 
 	std::string BuildingType::getName() const {
 		return name;

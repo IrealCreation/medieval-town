@@ -40,7 +40,7 @@ namespace Models {
 			const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
 			int constructionTime, ServiceType& serviceType);
 		// Constructeur minimal pour tests
-		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, ServiceType serviceType); // Bug quand ServiceType passé par référence
+		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, ServiceType serviceType); // Bug quand ServiceType passé par référence
 
 		// Getters
 		virtual std::string getName() const;
