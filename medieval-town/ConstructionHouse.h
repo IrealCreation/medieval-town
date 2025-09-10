@@ -10,6 +10,11 @@ namespace Models
     public:
         ConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY);
 
+		// Getters
+		int getSizeX() const;
+		int getSizeY() const;
+
+
         // Surcharges de la classe parent
 
 		void logicTick() override;

@@ -1,4 +1,5 @@
 #include "ConstructionHouse.h"
+#include "LogicManager.h"
 
 namespace Models
 {
@@ -8,8 +9,23 @@ namespace Models
 		this->constructionTime = sizeX * sizeY; // Temps de construction égal à la surface de la maison
     }
 
+    int ConstructionHouse::getSizeX() const
+    {
+        return sizeX;
+    }
+
+    int ConstructionHouse::getSizeY() const
+    {
+        return sizeY;
+    }
+
     void ConstructionHouse::logicTick()
     {
         Construction::logicTick();
+        if (daysDone >= constructionTime)
+        {
+            // Fin de la construction
+            LogicManager::getInstance().constructionHouseDone(this);
+		}
     }
 }

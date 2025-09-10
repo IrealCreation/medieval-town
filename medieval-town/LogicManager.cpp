@@ -119,4 +119,24 @@ void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX,
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
+void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
+{
+	// On crée la nouvelle House qui vient remplacer la Construction
+	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY());
+	// Pas besoin de retirer la Construction du cache de localisation car la House l'écrase
+	// On supprime le chantier de construction
+	town->removeConstruction(construction);
+	// UE : despawn l'objet Construction, petite animation de construction achevée
+}
+void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY)
+{
+	unique_ptr <Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY);
+	// On log l'événement
+	this->log("Maison achevee a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
+	// On ajoute la House dans les caches de localisation
+	mapLocations[house->getX()][house->getY()] = house.get();
+	// On déplace le pointeur unique dans la Town
+	town->addHouse(std::move(house));
+	// UE : spawn l'objet House
+}
 
