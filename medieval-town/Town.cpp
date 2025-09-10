@@ -29,8 +29,14 @@ namespace Models
 		// Passage d'un nouveau jour
 		date++;
 
-		// Tick des constructions
+		// La liste des constructions peut changer pendant le tick (fin de construction), donc on en fait une copie avant de la parcourir
+		vector<Construction*> constructionsCopy;
 		for (const auto& construction : constructions) {
+			constructionsCopy.push_back(construction.get());
+		}
+
+		// Tick des constructions
+		for (const auto& construction : constructionsCopy) {
 			construction->logicTick();
 		}
 		// Tick des bâtiments

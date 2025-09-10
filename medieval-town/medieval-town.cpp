@@ -47,13 +47,12 @@ int main()
     // Boucle des ticks tant que le joueur presse Entrée
     do
     {
-		// On fait spawn une maison tous les deux ticks sur une ligne (test)
-        /*if (logicManager.getTown()->getDate() % 2 == 0) {
-			logicManager.startConstructionHouse(i, 1, 0, 2, 2);
-		}*/
-        // DEBUG: Crash jour 3
-
         logicManager.logicTick();
+
+        // On fait spawn une maison tous les deux ticks sur une ligne (test)
+        if (logicManager.getTown()->getDate() % 2 == 0) {
+            logicManager.startConstructionHouse(i, 1, 0, 2, 2);
+        }
 
         i++;
     } while (std::cin.get() == '\n');
