@@ -5,6 +5,8 @@
 #include "Family.h"
 #include "Location.h"
 #include "Construction.h"
+#include "ConstructionBuilding.h"
+#include "ConstructionHouse.h"
 #include <iostream> // Pour le log()
 
 using std::string;
@@ -52,10 +54,10 @@ Models::Town* LogicManager::getTown()
 	return this->town.get();
 }
 
-void LogicManager::startConstruction(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
+void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
 {
 	// Création de la Construction
-	unique_ptr<Models::Construction> construction = make_unique<Models::Construction>(type, family, x, y, rotation);
+	unique_ptr<Models::ConstructionBuilding> construction = make_unique<Models::ConstructionBuilding>(type, family, x, y, rotation);
 
 	// On log l'événement
 	this->log("Debut de la construction de " + construction->getType().getName() +  (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
@@ -75,7 +77,7 @@ void LogicManager::startConstruction(const Models::BuildingType& type, Models::F
 	town->addConstruction(std::move(construction));
 }
 
-void LogicManager::constructionDone(Models::Construction* construction)
+void LogicManager::constructionBuildingDone(Models::ConstructionBuilding* construction)
 {
 	// On crée le nouveau Building qui vient remplacer la Construction
 	this->createBuilding(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
@@ -104,5 +106,17 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	town->addBuilding(std::move(building));
 
 	// UE : spawn l'objet Building
+}
+
+void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY)
+{
+	// Création de la Construction
+	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY);
+	// On log l'événement
+	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
+	// On ajoute la Construction dans le cache de localisation
+	mapLocations[construction->getX()][construction->getY()] = construction.get();
+	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
+	town->addConstruction(std::move(construction));
 }
 

@@ -15,6 +15,8 @@ namespace Models {
 	class Family;
 	class Location;
 	class Construction;
+	class ConstructionBuilding;
+	class ConstructionHouse;
 }
 
 // Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
@@ -40,12 +42,19 @@ public:
 	// Retourne un raw pointer vers la ville ; le cycle de vie de la ville reste géré par le LogicManager
 	Models::Town* getTown();
 
-	// Débute la construction d'un bâtiment
-	void startConstruction(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
-	// Termine la construction d'un bâtiment
-	void constructionDone(Models::Construction* construction);
-	// Ajoute directement un bâtiment
+	// Débute la construction d'un bâtiment de service
+	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
+	// Termine la construction d'un bâtiment de service
+	void constructionBuildingDone(Models::ConstructionBuilding* construction);
+	// Ajoute un bâtiment de service achevé
 	void createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
+
+	// Débute la construction d'une maison d'habitation
+	void startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY);
+	// Termine la construction d'une maison d'habitation
+	void constructionHouseDone(Models::ConstructionHouse* construction);
+	// Ajoute une maison d'habitation achevée
+	void createHouse(int x, int y, int rotation, int sizeX, int sizeY);
 
 protected:
 	LogicManager();

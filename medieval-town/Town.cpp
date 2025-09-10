@@ -87,4 +87,17 @@ namespace Models
 			[](const std::unique_ptr<Family>& mon_in) { return mon_in.get(); });
 		return tmp_families;
 	}
+
+	void Town::addHouse(unique_ptr<House> house)
+	{
+		houses.push_back(std::move(house));
+	}
+	void Town::removeHouse(House* house)
+	{
+		// On récupère l'itérateur vers l'unique_ptr correspondant au raw pointer
+		auto it = std::find_if(houses.begin(), houses.end(), [&house](const unique_ptr<House>& h) {
+			return h.get() == house;
+		});
+		houses.erase(it);
+	}
 }

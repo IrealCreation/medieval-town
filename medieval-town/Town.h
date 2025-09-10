@@ -10,6 +10,7 @@ using std::shared_ptr;
 // Pourquoi est-ce qu'il en a besoin pour les vector<unique_ptr<Construction>>, mais pas de Family.h ?
 #include "Building.h";
 #include "Construction.h";
+#include "House.h";
 
 namespace Models
 {
@@ -41,13 +42,17 @@ namespace Models
 			void addBuilding(unique_ptr<Building> building);
 			void removeBuilding(Building* building);
 
+			void addHouse(unique_ptr<House> house);
+			void removeHouse(House* house);
+
 		private:
 			string name;
 
 			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gère leur cycle de vie ; ils seront communiqués sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville
 			vector<unique_ptr<Construction>> constructions; // Liste des chantiers de construction de la ville
-			vector<unique_ptr<Building>> buildings; // Liste des bâtiments de la ville
+			vector<unique_ptr<Building>> buildings; // Liste des bâtiments de service de la ville
+			vector<unique_ptr<House>> houses; // Liste des maisons d'habitation de la ville
 			int date; // Date actuelle de la ville (en jours depuis le début de la partie)
 	};
 }
