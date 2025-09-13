@@ -108,10 +108,10 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	// UE : spawn l'objet Building
 }
 
-void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY)
+void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
 	// Création de la Construction
-	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY);
+	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau);
 	// On log l'événement
 	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
 	// On ajoute la Construction dans le cache de localisation
@@ -122,15 +122,15 @@ void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX,
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
 {
 	// On crée la nouvelle House qui vient remplacer la Construction
-	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY());
-	// Pas besoin de retirer la Construction du cache de localisation car la House l'écrase
+	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getNiveau());
+	// Pas besoin de retirer la Construction du cache de localisation car
 	// On supprime le chantier de construction
 	town->removeConstruction(construction);
 	// UE : despawn l'objet Construction, petite animation de construction achevée
 }
-void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY)
+void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
-	unique_ptr <Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY);
+	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau);
 	// On log l'événement
 	this->log("Maison achevee a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation

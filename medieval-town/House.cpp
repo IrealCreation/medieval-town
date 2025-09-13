@@ -4,10 +4,19 @@
 
 namespace Models
 {
-	House::House(int x, int y, int rotation, int sizeX, int sizeY)
-		: Location(x, y, rotation), sizeX(sizeX), sizeY(sizeY)
-	{
-		dateCreation = LogicManager::getInstance().getTown()->getDate(); // On initialise la date de création à la date actuelle de la ville
+	House::House(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
+		: Location(x, y, rotation), sizeX(sizeX), sizeY(sizeY), niveau(niveau)
+	{ 
+		// On initialise la date de création à la date actuelle de la ville
+		dateCreation = LogicManager::getInstance().getTown()->getDate();
+
+		// Initialisation de la map des pops résidentes
+		pops = {
+			{ Pop::Gueux, 2 },
+			{ Pop::Bourgeois, 0 },
+			{ Pop::Noble, 0 }
+		};
+		// TODO: ajuster les pops en fonction du niveau de la maison
 	}
 	int House::getSizeX() const
 	{
@@ -16,6 +25,10 @@ namespace Models
 	int House::getSizeY() const
 	{
 		return sizeY;
+	}
+	int House::getNiveau() const
+	{
+		return niveau;
 	}
 	void House::logicTick()
 	{

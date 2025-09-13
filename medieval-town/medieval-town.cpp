@@ -37,11 +37,62 @@ int main()
     delete first;
     std::cout << "\n";
 
-    // Initialisation d'un BuildingType
-    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>("Puits", 50, 1, 4, Models::ServiceType::Eau);
+	// Initialisation du BuildingType Chapelle
+    std::map<Models::Pop, int> goldCostPerPopulation = {
+        { Models::Pop::Gueux, 0 },
+        { Models::Pop::Bourgeois, 0 },
+        { Models::Pop::Noble, 0 }
+	};
+    std::map<Models::Pop, int> goldGainPerPopulation = {
+        { Models::Pop::Gueux, 2 },
+        { Models::Pop::Bourgeois, 3 },
+        { Models::Pop::Noble, 4 }
+	};
+    std::map<Models::Pop, int> prestigeGainPerPopulation = {
+        { Models::Pop::Gueux, 2 },
+        { Models::Pop::Bourgeois, 4 },
+		{ Models::Pop::Noble, 6 }
+	};
+	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
+        "Chapelle", 
+        200, 20, 
+        goldCostPerPopulation,
+        goldGainPerPopulation, 
+        prestigeGainPerPopulation, 
+        10, 50, 5, 
+        Models::Service::Priere
+    );
 
-    // Construction d'un bâtiment
-    logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies().front(), 0, 0, 0);
+    // Initialisation du BuildingType Puits
+    goldCostPerPopulation = {
+        { Models::Pop::Gueux, 0 },
+        { Models::Pop::Bourgeois, 0 },
+        { Models::Pop::Noble, 0 }
+    };
+    goldGainPerPopulation = {
+        { Models::Pop::Gueux, 0 },
+        { Models::Pop::Bourgeois, 0 },
+        { Models::Pop::Noble, 0 }
+    };
+    prestigeGainPerPopulation = {
+        { Models::Pop::Gueux, 3 },
+        { Models::Pop::Bourgeois, 3 },
+        { Models::Pop::Noble, 3 }
+    };
+    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
+        "Puits",
+        50, 5,
+        goldCostPerPopulation,
+        goldGainPerPopulation,
+        prestigeGainPerPopulation,
+        8, 40, 3,
+        Models::Service::Eau
+    );
+
+    // Construction d'un bâtiment : Puits par Salviati
+    logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 0, 0, 0);
+	// Construction d'un bâtiment : Chapelle par Legrand
+	logicManager.startConstructionBuilding(*buildingType_Chapelle, logicManager.getTown()->getFamilies()[1], 2, 2, 0);
 
     int i = 0;
     // Boucle des ticks tant que le joueur presse Entrée
@@ -51,7 +102,7 @@ int main()
 
         // On fait spawn une maison tous les deux ticks sur une ligne (test)
         if (logicManager.getTown()->getDate() % 2 == 0) {
-            logicManager.startConstructionHouse(i, 1, 0, 2, 2);
+            logicManager.startConstructionHouse(i, 1, 0, 2, 2, 1);
         }
 
         i++;

@@ -50,11 +50,11 @@ public:
 	void createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
 
 	// Débute la construction d'une maison d'habitation
-	void startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY);
+	void startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
 	// Termine la construction d'une maison d'habitation
 	void constructionHouseDone(Models::ConstructionHouse* construction);
 	// Ajoute une maison d'habitation achevée
-	void createHouse(int x, int y, int rotation, int sizeX, int sizeY);
+	void createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
 
 protected:
 	LogicManager();
