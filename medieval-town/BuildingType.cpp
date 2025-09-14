@@ -8,11 +8,11 @@ namespace Models {
 		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
 		goldCostPerPopulation(goldCostPerPopulation), goldGainPerPopulation(goldGainPerPopulation),
 		prestigeGainPerPopulation(prestigeGainPerPopulation), range(range), maxCapacity(maxCapacity),
-		constructionTime(constructionTime), serviceType(serviceType) {}
+		constructionTime(constructionTime), service(service) {}
 
 	// Constructeur minimal pour tests
-	BuildingType::BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, Service serviceType)
-		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost), constructionTime(constructionTime), serviceType(serviceType) {}
+	BuildingType::BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, Service service)
+		: name(name), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost), constructionTime(constructionTime), service(service) {}
 
 	std::string BuildingType::getName() const {
 		return name;
@@ -50,8 +50,8 @@ namespace Models {
 	int BuildingType::getConstructionTime() const {
 		return constructionTime;
 	}
-	const Service& BuildingType::getServiceType() const {
-		return serviceType;
+	const Service& BuildingType::getService() const {
+		return service;
 	}
 	bool BuildingType::isPopServed(Pop pop) const {
 		return goldCostPerPopulation.find(pop) != goldCostPerPopulation.end() &&

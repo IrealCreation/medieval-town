@@ -2,6 +2,7 @@
 #include "Town.h"
 #include "BuildingType.h"
 #include "Building.h"
+#include "House.h"
 #include "Family.h"
 #include "Location.h"
 #include "Construction.h"
@@ -12,6 +13,7 @@
 using std::string;
 using std::make_unique;
 using std::make_shared;
+using std::multimap;
 
 LogicManager::LogicManager() {}
 
@@ -99,6 +101,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 
 	// On ajoute le Building dans les caches de localisation
 	mapLocations[building->getX()][building->getY()] = building.get();
+	mapBuildings[building->getX()][building->getY()] = building.get();
 	// On ajoute le Building dans la famille (s'il en a une)
 	if (family != nullptr)
 		family->addBuilding(building.get());
@@ -135,8 +138,33 @@ void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY,
 	this->log("Maison achevee a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation
 	mapLocations[house->getX()][house->getY()] = house.get();
+	mapHouses[house->getX()][house->getY()] = house.get();
 	// On déplace le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
+}
+
+vector<Models::House*> LogicManager::getHousesInRange(int x, int y, int range) 
+{
+	// On utilise une multimap pour stocker nos résultats avec la distance au point d'origine comme clé
+	multimap<float, Models::House*> ordered_list;
+
+	// On parcourt tous les maisons
+	// TODO: utiliser les caches de localisation de façon intelligente pour optimiser ce process
+	for(const auto& house : this->town->getHouses()) {
+
+		float distance = house->getDistance(x, y);
+		if (distance <= range) {
+			// La maison est dans le rayon, on l'ajoute à la liste ordonnée
+			ordered_list.insert(std::make_pair(distance, house));
+		}
+	}
+
+	// On transforme notre multimap en un vecteur trié
+	vector<Models::House*> result;
+	for (const auto& pair : ordered_list) {
+		result.push_back(pair.second);
+	}
+	return result;
 }
 

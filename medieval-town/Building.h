@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "Location.h" // Classe parent : on doit inclure son header
 
 namespace Models
@@ -7,6 +8,7 @@ namespace Models
 	// Forward declarations pour éviter les dépendances circulaires
 	class Family;
 	class BuildingType;
+	class House;
 
 	// Bâtiment prodiguant des services aux alentours. C'est un lieu (Location) qui a un type (BuildingType) et éventuellement une famille propriétaire (Family)
 	class Building : public Location
@@ -18,11 +20,15 @@ namespace Models
 		std::string getName();
 		void setName(const std::string& name);
 
+		void updateHousesServed(); // Met à jour la liste des maisons desservies par ce bâtiment
+
 	private:
 		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par référence et en const
 		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
 		std::string name; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
 		int dateCreation; // Date de création du bâtiment (fin du chantier de construction)
+
+		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 	};
 }
 

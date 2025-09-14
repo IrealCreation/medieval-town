@@ -92,6 +92,7 @@ namespace Models
 			std::back_inserter(tmp_families),
 			[](const std::unique_ptr<Family>& mon_in) { return mon_in.get(); });
 		return tmp_families;
+		// TODO: typiquement le genre de fonction qui pourrait être un template
 	}
 
 	void Town::addHouse(unique_ptr<House> house)
@@ -105,5 +106,13 @@ namespace Models
 			return h.get() == house;
 		});
 		houses.erase(it);
+	}
+	vector<House*> Town::getHouses() {
+		// On transforme notre tableau de unique_ptr en un tableau de raw pointers
+		std::vector<House*> tmp_houses;
+		std::transform(this->houses.begin(), this->houses.end(),
+			std::back_inserter(tmp_houses),
+			[](const std::unique_ptr<House>& mon_in) { return mon_in.get(); });
+		return tmp_houses;
 	}
 }

@@ -2,16 +2,19 @@
 #include <string>
 #include <memory>
 #include <map>
+#include <vector>
 using std::unique_ptr;
 using std::shared_ptr;
 using std::string;
 using std::map;
+using std::vector;
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
 	class Town;
 	class BuildingType;
 	class Building;
+	class House;
 	class Family;
 	class Location;
 	class Construction;
@@ -56,6 +59,10 @@ public:
 	// Ajoute une maison d'habitation achevée
 	void createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
 
+	// Récupère les maisons situées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
+	vector<Models::House*> getHousesInRange(int x, int y, int range);
+
+
 protected:
 	LogicManager();
 
@@ -64,6 +71,18 @@ protected:
 	static LogicManager instance; // Instance unique du LogicManager
 
 	// Cache de localisation pour plus facilement accéder aux éléments en fonction de leur emplacement
-	// Liste des Locations [x => [y => Location*]]
+	// Liste de toutes les Locations [x => [y => Location*]]
 	map<int, map<int, Models::Location*>> mapLocations;
+	// Liste des Buildings [x => [y => Building*]]
+	map<int, map<int, Models::Building*>> mapBuildings;
+	// Liste des Houses [x => [y => House*]]
+	map<int, map<int, Models::House*>> mapHouses;
+
+	// Fonction permettant de récupérer les éléments des caches de localisation sitiées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
+	// TODO: essayer d'éviter la duplication de code dans les fonctions getXInRange, genre avec un template et un static_assert( std::is_base_of<> ... ) ?
+	// (Rappel : comme le C++ est un langage qui aime les blagues, on ne peut pas déclarer de templates dans le header)
+	/* 
+	template<typename T>
+	vector<T*> getInRange(int x, int y, int range, map<int, map<int, T>>);
+	*/
 };

@@ -14,9 +14,14 @@ namespace Models
 		return this->rotation;
 	}
 	float Location::getDistance(const Location& other) const {
-		float dx = x - other.x;
-		float dy = y - other.y;
+		float dx = this->x - other.x;
+		float dy = this->y - other.y;
 		return std::sqrt(dx * dx + dy * dy); // Vive Pythagore !
+	}
+	float Location::getDistance(float x, float y) const {
+		float dx = this->x - x;
+		float dy = this->y - y;
+		return std::sqrt(dx * dx + dy * dy);
 	}
 
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove

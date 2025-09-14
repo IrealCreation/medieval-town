@@ -11,9 +11,9 @@ namespace Models {
 		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost,
 			const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 			const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
-			int constructionTime, Service serviceType);
+			int constructionTime, Service service);
 		// Constructeur minimal pour tests
-		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, Service serviceType);
+		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, Service service);
 
 		// Getters
 		virtual std::string getName() const;
@@ -25,7 +25,7 @@ namespace Models {
 		virtual int getRange() const;
 		virtual int getMaxCapacity() const;
 		virtual int getConstructionTime() const; // Temps de construction du bâtiment, en jours
-		const Service& getServiceType() const;
+		const Service& getService() const;
 		virtual bool isPopServed(Pop pop) const; // Cette pop est-elle servie par le batiment ?
 
 	protected:
@@ -39,6 +39,6 @@ namespace Models {
 		int range; // Portée d'action du bâtiment, en mètres
 		int maxCapacity; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
 		int constructionTime; // Temps de construction du bâtiment, en jours
-		const Service& serviceType; // Type de service fourni par le bâtiment (à terme remplacer par un enum ?)
+		const Service& service; // Type de service fourni par le bâtiment (à terme remplacer par un enum ?)
 	};
 }

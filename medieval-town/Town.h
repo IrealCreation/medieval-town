@@ -44,6 +44,7 @@ namespace Models
 
 			void addHouse(unique_ptr<House> house);
 			void removeHouse(House* house);
+			vector<House*> getHouses();
 
 		private:
 			string name;

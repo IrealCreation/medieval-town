@@ -30,6 +30,32 @@ namespace Models
 	{
 		return niveau;
 	}
+	int House::getPop(Pop pop) const
+	{
+		if (pops.find(pop) != pops.end())
+			return pops.at(pop);
+		else
+			return 0;
+	}
+	int House::getPopTotal() const
+	{
+		int total = 0;
+		for (const auto& pair : pops) {
+			total += pair.second;
+		}
+		return total;
+	}
+	Building* House::getServiceBuilding(Service service) const
+	{
+		if (serviceBuildings.find(service) != serviceBuildings.end())
+			return serviceBuildings.at(service);
+		else
+			return nullptr;
+	}
+	void House::addService(Service service, Building* building)
+	{
+		serviceBuildings[service] = building;
+	}
 	void House::logicTick()
 	{
 		// TODO: gérer les pops résidentes, leurs besoins, leur croissance...
