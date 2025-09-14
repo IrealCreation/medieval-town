@@ -15,10 +15,14 @@ namespace Models {
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
 		// On trouve les maisons desservies par ce bâtiment
-		this->updateHousesServed();
+		// TEST: on appelle cette fonction dans le tick, donc pas besoin de le faire ici
+		// this->updateHousesServed();
 	}
 
 	void Building::logicTick() {
+		// TEST: on met à jour les maisons servies à chaque tick. Pas optimisé, à améliorer : update quand un bâtiment ou une maison est construit(e) ou détruit(e) à proximité
+		this->updateHousesServed();
+
 		// Décompte des populations servies
 		map<Pop, int> totalPopsServed = {
 			{ Pop::Gueux, 0 },
