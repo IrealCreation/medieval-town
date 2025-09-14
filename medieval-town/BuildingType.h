@@ -37,6 +37,6 @@ namespace Models {
 		int range; // Portée d'action du bâtiment, en mètres
 		int maxCapacity; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
 		int constructionTime; // Temps de construction du bâtiment, en jours
-		const Service& service; // Type de service fourni par le bâtiment (à terme remplacer par un enum ?)
+		const Service service; // Type de service fourni par le bâtiment
 	};
 }

@@ -89,7 +89,7 @@ int main()
         Models::Service::Eau
     );
 
-    // DEBUG: les valeurs des Service des BuildingTypes partent en sucette et deviennent identiques à partir de ce point
+    // DEBUG: les valeurs des Service des BuildingTypes partent en sucette et deviennent identiques à partir de Town::getFamilies()
 
     // Construction d'un bâtiment : Puits par Salviati
     logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 0, 0, 0);
@@ -127,6 +127,7 @@ Quand stocker une valeur dans une propriété d'une classe en valeur / référen
     Valeur : quand cette classe stocke la version "originale" de l'objet et qu'elle manage son cycle de vie, ou qu'elle doit en conserver une copie indépendante du contexte extérieur
     Référence : quand cette classe ne stocke pas la version "originale" ni une copie indépendante, que la propriété est non-nullable et ne changera pas de valeur pour un autre objet différent
     Pointeur : quand cette propriété est nullable et/ou qu'on doit pouvoir la switcher vers un autre objet
+Ne pas stocker une enum par référence dans une propriété de classe
 */
 
 /*

@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Models {
-	enum Pop {
+	enum class Pop {
 		Gueux,
 		Bourgeois,
 		Noble

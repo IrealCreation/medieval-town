@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Models {
-	enum Service {
+	enum class Service {
 		// Religion
 		Priere,
 		Monachisme,
