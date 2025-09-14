@@ -2,7 +2,7 @@
 #include "Location.h"
 #include <map>
 #include "Pop.h"
-#include "ServiceType.h"
+#include "Service.h"
 
 namespace Models
 {

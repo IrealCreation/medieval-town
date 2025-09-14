@@ -37,6 +37,7 @@ namespace Models {
 		}
 
 		if (family) {
+
 			// Le bâtiment a une famille propriétaire
 			// Maintenance du bâtiment
 			family->removeGold(type.getGoldMaintenanceCost());
@@ -50,6 +51,10 @@ namespace Models {
 				totalGoldGain += popCount * type.getGoldGainPerPopulation(pop);
 				totalPrestigeGain += popCount * type.getPrestigeGainPerPopulation(pop);
 			}
+
+			// On ajoute l'or et le prestige à la famille
+			family->addGold(totalGoldGain);
+			family->addPrestige(totalPrestigeGain);
 		}
 	}
 

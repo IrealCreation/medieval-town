@@ -70,9 +70,9 @@ int main()
         { Models::Pop::Noble, 0 }
     };
     goldGainPerPopulation = {
-        { Models::Pop::Gueux, 0 },
-        { Models::Pop::Bourgeois, 0 },
-        { Models::Pop::Noble, 0 }
+        { Models::Pop::Gueux, 1 },
+        { Models::Pop::Bourgeois, 1 },
+        { Models::Pop::Noble, 1 }
     };
     prestigeGainPerPopulation = {
         { Models::Pop::Gueux, 3 },
@@ -88,6 +88,8 @@ int main()
         8, 40, 3,
         Models::Service::Eau
     );
+
+    // DEBUG: les valeurs des Service des BuildingTypes partent en sucette et deviennent identiques à partir de ce point
 
     // Construction d'un bâtiment : Puits par Salviati
     logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 0, 0, 0);

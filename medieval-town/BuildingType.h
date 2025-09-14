@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include "Pop.h"
-#include "ServiceType.h"
+#include "Service.h"
 
 namespace Models {
 	// Type de bâtiment pouvant être construit dans la ville
@@ -12,8 +12,6 @@ namespace Models {
 			const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 			const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
 			int constructionTime, Service service);
-		// Constructeur minimal pour tests
-		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost, int constructionTime, Service service);
 
 		// Getters
 		virtual std::string getName() const;
