@@ -29,6 +29,7 @@ namespace Models
 		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce bâtiment
 		void removeHouseServed(House* house); // Retire une maison desservie par ce bâtiment
 		void updateHousesServed(); // Met à jour la liste des maisons desservies par ce bâtiment
+		void setMustUpdateHousesServed(); // Indique que la liste des maisons desservies doit être mise à jour au prochain tick
 
 	private:
 		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par référence et en const
@@ -38,6 +39,7 @@ namespace Models
 		int capacityUsed; // Capacité actuellement utilisée (nombre de pops servies)
 
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
+		bool mustUpdateHousesServed = true; // Indique si la liste des maisons desservies doit être mise à jour au prochain tick
 	};
 }
 
