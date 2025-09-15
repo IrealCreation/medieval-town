@@ -51,6 +51,8 @@ public:
 	void constructionBuildingDone(Models::ConstructionBuilding* construction);
 	// Ajoute un bâtiment de service achevé
 	void createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
+	// Détruire un bâtiment de service
+	void destroyBuilding(Models::Building* building);
 
 	// Débute la construction d'une maison d'habitation
 	void startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
@@ -58,6 +60,8 @@ public:
 	void constructionHouseDone(Models::ConstructionHouse* construction);
 	// Ajoute une maison d'habitation achevée
 	void createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
+	// Détruire une maison d'habitation
+	void destroyHouse(Models::House* house);
 
 	// Récupère les maisons situées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
 	vector<Models::House*> getHousesInRange(int x, int y, int range);

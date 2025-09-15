@@ -20,6 +20,14 @@ namespace Models
 		std::string getName();
 		void setName(const std::string& name);
 
+		const BuildingType& getType() const; // Retourne le type du bâtiment
+
+		Family* getFamily() const; // Retourne la famille propriétaire du bâtiment ; nullptr si pas de propriétaire
+
+		void changeCapacityUsed(int delta); // Change la capacité utilisée du bâtiment de delta (positif ou négatif)
+
+		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce bâtiment
+		void removeHouseServed(House* house); // Retire une maison desservie par ce bâtiment
 		void updateHousesServed(); // Met à jour la liste des maisons desservies par ce bâtiment
 
 	private:
@@ -27,6 +35,7 @@ namespace Models
 		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
 		std::string name; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
 		int dateCreation; // Date de création du bâtiment (fin du chantier de construction)
+		int capacityUsed; // Capacité actuellement utilisée (nombre de pops servies)
 
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 	};

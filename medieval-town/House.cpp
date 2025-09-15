@@ -45,6 +45,7 @@ namespace Models
 		}
 		return total;
 	}
+
 	Building* House::getServiceBuilding(Service service) const
 	{
 		if (serviceBuildings.find(service) != serviceBuildings.end())
@@ -52,9 +53,18 @@ namespace Models
 		else
 			return nullptr;
 	}
+	std::map<Service, Building*> House::getAllServiceBuildings() const
+	{
+		return serviceBuildings;
+	}
+
 	void House::addService(Service service, Building* building)
 	{
 		serviceBuildings[service] = building;
+	}
+	void House::removeService(Service service)
+	{
+		serviceBuildings.erase(service);
 	}
 	void House::logicTick()
 	{

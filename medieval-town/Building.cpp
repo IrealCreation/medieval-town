@@ -66,12 +66,35 @@ namespace Models {
 		this->name = name;
 	}
 
+	const BuildingType& Building::getType() const {
+		return type;
+	}
+
+	Family* Building::getFamily() const {
+		return family;
+	}
+
+	void Building::changeCapacityUsed(int delta) {
+		capacityUsed += delta;
+	}
+
+	std::vector<House*> Building::getHousesServed() const {
+		return housesServed;
+	}
+	void Building::removeHouseServed(House* house) {
+		auto it = std::find(housesServed.begin(), housesServed.end(), house);
+		if (it != housesServed.end()) {
+			housesServed.erase(it);
+			// Mise à jour de la capacité utilisée
+			capacityUsed -= house->getPopTotal();
+		}
+	}
 	void Building::updateHousesServed() {
 		// On récupère les maisons à portée
 		auto houses = LogicManager::getInstance().getHousesInRange(this->getX(), this->getY(), this->type.getRange());
 
 		// Nombre de places restantes dans le bâtiment
-		int capacityLeft = this->type.getMaxCapacity();
+		int capacityLeft = this->type.getMaxCapacity() - capacityUsed;
 
 		for (auto house : houses) {
 			int housePop = house->getPopTotal();
@@ -79,6 +102,8 @@ namespace Models {
 				// La maison n'a pas encore de bâtiment pour ce service, on la récupère dans notre clientèle
 				house->addService(this->type.getService(), this);
 				this->housesServed.push_back(house);
+				// Mise à jour de la capacité utilisée
+				capacityUsed += housePop;
 				capacityLeft -= housePop;
 
 				// Si on n'a plus de places, on arrête de chercher des maisons

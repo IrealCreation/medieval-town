@@ -110,6 +110,24 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 
 	// UE : spawn l'objet Building
 }
+void LogicManager::destroyBuilding(Models::Building* building)
+{
+	// On log l'événement
+	this->log("Destruction de " + building->getName() + (building->getFamily() != nullptr ? " par " + building->getFamily()->getName() : "") + " a " + std::to_string(building->getX()) + " ; " + std::to_string(building->getY()));
+	// On retire le Building des caches de localisation
+	mapLocations[building->getX()][building->getY()] = nullptr;
+	mapBuildings[building->getX()][building->getY()] = nullptr;
+	// On retire le Building de la famille (s'il en a une)
+	if (building->getFamily() != nullptr)
+		building->getFamily()->removeBuilding(building);
+	// On retire ce Building des maisons qu'il servait
+	for(auto house : building->getHousesServed()) {
+		house->removeService(building->getType().getService());
+	}
+	// On supprime le Building de la Town
+	town->removeBuilding(building);
+	// UE : despawn l'objet Building, petite animation de destruction
+}
 
 void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
@@ -143,20 +161,42 @@ void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY,
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
 }
+void LogicManager::destroyHouse(Models::House* house)
+{
+	// On log l'événement
+	this->log("Destruction d'une maison a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
+	// On retire la House des caches de localisation
+	mapLocations[house->getX()][house->getY()] = nullptr;
+	mapHouses[house->getX()][house->getY()] = nullptr;
+	// On retire cette House des bâtiments de service qu'elle utilisait
+	for(auto pair : house->getAllServiceBuildings()) {
+		pair.second->removeHouseServed(house);
+	}
+	// On supprime la House de la Town
+	town->removeHouse(house);
+	// UE : despawn l'objet House, petite animation de destruction
+}
 
-vector<Models::House*> LogicManager::getHousesInRange(int x, int y, int range) 
+vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, int range) 
 {
 	// On utilise une multimap pour stocker nos résultats avec la distance au point d'origine comme clé
 	multimap<float, Models::House*> ordered_list;
 
-	// On parcourt tous les maisons
-	// TODO: utiliser les caches de localisation de façon intelligente pour optimiser ce process
-	for(const auto& house : this->town->getHouses()) {
-
-		float distance = house->getDistance(x, y);
-		if (distance <= range) {
-			// La maison est dans le rayon, on l'ajoute à la liste ordonnée
-			ordered_list.insert(std::make_pair(distance, house));
+	// On parcourt tous les maisons via le cache de localisation
+	int minX = centerX - range;
+	int maxX = centerX + range;
+	int minY = centerY - range;
+	int maxY = centerY + range;
+	for (int x = minX; x <= maxX; x++) {
+		for (int y = minY; y <= maxY; y++) {
+			Models::House* house = mapHouses[x][y];
+			if (house) {
+				float distance = house->getDistance(centerX, centerY);
+				if (distance <= range) {
+					// La maison est dans le rayon, on l'ajoute à la liste ordonnée
+					ordered_list.insert(std::make_pair(distance, house));
+				}
+			}
 		}
 	}
 
