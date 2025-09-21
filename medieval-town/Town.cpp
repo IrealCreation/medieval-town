@@ -1,24 +1,30 @@
 #include "Town.h"
 #include "Family.h"
 #include "Service.h"
+#include "Tile.h"
 #include <iterator>
 #include <algorithm>
 
 namespace Models
 {
-	Town::Town()
+	Town::Town(std::string newName, int newSizeX, int newSizeY)
 	{
-		name = "Default";
-		date = 0; // Initialisation de la date à 0
-	}
-	Town::Town(std::string newName)
-	{
-		Town();
 		name = newName;
+		sizeX = newSizeX;
+		sizeY = newSizeY;
 	}
 
 	void Town::startTown() {
-
+		// Génération des tiles
+		int minX = sizeX / -2;
+		int maxX = sizeX / 2;
+		int minY = sizeY / -2;
+		int maxY = sizeY / 2;
+		for (int x = minX; x <= maxX; x++) {
+			for (int y = minY; y <= maxY; y++) {
+				mapTiles[x][y] = std::make_unique<Tile>(x, y);
+			}
+		}
 	}
 
 	void Town::logicTick()
@@ -111,5 +117,12 @@ namespace Models
 			std::back_inserter(tmp_houses),
 			[](const std::unique_ptr<House>& mon_in) { return mon_in.get(); });
 		return tmp_houses;
+	}
+
+	Tile* Town::getTileAt(int x, int y) {
+		if (mapTiles.find(x) != mapTiles.end() && mapTiles[x].find(y) != mapTiles[x].end()) {
+			return mapTiles[x][y].get();
+		}
+		return nullptr;
 	}
 }

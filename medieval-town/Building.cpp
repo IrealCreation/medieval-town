@@ -22,8 +22,8 @@ namespace Models {
 	void Building::logicTick() {
 		// TEST: on met à jour les maisons servies à chaque tick. Pas optimisé, à améliorer : update quand un bâtiment ou une maison est construite (TODO) ou détruite (DONE) à proximité
 		//if(mustUpdateHousesServed)
-			this->updateHousesServed();
-		mustUpdateHousesServed = false;
+			this->updateServed();
+		mustUpdateServed = false;
 
 		// Décompte des populations servies
 		map<Pop, int> totalPopsServed = {
@@ -90,10 +90,15 @@ namespace Models {
 			// Mise à jour de la capacité utilisée
 			capacityUsed -= house->getPopTotal();
 			// On doit update les maisons servies au prochain tick pour voir s'il y a des gens intéressés par les places libérées
-			this->setMustUpdateHousesServed();
+			this->setMustUpdateServed();
 		}
 	}
-	void Building::updateHousesServed() {
+
+	std::vector<Tile*> Building::getTilesServed() const {
+		return tilesServed;
+	}
+
+	void Building::updateServed() {
 		// On récupère les maisons à portée
 		auto houses = LogicManager::getInstance().getHousesInRange(this->getX(), this->getY(), this->type.getRange());
 
@@ -115,6 +120,21 @@ namespace Models {
 					break;
 			}
 		}
+
+		if(capacityLeft > 0) {
+			// Il reste de la capacité, on peut desservir des tiles
+			tilesServed.clear();
+			auto tiles = LogicManager::getInstance().getTilesInRange(this->getX(), this->getY(), this->type.getRange());
+			for (auto tile : tiles) {
+				tilesServed.push_back(tile);
+			}
+		} else {
+			// Pas de capacité restante, on ne dessert pas de tiles
+			tilesServed.clear();
+		}
+	}
+	void Building::setMustUpdateServed() {
+		mustUpdateServed = true;
 	}
 
 } // namespace Models

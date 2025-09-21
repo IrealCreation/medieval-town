@@ -17,6 +17,7 @@ namespace Models {
 	class House;
 	class Family;
 	class Location;
+	class Tile;
 	class Construction;
 	class ConstructionBuilding;
 	class ConstructionHouse;
@@ -65,6 +66,8 @@ public:
 
 	// Récupère les maisons situées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
 	vector<Models::House*> getHousesInRange(int x, int y, int range);
+	// Récupère les tiles situés dans un rayon donné autour d'un point (non ordonnés)
+	vector<Models::Tile*> getTilesInRange(int x, int y, int range);
 
 
 protected:

@@ -5,6 +5,7 @@
 #include "House.h"
 #include "Family.h"
 #include "Location.h"
+#include "Tile.h"
 #include "Construction.h"
 #include "ConstructionBuilding.h"
 #include "ConstructionHouse.h"
@@ -25,7 +26,7 @@ LogicManager& LogicManager::getInstance()
 void LogicManager::startGame()
 {
 	// Création de la ville
-	this->town = make_unique<Models::Town>("Lorrez-le-Bocage");
+	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 100, 100);
 	town->startTown();
 
 	// Création des familles
@@ -204,6 +205,29 @@ vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, 
 	vector<Models::House*> result;
 	for (const auto& pair : ordered_list) {
 		result.push_back(pair.second);
+	}
+	return result;
+}
+
+vector<Models::Tile*> LogicManager::getTilesInRange(int centerX, int centerY, int range) 
+{
+	vector<Models::Tile*> result;
+	// On parcourt toutes les tiles via le cache de localisation
+	int minX = centerX - range;
+	int maxX = centerX + range;
+	int minY = centerY - range;
+	int maxY = centerY + range;
+	for (int x = minX; x <= maxX; x++) {
+		for (int y = minY; y <= maxY; y++) {
+			Models::Tile* tile = this->town->getTileAt(x, y);
+			if (tile) {
+				float distance = tile->getDistance(centerX, centerY);
+				if (distance <= range) {
+					// La tile est dans le rayon, on l'ajoute à la liste
+					result.push_back(tile);
+				}
+			}
+		}
 	}
 	return result;
 }
