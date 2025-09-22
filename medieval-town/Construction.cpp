@@ -5,8 +5,8 @@
 
 namespace Models
 {
-	Construction::Construction(int x, int y, int rotation)
-		: Location(x, y, rotation), daysDone(0) 
+	Construction::Construction(int x, int y, int rotation, float sizeX, float sizeY)
+		: Location(x, y, rotation, sizeX, sizeY), daysDone(0) 
 	{
 		dateStart = LogicManager::getInstance().getTown()->getDate(); // On initialise la date de début du chantier à la date actuelle de la ville
 		// constructionTime doit être initialisé dans les classes filles

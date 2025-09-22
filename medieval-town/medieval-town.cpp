@@ -55,6 +55,7 @@ int main()
 	};
 	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
         "Chapelle", 
+        5, 5,
         200, 20, 
         goldCostPerPopulation,
         goldGainPerPopulation, 
@@ -81,6 +82,7 @@ int main()
     };
     unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
         "Puits",
+        2, 2,
         50, 5,
         goldCostPerPopulation,
         goldGainPerPopulation,

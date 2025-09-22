@@ -8,13 +8,15 @@ namespace Models {
 	// Type de bâtiment pouvant être construit dans la ville
 	class BuildingType {
 	public:
-		BuildingType(const std::string& name, int goldConstructionCost, int goldMaintenanceCost,
+		BuildingType(const std::string& name, float sizeX, float sizeY, int goldConstructionCost, int goldMaintenanceCost,
 			const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 			const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
 			int constructionTime, Service service);
 
 		// Getters
 		virtual std::string getName() const;
+		float getSizeX() const;
+		float getSizeY() const;
 		virtual int getGoldConstructionCost() const;
 		virtual int getGoldMaintenanceCost() const;
 		virtual int getGoldCostPerPopulation(Pop) const;
@@ -28,6 +30,8 @@ namespace Models {
 
 	protected:
 		std::string name; // Nom du type de batiment
+		float sizeX; // Taille totale du bâtiment sur l'axe X
+		float sizeY; // Taille totale du bâtiment sur l'axe Y	
 		int goldConstructionCost; // Coût de construction en or
 		int goldMaintenanceCost; // Coût d'entretien en or
 		std::map<Pop, int> goldCostPerPopulation; // Coût en or par population servie

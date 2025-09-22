@@ -16,8 +16,6 @@ namespace Models
         House(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
 
         // Getters
-        int getSizeX() const;
-        int getSizeY() const;
         int getNiveau() const;
         int getPop(Pop pop) const; // Retourne le nombre de pops résidentes dans la maison pour le type de pop donné
 		int getPopTotal() const; // Retourne le nombre total de pops résidentes dans la maison
@@ -25,8 +23,6 @@ namespace Models
 		void logicTick();
 
     protected:
-        int sizeX; // Taille de la maison en X
-		int sizeY; // Taille de la maison en Y
 		int dateCreation; // Date de création de la maison (fin du chantier de construction)
 		int niveau; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 

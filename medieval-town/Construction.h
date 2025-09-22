@@ -18,7 +18,7 @@ namespace Models
 		int percentDone() const; // Pourcentage de la construction effectuée
 
 	protected:
-		Construction(int x, int y, int rotation);
+		Construction(int x, int y, int rotation, float sizeX, float sizeY);
 		int dateStart; // Date de début du chantier de construction
 		int constructionTime; // Durée nécessaire à la construction, en jours
 		int daysDone; // Jours de construction effectués

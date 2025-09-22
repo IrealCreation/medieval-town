@@ -6,7 +6,7 @@
 namespace Models
 {
 	ConstructionBuilding::ConstructionBuilding(const BuildingType& type, Family* family, int x, int y, int rotation)
-		: Construction(x, y, rotation), type(type), family(family) 
+		: Construction(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family) 
 	{
 		constructionTime = type.getConstructionTime(); // On initialise le temps de construction à partir du type de bâtiment
 	}
