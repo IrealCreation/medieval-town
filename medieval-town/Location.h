@@ -17,8 +17,14 @@ namespace Models
 		float getSizeX() const;
 		float getSizeY() const;
 
+		static float getMaxSizeX();
+		static float getMaxSizeY();
+
 		float getDistance(const Location& other) const;
 		float getDistance(float x, float y) const;
+
+		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
+		bool collisionWith(const Location& other) const;
 
 	protected:
 		float x;
@@ -26,6 +32,9 @@ namespace Models
 		float rotation;
 		float sizeX; // Taille totale sur l'axe X
 		float sizeY; // Taille totale sur l'axe Y
+
+		static float maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
+		static float maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations
 	};
 }
 

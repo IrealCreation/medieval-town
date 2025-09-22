@@ -7,21 +7,17 @@
 
 namespace Models
 {
-	Town::Town(std::string newName, int newSizeX, int newSizeY)
+	Town::Town(std::string name, int sizeX, int sizeY)
 	{
-		name = newName;
-		sizeX = newSizeX;
-		sizeY = newSizeY;
+		this->name = name;
+		this->sizeX = sizeX;
+		this->sizeY = sizeY;
 	}
 
 	void Town::startTown() {
-		// Génération des tiles
-		int minX = sizeX / -2;
-		int maxX = sizeX / 2;
-		int minY = sizeY / -2;
-		int maxY = sizeY / 2;
-		for (int x = minX; x <= maxX; x++) {
-			for (int y = minY; y <= maxY; y++) {
+		// Génération des tiles (le Tile 0,0 est en bas à gauche)
+		for (int x = 0; x < sizeX; x++) {
+			for (int y = 0; y < sizeY; y++) {
 				mapTiles[x][y] = std::make_unique<Tile>(x, y);
 			}
 		}
@@ -51,6 +47,14 @@ namespace Models
 	std::string Town::getName() const
 	{
 		return name;
+	}
+	int Town::getSizeX() const
+	{
+		return sizeX;
+	}
+	int Town::getSizeY() const
+	{
+		return sizeY;
 	}
 	int Town::getDate() const
 	{

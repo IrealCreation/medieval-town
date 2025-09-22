@@ -69,6 +69,9 @@ public:
 	// Récupère les tiles situés dans un rayon donné autour d'un point (non ordonnés)
 	vector<Models::Tile*> getTilesInRange(int x, int y, int range);
 
+	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
+	bool isValidLocation(float x, float y, float rotation, float sizeX, float sizeY); 
+
 
 protected:
 	LogicManager();

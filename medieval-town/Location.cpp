@@ -19,9 +19,19 @@ namespace Models
 		this->rotation = rotation;
 		this->sizeX = sizeX;
 		this->sizeY = sizeY;
+		// Mise à jour des tailles maximales si nécessaire
+		if (sizeX > Location::maxSizeX)
+			Location::maxSizeX = sizeX;
+		if (sizeY > Location::maxSizeY)
+			Location::maxSizeY = sizeY;
 	}
+	
+	// Initialisation des attributs statiques
+	float Location::maxSizeX = 1;
+	float Location::maxSizeY = 1;
 
 
+	// Getters
 	float Location::getX() const {
 		return this->x;
 	}
@@ -38,6 +48,12 @@ namespace Models
 		return this->sizeY;
 	}
 
+	float Location::getMaxSizeX() {
+		return Location::maxSizeX;
+	}
+	float Location::getMaxSizeY() {
+		return Location::maxSizeY;
+	}
 
 	float Location::getDistance(const Location& other) const {
 		float dx = this->x - other.x;
@@ -48,6 +64,14 @@ namespace Models
 		float dx = this->x - x;
 		float dy = this->y - y;
 		return std::sqrt(dx * dx + dy * dy);
+	}
+
+	bool Location::collisionWith(const Location& other) const {
+		// AABB collision detection
+		return 
+			(std::abs(this->x - other.x) * 2 < (this->getSizeX() + other.getSizeX())) 
+			&&
+			(std::abs(this->y - other.y) * 2 < (this->getSizeY() + other.getSizeY()));
 	}
 
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille

@@ -35,6 +35,9 @@ namespace Models
 			string getName() const;
 			int getDate() const;
 
+			int getSizeX() const;
+			int getSizeY() const;
+
 			void addFamily(unique_ptr<Family> family);
 			vector<Family*> getFamilies();
 

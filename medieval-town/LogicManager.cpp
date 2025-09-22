@@ -188,6 +188,13 @@ vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, 
 	int maxX = centerX + range;
 	int minY = centerY - range;
 	int maxY = centerY + range;
+
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) minX = 0;
+	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
+	if (minY < 0) minY = 0;
+	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
+
 	for (int x = minX; x <= maxX; x++) {
 		for (int y = minY; y <= maxY; y++) {
 			Models::House* house = mapHouses[x][y];
@@ -217,6 +224,13 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int centerX, int centerY, in
 	int maxX = centerX + range;
 	int minY = centerY - range;
 	int maxY = centerY + range;
+
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) minX = 0;
+	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
+	if (minY < 0) minY = 0;
+	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
+
 	for (int x = minX; x <= maxX; x++) {
 		for (int y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
@@ -230,5 +244,46 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int centerX, int centerY, in
 		}
 	}
 	return result;
+}
+
+bool LogicManager::isValidLocation(float x, float y, float rotation, float sizeX, float sizeY)
+{
+	// On crée une Location temporaire pour vérifier les collisions
+	Models::Location tempLocation(x, y, rotation, sizeX, sizeY);
+
+	// On vérifie si la Location est dans les limites de la ville
+	if (x - sizeX / 2 < 0 || x + sizeX / 2 >= this->town->getSizeX() ||
+		y - sizeY / 2 < 0 || y + sizeY / 2 >= this->town->getSizeY()) {
+		// La Location dépasse les limites de la ville
+		return false;
+	}
+
+	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	float minX = x - (sizeX + Models::Location::getMaxSizeX()) / 2;
+	float maxX = x + (sizeX + Models::Location::getMaxSizeX()) / 2;
+	float minY = y - (sizeY + Models::Location::getMaxSizeY()) / 2;
+	float maxY = y + (sizeY + Models::Location::getMaxSizeY()) / 2;
+
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) minX = 0;
+	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
+	if (minY < 0) minY = 0;
+	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
+
+	// On parcourt uniquement les Locations dans la zone définie
+	for (int x = minX; x <= maxX; x++) {
+		for (int y = minY; y <= maxY; y++) {
+			Models::Location* location = mapLocations[x][y];
+			if (location) {
+				if (tempLocation.collisionWith(*location)) {
+					// Collision détectée
+					return false;
+				}
+			}
+		}
+	}
+
+	// Pas de collision détectée
+	return true;
 }
 
