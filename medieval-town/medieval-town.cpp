@@ -91,12 +91,10 @@ int main()
         Models::Service::Eau
     );
 
-    // DEBUG: les valeurs des Service des BuildingTypes partent en sucette et deviennent identiques à partir de Town::getFamilies()
-
     // Construction d'un bâtiment : Puits par Salviati
-    logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 0, 0, 0);
+    logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 10, 5, 0);
 	// Construction d'un bâtiment : Chapelle par Legrand
-	logicManager.startConstructionBuilding(*buildingType_Chapelle, logicManager.getTown()->getFamilies()[1], 2, 2, 0);
+	logicManager.startConstructionBuilding(*buildingType_Chapelle, logicManager.getTown()->getFamilies()[1], 10, 15, 0);
 
     int i = 0;
     // Boucle des ticks tant que le joueur presse Entrée
@@ -106,7 +104,7 @@ int main()
 
         // On fait spawn une maison tous les deux ticks sur une ligne (test)
         if (logicManager.getTown()->getDate() % 2 == 0) {
-            logicManager.startConstructionHouse(i, 1, 0, 2, 2, 1);
+            logicManager.startConstructionHouse(i + 5, 10, 0, 2, 2, 1);
         }
 
         i++;

@@ -59,6 +59,12 @@ Models::Town* LogicManager::getTown()
 
 void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
 {
+	// Test de la validité de l'emplacement
+	if (!this->isValidLocation(x, y, rotation, type.getSizeX(), type.getSizeY())) {
+		this->log("Erreur : emplacement invalide pour la construction de " + type.getName() + " a " + std::to_string(x) + " ; " + std::to_string(y));
+		return;
+	}
+
 	// Création de la Construction
 	unique_ptr<Models::ConstructionBuilding> construction = make_unique<Models::ConstructionBuilding>(type, family, x, y, rotation);
 
@@ -132,6 +138,12 @@ void LogicManager::destroyBuilding(Models::Building* building)
 
 void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
+	// Test de la validité de l'emplacement
+	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
+		this->log("Erreur : emplacement invalide pour la construction de House a " + std::to_string(x) + " ; " + std::to_string(y));
+		return;
+	}
+
 	// Création de la Construction
 	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau);
 	// On log l'événement
