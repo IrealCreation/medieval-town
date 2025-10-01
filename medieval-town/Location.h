@@ -26,6 +26,8 @@ namespace Models
 		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
 		bool collisionWith(const Location& other) const;
 
+		// Possède un operator==
+
 	protected:
 		float x;
 		float y;

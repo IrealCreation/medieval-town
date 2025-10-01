@@ -82,6 +82,9 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 		family->addConstruction(construction.get());
 	}
 
+	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
+	this->updateCanHaveHouseAroundConstruction(construction.get());
+
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
@@ -109,32 +112,43 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	// On ajoute le Building dans les caches de localisation
 	mapLocations[building->getX()][building->getY()] = building.get();
 	mapBuildings[building->getX()][building->getY()] = building.get();
+
 	// On ajoute le Building dans la famille (s'il en a une)
 	if (family != nullptr)
 		family->addBuilding(building.get());
+
 	// On déplace le pointeur unique dans la Town
 	town->addBuilding(std::move(building));
 
 	// UE : spawn l'objet Building
 }
+
 void LogicManager::destroyBuilding(Models::Building* building)
 {
 	// On log l'événement
 	this->log("Destruction de " + building->getName() + (building->getFamily() != nullptr ? " par " + building->getFamily()->getName() : "") + " a " + std::to_string(building->getX()) + " ; " + std::to_string(building->getY()));
+
 	// On retire le Building des caches de localisation
 	mapLocations[building->getX()][building->getY()] = nullptr;
 	mapBuildings[building->getX()][building->getY()] = nullptr;
+
 	// On retire le Building de la famille (s'il en a une)
 	if (building->getFamily() != nullptr)
 		building->getFamily()->removeBuilding(building);
+
 	// On retire ce Building des maisons qu'il servait
 	for(auto house : building->getHousesServed()) {
 		house->removeService(building->getType().getService());
 	}
+
+	// On met à jour le canHaveHouse des tiles autour du Building détruit
+	updateCanHaveHouseAroundDestruction(building);
+
 	// On supprime le Building de la Town
 	town->removeBuilding(building);
 	// UE : despawn l'objet Building, petite animation de destruction
 }
+
 
 void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
@@ -146,13 +160,20 @@ void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX,
 
 	// Création de la Construction
 	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau);
+
 	// On log l'événement
 	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
+
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
+
+	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
+	this->updateCanHaveHouseAroundConstruction(construction.get());
+
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
+
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
 {
 	// On crée la nouvelle House qui vient remplacer la Construction
@@ -162,6 +183,7 @@ void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction
 	town->removeConstruction(construction);
 	// UE : despawn l'objet Construction, petite animation de construction achevée
 }
+
 void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
 {
 	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau);
@@ -174,20 +196,35 @@ void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY,
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
 }
+
 void LogicManager::destroyHouse(Models::House* house)
 {
 	// On log l'événement
 	this->log("Destruction d'une maison a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
+
 	// On retire la House des caches de localisation
 	mapLocations[house->getX()][house->getY()] = nullptr;
 	mapHouses[house->getX()][house->getY()] = nullptr;
+
 	// On retire cette House des bâtiments de service qu'elle utilisait
 	for(auto pair : house->getAllServiceBuildings()) {
 		pair.second->removeHouseServed(house);
 	}
+
+	// On met à jour le canHaveHouse des tiles autour de la maison détruite
+	updateCanHaveHouseAroundDestruction(house);
+
 	// On supprime la House de la Town
 	town->removeHouse(house);
 	// UE : despawn l'objet House, petite animation de destruction
+}
+
+Models::Location* LogicManager::getLocationAt(int x, int y)
+{
+	if (mapLocations.find(x) != mapLocations.end() && mapLocations[x].find(y) != mapLocations[x].end()) {
+		return mapLocations[x][y];
+	}
+	return nullptr;
 }
 
 vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, int range) 
@@ -299,3 +336,54 @@ bool LogicManager::isValidLocation(float x, float y, float rotation, float sizeX
 	return true;
 }
 
+void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
+{
+	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	float minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
+	float maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
+	float minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
+	float maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) minX = 0;
+	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
+	if (minY < 0) minY = 0;
+	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
+	// On parcourt uniquement les Tiles dans la zone définie
+	for (int x = minX; x <= maxX; x++) {
+		for (int y = minY; y <= maxY; y++) {
+			Models::Tile* tile = this->town->getTileAt(x, y);
+			if (tile) {
+				tile->setCanHaveHouse(false);
+			}
+		}
+	}
+}
+
+void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* location)
+{
+	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	float minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
+	float maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
+	float minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
+	float maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) 
+		minX = 0;
+	if (maxX >= this->town->getSizeX()) 
+		maxX = this->town->getSizeX() - 1;
+	if (minY < 0) 
+		minY = 0;
+	if (maxY >= this->town->getSizeY()) 
+		maxY = this->town->getSizeY() - 1;
+
+	// On parcourt uniquement les Tiles dans la zone définie
+	for (int x = minX; x <= maxX; x++) {
+		for (int y = minY; y <= maxY; y++) {
+			Models::Tile* tile = this->town->getTileAt(x, y);
+			if (tile) {
+				// On met à jour la capacité de recevoir une maison de ce tile
+				tile->updateCanHaveHouse();
+			}
+		}
+	}
+}

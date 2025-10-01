@@ -22,6 +22,9 @@ namespace Models
 
 		void logicTick();
 
+        static const int minSizeX = 2; // Taille minimale sur l'axe X d'une maison
+        static const int minSizeY = 2; // Taille minimale sur l'axe Y d'une maison
+
     protected:
 		int dateCreation; // Date de création de la maison (fin du chantier de construction)
 		int niveau; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops

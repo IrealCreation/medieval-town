@@ -64,6 +64,8 @@ public:
 	// Détruire une maison d'habitation
 	void destroyHouse(Models::House* house);
 
+	Models::Location* getLocationAt(int x, int y); // Retourne un raw pointer vers la Location à la position donnée ; nullptr si pas de Location
+
 	// Récupère les maisons situées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
 	vector<Models::House*> getHousesInRange(int x, int y, int range);
 	// Récupère les tiles situés dans un rayon donné autour d'un point (non ordonnés)
@@ -95,4 +97,8 @@ protected:
 	template<typename T>
 	vector<T*> getInRange(int x, int y, int range, map<int, map<int, T>>);
 	*/
+
+	void updateCanHaveHouseAroundConstruction(Models::Location* location); // Met à jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison
+
+	void updateCanHaveHouseAroundDestruction(Models::Location* location); // Met à jour les tiles autour de la location d'une destruction pour indiquer qu'ils peuvent à nouveau recevoir une maison
 };
