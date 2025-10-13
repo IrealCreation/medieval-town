@@ -387,3 +387,49 @@ void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* locatio
 		}
 	}
 }
+
+void LogicManager::addPossibleHouseLocation(Models::Tile* tile)
+{
+	if (std::find(possibleHouseLocations.begin(), possibleHouseLocations.end(), tile) == possibleHouseLocations.end()) {
+		// La liste des emplacements possibles ne contient pas encore ce tile, on l'ajoute
+		possibleHouseLocations.push_back(tile);
+	}
+}
+void LogicManager::removePossibleHouseLocation(Models::Tile* tile)
+{
+	auto it = std::find(possibleHouseLocations.begin(), possibleHouseLocations.end(), tile);
+	if (it != possibleHouseLocations.end()) {
+		// La liste des emplacements possibles contient ce tile, on le retire
+		possibleHouseLocations.erase(it);
+	}
+}
+
+Models::Tile* LogicManager::pickPossibleHouseLocation()
+{
+	if (possibleHouseLocations.empty()) {
+		return nullptr; // Pas d'emplacement possible
+	}
+	vector<Models::Tile*> candidates;
+	float bestScore = 0.0f;
+
+	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base 
+	for (Models::Tile* tile : possibleHouseLocations) {
+		float score = tile->getAttractiveness(Models::Pop::Gueux);
+		if (score > bestScore) {
+			bestScore = score;
+			candidates.clear();
+			candidates.push_back(tile);
+		}
+		else if (score == bestScore) {
+			candidates.push_back(tile);
+		}
+	}
+
+	// On choisit un tile au hasard parmi les meilleurs candidats
+	if (!candidates.empty()) {
+		int index = rand() % candidates.size();
+		return candidates[index];
+	}
+
+	return nullptr;
+}

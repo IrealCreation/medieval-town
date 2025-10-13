@@ -11,8 +11,14 @@ namespace Models
 		canHaveHouse = true;
 	}
 
-	void Tile::setCanHaveHouse(bool value) { 
-		canHaveHouse = value; 
+	void Tile::setCanHaveHouse(bool value) {
+		if(canHaveHouse == value)
+			return; // Pas de changement
+		if(value)
+			LogicManager::getInstance().addPossibleHouseLocation(this);
+		else
+			LogicManager::getInstance().removePossibleHouseLocation(this);
+		canHaveHouse = value;
 	}
 
 	bool Tile::getCanHaveHouse() const {
@@ -50,5 +56,21 @@ namespace Models
 				break;
 		}
 		return getCanHaveHouse();
+	}
+
+	void Tile::updateAttractiveness() {
+		float attractivenessBefore = getAttractiveness(Pop::Gueux);
+
+		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
+		ServiceReceiver::updateAttractiveness();
+
+		if (attractivenessBefore > 0.0f && getAttractiveness(Pop::Gueux) <= 0.0f) {
+			// On retire ce tile de la liste des emplacements possibles pour une maison
+			LogicManager::getInstance().removePossibleHouseLocation(this);
+		} 
+		else if (attractivenessBefore <= 0.0f && getAttractiveness(Pop::Gueux) > 0.0f) {
+			// On ajoute ce tile à la liste des emplacements possibles pour une maison
+			LogicManager::getInstance().addPossibleHouseLocation(this);
+		}
 	}
 }

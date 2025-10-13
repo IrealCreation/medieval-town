@@ -74,6 +74,10 @@ public:
 	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
 	bool isValidLocation(float x, float y, float rotation, float sizeX, float sizeY); 
 
+	// Ajoute un tile dans la liste des candidats pour la construction d'une maison
+	void addPossibleHouseLocation(Models::Tile* tile);
+	// Retire un tile de la liste des candidats pour la construction d'une maison
+	void removePossibleHouseLocation(Models::Tile* tile);
 
 protected:
 	LogicManager();
@@ -98,7 +102,15 @@ protected:
 	vector<T*> getInRange(int x, int y, int range, map<int, map<int, T>>);
 	*/
 
-	void updateCanHaveHouseAroundConstruction(Models::Location* location); // Met à jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison
+	// Met à jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison
+	void updateCanHaveHouseAroundConstruction(Models::Location* location); 
 
-	void updateCanHaveHouseAroundDestruction(Models::Location* location); // Met à jour les tiles autour de la location d'une destruction pour indiquer qu'ils peuvent à nouveau recevoir une maison
+	// Met à jour les tiles autour de la location d'une destruction pour indiquer qu'ils peuvent à nouveau recevoir une maison
+	void updateCanHaveHouseAroundDestruction(Models::Location* location); 
+	
+	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)
+	vector<Models::Tile*> possibleHouseLocations; 
+
+	// Sélectionne le prochain emplacement de construction d'une nouvelle maison
+	Models::Tile* pickPossibleHouseLocation(); 
 };

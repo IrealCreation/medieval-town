@@ -39,12 +39,13 @@ namespace Models
 
 		float getAttractiveness(Pop pop) const; // Retourne l'attractivité pour une population en fonction des services disponibles
 
+	protected:
+		virtual void updateAttractiveness(); // Met à jour l'attractivité après que les services disponibles aient évolués (virtual pour laisser Tile l'override)
+
 	private:
 		std::map<Service, Building*> serviceBuildings; // Bâtiments de service desservant cet endroit. Portée privée car toute modification doit passer par les setters afin que soit appelé updateAttractiveness()
 
 		std::map<Pop, float> attractiveness; // Attractivité pour une population en fonction des services disponibles
-
-		void updateAttractiveness(); // Met à jour l'attractivité après que les services disponibles aient évolués
 	};
 }
 

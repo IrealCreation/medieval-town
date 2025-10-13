@@ -23,6 +23,9 @@ namespace Models {
 	protected:
 		// Ce tile peut-il recevoir une maison ?
 		bool canHaveHouse;
+
+		// Surcharge de updateAttractiveness() de ServiceReceiver pour mettre à jour canHaveHouse en fonction de l'attractivité
+		void updateAttractiveness() override;
 	};
 }
 
