@@ -79,6 +79,9 @@ public:
 	// Retire un tile de la liste des candidats pour la construction d'une maison
 	void removePossibleHouseLocation(Models::Tile* tile);
 
+	// Sélectionne le prochain emplacement de construction d'une nouvelle maison
+	Models::Tile* pickPossibleHouseLocation();
+
 protected:
 	LogicManager();
 
@@ -109,8 +112,5 @@ protected:
 	void updateCanHaveHouseAroundDestruction(Models::Location* location); 
 	
 	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)
-	vector<Models::Tile*> possibleHouseLocations; 
-
-	// Sélectionne le prochain emplacement de construction d'une nouvelle maison
-	Models::Tile* pickPossibleHouseLocation(); 
+	vector<Models::Tile*> possibleHouseLocations;  
 };

@@ -59,6 +59,8 @@ namespace Models
 			int sizeY; // Taille de la ville en Y
 			// On triche un peu : la taille de la ville est de 1 case supérieure, car il y a la Tile 0,0
 
+			int demographicPressure; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint
+
 			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gère leur cycle de vie ; ils seront communiqués sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville
 			vector<unique_ptr<Construction>> constructions; // Liste des chantiers de construction de la ville

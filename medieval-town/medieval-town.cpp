@@ -102,11 +102,6 @@ int main()
     {
         logicManager.logicTick();
 
-        // On fait spawn une maison tous les deux ticks sur une ligne (test)
-        if (logicManager.getTown()->getDate() % 2 == 0) {
-            logicManager.startConstructionHouse(i + 5, 10, 0, 2, 2, 1);
-        }
-
         i++;
     } while (std::cin.get() == '\n');
 }

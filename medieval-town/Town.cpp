@@ -2,8 +2,10 @@
 #include "Family.h"
 #include "Service.h"
 #include "Tile.h"
+#include "LogicManager.h"
 #include <iterator>
 #include <algorithm>
+#include <random>
 
 namespace Models
 {
@@ -12,6 +14,7 @@ namespace Models
 		this->name = name;
 		this->sizeX = sizeX;
 		this->sizeY = sizeY;
+		this->demographicPressure = 0;
 	}
 
 	void Town::startTown() {
@@ -25,8 +28,39 @@ namespace Models
 
 	void Town::logicTick()
 	{
-		// Passage d'un nouveau jour
+		// -- Passage d'un nouveau jour
 		date++;
+
+		// -- Pression démographique et éventuel accroissement de la population
+		// On regarde si la ville est attractive (si une case peut recevoir de la population)
+		Tile* possibleHouseLocation = LogicManager::getInstance().pickPossibleHouseLocation();
+		if (possibleHouseLocation != nullptr) {
+			// La ville est attractive
+			demographicPressure += 50; 
+			// TODO: calculer la pression démographique en fonction de l'attractivité, de la population actuelle, etc.
+			if (demographicPressure >= 100) { // Pour test, accroissement de la population tous les 2 jours
+				// 60% de chance d'essayer d'avoir une maison de 3x3
+				std::default_random_engine generator;
+				std::bernoulli_distribution distribution(0.6);
+				if (distribution(generator)) {
+					// On essaie d'avoir une 3x3
+					if (LogicManager::getInstance().isValidLocation(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 3, 3)) {
+						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 3, 3, 1);
+					}
+					else {
+						// Sinon on fait une 2x2
+						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 2, 2, 1);
+					}
+				}
+				else {
+					// On fait directement une 2x2
+					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 2, 2, 1);
+				}
+			}
+			demographicPressure -= 100;
+		}
+		// TODO: faire spawn des maisons d'un niveau plus élevé si la ville est assez évoluée
+		// TODO: évolution des maisons existantes
 
 		// La liste des constructions peut changer pendant le tick (fin de construction), donc on en fait une copie avant de la parcourir
 		vector<Construction*> constructionsCopy;
