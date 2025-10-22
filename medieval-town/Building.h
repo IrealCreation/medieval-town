@@ -30,7 +30,7 @@ namespace Models
 		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce bâtiment
 		void removeHouseServed(House* house); // Retire une maison desservie par ce bâtiment
 
-		std::vector<Tile*> getTilesServed() const; // Retourne la liste des tuiles desservies par ce bâtiment
+		std::vector<Tile*> getMarginalTilesServed() const; // Retourne la liste des tuiles desservies par ce bâtiment
 
 		void updateServed(); // Met à jour la liste des emplacements (House et Tiles) desservis par ce bâtiment
 		void setMustUpdateServed(); // Indique que la liste des emplacements (House et Tiles) desservis doit être mise à jour au prochain tick
@@ -45,7 +45,8 @@ namespace Models
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit être mise à jour au prochain tick
 
-		std::vector<Tile*> tilesServed; // Tuiles desservies par ce bâtiment
+		std::vector<House*> marginalHousesServed; // Maisons pouvant accueillir un habitant de plus servi par ce bâtiment
+		std::vector<Tile*> marginalTilesServed; // Tuiles pouvant accueillir un habitant de plus servi par ce bâtiment
 	};
 }
 

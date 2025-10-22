@@ -7,7 +7,15 @@ using std::find;
 
 namespace Models
 {
-	ServiceReceiver::ServiceReceiver() {}
+	ServiceReceiver::ServiceReceiver() 
+	{
+		// Attractivité à 0 par défaut
+		attractiveness = {
+			{ Pop::Gueux, 0.0f },
+			{ Pop::Bourgeois, 0.0f },
+			{ Pop::Noble, 0.0f }
+		};
+	}
 
 	Building* ServiceReceiver::getServiceBuilding(Service service) const
 	{
@@ -24,12 +32,31 @@ namespace Models
 	void ServiceReceiver::addService(Service service, Building* building)
 	{
 		serviceBuildings[service] = building;
-		this->updateAttractiveness();
 	}
 	void ServiceReceiver::removeService(Service service)
 	{
 		serviceBuildings.erase(service);
+	}
+
+	void ServiceReceiver::addMarginalService(Service service, Building* building)
+	{
+		marginalServiceBuildings[service].push_back(building);
 		this->updateAttractiveness();
+	}
+	void ServiceReceiver::removeMarginalService(Service service, Building* building)
+	{
+		// On retire le bâtiment de la liste des bâtiments marginaux pour ce service
+		auto& buildings = marginalServiceBuildings[service];
+		auto it = find(buildings.begin(), buildings.end(), building);
+		if (it != buildings.end()) {
+			buildings.erase(it);
+		}
+
+		// S'il n'y a plus de bâtiment pour ce service, on retire l'entrée de la map et on met à jour l'attractivité
+		if (buildings.empty()) {
+			marginalServiceBuildings.erase(service);
+			this->updateAttractiveness();
+		}
 	}
 
 	float ServiceReceiver::getAttractiveness(Pop pop) const
@@ -51,8 +78,8 @@ namespace Models
 			return;
 		}
 
-		// On parcourt tous les bâtiments de service
-		for(const auto& service_building : serviceBuildings) 
+		// On parcourt tous les services marginaux disponibles
+		for(const auto& service_building : marginalServiceBuildings)
 		{
 			// Pour chaque service desservi, on regarde chaque pop afin de vérifier si elle désire ce service
 			for (const auto& pop_services : popServices)

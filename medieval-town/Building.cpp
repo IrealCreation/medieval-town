@@ -94,8 +94,8 @@ namespace Models {
 		}
 	}
 
-	std::vector<Tile*> Building::getTilesServed() const {
-		return tilesServed;
+	std::vector<Tile*> Building::getMarginalTilesServed() const {
+		return marginalTilesServed;
 	}
 
 	void Building::updateServed() {
@@ -122,15 +122,32 @@ namespace Models {
 		}
 
 		if(capacityLeft > 0) {
-			// Il reste de la capacité, on peut desservir des tiles
-			tilesServed.clear();
+			// Il reste de la capacité, on peut mettre à jour le service marginal, c'est-à-dire les House et les Tile qui peuvent bénéficier des services de ce bâtiment pour une nouvelle unité de population (permet le calcul de l'attractivité)
+			
+			// Maisons bénéficiant du service marginal
+			marginalHousesServed.clear();
+			for (auto house : houses) {
+				marginalHousesServed.push_back(house);
+				house->addMarginalService(this->type.getService(), this);
+			}
+
+			// Tiles bénéficiant du service marginal
+			marginalTilesServed.clear();
 			auto tiles = LogicManager::getInstance().getTilesInRange(this->getX(), this->getY(), this->type.getRange());
 			for (auto tile : tiles) {
-				tilesServed.push_back(tile);
+				marginalTilesServed.push_back(tile);
+				tile->addMarginalService(this->type.getService(), this);
 			}
 		} else {
-			// Pas de capacité restante, on ne dessert pas de tiles
-			tilesServed.clear();
+			// Pas de capacité restante : pas de service marginal
+			for (auto house : marginalHousesServed) {
+				house->removeMarginalService(this->type.getService(), this);
+			}
+			marginalHousesServed.clear();
+			for (auto tile : marginalTilesServed) {
+				tile->removeMarginalService(this->type.getService(), this);
+			}
+			marginalTilesServed.clear();
 		}
 	}
 	void Building::setMustUpdateServed() {
