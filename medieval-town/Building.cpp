@@ -64,8 +64,8 @@ namespace Models {
 		return name;
 	}
 
-	void Building::setName(const std::string& name) {
-		this->name = name;
+	void Building::setName(const std::string& newName) {
+		this->name = newName;
 	}
 
 	const BuildingType& Building::getType() const {

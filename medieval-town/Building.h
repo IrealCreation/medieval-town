@@ -19,7 +19,7 @@ namespace Models
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		std::string getName();
-		void setName(const std::string& name);
+		void setName(const std::string& newName);
 
 		const BuildingType& getType() const; // Retourne le type du bâtiment
 

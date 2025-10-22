@@ -21,7 +21,7 @@ namespace Models
 		static float getMaxSizeY();
 
 		float getDistance(const Location& other) const;
-		float getDistance(float x, float y) const;
+		float getDistance(float otherX, float otherY) const;
 
 		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
 		bool collisionWith(const Location& other) const;

@@ -10,10 +10,10 @@ using std::shared_ptr;
 using std::map;
 
 // Pourquoi est-ce qu'il en a besoin pour les vector<unique_ptr<Construction>>, mais pas de Family.h ?
-#include "Building.h";
-#include "Construction.h";
-#include "House.h";
-#include "Tile.h";
+#include "Building.h"
+#include "Construction.h"
+#include "House.h"
+#include "Tile.h"
 
 namespace Models
 {

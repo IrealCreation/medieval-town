@@ -60,9 +60,9 @@ namespace Models
 		float dy = this->y - other.y;
 		return std::sqrt(dx * dx + dy * dy); // Vive Pythagore !
 	}
-	float Location::getDistance(float x, float y) const {
-		float dx = this->x - x;
-		float dy = this->y - y;
+	float Location::getDistance(float otherX, float otherY) const {
+		float dx = this->x - otherX;
+		float dy = this->y - otherY;
 		return std::sqrt(dx * dx + dy * dy);
 	}
 
