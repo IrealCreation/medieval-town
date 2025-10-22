@@ -16,6 +16,8 @@ using std::make_unique;
 using std::make_shared;
 using std::multimap;
 
+LogicManager LogicManager::instance; // Instanciation du LogicManager statique
+
 LogicManager::LogicManager() {}
 
 LogicManager& LogicManager::getInstance()

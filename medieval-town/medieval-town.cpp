@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "LogicManager.h"
-LogicManager LogicManager::instance; // Instanciation du LogicManager
 #include "Family.h"
 #include "Town.h"
 #include "BuildingType.h"
