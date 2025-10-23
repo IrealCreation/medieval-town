@@ -1,15 +1,18 @@
 #include "BuildingType.h"
 
 namespace Models {
-	BuildingType::BuildingType(const std::string& name, float sizeX, float sizeY, int goldConstructionCost, int goldMaintenanceCost,
+	BuildingType::BuildingType(const std::string& id, const std::string& name, float sizeX, float sizeY, int goldConstructionCost, int goldMaintenanceCost,
 		const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
 		const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
 		int constructionTime, Service service)
-		: name(name), sizeX(sizeX), sizeY(sizeY), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
+		: id(id), name(name), sizeX(sizeX), sizeY(sizeY), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
 		goldCostPerPopulation(goldCostPerPopulation), goldGainPerPopulation(goldGainPerPopulation),
 		prestigeGainPerPopulation(prestigeGainPerPopulation), range(range), maxCapacity(maxCapacity),
 		constructionTime(constructionTime), service(service) {}
 
+	std::string BuildingType::getId() const {
+		return id;
+	}
 	std::string BuildingType::getName() const {
 		return name;
 	}

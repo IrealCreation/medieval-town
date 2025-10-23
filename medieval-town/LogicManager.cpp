@@ -25,9 +25,9 @@ LogicManager& LogicManager::getInstance()
 	return LogicManager::instance;
 }
 
-void LogicManager::setAPI(LogicAPI* api)
+void LogicManager::setAPI(LogicAPI* newApi)
 {
-	this->api = api;
+	this->api = newApi;
 }
 
 void LogicManager::startGame()
@@ -41,6 +41,9 @@ void LogicManager::startGame()
 	this->town->addFamily(std::move(family1));
 	unique_ptr<Models::Family> family2 = make_unique<Models::Family>("Legrand");
 	this->town->addFamily(std::move(family2));
+
+	// Initialisation des BuildingTypes
+	this->initBuildingTypes();
 }
 
 void LogicManager::logicTick()
@@ -55,7 +58,7 @@ void LogicManager::logicTick()
 	}
 }
 
-void LogicManager::log(string message) {
+void LogicManager::log(string message) const {
 	if(api != nullptr) {
 		// Si on est dans le moteur de jeu, on passe par l'API
 		api->log(message);
@@ -67,6 +70,85 @@ void LogicManager::log(string message) {
 Models::Town* LogicManager::getTown()
 {
 	return this->town.get();
+}
+
+void LogicManager::initBuildingTypes()
+{
+	std::map<Models::Pop, int> goldCostPerPopulation;
+	std::map<Models::Pop, int> goldGainPerPopulation;
+	std::map<Models::Pop, int> prestigeGainPerPopulation;
+
+	// Initialisation du BuildingType Chapelle
+	goldCostPerPopulation = {
+		{ Models::Pop::Gueux, 0 },
+		{ Models::Pop::Bourgeois, 0 },
+		{ Models::Pop::Noble, 0 }
+	};
+	goldGainPerPopulation = {
+		{ Models::Pop::Gueux, 2 },
+		{ Models::Pop::Bourgeois, 3 },
+		{ Models::Pop::Noble, 4 }
+	};
+	prestigeGainPerPopulation = {
+		{ Models::Pop::Gueux, 2 },
+		{ Models::Pop::Bourgeois, 4 },
+		{ Models::Pop::Noble, 6 }
+	};
+	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
+		"Chapelle",
+		"Chapelle",
+		5, 5,
+		200, 20,
+		goldCostPerPopulation,
+		goldGainPerPopulation,
+		prestigeGainPerPopulation,
+		10, 50, 5,
+		Models::Service::Priere
+	);
+	addBuildingType(std::move(buildingType_Chapelle));
+
+	// Initialisation du BuildingType Puits
+	goldCostPerPopulation = {
+		{ Models::Pop::Gueux, 0 },
+		{ Models::Pop::Bourgeois, 0 },
+		{ Models::Pop::Noble, 0 }
+	};
+	goldGainPerPopulation = {
+		{ Models::Pop::Gueux, 1 },
+		{ Models::Pop::Bourgeois, 1 },
+		{ Models::Pop::Noble, 1 }
+	};
+	prestigeGainPerPopulation = {
+		{ Models::Pop::Gueux, 3 },
+		{ Models::Pop::Bourgeois, 3 },
+		{ Models::Pop::Noble, 3 }
+	};
+	unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
+		"Puits",
+		"Puits",
+		2, 2,
+		50, 5,
+		goldCostPerPopulation,
+		goldGainPerPopulation,
+		prestigeGainPerPopulation,
+		8, 40, 3,
+		Models::Service::Eau
+	);
+	addBuildingType(std::move(buildingType_Puits));
+}
+
+Models::BuildingType* LogicManager::getBuildingType(const string& id)
+{
+	auto it = buildingTypes.find(id);
+	if (it != buildingTypes.end()) {
+		return it->second.get();
+	}
+	return nullptr;
+}
+
+void LogicManager::addBuildingType(unique_ptr<Models::BuildingType> buildingType)
+{
+	this->buildingTypes[buildingType->getId()] = std::move(buildingType);
 }
 
 void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
@@ -99,6 +181,15 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
+}
+void LogicManager::startConstructionBuilding(const string& id, Models::Family* family, int x, int y, int rotation)
+{
+	Models::BuildingType* type = this->getBuildingType(id);
+	if (type == nullptr) {
+		this->log("Erreur : BuildingType inconnu pour la construction de bâtiment avec l'ID " + id);
+		return;
+	}
+	this->startConstructionBuilding(*type, family, x, y, rotation);
 }
 
 void LogicManager::constructionBuildingDone(Models::ConstructionBuilding* construction)

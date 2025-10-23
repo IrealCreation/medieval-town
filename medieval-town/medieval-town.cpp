@@ -36,64 +36,10 @@ int main()
     delete first;
     std::cout << "\n";
 
-	// Initialisation du BuildingType Chapelle
-    std::map<Models::Pop, int> goldCostPerPopulation = {
-        { Models::Pop::Gueux, 0 },
-        { Models::Pop::Bourgeois, 0 },
-        { Models::Pop::Noble, 0 }
-	};
-    std::map<Models::Pop, int> goldGainPerPopulation = {
-        { Models::Pop::Gueux, 2 },
-        { Models::Pop::Bourgeois, 3 },
-        { Models::Pop::Noble, 4 }
-	};
-    std::map<Models::Pop, int> prestigeGainPerPopulation = {
-        { Models::Pop::Gueux, 2 },
-        { Models::Pop::Bourgeois, 4 },
-		{ Models::Pop::Noble, 6 }
-	};
-	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
-        "Chapelle", 
-        5, 5,
-        200, 20, 
-        goldCostPerPopulation,
-        goldGainPerPopulation, 
-        prestigeGainPerPopulation, 
-        10, 50, 5, 
-        Models::Service::Priere
-    );
-
-    // Initialisation du BuildingType Puits
-    goldCostPerPopulation = {
-        { Models::Pop::Gueux, 0 },
-        { Models::Pop::Bourgeois, 0 },
-        { Models::Pop::Noble, 0 }
-    };
-    goldGainPerPopulation = {
-        { Models::Pop::Gueux, 1 },
-        { Models::Pop::Bourgeois, 1 },
-        { Models::Pop::Noble, 1 }
-    };
-    prestigeGainPerPopulation = {
-        { Models::Pop::Gueux, 3 },
-        { Models::Pop::Bourgeois, 3 },
-        { Models::Pop::Noble, 3 }
-    };
-    unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
-        "Puits",
-        2, 2,
-        50, 5,
-        goldCostPerPopulation,
-        goldGainPerPopulation,
-        prestigeGainPerPopulation,
-        8, 40, 3,
-        Models::Service::Eau
-    );
-
     // Construction d'un bâtiment : Puits par Salviati
-    logicManager.startConstructionBuilding(*buildingType_Puits, logicManager.getTown()->getFamilies()[0], 10, 5, 0);
+    logicManager.startConstructionBuilding("Puits", logicManager.getTown()->getFamilies()[0], 10, 5, 0);
 	// Construction d'un bâtiment : Chapelle par Legrand
-	logicManager.startConstructionBuilding(*buildingType_Chapelle, logicManager.getTown()->getFamilies()[1], 10, 15, 0);
+	logicManager.startConstructionBuilding("Chapelle", logicManager.getTown()->getFamilies()[1], 10, 15, 0);
 
     int i = 0;
     // Boucle des ticks tant que le joueur presse Entrée
