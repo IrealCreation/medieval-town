@@ -10,6 +10,12 @@ namespace Models
 	void Family::logicTick() {
 		// Logique de progression du jeu pour la famille, par exemple, mise à jour des ressources
 	}
+	int Family::getId() const {
+		return id;
+	}
+	void Family::setId(int newId) {
+		id = newId;
+	}
 	std::string Family::getName() const {
 		return name;
 	}

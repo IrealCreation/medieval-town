@@ -37,9 +37,9 @@ int main()
     std::cout << "\n";
 
     // Construction d'un bâtiment : Puits par Salviati
-    logicManager.startConstructionBuilding("Puits", logicManager.getTown()->getFamilies()[0], 10, 5, 0);
+    logicManager.startConstructionBuilding("Puits", 0, 10, 5, 0);
 	// Construction d'un bâtiment : Chapelle par Legrand
-	logicManager.startConstructionBuilding("Chapelle", logicManager.getTown()->getFamilies()[1], 10, 15, 0);
+	logicManager.startConstructionBuilding("Chapelle", 1, 10, 15, 0);
 
     int i = 0;
     // Boucle des ticks tant que le joueur presse Entrée

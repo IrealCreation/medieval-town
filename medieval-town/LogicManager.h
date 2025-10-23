@@ -50,16 +50,19 @@ public:
 	// Retourne un raw pointer vers la ville ; le cycle de vie de la ville reste géré par le LogicManager
 	Models::Town* getTown();
 
+	// Ajoute une famille à partie, et renvoie son ID
+	int addFamily(const string& name);
+
 	// Initialise les BuildingTypes
 	void initBuildingTypes();
 
 	// Retourne un raw pointer vers le BuildingType correspondant à l'ID donné ; nullptr si pas trouvé
-	Models::BuildingType* getBuildingType(const string& id); 
+	Models::BuildingType* getBuildingType(const string& id);
 
 	// Débute la construction d'un bâtiment de service
 	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
-	// Débute la construction d'un bâtiment de service (surcharge avec l'ID du BuildingType)
-	void startConstructionBuilding(const string& id, Models::Family* family, int x, int y, int rotation);
+	// Débute la construction d'un bâtiment de service (surcharge avec l'ID du BuildingType et de la Family)
+	void startConstructionBuilding(const string& buildingTypeId, int familyId, int x, int y, int rotation);
 	// Termine la construction d'un bâtiment de service
 	void constructionBuildingDone(Models::ConstructionBuilding* construction);
 	// Ajoute un bâtiment de service achevé

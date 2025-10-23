@@ -16,6 +16,8 @@ namespace Models
 
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
+		int getId() const;
+		void setId(int newId);
 		std::string getName() const;
 		int getGold() const;
 		int getPrestige() const;
@@ -30,6 +32,7 @@ namespace Models
 		void removeConstruction(Construction* construction);
 
 	protected:
+		int id; // ID unique de la famille dans la ville
 		std::string name;
 		int gold;
 		int prestige;

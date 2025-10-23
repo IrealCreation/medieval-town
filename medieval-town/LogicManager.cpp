@@ -37,10 +37,8 @@ void LogicManager::startGame()
 	town->startTown();
 
 	// Création des familles
-	unique_ptr<Models::Family> family1 = make_unique<Models::Family>("Salviati");
-	this->town->addFamily(std::move(family1));
-	unique_ptr<Models::Family> family2 = make_unique<Models::Family>("Legrand");
-	this->town->addFamily(std::move(family2));
+	this->addFamily("Salviati");
+	this->addFamily("Legrand");
 
 	// Initialisation des BuildingTypes
 	this->initBuildingTypes();
@@ -70,6 +68,13 @@ void LogicManager::log(string message) const {
 Models::Town* LogicManager::getTown()
 {
 	return this->town.get();
+}
+
+int LogicManager::addFamily(const string& name)
+{
+	unique_ptr<Models::Family> family = make_unique<Models::Family>(name);
+	int familyId = this->town->addFamily(std::move(family));
+	return familyId;
 }
 
 void LogicManager::initBuildingTypes()
@@ -182,13 +187,14 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
-void LogicManager::startConstructionBuilding(const string& id, Models::Family* family, int x, int y, int rotation)
+void LogicManager::startConstructionBuilding(const string& buildingTypeId, int familyId, int x, int y, int rotation)
 {
-	Models::BuildingType* type = this->getBuildingType(id);
+	Models::BuildingType* type = this->getBuildingType(buildingTypeId);
 	if (type == nullptr) {
-		this->log("Erreur : BuildingType inconnu pour la construction de bâtiment avec l'ID " + id);
+		this->log("Erreur : BuildingType inconnu pour la construction de bâtiment avec l'ID " + buildingTypeId);
 		return;
 	}
+	Models::Family* family = this->getTown()->getFamily(familyId);
 	this->startConstructionBuilding(*type, family, x, y, rotation);
 }
 

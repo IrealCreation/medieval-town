@@ -122,9 +122,12 @@ namespace Models
 		constructions.erase(it);
 	}
 
-	void Town::addFamily(unique_ptr<Family> family)
+	int Town::addFamily(unique_ptr<Family> family)
 	{
-		families.emplace_back(std::move(family));
+		// On ajoute la famille à la fin du vecteur
+		families.push_back(std::move(family));
+		// On renvoie l'index (ID) de la famille dans la liste, à savoir la taille du vecteur - 1
+		return families.size() - 1;
 	}
 	vector<Family*> Town::getFamilies() {
 		// On transforme notre tableau de unique_ptr en un tableau de raw pointers
@@ -134,6 +137,12 @@ namespace Models
 			[](const std::unique_ptr<Family>& mon_in) { return mon_in.get(); });
 		return tmp_families;
 		// TODO: typiquement le genre de fonction qui pourrait être un template
+	}
+	Family* Town::getFamily(int id) {
+		if (id >= 0 && id < families.size()) {
+			return families[id].get();
+		}
+		return nullptr;
 	}
 
 	void Town::addHouse(unique_ptr<House> house)

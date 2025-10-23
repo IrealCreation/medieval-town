@@ -38,8 +38,10 @@ namespace Models
 			int getSizeX() const;
 			int getSizeY() const;
 
-			void addFamily(unique_ptr<Family> family);
+			// Ajoute une famille à la ville ; retourne son index (ID) dans la liste des familles
+			int addFamily(unique_ptr<Family> family);
 			vector<Family*> getFamilies();
+			Family* getFamily(int id);
 
 			void addConstruction(unique_ptr<Construction> construction);
 			void removeConstruction(Construction* construction);
