@@ -25,6 +25,11 @@ LogicManager& LogicManager::getInstance()
 	return LogicManager::instance;
 }
 
+void LogicManager::setAPI(LogicAPI* api)
+{
+	this->api = api;
+}
+
 void LogicManager::startGame()
 {
 	// Création de la ville
@@ -51,6 +56,11 @@ void LogicManager::logicTick()
 }
 
 void LogicManager::log(string message) {
+	if(api != nullptr) {
+		// Si on est dans le moteur de jeu, on passe par l'API
+		api->log(message);
+		return;
+	}
 	std::cout << message << "\n";
 }
 

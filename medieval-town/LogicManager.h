@@ -8,6 +8,7 @@ using std::shared_ptr;
 using std::string;
 using std::map;
 using std::vector;
+#include "LogicAPI.h"
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
@@ -33,6 +34,9 @@ public:
 
 	// Référence au GameManager unique de la partie
 	static LogicManager& getInstance();
+
+	// Définit l'interface avec le moteur de jeu 
+	void setAPI(LogicAPI* api); 
 
 	// Début de la partie
 	void startGame();
@@ -112,5 +116,8 @@ protected:
 	void updateCanHaveHouseAroundDestruction(Models::Location* location); 
 	
 	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)
-	vector<Models::Tile*> possibleHouseLocations;  
+	vector<Models::Tile*> possibleHouseLocations; 
+
+private:
+	LogicAPI* api; // Interface avec le moteur de jeu (nullptr si on n'est pas dans le moteur)
 };
