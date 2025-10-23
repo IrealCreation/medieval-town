@@ -1,3 +1,4 @@
 .vs/
 medieval-town.sln
 *.vcxproj*
+x64/
