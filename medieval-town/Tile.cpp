@@ -59,16 +59,18 @@ namespace Models
 	}
 
 	void Tile::updateAttractiveness() {
-		float attractivenessBefore = getAttractiveness(Pop::Gueux);
+		int attractivenessBefore = getAttractiveness(Pop::Gueux);
 
 		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
 		ServiceReceiver::updateAttractiveness();
 
-		if (attractivenessBefore > 0.0f && getAttractiveness(Pop::Gueux) <= 0.0f) {
+		int attractivenessAfter = getAttractiveness(Pop::Gueux);
+
+		if (attractivenessBefore > 0 && attractivenessAfter <= 0) {
 			// On retire ce tile de la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().removePossibleHouseLocation(this);
 		} 
-		else if (attractivenessBefore <= 0.0f && getAttractiveness(Pop::Gueux) > 0.0f) {
+		else if (attractivenessBefore <= 0 && attractivenessAfter > 0) {
 			// On ajoute ce tile à la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}

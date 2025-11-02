@@ -8,7 +8,6 @@ using std::shared_ptr;
 using std::string;
 using std::map;
 using std::vector;
-#include "LogicAPI.h"
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
@@ -23,6 +22,7 @@ namespace Models {
 	class ConstructionBuilding;
 	class ConstructionHouse;
 }
+class ALogicAPI;
 
 // Le GameManager remplit deux utilisés : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class LogicManager
@@ -36,7 +36,7 @@ public:
 	static LogicManager& getInstance();
 
 	// Définit l'interface avec le moteur de jeu 
-	void setAPI(LogicAPI* newApi);
+	void setAPI(ALogicAPI* newApi);
 
 	// Début de la partie
 	void startGame();
@@ -136,5 +136,5 @@ protected:
 	vector<Models::Tile*> possibleHouseLocations; 
 
 private:
-	LogicAPI* api; // Interface avec le moteur de jeu (nullptr si on n'est pas dans le moteur)
+	ALogicAPI* api; // Interface avec le moteur de jeu (nullptr si on n'est pas dans le moteur)
 };

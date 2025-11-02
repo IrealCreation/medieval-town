@@ -56,19 +56,19 @@ namespace Models
 			Tile* getTileAt(int x, int y); // Retourne un raw pointer vers la Tile à la position donnée ; nullptr si pas de Tile (coordonnées invalides)
 
 		protected:
-			string name;
-			int sizeX; // Taille de la ville en X
-			int sizeY; // Taille de la ville en Y
+			string name = ""; // Nom de la ville
+			int sizeX = 0; // Taille de la ville en X
+			int sizeY = 0; // Taille de la ville en Y
 			// On triche un peu : la taille de la ville est de 1 case supérieure, car il y a la Tile 0,0
 
-			int demographicPressure; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint
+			int date = 1; // Date actuelle de la ville (en jours depuis le début de la partie)
+			int demographicPressure = 0; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint
 
 			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gère leur cycle de vie ; ils seront communiqués sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville
 			vector<unique_ptr<Construction>> constructions; // Liste des chantiers de construction de la ville
 			vector<unique_ptr<Building>> buildings; // Liste des bâtiments de service de la ville
 			vector<unique_ptr<House>> houses; // Liste des maisons d'habitation de la ville
-			int date; // Date actuelle de la ville (en jours depuis le début de la partie)
 
 			// Grille des Tiles [x => [y => Tile]]
 			map<int, map<int, unique_ptr<Tile>>> mapTiles;

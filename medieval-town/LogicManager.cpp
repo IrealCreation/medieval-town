@@ -10,6 +10,7 @@
 #include "ConstructionBuilding.h"
 #include "ConstructionHouse.h"
 #include <iostream> // Pour le log()
+#include "LogicAPI.h"
 
 using std::string;
 using std::make_unique;
@@ -25,7 +26,7 @@ LogicManager& LogicManager::getInstance()
 	return LogicManager::instance;
 }
 
-void LogicManager::setAPI(LogicAPI* newApi)
+void LogicManager::setAPI(ALogicAPI* newApi)
 {
 	this->api = newApi;
 }
@@ -519,11 +520,11 @@ Models::Tile* LogicManager::pickPossibleHouseLocation()
 		return nullptr; // Pas d'emplacement possible
 	}
 	vector<Models::Tile*> candidates;
-	float bestScore = 0.0f;
+	int bestScore = 0;
 
 	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base 
 	for (Models::Tile* tile : possibleHouseLocations) {
-		float score = tile->getAttractiveness(Models::Pop::Gueux);
+		int score = tile->getAttractiveness(Models::Pop::Gueux);
 		if (score > bestScore) {
 			bestScore = score;
 			candidates.clear();

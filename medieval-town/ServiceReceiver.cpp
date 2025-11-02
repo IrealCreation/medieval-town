@@ -59,17 +59,17 @@ namespace Models
 		}
 	}
 
-	float ServiceReceiver::getAttractiveness(Pop pop) const
+	int ServiceReceiver::getAttractiveness(Pop pop) const
 	{
 		return attractiveness.find(pop)->second;
 	}
 
 	void ServiceReceiver::updateAttractiveness()
 	{
-		map<Pop, float> scoreByPop = {
-			{ Pop::Gueux, 0.0f },
-			{ Pop::Bourgeois, 0.0f },
-			{ Pop::Noble, 0.0f }
+		map<Pop, int> scoreByPop = {
+			{ Pop::Gueux, 0 },
+			{ Pop::Bourgeois, 0 },
+			{ Pop::Noble, 0 }
 		};
 
 		if (serviceBuildings.empty()) {
@@ -93,8 +93,9 @@ namespace Models
 			}
 		}
 
+		// Déprécié : on garde juste le nombre de services disponibles pour chaque pop plutôt que de faire une moyenne
 		// On divise le score d'attractivité pour chaque pop par la quantité de services que cette pop requiert
-		for(auto& pop_score : scoreByPop) 
+		/* for (auto& pop_score : scoreByPop)
 		{
 			// Pas besoin de diviser si le score est à 0
 			if (pop_score.second == 0.0f)
@@ -102,7 +103,7 @@ namespace Models
 
 			auto it = popServices.find(pop_score.first);
 			pop_score.second /= static_cast<float>(it->second.size());
-		}
+		}*/
 
 		// On attribue les nouveaux score d'attractivité
 		attractiveness = scoreByPop;
