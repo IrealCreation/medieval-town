@@ -22,8 +22,8 @@ namespace Models
 
 		void logicTick();
 
-        static const int minSizeX = 2; // Taille minimale sur l'axe X d'une maison
-        static const int minSizeY = 2; // Taille minimale sur l'axe Y d'une maison
+        static const int minSizeX = 4; // Taille minimale sur l'axe X d'une maison
+        static const int minSizeY = 6; // Taille minimale sur l'axe Y d'une maison
 
     protected:
 		int dateCreation; // Date de création de la maison (fin du chantier de construction)
