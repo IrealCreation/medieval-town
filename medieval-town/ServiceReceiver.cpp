@@ -72,7 +72,7 @@ namespace Models
 			{ Pop::Noble, 0 }
 		};
 
-		if (serviceBuildings.empty()) {
+		if (marginalServiceBuildings.empty()) {
 			// Il n'y a aucun bâtiment de service qui nous dessert : l'attractivité est de 0
 			attractiveness = scoreByPop;
 			return;

@@ -62,7 +62,7 @@ namespace Models
 			// On triche un peu : la taille de la ville est de 1 case supérieure, car il y a la Tile 0,0
 
 			int date = 1; // Date actuelle de la ville (en jours depuis le début de la partie)
-			int demographicPressure = 0; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint
+			int demographicPressure = 100; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint. On commence avec une pression initiale élevée pour immédiatement avoir de nouvelles maisons dès que des emplacements sont attractifs.
 
 			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gère leur cycle de vie ; ils seront communiqués sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville

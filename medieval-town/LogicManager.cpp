@@ -458,12 +458,12 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
-	// On parcourt uniquement les Tiles dans la zone définie
+	// On parcourt uniquement les Tiles dans la zone définie pour les marquer comme ne pouvant pas recevoir de maison
 	for (int x = minX; x <= maxX; x++) {
 		for (int y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
-				tile->setCanHaveHouse(false);
+				tile->setCannotHaveHouse();
 			}
 		}
 	}

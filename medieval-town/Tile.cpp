@@ -7,18 +7,32 @@ namespace Models
 {
 	Tile::Tile(int x, int y) : Location(x, y, 0) 
 	{
-		// Au début de la partie, toutes les tuiles peuvent recevoir une maison
-		canHaveHouse = true;
+		// Au début de la partie, toutes les tuiles peuvent recevoir une maison, sauf celles situées trop près du bord de la map
+		if (x < House::minSizeX / 2 
+			|| y < House::minSizeY / 2 
+			|| x > LogicManager::getInstance().getTown()->getSizeX() - House::minSizeX / 2 
+			|| y > LogicManager::getInstance().getTown()->getSizeY() - House::minSizeY / 2) {
+			canHaveHouse = false;
+		}
+		else {
+			canHaveHouse = true;
+		}
 	}
 
-	void Tile::setCanHaveHouse(bool value) {
-		if(canHaveHouse == value)
+	void Tile::setCannotHaveHouse() {
+		if(canHaveHouse == false)
 			return; // Pas de changement
-		if(value)
+		LogicManager::getInstance().removePossibleHouseLocation(this);
+		canHaveHouse = false;
+	}
+	void Tile::setCanHaveHouse() {
+		if(canHaveHouse == true)
+			return; // Pas de changement
+		canHaveHouse = true;
+		// On ajoute ce tile à la liste des emplacements possibles pour une maison si son attractivité est > 0
+		if (getAttractiveness(Pop::Gueux) > 0) {
 			LogicManager::getInstance().addPossibleHouseLocation(this);
-		else
-			LogicManager::getInstance().removePossibleHouseLocation(this);
-		canHaveHouse = value;
+		}
 	}
 
 	bool Tile::getCanHaveHouse() const {
@@ -46,14 +60,11 @@ namespace Models
 			for (int checkY = checkMinY; checkY <= checkMaxY; checkY++) {
 				Models::Location* otherLocation = LogicManager::getInstance().getLocationAt(checkX, checkY);
 				if (otherLocation && otherLocation != this && this->collisionWith(*otherLocation)) {
-					// Collision avec une autre structure détectée
-					setCanHaveHouse(false);
-					break;
+					// Collision avec une autre structure détectée : on ne peut pas avoir de maison, fin de la vérification
+					setCannotHaveHouse();
+					return getCanHaveHouse();
 				}
 			}
-			// "Break 2" n'existe pas en C++, et je ne vais pas utiliser un Goto (on n'est plus sur une TI au lycée...)
-			if (!getCanHaveHouse())
-				break;
 		}
 		return getCanHaveHouse();
 	}
@@ -66,12 +77,14 @@ namespace Models
 
 		int attractivenessAfter = getAttractiveness(Pop::Gueux);
 
+		// Si l'attractivité est passée de plus de 0 à 0...
 		if (attractivenessBefore > 0 && attractivenessAfter <= 0) {
-			// On retire ce tile de la liste des emplacements possibles pour une maison
+			// ... on retire ce tile de la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().removePossibleHouseLocation(this);
-		} 
-		else if (attractivenessBefore <= 0 && attractivenessAfter > 0) {
-			// On ajoute ce tile à la liste des emplacements possibles pour une maison
+		}
+		// Si l'attractivité est passée de 0 à plus de 0, et que le tile peut recevoir une maison...
+		else if (attractivenessBefore <= 0 && attractivenessAfter > 0 && getCanHaveHouse()) {
+			// ... on ajoute ce tile à la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}
 	}

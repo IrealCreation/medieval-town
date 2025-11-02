@@ -44,20 +44,23 @@ namespace Models
 				std::bernoulli_distribution distribution(0.6);
 				if (distribution(generator)) {
 					// On essaie d'avoir une 3x3
+					LogicManager::getInstance().log("Trying to build 3x3 house at " + std::to_string(possibleHouseLocation->getX()) + "," + std::to_string(possibleHouseLocation->getY()));
 					if (LogicManager::getInstance().isValidLocation(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 3, 3)) {
 						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 3, 3, 1);
 					}
 					else {
 						// Sinon on fait une 2x2
+						LogicManager::getInstance().log("Trying to build 2x2 house at " + std::to_string(possibleHouseLocation->getX()) + "," + std::to_string(possibleHouseLocation->getY()));
 						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 2, 2, 1);
 					}
 				}
 				else {
 					// On fait directement une 2x2
+					LogicManager::getInstance().log("Trying to build 2x2 house at " + std::to_string(possibleHouseLocation->getX()) + "," + std::to_string(possibleHouseLocation->getY()));
 					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 2, 2, 1);
 				}
+				demographicPressure -= 100;
 			}
-			demographicPressure -= 100;
 		}
 		// TODO: faire spawn des maisons d'un niveau plus élevé si la ville est assez évoluée
 		// TODO: évolution des maisons existantes
