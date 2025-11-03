@@ -537,9 +537,36 @@ Models::Tile* LogicManager::pickPossibleHouseLocation()
 
 	// On choisit un tile au hasard parmi les meilleurs candidats
 	if (!candidates.empty()) {
-		int32 index = rand() % candidates.size();
+		int32 index = this->randRange(0, candidates.size() - 1);
 		return candidates[index];
 	}
 
 	return nullptr;
+}
+
+int32 LogicManager::randRange(int32 min, int32 max)
+{
+	if (api != nullptr) {
+		// Si on est dans le moteur de jeu, on passe par l'API
+		return api->RandRange(min, max);
+	}
+	return min + (rand() % (max - min + 1));
+}
+
+int32 LogicManager::randRange(int min, int max)
+{
+	if (api != nullptr) {
+		// Si on est dans le moteur de jeu, on passe par l'API
+		return api->RandRange(static_cast<int32>(min), static_cast<int32>(max));
+	}
+	return min + (rand() % (max - min + 1));
+}
+
+float LogicManager::randRange(float min, float max)
+{
+	if (api != nullptr) {
+		// Si on est dans le moteur de jeu, on passe par l'API
+		return api->RandRange(min, max);
+	}
+	return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
 }

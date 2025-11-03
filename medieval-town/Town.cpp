@@ -39,23 +39,25 @@ namespace Models
 			demographicPressure += 50; 
 			// TODO: calculer la pression démographique en fonction de l'attractivité, de la population actuelle, etc.
 			if (demographicPressure >= 100) { // Pour test, accroissement de la population tous les 2 jours
+
 				// 60% de chance d'essayer d'avoir une grande maison
-				std::default_random_engine generator;
-				std::bernoulli_distribution distribution(0.6);
-				if (distribution(generator)) {
-					// On essaie d'avoir une grande maison
-					if (LogicManager::getInstance().isValidLocation(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8)) {
-						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8, 1);
+				bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
+				if (largeHouse) {
+					// Vérifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
+					if (!LogicManager::getInstance().isValidLocation(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8)) {
+						largeHouse = false;
 					}
-					else {
-						// Sinon on fait une petite maison
-						LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 4, 6, 1);
-					}
+				}
+
+				if(largeHouse) {
+					// On fait une grande maison
+					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8, 1);
 				}
 				else {
-					// On fait directement une petite maison
+					// On fait une petite maison
 					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 4, 6, 1);
 				}
+
 				demographicPressure -= 100;
 			}
 		}
