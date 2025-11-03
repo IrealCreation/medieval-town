@@ -8,6 +8,8 @@ using std::shared_ptr;
 using std::string;
 using std::map;
 using std::vector;
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
@@ -51,7 +53,7 @@ public:
 	Models::Town* getTown();
 
 	// Ajoute une famille à partie, et renvoie son ID
-	int addFamily(const string& name);
+	int32 addFamily(const string& name);
 
 	// Initialise les BuildingTypes
 	void initBuildingTypes();
@@ -60,31 +62,31 @@ public:
 	Models::BuildingType* getBuildingType(const string& id);
 
 	// Débute la construction d'un bâtiment de service
-	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
+	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
 	// Débute la construction d'un bâtiment de service (surcharge avec l'ID du BuildingType et de la Family)
-	void startConstructionBuilding(const string& buildingTypeId, int familyId, int x, int y, int rotation);
+	void startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation);
 	// Termine la construction d'un bâtiment de service
 	void constructionBuildingDone(Models::ConstructionBuilding* construction);
 	// Ajoute un bâtiment de service achevé
-	void createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation);
+	void createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
 	// Détruire un bâtiment de service
 	void destroyBuilding(Models::Building* building);
 
 	// Débute la construction d'une maison d'habitation
-	void startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
+	void startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau);
 	// Termine la construction d'une maison d'habitation
 	void constructionHouseDone(Models::ConstructionHouse* construction);
 	// Ajoute une maison d'habitation achevée
-	void createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau);
+	void createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau);
 	// Détruire une maison d'habitation
 	void destroyHouse(Models::House* house);
 
-	Models::Location* getLocationAt(int x, int y); // Retourne un raw pointer vers la Location à la position donnée ; nullptr si pas de Location
+	Models::Location* getLocationAt(int32 x, int32 y); // Retourne un raw pointer vers la Location à la position donnée ; nullptr si pas de Location
 
 	// Récupère les maisons situées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
-	vector<Models::House*> getHousesInRange(int x, int y, int range);
+	vector<Models::House*> getHousesInRange(int32 x, int32 y, int32 range);
 	// Récupère les tiles situés dans un rayon donné autour d'un point (non ordonnés)
-	vector<Models::Tile*> getTilesInRange(int x, int y, int range);
+	vector<Models::Tile*> getTilesInRange(int32 x, int32 y, int32 range);
 
 	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
 	bool isValidLocation(float x, float y, float rotation, float sizeX, float sizeY); 
@@ -112,18 +114,18 @@ protected:
 
 	// Cache de localisation pour plus facilement accéder aux éléments en fonction de leur emplacement
 	// Liste de toutes les Locations [x => [y => Location*]]
-	map<int, map<int, Models::Location*>> mapLocations;
+	map<int32, map<int32, Models::Location*>> mapLocations;
 	// Liste des Buildings [x => [y => Building*]]
-	map<int, map<int, Models::Building*>> mapBuildings;
+	map<int32, map<int32, Models::Building*>> mapBuildings;
 	// Liste des Houses [x => [y => House*]]
-	map<int, map<int, Models::House*>> mapHouses;
+	map<int32, map<int32, Models::House*>> mapHouses;
 
 	// Fonction permettant de récupérer les éléments des caches de localisation sitiées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
 	// TODO: essayer d'éviter la duplication de code dans les fonctions getXInRange, genre avec un template et un static_assert( std::is_base_of<> ... ) ?
 	// (Rappel : comme le C++ est un langage qui aime les blagues, on ne peut pas déclarer de templates dans le header)
 	/* 
 	template<typename T>
-	vector<T*> getInRange(int x, int y, int range, map<int, map<int, T>>);
+	vector<T*> getInRange(int32 x, int32 y, int32 range, map<int32, map<int32, T>>);
 	*/
 
 	// Met à jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison

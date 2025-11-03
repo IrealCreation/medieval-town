@@ -9,7 +9,7 @@
 
 namespace Models
 {
-	Town::Town(std::string name, int sizeX, int sizeY)
+	Town::Town(std::string name, int32 sizeX, int32 sizeY)
 	{
 		this->name = name;
 		this->sizeX = sizeX;
@@ -19,8 +19,8 @@ namespace Models
 
 	void Town::startTown() {
 		// Génération des tiles (le Tile 0,0 est en bas à gauche)
-		for (int x = 0; x < sizeX; x++) {
-			for (int y = 0; y < sizeY; y++) {
+		for (int32 x = 0; x < sizeX; x++) {
+			for (int32 y = 0; y < sizeY; y++) {
 				mapTiles[x][y] = std::make_unique<Tile>(x, y);
 			}
 		}
@@ -82,15 +82,15 @@ namespace Models
 	{
 		return name;
 	}
-	int Town::getSizeX() const
+	int32 Town::getSizeX() const
 	{
 		return sizeX;
 	}
-	int Town::getSizeY() const
+	int32 Town::getSizeY() const
 	{
 		return sizeY;
 	}
-	int Town::getDate() const
+	int32 Town::getDate() const
 	{
 		return date;
 	}
@@ -122,7 +122,7 @@ namespace Models
 		constructions.erase(it);
 	}
 
-	int Town::addFamily(unique_ptr<Family> family)
+	int32 Town::addFamily(unique_ptr<Family> family)
 	{
 		// On ajoute la famille à la fin du vecteur
 		families.push_back(std::move(family));
@@ -138,7 +138,7 @@ namespace Models
 		return tmp_families;
 		// TODO: typiquement le genre de fonction qui pourrait être un template
 	}
-	Family* Town::getFamily(int id) {
+	Family* Town::getFamily(int32 id) {
 		if (id >= 0 && id < families.size()) {
 			return families[id].get();
 		}
@@ -166,7 +166,7 @@ namespace Models
 		return tmp_houses;
 	}
 
-	Tile* Town::getTileAt(int x, int y) {
+	Tile* Town::getTileAt(int32 x, int32 y) {
 		if (mapTiles.find(x) != mapTiles.end() && mapTiles[x].find(y) != mapTiles[x].end()) {
 			return mapTiles[x][y].get();
 		}

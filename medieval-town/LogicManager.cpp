@@ -71,18 +71,18 @@ Models::Town* LogicManager::getTown()
 	return this->town.get();
 }
 
-int LogicManager::addFamily(const string& name)
+int32 LogicManager::addFamily(const string& name)
 {
 	unique_ptr<Models::Family> family = make_unique<Models::Family>(name);
-	int familyId = this->town->addFamily(std::move(family));
+	int32 familyId = this->town->addFamily(std::move(family));
 	return familyId;
 }
 
 void LogicManager::initBuildingTypes()
 {
-	std::map<Models::Pop, int> goldCostPerPopulation;
-	std::map<Models::Pop, int> goldGainPerPopulation;
-	std::map<Models::Pop, int> prestigeGainPerPopulation;
+	std::map<Models::Pop, int32> goldCostPerPopulation;
+	std::map<Models::Pop, int32> goldGainPerPopulation;
+	std::map<Models::Pop, int32> prestigeGainPerPopulation;
 
 	// Initialisation du BuildingType Chapelle
 	goldCostPerPopulation = {
@@ -157,7 +157,7 @@ void LogicManager::addBuildingType(unique_ptr<Models::BuildingType> buildingType
 	this->buildingTypes[buildingType->getId()] = std::move(buildingType);
 }
 
-void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
+void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, type.getSizeX(), type.getSizeY())) {
@@ -188,7 +188,7 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
 }
-void LogicManager::startConstructionBuilding(const string& buildingTypeId, int familyId, int x, int y, int rotation)
+void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
 {
 	Models::BuildingType* type = this->getBuildingType(buildingTypeId);
 	if (type == nullptr) {
@@ -212,7 +212,7 @@ void LogicManager::constructionBuildingDone(Models::ConstructionBuilding* constr
 	// UE : despawn l'objet Construction, petite animation de construction achevée
 }
 
-void LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int x, int y, int rotation)
+void LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
 {
 	unique_ptr <Models::Building> building = make_unique<Models::Building>(type, family, x, y, rotation);
 
@@ -260,7 +260,7 @@ void LogicManager::destroyBuilding(Models::Building* building)
 }
 
 
-void LogicManager::startConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
+void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
@@ -294,7 +294,7 @@ void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction
 	// UE : despawn l'objet Construction, petite animation de construction achevée
 }
 
-void LogicManager::createHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
+void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
 {
 	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau);
 	// On log l'événement
@@ -329,7 +329,7 @@ void LogicManager::destroyHouse(Models::House* house)
 	// UE : despawn l'objet House, petite animation de destruction
 }
 
-Models::Location* LogicManager::getLocationAt(int x, int y)
+Models::Location* LogicManager::getLocationAt(int32 x, int32 y)
 {
 	if (mapLocations.find(x) != mapLocations.end() && mapLocations[x].find(y) != mapLocations[x].end()) {
 		return mapLocations[x][y];
@@ -337,16 +337,16 @@ Models::Location* LogicManager::getLocationAt(int x, int y)
 	return nullptr;
 }
 
-vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, int range) 
+vector<Models::House*> LogicManager::getHousesInRange(int32 centerX, int32 centerY, int32 range) 
 {
 	// On utilise une multimap pour stocker nos résultats avec la distance au point d'origine comme clé
 	multimap<float, Models::House*> ordered_list;
 
 	// On parcourt tous les maisons via le cache de localisation
-	int minX = centerX - range;
-	int maxX = centerX + range;
-	int minY = centerY - range;
-	int maxY = centerY + range;
+	int32 minX = centerX - range;
+	int32 maxX = centerX + range;
+	int32 minY = centerY - range;
+	int32 maxY = centerY + range;
 
 	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 	if (minX < 0) minX = 0;
@@ -354,8 +354,8 @@ vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, 
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
 
-	for (int x = minX; x <= maxX; x++) {
-		for (int y = minY; y <= maxY; y++) {
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
 			Models::House* house = mapHouses[x][y];
 			if (house) {
 				float distance = house->getDistance(centerX, centerY);
@@ -375,14 +375,14 @@ vector<Models::House*> LogicManager::getHousesInRange(int centerX, int centerY, 
 	return result;
 }
 
-vector<Models::Tile*> LogicManager::getTilesInRange(int centerX, int centerY, int range) 
+vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY, int32 range) 
 {
 	vector<Models::Tile*> result;
 	// On parcourt toutes les tiles via le cache de localisation
-	int minX = centerX - range;
-	int maxX = centerX + range;
-	int minY = centerY - range;
-	int maxY = centerY + range;
+	int32 minX = centerX - range;
+	int32 maxX = centerX + range;
+	int32 minY = centerY - range;
+	int32 maxY = centerY + range;
 
 	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 	if (minX < 0) minX = 0;
@@ -390,8 +390,8 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int centerX, int centerY, in
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
 
-	for (int x = minX; x <= maxX; x++) {
-		for (int y = minY; y <= maxY; y++) {
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
 				float distance = tile->getDistance(centerX, centerY);
@@ -430,8 +430,8 @@ bool LogicManager::isValidLocation(float x, float y, float rotation, float sizeX
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
 
 	// On parcourt uniquement les Locations dans la zone définie
-	for (int x = minX; x <= maxX; x++) {
-		for (int y = minY; y <= maxY; y++) {
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
 			Models::Location* location = mapLocations[x][y];
 			if (location) {
 				if (tempLocation.collisionWith(*location)) {
@@ -459,8 +459,8 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
 	// On parcourt uniquement les Tiles dans la zone définie pour les marquer comme ne pouvant pas recevoir de maison
-	for (int x = minX; x <= maxX; x++) {
-		for (int y = minY; y <= maxY; y++) {
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
 				tile->setCannotHaveHouse();
@@ -487,8 +487,8 @@ void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* locatio
 		maxY = this->town->getSizeY() - 1;
 
 	// On parcourt uniquement les Tiles dans la zone définie
-	for (int x = minX; x <= maxX; x++) {
-		for (int y = minY; y <= maxY; y++) {
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
 				// On met à jour la capacité de recevoir une maison de ce tile
@@ -520,11 +520,11 @@ Models::Tile* LogicManager::pickPossibleHouseLocation()
 		return nullptr; // Pas d'emplacement possible
 	}
 	vector<Models::Tile*> candidates;
-	int bestScore = 0;
+	int32 bestScore = 0;
 
 	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base 
 	for (Models::Tile* tile : possibleHouseLocations) {
-		int score = tile->getAttractiveness(Models::Pop::Gueux);
+		int32 score = tile->getAttractiveness(Models::Pop::Gueux);
 		if (score > bestScore) {
 			bestScore = score;
 			candidates.clear();
@@ -537,7 +537,7 @@ Models::Tile* LogicManager::pickPossibleHouseLocation()
 
 	// On choisit un tile au hasard parmi les meilleurs candidats
 	if (!candidates.empty()) {
-		int index = rand() % candidates.size();
+		int32 index = rand() % candidates.size();
 		return candidates[index];
 	}
 

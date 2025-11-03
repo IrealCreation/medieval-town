@@ -1,5 +1,7 @@
 #pragma once
 #include "Construction.h"
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
@@ -7,7 +9,7 @@ namespace Models
 	class ConstructionBuilding : public Construction
 	{
 	public:
-		ConstructionBuilding(const BuildingType& type, Family* family, int x, int y, int rotation);
+		ConstructionBuilding(const BuildingType& type, Family* family, int32 x, int32 y, int32 rotation);
 		const BuildingType& getType() const;
 		Family* getFamily() const;
 

@@ -10,31 +10,31 @@ namespace Models
 	void Family::logicTick() {
 		// Logique de progression du jeu pour la famille, par exemple, mise à jour des ressources
 	}
-	int Family::getId() const {
+	int32 Family::getId() const {
 		return id;
 	}
-	void Family::setId(int newId) {
+	void Family::setId(int32 newId) {
 		id = newId;
 	}
 	std::string Family::getName() const {
 		return name;
 	}
-	int Family::getGold() const {
+	int32 Family::getGold() const {
 		return gold;
 	}
-	int Family::getPrestige() const {
+	int32 Family::getPrestige() const {
 		return prestige;
 	}
-	void Family::addGold(int amount) {
+	void Family::addGold(int32 amount) {
 		gold += amount;
 	}
-	void Family::addPrestige(int amount) {
+	void Family::addPrestige(int32 amount) {
 		prestige += amount;
 	}
-	void Family::removeGold(int amount) {
+	void Family::removeGold(int32 amount) {
 		gold -= amount;
 	}
-	void Family::removePrestige(int amount) {
+	void Family::removePrestige(int32 amount) {
 		prestige -= amount;
 	}
 	void Family::addBuilding(Building* building) {

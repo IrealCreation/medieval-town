@@ -3,6 +3,8 @@
 #include <vector>
 #include "Service.h"
 #include "Pop.h"
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
@@ -40,7 +42,7 @@ namespace Models
 		void addMarginalService(Service service, Building* building); // Ajoute un bâtiment de service pouvant desservir cet endroit pour un nouvel habitant
 		void removeMarginalService(Service service, Building* building); // Retire le bâtiment de service pouvant desservir cet endroit pour le service donné pour un nouvel habitant
 
-		int getAttractiveness(Pop pop) const; // Retourne l'attractivité pour une population en fonction des services disponibles
+		int32 getAttractiveness(Pop pop) const; // Retourne l'attractivité pour une population en fonction des services disponibles
 
 	protected:
 		virtual void updateAttractiveness(); // Met à jour l'attractivité après que les services disponibles aient évolués (virtual pour laisser Tile l'override)
@@ -50,7 +52,7 @@ namespace Models
 
 		std::map<Service, std::vector<Building*>> marginalServiceBuildings; // Pour chaque service, liste des bâtiments de service à portée pouvant accueillir un habitant de plus, afin de calculer l'attractivité. Privée car toute modification doit passer par les setters afin que soit appelé updateAttractiveness()
 
-		std::map<Pop, int> attractiveness; // Attractivité pour une population en fonction des services disponibles
+		std::map<Pop, int32> attractiveness; // Attractivité pour une population en fonction des services disponibles
 	};
 }
 

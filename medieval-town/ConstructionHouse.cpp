@@ -3,13 +3,13 @@
 
 namespace Models
 {
-    ConstructionHouse::ConstructionHouse(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
+    ConstructionHouse::ConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
 		: Construction(x, y, rotation, sizeX, sizeY), niveau(niveau)
     {
 		this->constructionTime = sizeX * sizeY / 8; // Temps de construction égal à la surface de la maison divisé par 8
     }
 
-    int ConstructionHouse::getNiveau() const
+    int32 ConstructionHouse::getNiveau() const
     {
         return niveau;
     }

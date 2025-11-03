@@ -3,6 +3,8 @@
 #include <map>
 #include "Service.h"
 #include "ServiceReceiver.h" 
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models {
 
@@ -13,7 +15,7 @@ namespace Models {
 	class Tile : public Location, public ServiceReceiver
 	{
 	public:
-		Tile(int x, int y);
+		Tile(int32 x, int32 y);
 
 		// Spécifie que ce tile n'est pas éligible pour recevoir une maison. Pour spécifier qu'il a la possibilité de redevenir éligible, il faut appeler updateCanHaveHouse()
 		void setCannotHaveHouse();

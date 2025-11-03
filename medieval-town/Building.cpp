@@ -26,7 +26,7 @@ namespace Models {
 		mustUpdateServed = false;
 
 		// Décompte des populations servies
-		map<Pop, int> totalPopsServed = {
+		map<Pop, int32> totalPopsServed = {
 			{ Pop::Gueux, 0 },
 			{ Pop::Bourgeois, 0 },
 			{ Pop::Noble, 0 }
@@ -45,11 +45,11 @@ namespace Models {
 			family->removeGold(type.getGoldMaintenanceCost());
 
 			// Gain d'or et de prestige grâce aux pops servies
-			int totalGoldGain = 0;
-			int totalPrestigeGain = 0;
+			int32 totalGoldGain = 0;
+			int32 totalPrestigeGain = 0;
 			for (const auto& pair : totalPopsServed) {
 				Pop pop = pair.first;
-				int popCount = pair.second;
+				int32 popCount = pair.second;
 				totalGoldGain += popCount * type.getGoldGainPerPopulation(pop);
 				totalPrestigeGain += popCount * type.getPrestigeGainPerPopulation(pop);
 			}
@@ -76,7 +76,7 @@ namespace Models {
 		return family;
 	}
 
-	void Building::changeCapacityUsed(int delta) {
+	void Building::changeCapacityUsed(int32 delta) {
 		capacityUsed += delta;
 	}
 
@@ -103,10 +103,10 @@ namespace Models {
 		auto houses = LogicManager::getInstance().getHousesInRange(this->getX(), this->getY(), this->type.getRange());
 
 		// Nombre de places restantes dans le bâtiment
-		int capacityLeft = this->type.getMaxCapacity() - capacityUsed;
+		int32 capacityLeft = this->type.getMaxCapacity() - capacityUsed;
 
 		for (auto house : houses) {
-			int housePop = house->getPopTotal();
+			int32 housePop = house->getPopTotal();
 			if (house->getServiceBuilding(this->type.getService()) == nullptr && housePop < capacityLeft) {
 				// La maison n'a pas encore de bâtiment pour ce service, on la récupère dans notre clientèle
 				house->addService(this->type.getService(), this);

@@ -14,7 +14,7 @@ using std::make_shared;
 
 #include <windows.h> // Ajout nécessaire pour SetConsoleOutputCP et CP_UTF8
 
-int main()
+int32 main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
@@ -41,7 +41,7 @@ int main()
 	// Construction d'un bâtiment : Chapelle par Legrand
 	logicManager.startConstructionBuilding("Chapelle", 1, 10, 15, 0);
 
-    int i = 0;
+    int32 i = 0;
     // Boucle des ticks tant que le joueur presse Entrée
     do
     {

@@ -5,7 +5,7 @@
 
 namespace Models
 {
-	Tile::Tile(int x, int y) : Location(x, y, 0) 
+	Tile::Tile(int32 x, int32 y) : Location(x, y, 0) 
 	{
 		// Au début de la partie, toutes les tuiles peuvent recevoir une maison, sauf celles situées trop près du bord de la map
 		if (x < House::minSizeX / 2 
@@ -40,10 +40,10 @@ namespace Models
 	}
 
 	bool Tile::updateCanHaveHouse() {
-		int checkMinX = this->getX() - (House::minSizeX + Location::getMaxSizeX()) / 2;
-		int checkMaxX = this->getX() + (House::minSizeX + Location::getMaxSizeX()) / 2;
-		int checkMinY = this->getY() - (House::minSizeY + Location::getMaxSizeY()) / 2;
-		int checkMaxY = this->getY() + (House::minSizeY + Location::getMaxSizeY()) / 2;
+		int32 checkMinX = this->getX() - (House::minSizeX + Location::getMaxSizeX()) / 2;
+		int32 checkMaxX = this->getX() + (House::minSizeX + Location::getMaxSizeX()) / 2;
+		int32 checkMinY = this->getY() - (House::minSizeY + Location::getMaxSizeY()) / 2;
+		int32 checkMaxY = this->getY() + (House::minSizeY + Location::getMaxSizeY()) / 2;
 
 		// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 		if (checkMinX < 0)
@@ -56,8 +56,8 @@ namespace Models
 			checkMaxY = LogicManager::getInstance().getTown()->getSizeY() - 1;
 
 		// On regarde s'il y a une collision avec une autre Location dans la zone définie
-		for (int checkX = checkMinX; checkX <= checkMaxX; checkX++) {
-			for (int checkY = checkMinY; checkY <= checkMaxY; checkY++) {
+		for (int32 checkX = checkMinX; checkX <= checkMaxX; checkX++) {
+			for (int32 checkY = checkMinY; checkY <= checkMaxY; checkY++) {
 				Models::Location* otherLocation = LogicManager::getInstance().getLocationAt(checkX, checkY);
 				if (otherLocation && otherLocation != this && this->collisionWith(*otherLocation)) {
 					// Collision avec une autre structure détectée : on ne peut pas avoir de maison, fin de la vérification
@@ -70,12 +70,12 @@ namespace Models
 	}
 
 	void Tile::updateAttractiveness() {
-		int attractivenessBefore = getAttractiveness(Pop::Gueux);
+		int32 attractivenessBefore = getAttractiveness(Pop::Gueux);
 
 		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
 		ServiceReceiver::updateAttractiveness();
 
-		int attractivenessAfter = getAttractiveness(Pop::Gueux);
+		int32 attractivenessAfter = getAttractiveness(Pop::Gueux);
 
 		// Si l'attractivité est passée de plus de 0 à 0...
 		if (attractivenessBefore > 0 && attractivenessAfter <= 0) {

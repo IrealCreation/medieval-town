@@ -59,14 +59,14 @@ namespace Models
 		}
 	}
 
-	int ServiceReceiver::getAttractiveness(Pop pop) const
+	int32 ServiceReceiver::getAttractiveness(Pop pop) const
 	{
 		return attractiveness.find(pop)->second;
 	}
 
 	void ServiceReceiver::updateAttractiveness()
 	{
-		map<Pop, int> scoreByPop = {
+		map<Pop, int32> scoreByPop = {
 			{ Pop::Gueux, 0 },
 			{ Pop::Bourgeois, 0 },
 			{ Pop::Noble, 0 }

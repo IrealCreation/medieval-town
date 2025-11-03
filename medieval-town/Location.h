@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {

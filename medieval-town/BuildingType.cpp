@@ -1,10 +1,10 @@
 #include "BuildingType.h"
 
 namespace Models {
-	BuildingType::BuildingType(const std::string& id, const std::string& name, float sizeX, float sizeY, int goldConstructionCost, int goldMaintenanceCost,
-		const std::map<Pop, int>& goldCostPerPopulation, const std::map<Pop, int>& goldGainPerPopulation,
-		const std::map<Pop, int>& prestigeGainPerPopulation, int range, int maxCapacity,
-		int constructionTime, Service service)
+	BuildingType::BuildingType(const std::string& id, const std::string& name, float sizeX, float sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
+		const std::map<Pop, int32>& goldCostPerPopulation, const std::map<Pop, int32>& goldGainPerPopulation,
+		const std::map<Pop, int32>& prestigeGainPerPopulation, int32 range, int32 maxCapacity,
+		int32 constructionTime, Service service)
 		: id(id), name(name), sizeX(sizeX), sizeY(sizeY), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
 		goldCostPerPopulation(goldCostPerPopulation), goldGainPerPopulation(goldGainPerPopulation),
 		prestigeGainPerPopulation(prestigeGainPerPopulation), range(range), maxCapacity(maxCapacity),
@@ -22,37 +22,37 @@ namespace Models {
 	float BuildingType::getSizeY() const {
 		return sizeY;
 	}
-	int BuildingType::getGoldConstructionCost() const {
+	int32 BuildingType::getGoldConstructionCost() const {
 		return goldConstructionCost;
 	}
-	int BuildingType::getGoldMaintenanceCost() const {
+	int32 BuildingType::getGoldMaintenanceCost() const {
 		return goldMaintenanceCost;
 	}
-	int BuildingType::getGoldCostPerPopulation(Pop pop) const {
+	int32 BuildingType::getGoldCostPerPopulation(Pop pop) const {
 		if (!isPopServed(pop)) {
 			return 0;
 		}
 		return goldCostPerPopulation.at(pop);
 	}
-	int BuildingType::getGoldGainPerPopulation(Pop pop) const {
+	int32 BuildingType::getGoldGainPerPopulation(Pop pop) const {
 		if (!isPopServed(pop)) {
 			return 0;
 		}
 		return goldGainPerPopulation.at(pop);
 	}
-	int BuildingType::getPrestigeGainPerPopulation(Pop pop) const {
+	int32 BuildingType::getPrestigeGainPerPopulation(Pop pop) const {
 		if (!isPopServed(pop)) {
 			return 0;
 		}
 		return prestigeGainPerPopulation.at(pop);
 	}
-	int BuildingType::getRange() const {
+	int32 BuildingType::getRange() const {
 		return range;
 	}
-	int BuildingType::getMaxCapacity() const {
+	int32 BuildingType::getMaxCapacity() const {
 		return maxCapacity;
 	}
-	int BuildingType::getConstructionTime() const {
+	int32 BuildingType::getConstructionTime() const {
 		return constructionTime;
 	}
 	const Service& BuildingType::getService() const {

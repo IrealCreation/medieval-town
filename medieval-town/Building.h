@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include "Location.h" // Classe parent : on doit inclure son header
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
@@ -25,7 +27,7 @@ namespace Models
 
 		Family* getFamily() const; // Retourne la famille propriétaire du bâtiment ; nullptr si pas de propriétaire
 
-		void changeCapacityUsed(int delta); // Change la capacité utilisée du bâtiment de delta (positif ou négatif)
+		void changeCapacityUsed(int32 delta); // Change la capacité utilisée du bâtiment de delta (positif ou négatif)
 
 		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce bâtiment
 		void removeHouseServed(House* house); // Retire une maison desservie par ce bâtiment
@@ -39,8 +41,8 @@ namespace Models
 		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par référence et en const
 		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
 		std::string name; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
-		int dateCreation; // Date de création du bâtiment (fin du chantier de construction)
-		int capacityUsed; // Capacité actuellement utilisée (nombre de pops servies)
+		int32 dateCreation; // Date de création du bâtiment (fin du chantier de construction)
+		int32 capacityUsed; // Capacité actuellement utilisée (nombre de pops servies)
 
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit être mise à jour au prochain tick

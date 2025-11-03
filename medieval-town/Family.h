@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <cstdint>
+using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
@@ -16,15 +18,15 @@ namespace Models
 
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
-		int getId() const;
-		void setId(int newId);
+		int32 getId() const;
+		void setId(int32 newId);
 		std::string getName() const;
-		int getGold() const;
-		int getPrestige() const;
-		void addGold(int amount);
-		void addPrestige(int amount);
-		void removeGold(int amount);
-		void removePrestige(int amount);
+		int32 getGold() const;
+		int32 getPrestige() const;
+		void addGold(int32 amount);
+		void addPrestige(int32 amount);
+		void removeGold(int32 amount);
+		void removePrestige(int32 amount);
 
 		void addBuilding(Building* building);
 		void removeBuilding(Building* building);
@@ -32,10 +34,10 @@ namespace Models
 		void removeConstruction(Construction* construction);
 
 	protected:
-		int id; // ID unique de la famille dans la ville
+		int32 id; // ID unique de la famille dans la ville
 		std::string name;
-		int gold;
-		int prestige;
+		int32 gold;
+		int32 prestige;
 		std::vector<Building*> buildings; // Liste des bâtiments de la famille (en référence pour éviter les copies)
 		std::vector<Construction*> constructions; // Liste des chantiers de construction de la famille (en référence pour éviter les copies)
 	};

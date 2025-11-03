@@ -5,7 +5,7 @@
 
 namespace Models
 {
-	Construction::Construction(int x, int y, int rotation, float sizeX, float sizeY)
+	Construction::Construction(int32 x, int32 y, int32 rotation, float sizeX, float sizeY)
 		: Location(x, y, rotation, sizeX, sizeY), daysDone(0) 
 	{
 		dateStart = LogicManager::getInstance().getTown()->getDate(); // On initialise la date de début du chantier à la date actuelle de la ville
@@ -18,15 +18,15 @@ namespace Models
 
 		// Dans classe fille, vérifier si la construction est terminée
 	}
-	int Construction::getDaysDone() const
+	int32 Construction::getDaysDone() const
 	{
 		return daysDone;
 	}
-	int Construction::getDaysRemaining() const
+	int32 Construction::getDaysRemaining() const
 	{
 		return constructionTime - daysDone;
 	}
-	int Construction::percentDone() const
+	int32 Construction::percentDone() const
 	{
 		return (daysDone * 100) / constructionTime;
 	}

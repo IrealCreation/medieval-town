@@ -4,7 +4,7 @@
 
 namespace Models
 {
-	House::House(int x, int y, int rotation, int sizeX, int sizeY, int niveau)
+	House::House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
 		: Location(x, y, rotation, sizeX, sizeY), niveau(niveau)
 	{ 
 		// On initialise la date de création à la date actuelle de la ville
@@ -18,20 +18,20 @@ namespace Models
 		};
 		// TODO: ajuster les pops en fonction du niveau de la maison
 	}
-	int House::getNiveau() const
+	int32 House::getNiveau() const
 	{
 		return niveau;
 	}
-	int House::getPop(Pop pop) const
+	int32 House::getPop(Pop pop) const
 	{
 		if (pops.find(pop) != pops.end())
 			return pops.at(pop);
 		else
 			return 0;
 	}
-	int House::getPopTotal() const
+	int32 House::getPopTotal() const
 	{
-		int total = 0;
+		int32 total = 0;
 		for (const auto& pair : pops) {
 			total += pair.second;
 		}
