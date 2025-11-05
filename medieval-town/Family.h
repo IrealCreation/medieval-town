@@ -14,13 +14,14 @@ namespace Models
 	class Family
 	{
 	public:
-		Family(const std::string name);
+		Family(const std::string name, const bool isAi);
 
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		int32 getId() const;
 		void setId(int32 newId);
 		std::string getName() const;
+		bool getIsAi() const;
 		int32 getGold() const;
 		int32 getPrestige() const;
 		void addGold(int32 amount);
@@ -35,6 +36,7 @@ namespace Models
 
 	protected:
 		int32 id; // ID unique de la famille dans la ville
+		bool isAi; // Indique si la famille est contrôlée par l'IA
 		std::string name;
 		int32 gold;
 		int32 prestige;

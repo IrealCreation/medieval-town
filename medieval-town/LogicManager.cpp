@@ -9,6 +9,7 @@
 #include "Construction.h"
 #include "ConstructionBuilding.h"
 #include "ConstructionHouse.h"
+#include "Pop.h"
 #include <iostream> // Pour le log()
 #include "LogicAPI.h"
 
@@ -38,8 +39,8 @@ void LogicManager::startGame()
 	town->startTown();
 
 	// Création des familles
-	this->addFamily("Salviati");
-	this->addFamily("Legrand");
+	this->addFamily("Salviati", true);
+	this->addFamily("Legrand", true);
 
 	// Initialisation des BuildingTypes
 	this->initBuildingTypes();
@@ -71,9 +72,9 @@ Models::Town* LogicManager::getTown()
 	return this->town.get();
 }
 
-int32 LogicManager::addFamily(const string& name)
+int32 LogicManager::addFamily(const string& name, const bool isAi)
 {
-	unique_ptr<Models::Family> family = make_unique<Models::Family>(name);
+	unique_ptr<Models::Family> family = make_unique<Models::Family>(name, isAi);
 	int32 familyId = this->town->addFamily(std::move(family));
 	return familyId;
 }
@@ -260,7 +261,7 @@ void LogicManager::destroyBuilding(Models::Building* building)
 }
 
 
-void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
+void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Models::Pop, int32> previewPops)
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
@@ -269,7 +270,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	}
 
 	// Création de la Construction
-	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau);
+	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau, previewPops);
 
 	// On log l'événement
 	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
@@ -287,16 +288,16 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
 {
 	// On crée la nouvelle House qui vient remplacer la Construction
-	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getNiveau());
+	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getNiveau(), construction->getPreviewPops());
 	// Pas besoin de retirer la Construction du cache de localisation car
 	// On supprime le chantier de construction
 	town->removeConstruction(construction);
 	// UE : despawn l'objet Construction, petite animation de construction achevée
 }
 
-void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau)
+void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, map<Models::Pop, int32> startingPops)
 {
-	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau);
+	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau, startingPops);
 	// On log l'événement
 	this->log("Maison achevee a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation

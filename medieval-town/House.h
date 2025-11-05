@@ -15,23 +15,30 @@ namespace Models
     class House : public Location, public ServiceReceiver
     {
     public:
-        House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau);
+        House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Pop, int32> startingPops);
 
         // Getters
         int32 getNiveau() const;
         int32 getPop(Pop pop) const; // Retourne le nombre de pops résidentes dans la maison pour le type de pop donné
 		int32 getPopTotal() const; // Retourne le nombre total de pops résidentes dans la maison
+        int32 getMaxPop(Pop pop) const; // Retourne le nombre maximum d'habitants pour le type de pop donné
+		int32 getFreePop(Pop pop) const; // Retourne le nombre de places libres pour le type de pop donné
 
 		void logicTick();
 
+		void addPop(Pop pop, int32 number); // Ajoute des habitants dans la maison
+
         static const int32 minSizeX = 4; // Taille minimale sur l'axe X d'une maison
         static const int32 minSizeY = 6; // Taille minimale sur l'axe Y d'une maison
+
+		static int32 getBaseCapacity(int32 sizeX, int32 sizeY); // Retourne la capacité de base d'une maison en fonction de sa taille
 
     protected:
 		int32 dateCreation; // Date de création de la maison (fin du chantier de construction)
 		int32 niveau; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
-		std::map<Pop, int32> pops; // Populations résidentes dans la maison
+        std::map<Pop, int32> pops; // Populations résidentes dans la maison
+        std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
     };
 }
 

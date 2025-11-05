@@ -4,8 +4,8 @@
 
 namespace Models
 {
-	Family::Family(const std::string name)
-		: name(name), gold(1000), prestige(100) {}
+	Family::Family(const std::string name, const bool isAi)
+		: name(name), isAi(isAi), gold(1000), prestige(100) {}
 
 	void Family::logicTick() {
 		// Logique de progression du jeu pour la famille, par exemple, mise à jour des ressources
@@ -18,6 +18,9 @@ namespace Models
 	}
 	std::string Family::getName() const {
 		return name;
+	}
+	bool Family::getIsAi() const {
+		return isAi;
 	}
 	int32 Family::getGold() const {
 		return gold;

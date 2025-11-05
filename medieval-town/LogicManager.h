@@ -23,6 +23,7 @@ namespace Models {
 	class Construction;
 	class ConstructionBuilding;
 	class ConstructionHouse;
+	enum class Pop;
 }
 class ALogicAPI;
 
@@ -53,7 +54,7 @@ public:
 	Models::Town* getTown();
 
 	// Ajoute une famille à partie, et renvoie son ID
-	int32 addFamily(const string& name);
+	int32 addFamily(const string& name, const bool isAi);
 
 	// Initialise les BuildingTypes
 	void initBuildingTypes();
@@ -73,11 +74,11 @@ public:
 	void destroyBuilding(Models::Building* building);
 
 	// Débute la construction d'une maison d'habitation
-	void startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau);
+	void startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Models::Pop, int32> previewPops);
 	// Termine la construction d'une maison d'habitation
 	void constructionHouseDone(Models::ConstructionHouse* construction);
 	// Ajoute une maison d'habitation achevée
-	void createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau);
+	void createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, map<Models::Pop, int32> startingPops);
 	// Détruire une maison d'habitation
 	void destroyHouse(Models::House* house);
 

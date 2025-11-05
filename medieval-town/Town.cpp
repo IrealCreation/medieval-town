@@ -38,7 +38,10 @@ namespace Models
 			// La ville est attractive
 			demographicPressure += 50; 
 			// TODO: calculer la pression démographique en fonction de l'attractivité, de la population actuelle, etc.
-			if (demographicPressure >= 100) { // Pour test, accroissement de la population tous les 2 jours
+			if (demographicPressure >= 100) { 
+				// Assez de pression démographique pour accroitre la population
+
+				int32 incomingPops = demographicPressure / 100; // Nombre de pops souhaitant s'installer en ville
 
 				// 60% de chance d'essayer d'avoir une grande maison
 				bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
@@ -51,14 +54,28 @@ namespace Models
 
 				if(largeHouse) {
 					// On fait une grande maison
-					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8, 1);
+					// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
+					int32 maxIncomingPops = House::getBaseCapacity(5, 8);
+					if (incomingPops > maxIncomingPops) {
+						incomingPops = maxIncomingPops;
+					}
+					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8, 1,
+						{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
+					);
 				}
 				else {
 					// On fait une petite maison
-					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 4, 6, 1);
+					// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
+					int32 maxIncomingPops = House::getBaseCapacity(4, 6);
+					if (incomingPops > maxIncomingPops) {
+						incomingPops = maxIncomingPops;
+					}
+					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 4, 6, 1, 
+						{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
+					);
 				}
 
-				demographicPressure -= 100;
+				demographicPressure -= 100 * incomingPops;
 			}
 		}
 		// TODO: faire spawn des maisons d'un niveau plus élevé si la ville est assez évoluée
