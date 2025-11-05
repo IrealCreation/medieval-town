@@ -66,6 +66,10 @@ namespace Models
 			int32 date = 1; // Date actuelle de la ville (en jours depuis le début de la partie)
 			int32 demographicPressure = 100; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint. On commence avec une pression initiale élevée pour immédiatement avoir de nouvelles maisons dès que des emplacements sont attractifs.
 
+			void demographicGrowthTick(); // Gère l'éventuelle croissance démographique de la ville à chaque tick (appelé depuis LogicTick)
+			void demographicGrowth_newHouse(Tile* tile, int32 incomingPops); // Gère la construction d'une nouvelle maison d'habitation (appelé depuis demographicGrowthTick)
+			void demographicGrowth_existingHouse(House* house, int32 incomingPops); // Gère l'agrandissement d'une maison existante (appelé depuis demographicGrowthTick)
+
 			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gère leur cycle de vie ; ils seront communiqués sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville
 			vector<unique_ptr<Construction>> constructions; // Liste des chantiers de construction de la ville

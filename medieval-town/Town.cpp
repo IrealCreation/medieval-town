@@ -32,54 +32,7 @@ namespace Models
 		date++;
 
 		// -- Pression démographique et éventuel accroissement de la population
-		// On regarde si la ville est attractive (si une case peut recevoir de la population)
-		Tile* possibleHouseLocation = LogicManager::getInstance().pickPossibleHouseLocation();
-		if (possibleHouseLocation != nullptr) {
-			// La ville est attractive
-			demographicPressure += 50; 
-			// TODO: calculer la pression démographique en fonction de l'attractivité, de la population actuelle, etc.
-			if (demographicPressure >= 100) { 
-				// Assez de pression démographique pour accroitre la population
-
-				int32 incomingPops = demographicPressure / 100; // Nombre de pops souhaitant s'installer en ville
-
-				// 60% de chance d'essayer d'avoir une grande maison
-				bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
-				if (largeHouse) {
-					// Vérifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
-					if (!LogicManager::getInstance().isValidLocation(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8)) {
-						largeHouse = false;
-					}
-				}
-
-				if(largeHouse) {
-					// On fait une grande maison
-					// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
-					int32 maxIncomingPops = House::getBaseCapacity(5, 8);
-					if (incomingPops > maxIncomingPops) {
-						incomingPops = maxIncomingPops;
-					}
-					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 5, 8, 1,
-						{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
-					);
-				}
-				else {
-					// On fait une petite maison
-					// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
-					int32 maxIncomingPops = House::getBaseCapacity(4, 6);
-					if (incomingPops > maxIncomingPops) {
-						incomingPops = maxIncomingPops;
-					}
-					LogicManager::getInstance().startConstructionHouse(possibleHouseLocation->getX(), possibleHouseLocation->getY(), 0, 4, 6, 1, 
-						{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
-					);
-				}
-
-				demographicPressure -= 100 * incomingPops;
-			}
-		}
-		// TODO: faire spawn des maisons d'un niveau plus élevé si la ville est assez évoluée
-		// TODO: évolution des maisons existantes
+		this->demographicGrowthTick();
 
 		// La liste des constructions peut changer pendant le tick (fin de construction), donc on en fait une copie avant de la parcourir
 		vector<Construction*> constructionsCopy;
@@ -95,6 +48,102 @@ namespace Models
 		for (const auto& building : buildings) {
 			building->logicTick();
 		}
+	}
+
+	void Town::demographicGrowthTick() {
+		// Trouvons la maison existante la plus attractive pouvant accueillir un nouvel habitant
+		House* existingHouseCandidate = LogicManager::getInstance().getMostAttractiveHouse();
+		// Trouvons l'emplacement le plus attractif pour construire une nouvelle maison
+		Tile* newHouseCandidate = LogicManager::getInstance().getBestHouseLocation();
+
+		int32 attractiveness = 0; // Attractivité de l'emplacement retenu et de la ville
+		bool newHouse = false; // True si on construit une nouvelle maison, false si on émigre dans une maison existante
+
+		// Regardons qu'est-ce qui est le plus attractif
+		if(existingHouseCandidate != nullptr) {
+			attractiveness = existingHouseCandidate->getAttractiveness(Pop::Gueux);
+		}
+		if(newHouseCandidate != nullptr) {
+			int32 newHouseAttractiveness = newHouseCandidate->getAttractiveness(Pop::Gueux);
+			if (newHouseAttractiveness > attractiveness) {
+				// L'emplacement pour une nouvelle maison est plus attractif que la meilleure maison existante
+				attractiveness = newHouseAttractiveness;
+				newHouse = true;
+			}
+		}
+
+		// Si l'attractivité est restée à 0, pas de croissance à ce tick
+		if (attractiveness == 0) {
+			return;
+		}
+		
+		// TODO: calcul de la pression démographique en fonction de l'attractivité
+		demographicPressure += 50;
+
+		if (demographicPressure >= 100) {
+			// Assez de pression démographique pour accroitre la population
+
+			int32 incomingPops = demographicPressure / 100; // Nombre de pops souhaitant s'installer en ville
+
+			if(newHouse) {
+				// On construit une nouvelle maison
+				incomingPops = this->demographicGrowth_newHouse(newHouseCandidate, incomingPops);
+			}
+			else {
+				// On agrandit une maison existante
+				incomingPops = this->demographicGrowth_existingHouse(existingHouseCandidate, incomingPops);
+			}
+
+			// On diminue la pression démographique de 100 par nouvel habitant
+			demographicPressure -= 100 * incomingPops;
+		}
+	}
+
+	int32 Town::demographicGrowth_newHouse(Tile* newHouseLocation, int32 incomingPops) {
+		// 60% de chance d'essayer d'avoir une grande maison
+		bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
+		if (largeHouse) {
+			// Vérifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
+			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 8)) {
+				largeHouse = false;
+			}
+		}
+
+		if (largeHouse) {
+			// On fait une grande maison
+			// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
+			int32 maxIncomingPops = House::getBaseCapacity(5, 8);
+			if (incomingPops > maxIncomingPops) {
+				incomingPops = maxIncomingPops;
+			}
+			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 8, 1,
+				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
+			);
+		}
+		else {
+			// On fait une petite maison
+			// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
+			int32 maxIncomingPops = House::getBaseCapacity(4, 6);
+			if (incomingPops > maxIncomingPops) {
+				incomingPops = maxIncomingPops;
+			}
+			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 4, 6, 1,
+				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
+			);
+		}
+
+		return incomingPops;
+
+		// TODO: faire spawn des maisons d'un niveau plus élevé si la ville est assez évoluée
+	}
+
+	int32 Town::demographicGrowth_existingHouse(House* house, int32 incomingPops) {
+		// Vérifions les capacités de la maison
+		if(incomingPops >= house->getFreePop(Pop::Gueux)) {
+			incomingPops = house->getFreePop(Pop::Gueux);
+		}
+		house->addPop(Pop::Gueux, incomingPops);
+		return incomingPops;
 	}
 
 	std::string Town::getName() const

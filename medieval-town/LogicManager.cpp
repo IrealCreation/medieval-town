@@ -515,7 +515,7 @@ void LogicManager::removePossibleHouseLocation(Models::Tile* tile)
 	}
 }
 
-Models::Tile* LogicManager::pickPossibleHouseLocation()
+Models::Tile* LogicManager::getBestHouseLocation()
 {
 	if (possibleHouseLocations.empty()) {
 		return nullptr; // Pas d'emplacement possible
@@ -542,6 +542,36 @@ Models::Tile* LogicManager::pickPossibleHouseLocation()
 		return candidates[index];
 	}
 
+	return nullptr;
+}
+
+Models::House* LogicManager::getMostAttractiveHouse()
+{
+	vector<Models::House*> candidates;
+	int32 bestScore = 0;
+	// On parcourt toutes les maisons pour trouver la plus attractive pouvant accueillir un nouvel habitant
+	for (const auto& pairX : mapHouses) {
+		for (const auto& pairY : pairX.second) {
+			Models::House* house = pairY.second;
+			if (house->getFreePop(Models::Pop::Gueux) > 0) {
+				int32 score = house->getAttractiveness(Models::Pop::Gueux);
+				if (score > bestScore) {
+					bestScore = score;
+					candidates.clear();
+					candidates.push_back(house);
+				}
+				else if (score == bestScore) {
+					candidates.push_back(house);
+				}
+			}
+		}
+	}
+	// On choisit une maison au hasard parmi les meilleures candidates
+	if (!candidates.empty()) {
+		int32 index = this->randRange(0, candidates.size() - 1);
+		return candidates[index];
+	}
+	// Si aucune maison n'a été trouvée, on retourne nullptr
 	return nullptr;
 }
 
