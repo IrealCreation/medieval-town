@@ -550,19 +550,16 @@ Models::House* LogicManager::getMostAttractiveHouse()
 	vector<Models::House*> candidates;
 	int32 bestScore = 0;
 	// On parcourt toutes les maisons pour trouver la plus attractive pouvant accueillir un nouvel habitant
-	for (const auto& pairX : mapHouses) {
-		for (const auto& pairY : pairX.second) {
-			Models::House* house = pairY.second;
-			if (house->getFreePop(Models::Pop::Gueux) > 0) {
-				int32 score = house->getAttractiveness(Models::Pop::Gueux);
-				if (score > bestScore) {
-					bestScore = score;
-					candidates.clear();
-					candidates.push_back(house);
-				}
-				else if (score == bestScore) {
-					candidates.push_back(house);
-				}
+	for (Models::House* house : this->town->getHouses()) {
+		if (house->getFreePop(Models::Pop::Gueux) > 0) {
+			int32 score = house->getAttractiveness(Models::Pop::Gueux);
+			if (score > bestScore) {
+				bestScore = score;
+				candidates.clear();
+				candidates.push_back(house);
+			}
+			else if (score == bestScore) {
+				candidates.push_back(house);
 			}
 		}
 	}

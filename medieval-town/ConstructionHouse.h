@@ -7,6 +7,9 @@ using int32 = uint32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
+	// Forward declarations
+	enum class Pop;
+
 	// Chantier de construction d'une maison d'habitation
     class ConstructionHouse : public Construction
     {
