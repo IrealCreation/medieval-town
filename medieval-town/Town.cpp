@@ -77,8 +77,8 @@ namespace Models
 			return;
 		}
 		
-		// TODO: calcul de la pression démographique en fonction de l'attractivité
-		demographicPressure += 100;
+		// TODO: calcul plus fin de la pression démographique en fonction de l'attractivité
+		demographicPressure += 100 * attractiveness;
 
 		if (demographicPressure >= 100) {
 			// Assez de pression démographique pour accroitre la population
@@ -143,6 +143,7 @@ namespace Models
 			incomingPops = house->getFreePop(Pop::Gueux);
 		}
 		house->addPop(Pop::Gueux, incomingPops);
+		LogicManager::getInstance().log("La maison existante en " + std::to_string(house->getX()) + ";" + std::to_string(house->getY()) + " accueille " + std::to_string(incomingPops) + " nouveaux habitants.");
 		return incomingPops;
 	}
 
