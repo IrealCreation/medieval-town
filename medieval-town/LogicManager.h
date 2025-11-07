@@ -90,7 +90,7 @@ public:
 	vector<Models::Tile*> getTilesInRange(int32 x, int32 y, int32 range);
 
 	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
-	bool isValidLocation(float x, float y, float rotation, float sizeX, float sizeY); 
+	bool isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
 
 	// Ajoute un tile dans la liste des candidats pour la construction d'une maison
 	void addPossibleHouseLocation(Models::Tile* tile);

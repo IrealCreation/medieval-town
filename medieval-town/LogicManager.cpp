@@ -406,7 +406,7 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY
 	return result;
 }
 
-bool LogicManager::isValidLocation(float x, float y, float rotation, float sizeX, float sizeY)
+bool LogicManager::isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY)
 {
 	// On crée une Location temporaire pour vérifier les collisions
 	Models::Location tempLocation(x, y, rotation, sizeX, sizeY);
@@ -419,10 +419,10 @@ bool LogicManager::isValidLocation(float x, float y, float rotation, float sizeX
 	}
 
 	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
-	float minX = x - (sizeX + Models::Location::getMaxSizeX()) / 2;
-	float maxX = x + (sizeX + Models::Location::getMaxSizeX()) / 2;
-	float minY = y - (sizeY + Models::Location::getMaxSizeY()) / 2;
-	float maxY = y + (sizeY + Models::Location::getMaxSizeY()) / 2;
+	int32 minX = x - (sizeX + Models::Location::getMaxSizeX()) / 2;
+	int32 maxX = x + (sizeX + Models::Location::getMaxSizeX()) / 2;
+	int32 minY = y - (sizeY + Models::Location::getMaxSizeY()) / 2;
+	int32 maxY = y + (sizeY + Models::Location::getMaxSizeY()) / 2;
 
 	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 	if (minX < 0) minX = 0;
