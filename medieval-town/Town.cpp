@@ -78,7 +78,7 @@ namespace Models
 		}
 		
 		// TODO: calcul de la pression démographique en fonction de l'attractivité
-		demographicPressure += 50;
+		demographicPressure += 100;
 
 		if (demographicPressure >= 100) {
 			// Assez de pression démographique pour accroitre la population

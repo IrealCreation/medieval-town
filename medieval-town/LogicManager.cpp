@@ -104,12 +104,12 @@ void LogicManager::initBuildingTypes()
 	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
 		"Chapelle",
 		"Chapelle",
-		5, 5,
+		6, 12,
 		200, 20,
 		goldCostPerPopulation,
 		goldGainPerPopulation,
 		prestigeGainPerPopulation,
-		10, 50, 5,
+		24, 200, 5,
 		Models::Service::Priere
 	);
 	addBuildingType(std::move(buildingType_Chapelle));
@@ -133,12 +133,12 @@ void LogicManager::initBuildingTypes()
 	unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
 		"Puits",
 		"Puits",
-		2, 2,
+		3, 3,
 		50, 5,
 		goldCostPerPopulation,
 		goldGainPerPopulation,
 		prestigeGainPerPopulation,
-		8, 40, 3,
+		12, 50, 3,
 		Models::Service::Eau
 	);
 	addBuildingType(std::move(buildingType_Puits));

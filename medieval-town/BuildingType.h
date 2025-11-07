@@ -42,7 +42,7 @@ namespace Models {
 		// TODO: coutRessourceParPop
 		std::map<Pop, int32> goldGainPerPopulation; // Quantité d'or gagnée par population servie
 		std::map<Pop, int32> prestigeGainPerPopulation; // Quantité de prestige gagnée par population servie
-		int32 range; // Portée d'action du bâtiment, en mètres
+		int32 range; // Rayon d'action du bâtiment, en mètres à partir de son point d'origine
 		int32 maxCapacity; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
 		int32 constructionTime; // Temps de construction du bâtiment, en jours
 		const Service service; // Type de service fourni par le bâtiment

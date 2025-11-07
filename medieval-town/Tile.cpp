@@ -70,6 +70,10 @@ namespace Models
 	}
 
 	void Tile::updateAttractiveness() {
+		if(this->getX() == 20 && this->getY() == 20)
+		{
+			// Point d'arrêt de debug
+		}
 		int32 attractivenessBefore = getAttractiveness(Pop::Gueux);
 
 		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
