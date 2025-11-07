@@ -3,7 +3,7 @@
 #include <vector>
 #include "Location.h" // Classe parent : on doit inclure son header
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {

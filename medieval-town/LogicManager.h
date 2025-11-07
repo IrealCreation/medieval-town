@@ -9,7 +9,7 @@ using std::string;
 using std::map;
 using std::vector;
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 // Forward declarations pour éviter les dépendances circulaires
 namespace Models {
@@ -103,7 +103,6 @@ public:
 	Models::House* getMostAttractiveHouse();
 
 	int32 randRange(int32 min, int32 max); // Retourne un entier aléatoire entre min et max inclus
-	int32 randRange(int min, int max); // Retourne un entier aléatoire entre min et max inclus
 	float randRange(float min, float max); // Retourne un float aléatoire entre min et max inclus
 
 protected:

@@ -9,7 +9,7 @@ using std::unique_ptr;
 using std::shared_ptr;
 using std::map;
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 // Pourquoi est-ce qu'il en a besoin pour les vector<unique_ptr<Construction>>, mais pas de Family.h ?
 #include "Building.h"

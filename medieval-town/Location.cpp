@@ -1,9 +1,10 @@
 #include "Location.h"
 #include <cmath> // Pour std::sqrt
+#include <wtypes.h>
 
 namespace Models
 {
-	Location::Location(float x, float y, float rotation)
+	Location::Location(int32 x, int32 y, float rotation)
 	{
 		this->x = x;
 		this->y = y;
@@ -12,7 +13,7 @@ namespace Models
 		this->sizeX = 1; 
 		this->sizeY = 1;
 	}
-	Location::Location(float x, float y, float rotation, float sizeX, float sizeY)
+	Location::Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY)
 	{
 		this->x = x;
 		this->y = y;
@@ -27,51 +28,50 @@ namespace Models
 	}
 	
 	// Initialisation des attributs statiques
-	float Location::maxSizeX = 1;
-	float Location::maxSizeY = 1;
+	int32 Location::maxSizeX = 1;
+	int32 Location::maxSizeY = 1;
 
 
 	// Getters
-	float Location::getX() const {
+	int32 Location::getX() const {
 		return this->x;
 	}
-	float Location::getY() const {
+	int32 Location::getY() const {
 		return this->y;
 	}
 	float Location::getRotation() const {
 		return this->rotation;
 	}
-	float Location::getSizeX() const {
+	int32 Location::getSizeX() const {
 		return this->sizeX;
 	}
-	float Location::getSizeY() const {
+	int32 Location::getSizeY() const {
 		return this->sizeY;
 	}
 
-	float Location::getMaxSizeX() {
+	int32 Location::getMaxSizeX() {
 		return Location::maxSizeX;
 	}
-	float Location::getMaxSizeY() {
+	int32 Location::getMaxSizeY() {
 		return Location::maxSizeY;
 	}
 
 	float Location::getDistance(const Location& other) const {
-		float dx = this->x - other.x;
-		float dy = this->y - other.y;
-		return std::sqrt(dx * dx + dy * dy); // Vive Pythagore !
+		return getDistance(other.x, other.y);
 	}
-	float Location::getDistance(float otherX, float otherY) const {
-		float dx = this->x - otherX;
-		float dy = this->y - otherY;
+	float Location::getDistance(int32 otherX, int32 otherY) const {
+		int32 dx = this->x - otherX;
+		int32 dy = this->y - otherY;
 		return std::sqrt(dx * dx + dy * dy);
 	}
 
 	bool Location::collisionWith(const Location& other) const {
 		// AABB collision detection
 		return 
-			(std::abs(this->x - other.x) * 2 < (this->getSizeX() + other.getSizeX())) 
+			(std::abs(static_cast<int>(this->x - other.x) * 2)
+				< this->getSizeX() + other.getSizeX())
 			&&
-			(std::abs(this->y - other.y) * 2 < (this->getSizeY() + other.getSizeY()));
+			(std::abs(static_cast<int>(this->y - other.y) * 2) < this->getSizeY() + other.getSizeY());
 	}
 
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille

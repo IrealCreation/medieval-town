@@ -109,7 +109,7 @@ void LogicManager::initBuildingTypes()
 		goldCostPerPopulation,
 		goldGainPerPopulation,
 		prestigeGainPerPopulation,
-		24, 200, 5,
+		20, 200, 5,
 		Models::Service::Priere
 	);
 	addBuildingType(std::move(buildingType_Chapelle));
@@ -450,10 +450,10 @@ bool LogicManager::isValidLocation(int32 x, int32 y, float rotation, int32 sizeX
 void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
 {
 	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
-	float minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
-	float maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
-	float minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
-	float maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
+	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
+	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
+	int32 minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
+	int32 maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
 	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 	if (minX < 0) minX = 0;
 	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
@@ -473,10 +473,10 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* location)
 {
 	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
-	float minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
-	float maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
-	float minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
-	float maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
+	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
+	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
+	int32 minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
+	int32 maxY = location->getY() + (location->getSizeY() + Models::House::minSizeY) / 2;
 	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
 	if (minX < 0) 
 		minX = 0;
@@ -577,15 +577,6 @@ int32 LogicManager::randRange(int32 min, int32 max)
 	if (api != nullptr) {
 		// Si on est dans le moteur de jeu, on passe par l'API
 		return api->RandRange(min, max);
-	}
-	return min + (rand() % (max - min + 1));
-}
-
-int32 LogicManager::randRange(int min, int max)
-{
-	if (api != nullptr) {
-		// Si on est dans le moteur de jeu, on passe par l'API
-		return api->RandRange(static_cast<int32>(min), static_cast<int32>(max));
 	}
 	return min + (rand() % (max - min + 1));
 }

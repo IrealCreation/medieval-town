@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
@@ -9,21 +9,21 @@ namespace Models
 	{
 	public:
 		// Location avec une taille par défaut de 1x1 (un tile)
-		Location(float x, float y, float rotation);
+		Location(int32 x, int32 y, float rotation);
 		// Location avec une taille spécifiée
-		Location(float x, float y, float rotation, float sizeX, float sizeY);
+		Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
 
-		float getX() const;
-		float getY() const;
+		int32 getX() const;
+		int32 getY() const;
 		float getRotation() const;
-		float getSizeX() const;
-		float getSizeY() const;
+		int32 getSizeX() const;
+		int32 getSizeY() const;
 
-		static float getMaxSizeX();
-		static float getMaxSizeY();
+		static int32 getMaxSizeX();
+		static int32 getMaxSizeY();
 
 		float getDistance(const Location& other) const;
-		float getDistance(float otherX, float otherY) const;
+		float getDistance(int32 otherX, int32 otherY) const;
 
 		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
 		bool collisionWith(const Location& other) const;
@@ -31,14 +31,14 @@ namespace Models
 		// Possède un operator==
 
 	protected:
-		float x;
-		float y;
+		int32 x;
+		int32 y;
 		float rotation;
-		float sizeX; // Taille totale sur l'axe X
-		float sizeY; // Taille totale sur l'axe Y
+		int32 sizeX; // Taille totale sur l'axe X
+		int32 sizeY; // Taille totale sur l'axe Y
 
-		static float maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
-		static float maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations
+		static int32 maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
+		static int32 maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations
 	};
 }
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "Construction.h"
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {

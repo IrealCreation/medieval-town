@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <cstdint>
-using int32 = uint32_t; // Match le type "int" d'Unreal Engine
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 // Interface entre le LogicManager et le moteur de jeu. Déclaration minimale intégrant les méthode appelées par le LogicManager, et implémentation vide pour compiler sans erreur hors du moteur de jeu. Le nom "ALogicAPI" répond aux conventions d'Unreal Engine, mais le fichier reste nommé "LogicAPI.h".
 class ALogicAPI
