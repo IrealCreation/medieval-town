@@ -10,15 +10,10 @@ namespace Models
 		// On initialise la date de création à la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
-		// Calcul du nombre maximum d'habitants en fonction de la taille
-		int32 baseCapacity = House::getBaseCapacity(sizeX, sizeY);
-		maxPops = {
-			{ Pop::Gueux, baseCapacity },
-			{ Pop::Bourgeois, 0 },
-			{ Pop::Noble, 0 }
-		};
-		// TODO: prendre en compte le niveau de la maison
+		// Calcul du nombre maximum d'habitants
+		updateMaxPops();
 	}
+
 	int32 House::getNiveau() const
 	{
 		return niveau;
@@ -52,7 +47,35 @@ namespace Models
 
 	void House::logicTick()
 	{
-		// TODO: gérer les pops résidentes, leurs besoins, leur croissance...
+		// La maison est en cours d'amélioration ?
+		if (upgradeInProgress) {
+			upgradeDaysDone++;
+			// L'amélioration est-elle terminée ?
+			if (upgradeDaysDone >= upgradeTime) {
+				// On finalise l'amélioration
+				upgradeInProgress = false;
+				niveau++;
+				upgradePressure = 0; // On réinitialise la pression d'évolution
+				updateMaxPops(); // On met à jour les capacités d'accueil
+				updateAttractiveness(); // On met à jour l'attractivité
+				// Log
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + " ; " + std::to_string(getY()) + " a évolué au niveau " + std::to_string(niveau));
+			}
+		}
+
+		// La maison peut-elle évoluer ?
+		if (canUpgrade()) {
+			upgradePressure++;
+			// Chaque point de pression donne 10% de chances d'évolution par jour
+			if (LogicManager::getInstance().randRange(1, 10) <= upgradePressure) {
+				// On lance l'amélioration
+				upgradeInProgress = true;
+				upgradeDateStart = LogicManager::getInstance().getTown()->getDate();
+				upgradeTime = 5; // TODO: définir la durée en fonction du niveau et de la taille
+				upgradeDaysDone = 0;
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + " ; " + std::to_string(getY()) + " commence à évoluer");
+			}
+		}
 	}
 
 	void House::addPop(Pop pop, int32 number)
@@ -83,12 +106,16 @@ namespace Models
 			return false;
 		}
 
-		// On identifie la strate de population la plus élevée pouvant être accueillie
-		Pop highestPop = Pop::Gueux;
-		for (const auto& pair : maxPops) {
-			if (pair.second > 0 && getPop(pair.first) >= pair.second) {
-				highestPop = pair.first;
-			}
+		// On identifie la strate de population la plus élevée pouvant être accueillie : niveaux 1-3 : Gueux, 4-6 : Bourgeois, 7-9 : Nobles
+		Pop highestPop;
+		if (niveau >= 7) {
+			highestPop = Pop::Noble;
+		}
+		else if (niveau >= 4) {
+			highestPop = Pop::Bourgeois;
+		}
+		else {
+			highestPop = Pop::Gueux;
 		}
 
 		if(getFreePop(highestPop) > 0) {
@@ -96,7 +123,78 @@ namespace Models
 			return false;
 		}
 
-		// TODO: Vérifier la satisfaction de service pour la strate la plus élevée
+		// Au niveau 1/4/7, on demande -2 d'attractivité, au niveau 2/5/8 -1, au niveau 3/6 0
+		int32 requiredAttractiveness;
+		if(niveau == 1 || niveau == 4 || niveau == 7) {
+			requiredAttractiveness = -2;
+		}
+		else if(niveau == 2 || niveau == 5 || niveau == 8) {
+			requiredAttractiveness = -1;
+		}
+		else {
+			requiredAttractiveness = 0;
+		}
+		if (getAttractiveness(highestPop) < requiredAttractiveness) {
+			return false;
+		}
+
+		// On a passé toutes les vérifications : la maison est digne d'évoluer
 		return true;
+	}
+
+	void House::updateMaxPops()
+	{
+		// Capacité de base en fonction de la taille
+		int32 baseCapacity = House::getBaseCapacity(getSizeX(), getSizeY());
+		// On calcule les capacités maximales en fonction du niveau
+		switch (niveau) {
+			case 1:
+				maxPops[Pop::Gueux] = baseCapacity;
+				maxPops[Pop::Bourgeois] = 0;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 2:
+				maxPops[Pop::Gueux] = baseCapacity * 2;
+				maxPops[Pop::Bourgeois] = 0;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 3:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = 0;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 4:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 5:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity * 2;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 6:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity * 3;
+				maxPops[Pop::Noble] = 0;
+				break;
+			case 7:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity * 3;
+				maxPops[Pop::Noble] = baseCapacity;
+				break;
+			case 8:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity * 3;
+				maxPops[Pop::Noble] = baseCapacity * 2;
+				break;
+			case 9:
+				maxPops[Pop::Gueux] = baseCapacity * 3;
+				maxPops[Pop::Bourgeois] = baseCapacity * 3;
+				maxPops[Pop::Noble] = baseCapacity * 3;
+				break;
+			default:
+				break;
+		}
 	}
 }

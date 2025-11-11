@@ -42,7 +42,10 @@ namespace Models
         std::map<Pop, int32> pops; // Populations résidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
 
+		void updateMaxPops(); // Met à jour le nombre maximum d'habitants en fonction de la taille et du niveau
+
 		bool upgradeInProgress = false; // Indique si une amélioration de la maison est en cours
+		int32 upgradePressure = 0; // Pression accumulée pour l'évolution de la maison. Augmente de 1 par jour si canUpgrade() est true. Chaque point donne 10% de chances d'évolution par jour.
 		int32 upgradeDateStart; // Date de début de l'amélioration
 		int32 upgradeTime; // Durée nécessaire à l'amélioration, en jours
 		int32 upgradeDaysDone; // Jours d'amélioration effectués

@@ -48,6 +48,10 @@ namespace Models
 		for (const auto& building : buildings) {
 			building->logicTick();
 		}
+		// Tick des maisons
+		for (const auto& house : houses) {
+			house->logicTick();
+		}
 	}
 
 	void Town::demographicGrowthTick() {
