@@ -5,7 +5,7 @@
 namespace Models
 {
 	House::House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Pop, int32> startingPops)
-		: Location(x, y, rotation, sizeX, sizeY), niveau(niveau), pops(startingPops)
+		: Location(x, y, rotation, sizeX, sizeY), niveau(niveau), pops(startingPops), ServiceReceiver()
 	{ 
 		// On initialise la date de création à la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();

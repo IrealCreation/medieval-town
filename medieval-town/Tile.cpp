@@ -5,7 +5,7 @@
 
 namespace Models
 {
-	Tile::Tile(int32 x, int32 y) : Location(x, y, 0) 
+	Tile::Tile(int32 x, int32 y) : Location(x, y, 0), ServiceReceiver()
 	{
 		// Au début de la partie, toutes les tuiles peuvent recevoir une maison, sauf celles situées trop près du bord de la map
 		if (x < House::minSizeX / 2 
