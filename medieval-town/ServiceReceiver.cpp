@@ -9,13 +9,29 @@ namespace Models
 {
 	ServiceReceiver::ServiceReceiver() 
 	{
-		// Attractivité à 0 par défaut
+		// Attractivité à 0 - nombre de services requis par défaut
 		attractiveness = {
-			{ Pop::Gueux, 0.0f },
-			{ Pop::Bourgeois, 0.0f },
-			{ Pop::Noble, 0.0f }
+			{ Pop::Gueux, 0 - getNumberOfServicesForPop(Pop::Gueux) },
+			{ Pop::Bourgeois, 0 - getNumberOfServicesForPop(Pop::Bourgeois) },
+			{ Pop::Noble, 0 - getNumberOfServicesForPop(Pop::Noble) }
 		};
 	}
+
+	// Définition de la map statique des services requis par chaque pop
+	const std::map<Pop, std::vector<Service>> ServiceReceiver::popServices = {
+		{
+			Pop::Gueux,
+			{ Service::Priere, Service::Eau, Service::Garde, Service::Social, Service::Picole }
+		},
+		{
+			Pop::Bourgeois,
+			{ Service::Priere, Service::Monachisme, Service::Eau, Service::Linge, Service::Soin, Service::Garde, Service::Chatiment, Service::Social, Service::Diner, Service::Comedie }
+		},
+		{
+			Pop::Noble,
+			{ Service::Priere, Service::Monachisme, Service::Etude, Service::Eau, Service::Linge, Service::Soin, Service::Bain, Service::Garde, Service::Chatiment, Service::Justice, Service::Social, Service::Diner, Service::Comedie, Service::Art, Service::Plaisir }
+		}
+	};
 
 	Building* ServiceReceiver::getServiceBuilding(Service service) const
 	{
@@ -66,14 +82,15 @@ namespace Models
 
 	void ServiceReceiver::updateAttractiveness()
 	{
+		// Les scores initiaux de chaque pop sont 0 moins le nombre de services requis pour cette pop
 		map<Pop, int32> scoreByPop = {
-			{ Pop::Gueux, 0 },
-			{ Pop::Bourgeois, 0 },
-			{ Pop::Noble, 0 }
+			{ Pop::Gueux, 0 - getNumberOfServicesForPop(Pop::Gueux) },
+			{ Pop::Bourgeois, 0 - getNumberOfServicesForPop(Pop::Bourgeois) },
+			{ Pop::Noble, 0 - getNumberOfServicesForPop(Pop::Noble) }
 		};
 
 		if (marginalServiceBuildings.empty()) {
-			// Il n'y a aucun bâtiment de service qui nous dessert : l'attractivité est de 0
+			// Il n'y a aucun bâtiment de service qui nous dessert
 			attractiveness = scoreByPop;
 			return;
 		}
@@ -107,6 +124,12 @@ namespace Models
 
 		// On attribue les nouveaux score d'attractivité
 		attractiveness = scoreByPop;
+	}
+
+	int32 ServiceReceiver::getNumberOfServicesForPop(Pop pop)
+	{
+		// TODO: peut-être utiliser plutôt un cache statique pour éviter de faire un size() à chaque appel ?
+		return static_cast<int32>(popServices.find(pop)->second.size());
 	}
 
 }

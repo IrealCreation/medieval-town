@@ -98,9 +98,9 @@ public:
 	void removePossibleHouseLocation(Models::Tile* tile);
 
 	// Sélectionne l'emplacement le plus attractif disponible pour accueillir une nouvelle maison
-	Models::Tile* getBestHouseLocation();
+	Models::Tile* getBestHouseLocation(int32 minimumAttractiveness);
 	// Sélectionne la maison la plus attractive pouvant accueillir un nouvel habitant
-	Models::House* getMostAttractiveHouse();
+	Models::House* getMostAttractiveHouse(int32 minimumAttractiveness);
 
 	int32 randRange(int32 min, int32 max); // Retourne un entier aléatoire entre min et max inclus
 	float randRange(float min, float max); // Retourne un float aléatoire entre min et max inclus

@@ -18,20 +18,7 @@ namespace Models
 	public:
 		ServiceReceiver();
 
-		const std::map<Pop, std::vector<Service>> popServices = {
-			{
-				Pop::Gueux,
-				{ Service::Priere, Service::Eau, Service::Garde, Service::Social, Service::Picole }
-			},
-			{
-				Pop::Bourgeois,
-				{ Service::Priere, Service::Monachisme, Service::Eau, Service::Linge, Service::Soin, Service::Garde, Service::Chatiment, Service::Social, Service::Diner, Service::Comedie }
-			},
-			{
-				Pop::Noble,
-				{ Service::Priere, Service::Monachisme, Service::Etude, Service::Eau, Service::Linge, Service::Soin, Service::Bain, Service::Garde, Service::Chatiment, Service::Justice, Service::Social, Service::Diner, Service::Comedie, Service::Art, Service::Plaisir }
-			}
-		};
+		static const std::map<Pop, std::vector<Service>> popServices; // Services requis par chaque type de population
 
 		Building* getServiceBuilding(Service service) const; // Retourne le bâtiment de service desservant cet endroit pour le service donné ; nullptr si pas de bâtiment
 		std::map<Service, Building*> getAllServiceBuildings() const; // Retourne la liste des bâtiments de service desservant cet endroit
@@ -42,7 +29,9 @@ namespace Models
 		void addMarginalService(Service service, Building* building); // Ajoute un bâtiment de service pouvant desservir cet endroit pour un nouvel habitant
 		void removeMarginalService(Service service, Building* building); // Retire le bâtiment de service pouvant desservir cet endroit pour le service donné pour un nouvel habitant
 
-		int32 getAttractiveness(Pop pop) const; // Retourne l'attractivité pour une population en fonction des services disponibles
+		int32 getAttractiveness(Pop pop) const; // Retourne l'attractivité pour une population en fonction des services disponibles : 0 signifie que tous les services requis sont disponibles, et chaque service indisponible réduit l'attractivité de 1
+
+		static int32 getNumberOfServicesForPop(Pop pop); // Retourne le nombre de services requis pour une population donnée
 
 	protected:
 		virtual void updateAttractiveness(); // Met à jour l'attractivité après que les services disponibles aient évolués (virtual pour laisser Tile l'override)

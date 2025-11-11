@@ -29,8 +29,8 @@ namespace Models
 		if(canHaveHouse == true)
 			return; // Pas de changement
 		canHaveHouse = true;
-		// On ajoute ce tile à la liste des emplacements possibles pour une maison si son attractivité est > 0
-		if (getAttractiveness(Pop::Gueux) > 0) {
+		// On ajoute ce tile à la liste des emplacements possibles pour une maison si son attractivité est supérieure au minimum
+		if (getAttractiveness(Pop::Gueux) > 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux)) {
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}
 	}
@@ -70,10 +70,8 @@ namespace Models
 	}
 
 	void Tile::updateAttractiveness() {
-		if(this->getX() == 20 && this->getY() == 20)
-		{
-			// Point d'arrêt de debug
-		}
+		int32 minimumAttractiveness = 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux);
+
 		int32 attractivenessBefore = getAttractiveness(Pop::Gueux);
 
 		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
@@ -81,13 +79,13 @@ namespace Models
 
 		int32 attractivenessAfter = getAttractiveness(Pop::Gueux);
 
-		// Si l'attractivité est passée de plus de 0 à 0...
-		if (attractivenessBefore > 0 && attractivenessAfter <= 0) {
+		// Si l'attractivité est passée de plus de du minimum au minimum...
+		if (attractivenessBefore > minimumAttractiveness && attractivenessAfter <= minimumAttractiveness) {
 			// ... on retire ce tile de la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().removePossibleHouseLocation(this);
 		}
-		// Si l'attractivité est passée de 0 à plus de 0, et que le tile peut recevoir une maison...
-		else if (attractivenessBefore <= 0 && attractivenessAfter > 0 && getCanHaveHouse()) {
+		// Si l'attractivité est passée du minimum à plus du minimum, et que le tile peut recevoir une maison...
+		else if (attractivenessBefore <= minimumAttractiveness && attractivenessAfter > minimumAttractiveness && getCanHaveHouse()) {
 			// ... on ajoute ce tile à la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}

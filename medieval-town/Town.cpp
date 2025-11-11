@@ -51,12 +51,15 @@ namespace Models
 	}
 
 	void Town::demographicGrowthTick() {
-		// Trouvons la maison existante la plus attractive pouvant accueillir un nouvel habitant
-		House* existingHouseCandidate = LogicManager::getInstance().getMostAttractiveHouse();
-		// Trouvons l'emplacement le plus attractif pour construire une nouvelle maison
-		Tile* newHouseCandidate = LogicManager::getInstance().getBestHouseLocation();
 
-		int32 attractiveness = 0; // Attractivité de l'emplacement retenu et de la ville
+		int32 minimumAttractiveness = 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux); // Seuil d'attractivité à dépasser pour que la croissance démographique puisse se faire
+
+		// Trouvons la maison existante la plus attractive pouvant accueillir un nouvel habitant
+		House* existingHouseCandidate = LogicManager::getInstance().getMostAttractiveHouse(minimumAttractiveness);
+		// Trouvons l'emplacement le plus attractif pour construire une nouvelle maison
+		Tile* newHouseCandidate = LogicManager::getInstance().getBestHouseLocation(minimumAttractiveness);
+
+		int32 attractiveness = minimumAttractiveness; // Attractivité de l'emplacement retenu et de la ville
 		bool newHouse = false; // True si on construit une nouvelle maison, false si on émigre dans une maison existante
 
 		// Regardons qu'est-ce qui est le plus attractif
@@ -73,12 +76,12 @@ namespace Models
 		}
 
 		// Si l'attractivité est restée à 0, pas de croissance à ce tick
-		if (attractiveness == 0) {
+		if (attractiveness == minimumAttractiveness) {
 			return;
 		}
 		
-		// TODO: calcul plus fin de la pression démographique en fonction de l'attractivité
-		demographicPressure += 100 * attractiveness;
+		// Plus l'attractivité dépasse le seuil minimum, plus la pression démographique augmente (rappel : l'attractivité est un nombre négatif)
+		demographicPressure += 100 * (minimumAttractiveness - attractiveness) * -1;
 
 		if (demographicPressure >= 100) {
 			// Assez de pression démographique pour accroitre la population

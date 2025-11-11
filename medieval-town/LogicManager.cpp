@@ -515,13 +515,13 @@ void LogicManager::removePossibleHouseLocation(Models::Tile* tile)
 	}
 }
 
-Models::Tile* LogicManager::getBestHouseLocation()
+Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 {
 	if (possibleHouseLocations.empty()) {
 		return nullptr; // Pas d'emplacement possible
 	}
 	vector<Models::Tile*> candidates;
-	int32 bestScore = 0;
+	int32 bestScore = minimumAttractiveness;
 
 	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base 
 	for (Models::Tile* tile : possibleHouseLocations) {
@@ -545,10 +545,10 @@ Models::Tile* LogicManager::getBestHouseLocation()
 	return nullptr;
 }
 
-Models::House* LogicManager::getMostAttractiveHouse()
+Models::House* LogicManager::getMostAttractiveHouse(int32 minimumAttractiveness)
 {
 	vector<Models::House*> candidates;
-	int32 bestScore = 0;
+	int32 bestScore = minimumAttractiveness;
 	// On parcourt toutes les maisons pour trouver la plus attractive pouvant accueillir un nouvel habitant
 	for (Models::House* house : this->town->getHouses()) {
 		if (house->getFreePop(Models::Pop::Gueux) > 0) {

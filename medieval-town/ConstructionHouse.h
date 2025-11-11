@@ -10,7 +10,7 @@ namespace Models
 	// Forward declarations
 	enum class Pop;
 
-	// Chantier de construction d'une maison d'habitation
+	// Chantier de construction d'une nouvelle maison d'habitation
     class ConstructionHouse : public Construction
     {
     public:

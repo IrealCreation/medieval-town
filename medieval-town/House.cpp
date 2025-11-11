@@ -64,4 +64,39 @@ namespace Models
 	{
 		return sizeX * sizeY / 4; // Capacité de base : 1 pop par 4 mètres carrés
 	}
+
+	bool House::canUpgrade() const
+	{
+		// Une maison peut être améliorée si :
+		// - Elle n'est pas déjà en cours d'amélioration
+		// - Elle n'a pas atteint le niveau maximum (9)
+		// - Elle a atteint son maximum d'habitants pour la strate la plus élevée de population qu'elle peut accueillir
+		// - Elle offre une satisfaction de service suffisante pour la strate la plus élevée de population qu'elle peut accueillir
+
+		// Aucune upgrade en cours
+		if (upgradeInProgress) {
+			return false;
+		}
+
+		// Pas encore au niveau maximum
+		if (niveau >= 9) {
+			return false;
+		}
+
+		// On identifie la strate de population la plus élevée pouvant être accueillie
+		Pop highestPop = Pop::Gueux;
+		for (const auto& pair : maxPops) {
+			if (pair.second > 0 && getPop(pair.first) >= pair.second) {
+				highestPop = pair.first;
+			}
+		}
+
+		if(getFreePop(highestPop) > 0) {
+			// La maison n'est pas pleine pour cette strate de population
+			return false;
+		}
+
+		// TODO: Vérifier la satisfaction de service pour la strate la plus élevée
+		return true;
+	}
 }

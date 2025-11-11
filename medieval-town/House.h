@@ -33,12 +33,19 @@ namespace Models
 
 		static int32 getBaseCapacity(int32 sizeX, int32 sizeY); // Retourne la capacité de base d'une maison en fonction de sa taille
 
+		bool canUpgrade() const; // La maison peut-elle être améliorée ?
+
     protected:
 		int32 dateCreation; // Date de création de la maison (fin du chantier de construction)
 		int32 niveau; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
         std::map<Pop, int32> pops; // Populations résidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
+
+		bool upgradeInProgress = false; // Indique si une amélioration de la maison est en cours
+		int32 upgradeDateStart; // Date de début de l'amélioration
+		int32 upgradeTime; // Durée nécessaire à l'amélioration, en jours
+		int32 upgradeDaysDone; // Jours d'amélioration effectués
     };
 }
 
