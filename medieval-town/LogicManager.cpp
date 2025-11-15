@@ -162,7 +162,7 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, type.getSizeX(), type.getSizeY())) {
-		this->log("Erreur : emplacement invalide pour la construction de " + type.getName() + " a " + std::to_string(x) + " ; " + std::to_string(y));
+		this->log("Erreur : emplacement invalide pour la construction de " + type.getName() + " a " + std::to_string(x) + "," + std::to_string(y));
 		return;
 	}
 
@@ -170,7 +170,7 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	unique_ptr<Models::ConstructionBuilding> construction = make_unique<Models::ConstructionBuilding>(type, family, x, y, rotation);
 
 	// On log l'événement
-	this->log("Debut de la construction de " + construction->getType().getName() +  (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
+	this->log("Debut de la construction de " + construction->getType().getName() +  (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
 
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
@@ -218,7 +218,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	unique_ptr <Models::Building> building = make_unique<Models::Building>(type, family, x, y, rotation);
 
 	// On log l'événement
-	this->log("Construction achevee de " + building->getName() + (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(building->getX()) + " ; " + std::to_string(building->getY()));
+	this->log("Construction achevee de " + building->getName() + (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(building->getX()) + "," + std::to_string(building->getY()));
 
 	// On ajoute le Building dans les caches de localisation
 	mapLocations[building->getX()][building->getY()] = building.get();
@@ -237,7 +237,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 void LogicManager::destroyBuilding(Models::Building* building)
 {
 	// On log l'événement
-	this->log("Destruction de " + building->getName() + (building->getFamily() != nullptr ? " par " + building->getFamily()->getName() : "") + " a " + std::to_string(building->getX()) + " ; " + std::to_string(building->getY()));
+	this->log("Destruction de " + building->getName() + (building->getFamily() != nullptr ? " par " + building->getFamily()->getName() : "") + " a " + std::to_string(building->getX()) + "," + std::to_string(building->getY()));
 
 	// On retire le Building des caches de localisation
 	mapLocations[building->getX()][building->getY()] = nullptr;
@@ -265,7 +265,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
-		this->log("Erreur : emplacement invalide pour la construction de House a " + std::to_string(x) + " ; " + std::to_string(y));
+		this->log("Erreur : emplacement invalide pour la construction de House a " + std::to_string(x) + "," + std::to_string(y));
 		return;
 	}
 
@@ -273,7 +273,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, niveau, previewPops);
 
 	// On log l'événement
-	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + " ; " + std::to_string(construction->getY()));
+	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
 
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
@@ -299,7 +299,7 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 {
 	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, niveau, startingPops);
 	// On log l'événement
-	this->log("Maison achevee a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
+	this->log("Maison achevee a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation
 	mapLocations[house->getX()][house->getY()] = house.get();
 	mapHouses[house->getX()][house->getY()] = house.get();
@@ -311,7 +311,7 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 void LogicManager::destroyHouse(Models::House* house)
 {
 	// On log l'événement
-	this->log("Destruction d'une maison a " + std::to_string(house->getX()) + " ; " + std::to_string(house->getY()));
+	this->log("Destruction d'une maison a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
 
 	// On retire la House des caches de localisation
 	mapLocations[house->getX()][house->getY()] = nullptr;
