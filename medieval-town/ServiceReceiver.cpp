@@ -80,7 +80,7 @@ namespace Models
 	{
 		if (attractiveness.find(pop) == attractiveness.end()) {
 			LogicManager::getInstance().log("ServiceReceiver::getAttractiveness : Pop " + std::to_string(static_cast<int>(pop)) + " not found");
-			return 0;
+			return -999;
 		}
 		return attractiveness.find(pop)->second;
 	}
