@@ -1,5 +1,6 @@
 #include "ServiceReceiver.h"
 #include "Building.h"
+#include "LogicManager.h"
 #include <algorithm>
 using std::map;
 using std::find;
@@ -77,6 +78,10 @@ namespace Models
 
 	int32 ServiceReceiver::getAttractiveness(Pop pop) const
 	{
+		if (attractiveness.find(pop) == attractiveness.end()) {
+			LogicManager::getInstance().log("ServiceReceiver::getAttractiveness : Pop " + std::to_string(static_cast<int>(pop)) + " not found");
+			return 0;
+		}
 		return attractiveness.find(pop)->second;
 	}
 
