@@ -150,7 +150,7 @@ namespace Models
 			incomingPops = house->getFreePop(Pop::Gueux);
 		}
 		house->addPop(Pop::Gueux, incomingPops);
-		LogicManager::getInstance().log("La maison existante en " + std::to_string(house->getX()) + ";" + std::to_string(house->getY()) + " accueille " + std::to_string(incomingPops) + " nouveaux habitants.");
+		LogicManager::getInstance().log("La maison existante en " + std::to_string(house->getX()) + "," + std::to_string(house->getY()) + " accueille " + std::to_string(incomingPops) + " nouveaux habitants.");
 		return incomingPops;
 	}
 
@@ -246,6 +246,7 @@ namespace Models
 		if (mapTiles.find(x) != mapTiles.end() && mapTiles[x].find(y) != mapTiles[x].end()) {
 			return mapTiles[x][y].get();
 		}
+		LogicManager::getInstance().log("Town::getTileAt : coordonnées invalides (" + std::to_string(x) + "," + std::to_string(y) + ")");
 		return nullptr;
 	}
 }

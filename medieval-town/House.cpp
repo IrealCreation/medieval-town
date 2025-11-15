@@ -59,7 +59,7 @@ namespace Models
 				updateMaxPops(); // On met à jour les capacités d'accueil
 				updateAttractiveness(); // On met à jour l'attractivité
 				// Log
-				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + " ; " + std::to_string(getY()) + " a évolué au niveau " + std::to_string(niveau));
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " a évolué au niveau " + std::to_string(niveau));
 			}
 		}
 
@@ -73,7 +73,7 @@ namespace Models
 				upgradeDateStart = LogicManager::getInstance().getTown()->getDate();
 				upgradeTime = 5; // TODO: définir la durée en fonction du niveau et de la taille
 				upgradeDaysDone = 0;
-				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + " ; " + std::to_string(getY()) + " commence à évoluer");
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " commence à évoluer");
 			}
 		}
 	}
