@@ -34,6 +34,13 @@ void LogicManager::setAPI(ALogicAPI* newApi)
 
 void LogicManager::startGame()
 {
+	// Réinitialisation des tableaux de pointeurs, pour aider le moteur qui semble mal le faire en cas de redémarrages multiples
+	mapLocations.clear();
+	mapBuildings.clear();
+	mapHouses.clear();
+	possibleHouseLocations.clear();
+	buildingTypes.clear();
+
 	// Création de la ville
 	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 100, 100);
 	town->startTown();

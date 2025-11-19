@@ -36,10 +36,10 @@ int32 main()
     delete first;
     std::cout << "\n";
 
+    // Construction d'un bâtiment : Chapelle par Legrand
+    logicManager.startConstructionBuilding("Chapelle", 1, 40, 46, 0);
     // Construction d'un bâtiment : Puits par Salviati
-    logicManager.startConstructionBuilding("Puits", 0, 10, 10, 0);
-	// Construction d'un bâtiment : Chapelle par Legrand
-	logicManager.startConstructionBuilding("Chapelle", 1, 30, 20, 0);
+    logicManager.startConstructionBuilding("Puits", 0, 49, 47, 0);
 
     int32 i = 0;
     // Boucle des ticks tant que le joueur presse Entrée
