@@ -36,8 +36,8 @@ namespace Models
 		bool canUpgrade() const; // La maison peut-elle être améliorée ?
 
     protected:
-		int32 dateCreation; // Date de création de la maison (fin du chantier de construction)
-		int32 niveau; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
+		int32 dateCreation = 0; // Date de création de la maison (fin du chantier de construction)
+		int32 niveau = 1; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
         std::map<Pop, int32> pops; // Populations résidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
@@ -46,9 +46,9 @@ namespace Models
 
 		bool upgradeInProgress = false; // Indique si une amélioration de la maison est en cours
 		int32 upgradePressure = 0; // Pression accumulée pour l'évolution de la maison. Augmente de 1 par jour si canUpgrade() est true. Chaque point donne 10% de chances d'évolution par jour.
-		int32 upgradeDateStart; // Date de début de l'amélioration
-		int32 upgradeTime; // Durée nécessaire à l'amélioration, en jours
-		int32 upgradeDaysDone; // Jours d'amélioration effectués
+		int32 upgradeDateStart = 0; // Date de début de l'amélioration
+		int32 upgradeTime = 0; // Durée nécessaire à l'amélioration, en jours
+		int32 upgradeDaysDone = 0; // Jours d'amélioration effectués
     };
 }
 

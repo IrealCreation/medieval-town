@@ -24,8 +24,8 @@ namespace Models
 		void logicTick() override;
 
 	protected: 
-		int32 niveau; // Niveau de la maison qui sera construite
-		std::map<Pop, int32> previewPops; // Populations prévues dans la maison une fois construite
+		int32 niveau = 1; // Niveau de la maison qui sera construite
+		std::map<Pop, int32> previewPops = {}; // Populations prévues dans la maison une fois construite
     };
 }
 

@@ -17,7 +17,7 @@ namespace Models
 	class Building : public Location
 	{
 	public:
-		Building(const BuildingType& type, Family* family, float x, float y, float rotation);
+		Building(const BuildingType& type, Family* family, int32 x, int32 y, float rotation);
 		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 		std::string getName();
@@ -40,9 +40,9 @@ namespace Models
 	private:
 		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par référence et en const
 		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
-		std::string name; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
-		int32 dateCreation; // Date de création du bâtiment (fin du chantier de construction)
-		int32 capacityUsed; // Capacité actuellement utilisée (nombre de pops servies)
+		std::string name = ""; // Nom personnalisé du bâtiment (nom de son BuildingType sinon)
+		int32 dateCreation = 0; // Date de création du bâtiment (fin du chantier de construction)
+		int32 capacityUsed = 0; // Capacité actuellement utilisée (nombre de pops servies)
 
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit être mise à jour au prochain tick

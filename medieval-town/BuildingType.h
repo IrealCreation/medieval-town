@@ -10,7 +10,7 @@ namespace Models {
 	// Type de bâtiment pouvant être construit dans la ville
 	class BuildingType {
 	public:
-		BuildingType(const std::string& id, const std::string& name, float sizeX, float sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
+		BuildingType(const std::string& id, const std::string& name, int32 sizeX, int32 sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
 			const std::map<Pop, int32>& goldCostPerPopulation, const std::map<Pop, int32>& goldGainPerPopulation,
 			const std::map<Pop, int32>& prestigeGainPerPopulation, int32 range, int32 maxCapacity,
 			int32 constructionTime, Service service);
@@ -18,8 +18,8 @@ namespace Models {
 		// Getters
 		std::string getId() const; // ID unique utilisé dans la communication avec le moteur de jeu
 		std::string getName() const; // Nom affiché au joueur
-		float getSizeX() const;
-		float getSizeY() const;
+		int32 getSizeX() const;
+		int32 getSizeY() const;
 		int32 getGoldConstructionCost() const;
 		int32 getGoldMaintenanceCost() const;
 		int32 getGoldCostPerPopulation(Pop) const;
@@ -32,19 +32,19 @@ namespace Models {
 		bool isPopServed(Pop pop) const; // Cette pop est-elle servie par le batiment ?
 
 	protected:
-		const std::string id; // Identifiant unique du type de batiment
-		std::string name; // Nom du type de batiment
-		float sizeX; // Taille totale du bâtiment sur l'axe X
-		float sizeY; // Taille totale du bâtiment sur l'axe Y	
-		int32 goldConstructionCost; // Coût de construction en or
-		int32 goldMaintenanceCost; // Coût d'entretien en or
-		std::map<Pop, int32> goldCostPerPopulation; // Coût en or par population servie
+		const std::string id = ""; // Identifiant unique du type de batiment
+		std::string name = ""; // Nom du type de batiment
+		int32 sizeX = 0; // Taille totale du bâtiment sur l'axe X
+		int32 sizeY = 0; // Taille totale du bâtiment sur l'axe Y
+		int32 goldConstructionCost = 0; // Coût de construction en or
+		int32 goldMaintenanceCost = 0; // Coût d'entretien en or
+		std::map<Pop, int32> goldCostPerPopulation = {}; // Coût en or par population servie
 		// TODO: coutRessourceParPop
-		std::map<Pop, int32> goldGainPerPopulation; // Quantité d'or gagnée par population servie
-		std::map<Pop, int32> prestigeGainPerPopulation; // Quantité de prestige gagnée par population servie
-		int32 range; // Rayon d'action du bâtiment, en mètres à partir de son point d'origine
-		int32 maxCapacity; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
-		int32 constructionTime; // Temps de construction du bâtiment, en jours
-		const Service service; // Type de service fourni par le bâtiment
+		std::map<Pop, int32> goldGainPerPopulation = {}; // Quantité d'or gagnée par population servie
+		std::map<Pop, int32> prestigeGainPerPopulation = {}; // Quantité de prestige gagnée par population servie
+		int32 range = 0; // Rayon d'action du bâtiment, en mètres à partir de son point d'origine
+		int32 maxCapacity = 0; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
+		int32 constructionTime = 0; // Temps de construction du bâtiment, en jours
+		const Service service = {}; // Type de service fourni par le bâtiment
 	};
 }

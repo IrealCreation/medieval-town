@@ -20,10 +20,10 @@ namespace Models
 		int32 percentDone() const; // Pourcentage de la construction effectuée
 
 	protected:
-		Construction(int32 x, int32 y, int32 rotation, float sizeX, float sizeY);
-		int32 dateStart; // Date de début du chantier de construction
-		int32 constructionTime; // Durée nécessaire à la construction, en jours
-		int32 daysDone; // Jours de construction effectués
+		Construction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY);
+		int32 dateStart = 0; // Date de début du chantier de construction
+		int32 constructionTime = 0; // Durée nécessaire à la construction, en jours
+		int32 daysDone = 0; // Jours de construction effectués
 	};
 
 }

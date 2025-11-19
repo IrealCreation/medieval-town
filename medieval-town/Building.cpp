@@ -8,7 +8,7 @@
 using std::map;
 
 namespace Models {
-	Building::Building(const BuildingType& type, Family* family, float x, float y, float rotation)
+	Building::Building(const BuildingType& type, Family* family, int32 x, int32 y, float rotation)
 		: Location(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family), name(type.getName()), dateCreation(0) 
 	{
 		// On initialise la date de création à la date actuelle de la ville

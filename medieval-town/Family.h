@@ -35,11 +35,11 @@ namespace Models
 		void removeConstruction(Construction* construction);
 
 	protected:
-		int32 id; // ID unique de la famille dans la ville
-		bool isAi; // Indique si la famille est contrôlée par l'IA
-		std::string name;
-		int32 gold;
-		int32 prestige;
+		int32 id = 0; // ID unique de la famille dans la ville
+		bool isAi = false; // Indique si la famille est contrôlée par l'IA
+		std::string name = ""; // Nom de la famille
+		int32 gold = 0; // Quantité d'or possédée par la famille
+		int32 prestige = 0; // Niveau de prestige de la famille
 		std::vector<Building*> buildings; // Liste des bâtiments de la famille (en référence pour éviter les copies)
 		std::vector<Construction*> constructions; // Liste des chantiers de construction de la famille (en référence pour éviter les copies)
 	};

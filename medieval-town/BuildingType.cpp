@@ -1,7 +1,7 @@
 #include "BuildingType.h"
 
 namespace Models {
-	BuildingType::BuildingType(const std::string& id, const std::string& name, float sizeX, float sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
+	BuildingType::BuildingType(const std::string& id, const std::string& name, int32 sizeX, int32 sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
 		const std::map<Pop, int32>& goldCostPerPopulation, const std::map<Pop, int32>& goldGainPerPopulation,
 		const std::map<Pop, int32>& prestigeGainPerPopulation, int32 range, int32 maxCapacity,
 		int32 constructionTime, Service service)
@@ -16,10 +16,10 @@ namespace Models {
 	std::string BuildingType::getName() const {
 		return name;
 	}
-	float BuildingType::getSizeX() const {
+	int32 BuildingType::getSizeX() const {
 		return sizeX;
 	}
-	float BuildingType::getSizeY() const {
+	int32 BuildingType::getSizeY() const {
 		return sizeY;
 	}
 	int32 BuildingType::getGoldConstructionCost() const {
