@@ -18,7 +18,7 @@ namespace Models
         House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Pop, int32> startingPops);
 
         // Getters
-        int32 getNiveau() const;
+        int32 getLevel() const;
         int32 getPop(Pop pop) const; // Retourne le nombre de pops résidentes dans la maison pour le type de pop donné
 		int32 getPopTotal() const; // Retourne le nombre total de pops résidentes dans la maison
         int32 getMaxPop(Pop pop) const; // Retourne le nombre maximum d'habitants pour le type de pop donné
@@ -29,7 +29,7 @@ namespace Models
 		void addPop(Pop pop, int32 number); // Ajoute des habitants dans la maison
 
         static const int32 minSizeX = 4; // Taille minimale sur l'axe X d'une maison
-        static const int32 minSizeY = 6; // Taille minimale sur l'axe Y d'une maison
+        static const int32 minSizeY = 7; // Taille minimale sur l'axe Y d'une maison
 
 		static int32 getBaseCapacity(int32 sizeX, int32 sizeY); // Retourne la capacité de base d'une maison en fonction de sa taille
 
@@ -37,7 +37,7 @@ namespace Models
 
     protected:
 		int32 dateCreation = 0; // Date de création de la maison (fin du chantier de construction)
-		int32 niveau = 1; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
+		int32 level = 1; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
         std::map<Pop, int32> pops; // Populations résidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison

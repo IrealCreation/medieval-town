@@ -4,8 +4,8 @@
 
 namespace Models
 {
-	House::House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Pop, int32> startingPops)
-		: Location(x, y, rotation, sizeX, sizeY), niveau(niveau), pops(startingPops), ServiceReceiver()
+	House::House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Pop, int32> startingPops)
+		: Location(x, y, rotation, sizeX, sizeY), level(level), pops(startingPops), ServiceReceiver()
 	{ 
 		// On initialise la date de création à la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
@@ -14,9 +14,9 @@ namespace Models
 		updateMaxPops();
 	}
 
-	int32 House::getNiveau() const
+	int32 House::getLevel() const
 	{
-		return niveau;
+		return level;
 	}
 	int32 House::getPop(Pop pop) const
 	{
@@ -54,12 +54,12 @@ namespace Models
 			if (upgradeDaysDone >= upgradeTime) {
 				// On finalise l'amélioration
 				upgradeInProgress = false;
-				niveau++;
+				level++;
 				upgradePressure = 0; // On réinitialise la pression d'évolution
 				updateMaxPops(); // On met à jour les capacités d'accueil
 				updateAttractiveness(); // On met à jour l'attractivité
 				// Log
-				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " a évolué au niveau " + std::to_string(niveau));
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " a évolué au niveau " + std::to_string(level));
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Models
 
 	int32 House::getBaseCapacity(int32 sizeX, int32 sizeY)
 	{
-		return sizeX * sizeY / 4; // Capacité de base : 1 pop par 4 mètres carrés
+		return sizeX * (sizeY - 1) / 4; // Capacité de base : 1 pop par 4 mètres carrés (-1 sur l'axe Y car il y a la porte)
 	}
 
 	bool House::canUpgrade() const
@@ -102,16 +102,16 @@ namespace Models
 		}
 
 		// Pas encore au niveau maximum
-		if (niveau >= 9) {
+		if (level >= 9) {
 			return false;
 		}
 
 		// On identifie la strate de population la plus élevée pouvant être accueillie : niveaux 1-3 : Gueux, 4-6 : Bourgeois, 7-9 : Nobles
 		Pop highestPop;
-		if (niveau >= 7) {
+		if (level >= 7) {
 			highestPop = Pop::Noble;
 		}
-		else if (niveau >= 4) {
+		else if (level >= 4) {
 			highestPop = Pop::Bourgeois;
 		}
 		else {
@@ -125,10 +125,10 @@ namespace Models
 
 		// Au niveau 1/4/7, on demande -2 d'attractivité, au niveau 2/5/8 -1, au niveau 3/6 0
 		int32 requiredAttractiveness;
-		if(niveau == 1 || niveau == 4 || niveau == 7) {
+		if(level == 1 || level == 4 || level == 7) {
 			requiredAttractiveness = -2;
 		}
-		else if(niveau == 2 || niveau == 5 || niveau == 8) {
+		else if(level == 2 || level == 5 || level == 8) {
 			requiredAttractiveness = -1;
 		}
 		else {
@@ -147,7 +147,7 @@ namespace Models
 		// Capacité de base en fonction de la taille
 		int32 baseCapacity = House::getBaseCapacity(getSizeX(), getSizeY());
 		// On calcule les capacités maximales en fonction du niveau
-		switch (niveau) {
+		switch (level) {
 			case 1:
 				maxPops[Pop::Gueux] = baseCapacity;
 				maxPops[Pop::Bourgeois] = 0;

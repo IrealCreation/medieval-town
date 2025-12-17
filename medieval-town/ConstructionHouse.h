@@ -17,14 +17,14 @@ namespace Models
         ConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau, std::map<Pop, int32> previewPops);
 
 		// Getters
-		int32 getNiveau() const;
+		int32 getLevel() const;
 		std::map<Pop, int32> getPreviewPops() const;
 
         // Surcharges de la classe parent
 		void logicTick() override;
 
 	protected: 
-		int32 niveau = 1; // Niveau de la maison qui sera construite
+		int32 level = 1; // Niveau de la maison qui sera construite
 		std::map<Pop, int32> previewPops = {}; // Populations prévues dans la maison une fois construite
     };
 }

@@ -111,7 +111,7 @@ namespace Models
 		bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
 		if (largeHouse) {
 			// Vérifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
-			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 8)) {
+			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 9)) {
 				largeHouse = false;
 			}
 		}
@@ -119,11 +119,11 @@ namespace Models
 		if (largeHouse) {
 			// On fait une grande maison
 			// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
-			int32 maxIncomingPops = House::getBaseCapacity(5, 8);
+			int32 maxIncomingPops = House::getBaseCapacity(5, 9);
 			if (incomingPops > maxIncomingPops) {
 				incomingPops = maxIncomingPops;
 			}
-			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 8, 1,
+			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 9, 1,
 				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
 			);
 		}
@@ -134,7 +134,7 @@ namespace Models
 			if (incomingPops > maxIncomingPops) {
 				incomingPops = maxIncomingPops;
 			}
-			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 4, 6, 1,
+			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 4, 7, 1,
 				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
 			);
 		}
