@@ -63,4 +63,10 @@ namespace Models {
 			goldGainPerPopulation.find(pop) != goldGainPerPopulation.end() &&
 			prestigeGainPerPopulation.find(pop) != prestigeGainPerPopulation.end();
 	}
+	void BuildingType::addProductionCycle(const ProductionCycle& cycle) {
+		productionCycles.push_back(cycle);
+	}
+	const std::vector<ProductionCycle>& BuildingType::getProductionCycles() const {
+		return productionCycles;
+	}
 } // namespace Models

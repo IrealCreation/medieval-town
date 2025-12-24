@@ -9,6 +9,7 @@ using std::unique_ptr;
 using std::shared_ptr;
 using std::map;
 #include <cstdint>
+#include "Resource.h"
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 // Pourquoi est-ce qu'il en a besoin pour les vector<unique_ptr<Construction>>, mais pas de Family.h ?
@@ -54,6 +55,9 @@ namespace Models
 			void addHouse(unique_ptr<House> house);
 			void removeHouse(House* house);
 			vector<House*> getHouses();
+
+			int32 getResource(Resource resource); // Récupère la quantité de la ressource dans la ville (addition de celles possédées par les familles)
+			void takeResource(Resource resource, int32 amount, Family taker); // Permet à une famille d'acheter une certaine quantité de la ressource donnée
 
 			Tile* getTileAt(int32 x, int32 y); // Retourne un raw pointer vers la Tile à la position donnée ; nullptr si pas de Tile (coordonnées invalides)
 

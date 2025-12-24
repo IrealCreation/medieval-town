@@ -1,6 +1,8 @@
 #include "Family.h"
+#include "Town.h"
 #include "Building.h"
 #include "Construction.h"
+#include "LogicManager.h"
 
 namespace Models
 {
@@ -53,5 +55,18 @@ namespace Models
 	void Family::removeConstruction(Construction* construction) {
 		auto it = std::remove(constructions.begin(), constructions.end(), construction);
 		constructions.erase(it, constructions.end());
+	}
+	int32 Family::getResource(Resource resource) {
+		auto it = resources.find(resource);
+		if (it != resources.end()) {
+			// Ressource trouvée, on peut l'utiliser
+			return it->second;
+		} else {
+			// Ressource non trouvée, quantité nulle
+			return 0;
+		}
+	}
+	void Family::addResource(Resource resource, int32 amount) {
+		resources[resource] += amount;
 	}
 } // namespace Models

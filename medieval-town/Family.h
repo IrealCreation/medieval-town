@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <map>
+#include "Resource.h"
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
@@ -34,6 +36,9 @@ namespace Models
 		void addConstruction(Construction* construction);
 		void removeConstruction(Construction* construction);
 
+		int32 getResource(Resource resource); // Récupère la quantité de la ressource donnée
+		void addResource(Resource resource, int32 amount); // Ajoute une certaine quantité de la ressource donnée
+
 	protected:
 		int32 id = 0; // ID unique de la famille dans la ville
 		bool isAi = false; // Indique si la famille est contrôlée par l'IA
@@ -42,6 +47,7 @@ namespace Models
 		int32 prestige = 0; // Niveau de prestige de la famille
 		std::vector<Building*> buildings; // Liste des bâtiments de la famille (en référence pour éviter les copies)
 		std::vector<Construction*> constructions; // Liste des chantiers de construction de la famille (en référence pour éviter les copies)
+		std::map<Resource, int32> resources = {}; // Ressources possédées par la famille
 	};
 
 }

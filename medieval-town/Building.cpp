@@ -19,7 +19,68 @@ namespace Models {
 		// this->updateHousesServed();
 	}
 
-	void Building::logicTick() {
+	void Building::logicTick_production(int32 queue) {
+		for(auto& cycle : type.getProductionCycles()) {
+			if(cycle.getQueue() == queue) {
+				// C'est le tour de cette file de production
+								
+				// On vérifie si on a les ressources nécessaires en input
+				float maxInputRatio = INT32_MAX; // Pourcentage du cycle de production pouvant être réalisé avec des ressources disponibles en input
+				for (const auto& inputPair : cycle.getResourceInputs()) {
+					Resource resource = inputPair.first;
+					float possibleProductions = inputPair.second;
+					if (possibleProductions > LogicManager::getInstance().getTown()->getResource(resource)) {
+						// Déficit de ressources, on limite la production
+						possibleProductions = LogicManager::getInstance().getTown()->getResource(resource) / possibleProductions;
+					}
+					if(possibleProductions < maxInputRatio) {
+						maxInputRatio = possibleProductions;
+					}
+				}
+
+				// On fait les cycles de production avec ressources en input
+				if (maxInputRatio > 0) {
+					// Inputs
+					for (const auto& inputPair : cycle.getResourceInputs()) {
+						Resource resource = inputPair.first;
+						int32 quantity = inputPair.second;
+						// Ressources internes à la famille
+						int32 available = family->getResource(resource);
+						if (available > quantity * maxInputRatio) {
+							// La famille a assez de ressources, on les prend directement
+							family->addResource(resource, quantity * maxInputRatio);
+						}
+						else {
+							// La famille n'a pas assez de ressources, on prend ce qu'elle a et on complète avec la ville
+							family->addResource(resource, available);
+							LogicManager::getInstance().getTown()->takeResource(resource, (quantity * maxInputRatio) - available, *family);
+						}
+					}
+					// Outputs
+					for (const auto& outputPair : cycle.getResourceOutputs()) {
+						Resource resource = outputPair.first;
+						int32 quantity = outputPair.second;
+						// On ajoute les ressources produites à la famille
+						family->addResource(resource, quantity * maxInputRatio);
+					}
+				}
+				// Cycles de production avec pénurie de ressources en input
+				if (maxInputRatio < 1) {
+					float shortageRatio = 1 - maxInputRatio;
+					// Outputs
+					for (const auto& outputPair : cycle.getResourceOutputs()) {
+						Resource resource = outputPair.first;
+						int32 quantity = outputPair.second;
+						// On ajoute les ressources produites à la famille avec une efficacité de 50% dûe à la pénurie
+						family->addResource(resource, quantity * shortageRatio / 2);
+						// TODO: augmenter le coût d'entretien à cause de la pénurie
+					}
+				}
+			}
+		}
+	}
+
+	void Building::logicTick_service() {
 		// TEST: on met à jour les maisons servies à chaque tick. Pas optimisé, à améliorer : update quand un bâtiment ou une maison est construite (TODO) ou détruite (DONE) à proximité
 		//if(mustUpdateHousesServed)
 			this->updateServed();

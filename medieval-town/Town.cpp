@@ -44,9 +44,16 @@ namespace Models
 		for (const auto& construction : constructionsCopy) {
 			construction->logicTick();
 		}
-		// Tick des bâtiments
+		// Tick des bâtiments : production
+		for (int32 queue = 0; queue < 2; queue++) {
+			// On itère sur les queues de production qui permettent de respecter l'ordre de production des bâtiments (ressources primaires d'abord, celles qui en découlent ensuite)
+			for (const auto& building : buildings) {
+				building->logicTick_production(queue);
+			}
+		}
+		// Tick des bâtiments : services
 		for (const auto& building : buildings) {
-			building->logicTick();
+			building->logicTick_service();
 		}
 		// Tick des maisons
 		for (const auto& house : houses) {
@@ -248,5 +255,15 @@ namespace Models
 		}
 		LogicManager::getInstance().log("Town::getTileAt : coordonnées invalides (" + std::to_string(x) + "," + std::to_string(y) + ")");
 		return nullptr;
+	}
+
+	int32 Town::getResource(Resource resource)
+	{
+		int32 total = 0;
+		// On additionne les ressources de chaque famille
+		for (const auto& family : families) {
+			total += family->getResource(resource);
+		}
+		return total;
 	}
 }

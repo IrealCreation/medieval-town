@@ -1,8 +1,10 @@
 ﻿#pragma once
 #include <string>
 #include <map>
+#include <vector>
 #include "Pop.h"
 #include "Service.h"
+#include "ProductionCycle.h"
 #include <cstdint>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
@@ -31,6 +33,9 @@ namespace Models {
 		const Service& getService() const;
 		bool isPopServed(Pop pop) const; // Cette pop est-elle servie par le batiment ?
 
+		void addProductionCycle(const ProductionCycle& cycle); // Ajoute un cycle de production au bâtiment
+		const std::vector<ProductionCycle>& getProductionCycles() const; // Retourne les cycles de production du bâtiment
+
 	protected:
 		const std::string id = ""; // Identifiant unique du type de batiment
 		std::string name = ""; // Nom du type de batiment
@@ -46,5 +51,7 @@ namespace Models {
 		int32 maxCapacity = 0; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
 		int32 constructionTime = 0; // Temps de construction du bâtiment, en jours
 		const Service service = {}; // Type de service fourni par le bâtiment
+
+		std::vector<ProductionCycle> productionCycles = {}; // Cycles de production du bâtiment (s'il en a)
 	};
 }

@@ -18,7 +18,9 @@ namespace Models
 	{
 	public:
 		Building(const BuildingType& type, Family* family, int32 x, int32 y, float rotation);
-		void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
+
+		void logicTick_production(int32 queue); // Tick appelé à chaque jour dans le jeu, pour la production des ressources. Itère sur les files de production (queue) pour respecter leur ordre
+		void logicTick_service(); // Tick appelé à chaque jour dans le jeu, pour la logique des services
 
 		std::string getName();
 		void setName(const std::string& newName);
