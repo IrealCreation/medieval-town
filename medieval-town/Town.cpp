@@ -266,4 +266,10 @@ namespace Models
 		}
 		return total;
 	}
+
+	void Town::takeResource(Resource resource, int32 amount, Family taker)
+	{
+		// TODO: prélever la ressource aux familles qui la possédent de manière équilibrée
+		// TODO: implémenter le paiement
+	}
 }
