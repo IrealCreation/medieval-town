@@ -3,11 +3,12 @@
 namespace Models {
 	BuildingType::BuildingType(const std::string& id, const std::string& name, int32 sizeX, int32 sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
 		const std::map<Pop, int32>& goldCostPerPopulation, const std::map<Pop, int32>& goldGainPerPopulation,
-		const std::map<Pop, int32>& prestigeGainPerPopulation, int32 range, int32 maxCapacity,
+		const std::map<Pop, int32>& prestigeGainPerPopulation, const std::map<Pop, std::map<Resource, int32>>& resourcesCostPerPopulation,
+		int32 range, int32 maxCapacity,
 		int32 constructionTime, Service service)
 		: id(id), name(name), sizeX(sizeX), sizeY(sizeY), goldConstructionCost(goldConstructionCost), goldMaintenanceCost(goldMaintenanceCost),
 		goldCostPerPopulation(goldCostPerPopulation), goldGainPerPopulation(goldGainPerPopulation),
-		prestigeGainPerPopulation(prestigeGainPerPopulation), range(range), maxCapacity(maxCapacity),
+		prestigeGainPerPopulation(prestigeGainPerPopulation), resourcesCostPerPopulation(resourcesCostPerPopulation), range(range), maxCapacity(maxCapacity),
 		constructionTime(constructionTime), service(service) {}
 
 	std::string BuildingType::getId() const {
@@ -45,6 +46,12 @@ namespace Models {
 			return 0;
 		}
 		return prestigeGainPerPopulation.at(pop);
+	}
+	std::map<Resource, int32> BuildingType::getResourcesCostPerPopulation(Pop pop) const {
+		if (!isPopServed(pop)) {
+			return {};
+		}
+		return resourcesCostPerPopulation.at(pop);
 	}
 	int32 BuildingType::getRange() const {
 		return range;

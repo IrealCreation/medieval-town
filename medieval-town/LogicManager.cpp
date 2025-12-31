@@ -10,6 +10,7 @@
 #include "ConstructionBuilding.h"
 #include "ConstructionHouse.h"
 #include "Pop.h"
+#include "Resource.h"
 #include <iostream> // Pour le log()
 #include "LogicAPI.h"
 
@@ -91,6 +92,7 @@ void LogicManager::initBuildingTypes()
 	std::map<Models::Pop, int32> goldCostPerPopulation;
 	std::map<Models::Pop, int32> goldGainPerPopulation;
 	std::map<Models::Pop, int32> prestigeGainPerPopulation;
+	std::map<Models::Pop, std::map<Models::Resource, int32>> resourcesCostPerPopulation;
 
 	// Initialisation du BuildingType Chapelle
 	goldCostPerPopulation = {
@@ -108,6 +110,7 @@ void LogicManager::initBuildingTypes()
 		{ Models::Pop::Bourgeois, 4 },
 		{ Models::Pop::Noble, 6 }
 	};
+	resourcesCostPerPopulation = {};
 	unique_ptr<Models::BuildingType> buildingType_Chapelle = make_unique<Models::BuildingType>(
 		"Chapelle",
 		"Chapelle",
@@ -137,6 +140,7 @@ void LogicManager::initBuildingTypes()
 		{ Models::Pop::Bourgeois, 3 },
 		{ Models::Pop::Noble, 3 }
 	};
+	resourcesCostPerPopulation = {};
 	unique_ptr<Models::BuildingType> buildingType_Puits = make_unique<Models::BuildingType>(
 		"Puits",
 		"Puits",

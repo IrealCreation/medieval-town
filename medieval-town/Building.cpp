@@ -87,6 +87,7 @@ namespace Models {
 		mustUpdateServed = false;
 
 		// Décompte des populations servies
+		// TODO : consommation de ressources par les populations servies
 		map<Pop, int32> totalPopsServed = {
 			{ Pop::Gueux, 0 },
 			{ Pop::Bourgeois, 0 },
@@ -100,24 +101,82 @@ namespace Models {
 		}
 
 		if (family) {
-
 			// Le bâtiment a une famille propriétaire
-			// Maintenance du bâtiment
-			family->removeGold(type.getGoldMaintenanceCost());
 
+			// Coût total en or du bâtiment
+			int32 goldCost = type.getGoldMaintenanceCost();
+			// Coût en ressource du bâtiment
+			std::map<Resource, int32> resourceCosts = {};
+			float resourceShortageRatio = 0;
 			// Gain d'or et de prestige grâce aux pops servies
-			int32 totalGoldGain = 0;
-			int32 totalPrestigeGain = 0;
+			int32 goldGain = 0;
+			int32 prestigeGain = 0;
+
 			for (const auto& pair : totalPopsServed) {
 				Pop pop = pair.first;
 				int32 popCount = pair.second;
-				totalGoldGain += popCount * type.getGoldGainPerPopulation(pop);
-				totalPrestigeGain += popCount * type.getPrestigeGainPerPopulation(pop);
+				goldCost += popCount * type.getGoldCostPerPopulation(pop);
+				goldGain += popCount * type.getGoldGainPerPopulation(pop);
+				prestigeGain += popCount * type.getPrestigeGainPerPopulation(pop);
+
+				// Coûts en ressources
+				for (const auto& pairResourceQuantity : type.getResourcesCostPerPopulation(pop)) {
+					Resource resource = pairResourceQuantity.first;
+					int32 quantity = pairResourceQuantity.second * popCount;
+					if (resourceCosts.find(resource) != resourceCosts.end()) {
+						resourceCosts[resource] += quantity;
+					}
+					else {
+						resourceCosts[resource] = quantity;
+					}
+				}
 			}
 
+			// On retire les ressources à la famille (et à la ville si besoin) et considérons les éventuelles pénuries
+			for (const auto& pair : resourceCosts) {
+				Resource resource = pair.first;
+				int32 quantity = pair.second;
+				// Ressources internes à la famille
+				int32 availableInFamily = family->getResource(resource);
+				// La famille a-t-elle assez de ressources ?
+				if (availableInFamily >= quantity) {
+					// La famille a assez de ressources, on les prend directement
+					family->addResource(resource, -quantity);
+				}
+				else {
+					// La famille n'a pas assez de ressources, on prend ce qu'elle a...
+					family->addResource(resource, -availableInFamily);
+					// ... et on complète avec la ville
+					int32 quantityLeft = quantity - availableInFamily;
+					int32 availableInTown = LogicManager::getInstance().getTown()->getResource(resource);
+					if (availableInTown >= quantityLeft) {
+						// La ville a assez de ressources, on les prend directement
+						LogicManager::getInstance().getTown()->takeResource(resource, quantityLeft, *family);
+					}
+					else {
+						// La ville n'a pas assez de ressources, on prend ce qu'elle a et on déclare une pénurie
+						LogicManager::getInstance().getTown()->takeResource(resource, availableInTown, *family);
+						quantityLeft -= availableInTown;
+						float thisShortage = quantityLeft / quantity;
+						if (thisShortage > resourceShortageRatio) {
+							resourceShortageRatio = thisShortage;
+						}
+					}
+				}
+			}
+			// Effets de l'éventuelle pénurie de ressources
+			if (resourceShortageRatio > 0) {
+				// On réduit les gains d'or et de prestige en fonction de la pénurie : efficacité réduite à 50% de la pénurie
+				goldGain = goldGain * (1 - resourceShortageRatio / 2); 
+				prestigeGain = prestigeGain * (1 - resourceShortageRatio / 2);
+			}
+
+			// Maintenance du bâtiment
+			family->removeGold(goldCost);
+
 			// On ajoute l'or et le prestige à la famille
-			family->addGold(totalGoldGain);
-			family->addPrestige(totalPrestigeGain);
+			family->addGold(goldGain);
+			family->addPrestige(prestigeGain);
 		}
 	}
 

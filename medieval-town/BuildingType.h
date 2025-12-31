@@ -4,6 +4,7 @@
 #include <vector>
 #include "Pop.h"
 #include "Service.h"
+#include "Resource.h"
 #include "ProductionCycle.h"
 #include <cstdint>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
@@ -13,8 +14,11 @@ namespace Models {
 	class BuildingType {
 	public:
 		BuildingType(const std::string& id, const std::string& name, int32 sizeX, int32 sizeY, int32 goldConstructionCost, int32 goldMaintenanceCost,
-			const std::map<Pop, int32>& goldCostPerPopulation, const std::map<Pop, int32>& goldGainPerPopulation,
-			const std::map<Pop, int32>& prestigeGainPerPopulation, int32 range, int32 maxCapacity,
+			const std::map<Pop, int32>& goldCostPerPopulation, 
+			const std::map<Pop, int32>& goldGainPerPopulation,
+			const std::map<Pop, int32>& prestigeGainPerPopulation, 
+			const std::map<Pop, std::map<Resource, int32>>& resourcesCostPerPopulation,
+			int32 range, int32 maxCapacity,
 			int32 constructionTime, Service service);
 
 		// Getters
@@ -27,6 +31,7 @@ namespace Models {
 		int32 getGoldCostPerPopulation(Pop) const;
 		int32 getGoldGainPerPopulation(Pop) const;
 		int32 getPrestigeGainPerPopulation(Pop) const;
+		std::map<Resource, int32> getResourcesCostPerPopulation(Pop) const;
 		int32 getRange() const;
 		int32 getMaxCapacity() const;
 		int32 getConstructionTime() const; // Temps de construction du bâtiment, en jours
@@ -44,9 +49,9 @@ namespace Models {
 		int32 goldConstructionCost = 0; // Coût de construction en or
 		int32 goldMaintenanceCost = 0; // Coût d'entretien en or
 		std::map<Pop, int32> goldCostPerPopulation = {}; // Coût en or par population servie
-		// TODO: coutRessourceParPop
 		std::map<Pop, int32> goldGainPerPopulation = {}; // Quantité d'or gagnée par population servie
 		std::map<Pop, int32> prestigeGainPerPopulation = {}; // Quantité de prestige gagnée par population servie
+		std::map<Pop, std::map<Resource, int32>> resourcesCostPerPopulation = {}; // Ressources consommées par population servie
 		int32 range = 0; // Rayon d'action du bâtiment, en mètres à partir de son point d'origine
 		int32 maxCapacity = 0; // Nombre maximum de pops (toutes confondues) servies par ce bâtiment
 		int32 constructionTime = 0; // Temps de construction du bâtiment, en jours
