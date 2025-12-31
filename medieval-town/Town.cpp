@@ -271,5 +271,6 @@ namespace Models
 	{
 		// TODO: prélever la ressource aux familles qui la possédent de manière équilibrée
 		// TODO: implémenter le paiement
+		return;
 	}
 }

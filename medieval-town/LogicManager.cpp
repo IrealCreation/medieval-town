@@ -119,6 +119,7 @@ void LogicManager::initBuildingTypes()
 		goldCostPerPopulation,
 		goldGainPerPopulation,
 		prestigeGainPerPopulation,
+		resourcesCostPerPopulation,
 		20, 200, 5,
 		Models::Service::Priere
 	);
@@ -149,6 +150,7 @@ void LogicManager::initBuildingTypes()
 		goldCostPerPopulation,
 		goldGainPerPopulation,
 		prestigeGainPerPopulation,
+		resourcesCostPerPopulation,
 		12, 50, 3,
 		Models::Service::Eau
 	);
