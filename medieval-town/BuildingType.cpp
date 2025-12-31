@@ -48,7 +48,7 @@ namespace Models {
 		return prestigeGainPerPopulation.at(pop);
 	}
 	std::map<Resource, int32> BuildingType::getResourcesCostPerPopulation(Pop pop) const {
-		if (!isPopServed(pop)) {
+		if(resourcesCostPerPopulation.find(pop) == resourcesCostPerPopulation.end()) {
 			return {};
 		}
 		return resourcesCostPerPopulation.at(pop);
