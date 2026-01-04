@@ -155,6 +155,45 @@ void LogicManager::initBuildingTypes()
 		Models::Service::Eau
 	);
 	addBuildingType(std::move(buildingType_Puits));
+
+	// Initialisation du BuildingType Ferme
+	goldCostPerPopulation = {
+		{ Models::Pop::Gueux, 0 },
+		{ Models::Pop::Bourgeois, 0 },
+		{ Models::Pop::Noble, 0 }
+	};
+	goldGainPerPopulation = {
+		{ Models::Pop::Gueux, 0 },
+		{ Models::Pop::Bourgeois, 0 },
+		{ Models::Pop::Noble, 0 }
+	};
+	prestigeGainPerPopulation = {
+		{ Models::Pop::Gueux, 0 },
+		{ Models::Pop::Bourgeois, 0 },
+		{ Models::Pop::Noble, 0 }
+	};
+	resourcesCostPerPopulation = {};
+	unique_ptr<Models::BuildingType> buildingType_Ferme = make_unique<Models::BuildingType>(
+		"Ferme",
+		"Ferme",
+		22, 20,
+		80, 10,
+		goldCostPerPopulation,
+		goldGainPerPopulation,
+		prestigeGainPerPopulation,
+		resourcesCostPerPopulation,
+		20, 50, 3,
+		Models::Service::Eau // TODO: implémenter la distribution des ressources
+	);
+	buildingType_Ferme->addProductionCycle(
+		Models::ProductionCycle(
+			0, // Queue
+			{}, // Inputs
+			{ { Models::Resource::Grain, 50 } } // Outputs
+		)
+	);
+	addBuildingType(std::move(buildingType_Ferme));
+
 }
 
 Models::BuildingType* LogicManager::getBuildingType(const string& id)

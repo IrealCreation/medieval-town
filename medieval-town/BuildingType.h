@@ -38,7 +38,7 @@ namespace Models {
 		const Service& getService() const;
 		bool isPopServed(Pop pop) const; // Cette pop est-elle servie par le batiment ?
 
-		void addProductionCycle(const ProductionCycle& cycle); // Ajoute un cycle de production au bâtiment
+		void addProductionCycle(const ProductionCycle cycle); // Ajoute un cycle de production au bâtiment
 		const std::vector<ProductionCycle>& getProductionCycles() const; // Retourne les cycles de production du bâtiment
 
 	protected:
