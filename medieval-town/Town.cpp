@@ -269,8 +269,33 @@ namespace Models
 
 	void Town::takeResource(Resource resource, int32 amount, Family taker)
 	{
-		// TODO: prélever la ressource aux familles qui la possédent de manière équilibrée
+		// On prélève la ressource équitablement parmi les familles possédant la ressource
+		while (amount > 0) {
+			// On compte combien de familles possèdent la ressource
+			int32 familiesWithResource = 0;
+			for (const auto& family : families) {
+				if (family->getResource(resource)) {
+					familiesWithResource++;
+				}
+			}
+			// On prélève équitablement la ressource
+			int32 amountPerFamily = amount / familiesWithResource;
+			// Au cas où un arrondi ferait passer le montant à prélever à 0
+			if (amountPerFamily == 0) {
+				amountPerFamily = 1;
+			}
+			for (const auto& family : families) {
+				int32 amountAvailable = family->getResource(resource);
+				if (amountAvailable >= amountPerFamily) {
+					family->addResource(resource, -amountPerFamily);
+					amount -= amountPerFamily;
+				}
+				else {
+					family->addResource(resource, -amountAvailable);
+					amount -= amountAvailable;
+				}
+			}
+		}
 		// TODO: implémenter le paiement
-		return;
 	}
 }
