@@ -43,7 +43,7 @@ void LogicManager::startGame()
 	buildingTypes.clear();
 
 	// Création de la ville
-	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 100, 100);
+	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 200, 200);
 	town->startTown();
 
 	// Création des familles
