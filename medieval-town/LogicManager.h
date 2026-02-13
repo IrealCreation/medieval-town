@@ -105,6 +105,11 @@ public:
 	int32 randRange(int32 min, int32 max); // Retourne un entier aléatoire entre min et max inclus
 	float randRange(float min, float max); // Retourne un float aléatoire entre min et max inclus
 
+	// Getters des infos de la ville et des familles pour le LogicAPI
+	int32 getPopulation() const;
+	int32 getFamilyGold(int32 familyId) const;
+	int32 getFamilyPrestige(int32 familyId) const;
+
 protected:
 	LogicManager();
 

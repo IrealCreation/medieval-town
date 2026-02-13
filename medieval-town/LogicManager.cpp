@@ -641,3 +641,15 @@ float LogicManager::randRange(float min, float max)
 	}
 	return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
 }
+
+int32 LogicManager::getPopulation() const {
+	return this->town->getPopulation();
+}
+
+int32 LogicManager::getFamilyGold(int32 familyId) const {
+	return this->town->getFamily(familyId)->getGold();
+}
+
+int32 LogicManager::getFamilyPrestige(int32 familyId) const {
+	return this->town->getFamily(familyId)->getPrestige();
+}

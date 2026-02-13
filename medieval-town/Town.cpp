@@ -102,10 +102,13 @@ namespace Models
 			if(newHouse) {
 				// On construit une nouvelle maison
 				incomingPops = this->demographicGrowth_newHouse(newHouseCandidate, incomingPops);
+				// La population de cette maison sera ajoutée à celle de la ville quand elle sera achevée, dans Town::addHouse (sinon la population apparaît dans le compteur pendant que la maison est encore en construction et que ses habitants ne consomment aucun service)
 			}
 			else {
 				// On agrandit une maison existante
 				incomingPops = this->demographicGrowth_existingHouse(existingHouseCandidate, incomingPops);
+				// On ajoute les nouveaux habitants
+				this->population += incomingPops;
 			}
 
 			// On diminue la pression démographique de 100 par nouvel habitant
@@ -177,6 +180,10 @@ namespace Models
 	{
 		return date;
 	}
+	int32 Town::getPopulation() const
+	{
+		return population;
+	}
 
 	void Town::addBuilding(unique_ptr<Building> building)
 	{
@@ -230,6 +237,9 @@ namespace Models
 
 	void Town::addHouse(unique_ptr<House> house)
 	{
+		// On ajoute la population de la maison à celle de la ville
+		this->population += house->getPopTotal();
+		// On ajoute la maison au vecteur
 		houses.push_back(std::move(house));
 	}
 	void Town::removeHouse(House* house)

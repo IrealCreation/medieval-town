@@ -36,10 +36,11 @@ namespace Models
 			void logicTick(); // Tick de progression du jeu appelé à chaque unité standard de temps (jour ?)
 
 			string getName() const;
-			int32 getDate() const;
 
 			int32 getSizeX() const;
 			int32 getSizeY() const;
+			int32 getDate() const;
+			int32 getPopulation() const;
 
 			// Ajoute une famille à la ville ; retourne son index (ID) dans la liste des familles
 			int32 addFamily(unique_ptr<Family> family);
@@ -68,6 +69,7 @@ namespace Models
 			// On triche un peu : la taille de la ville est de 1 case supérieure, car il y a la Tile 0,0
 
 			int32 date = 1; // Date actuelle de la ville (en jours depuis le début de la partie)
+			int32 population = 0; // Population actuelle de la ville
 			int32 demographicPressure = 100; // Pression démographique actuelle, accumulée à chaque tick et déclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint. On commence avec une pression initiale élevée pour immédiatement avoir de nouvelles maisons dès que des emplacements sont attractifs.
 
 			void demographicGrowthTick(); // Gère l'éventuelle croissance démographique de la ville à chaque tick (appelé depuis LogicTick)
