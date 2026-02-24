@@ -148,6 +148,11 @@ protected:
 	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)
 	vector<Models::Tile*> possibleHouseLocations; 
 
+	// TEST DEBUG UE: don't accept ticks when not ready
+public:
+	bool isReady = false;
+	bool isTownStarted = false;
+
 private:
 	ALogicAPI* api; // Interface avec le moteur de jeu (nullptr si on n'est pas dans le moteur)
 };

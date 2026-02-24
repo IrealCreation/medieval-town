@@ -22,5 +22,14 @@ class ALogicAPI
 			// Implémentation vide pour compiler sans erreur hors du moteur de jeu
 			return min;
 		};
+
+		// Spawn a construction in the world
+		void spawnConstruction(const Models::BuildingType& type, int32 x, int32 y, int32 rot) {}
+		// Spawn a building in the world
+		void spawnBuilding(const Models::BuildingType& type, int32 x, int32 y, int32 rot) {}
+		// Spawn a house construction in the world
+		void spawnHouseConstruction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
+		// Spawn a house in the world
+		void spawnHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
 };
 

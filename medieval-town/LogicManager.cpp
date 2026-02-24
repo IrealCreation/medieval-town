@@ -45,6 +45,7 @@ void LogicManager::startGame()
 	// Création de la ville
 	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 200, 200);
 	town->startTown();
+	isTownStarted = true;
 
 	// Création des familles
 	this->addFamily("Salviati", true);
@@ -52,10 +53,16 @@ void LogicManager::startGame()
 
 	// Initialisation des BuildingTypes
 	this->initBuildingTypes();
+
+	// Tell the engine I'm ready, he can start ticking
+	isReady = true;
 }
 
 void LogicManager::logicTick()
 {
+	// I'm busy
+	isReady = false;
+
 	this->log("--- Jour " + std::to_string(this->town->getDate()) + " ---");
 
 	this->town->logicTick();
@@ -64,6 +71,9 @@ void LogicManager::logicTick()
 	for (const auto family : this->getTown()->getFamilies()) {
 		this->log("Famille " + family->getName() + " : or " + std::to_string(family->getGold()) + " - prestige : " + std::to_string(family->getPrestige()));
 	}
+
+	// I finished my task, you can ask for something else
+	isReady = true;
 }
 
 void LogicManager::log(string message) const {
@@ -240,6 +250,9 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
+
+	// UE: Spawn construction
+	api->spawnConstruction(type, x, y, rotation);
 }
 void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
 {
@@ -284,6 +297,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	town->addBuilding(std::move(building));
 
 	// UE : spawn l'objet Building
+	api->spawnBuilding(type, x, y, rotation);
 }
 
 void LogicManager::destroyBuilding(Models::Building* building)
@@ -335,6 +349,9 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
+
+	// UE: Spawn construction house
+	api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, niveau);
 }
 
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
@@ -358,6 +375,7 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 	// On déplace le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
+	api->spawnHouse(x, y, rotation, sizeX, sizeY, niveau);
 }
 
 void LogicManager::destroyHouse(Models::House* house)
@@ -451,6 +469,9 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY
 				if (distance <= range) {
 					// La tile est dans le rayon, on l'ajoute à la liste
 					result.push_back(tile);
+
+					// TEST UE: Show influence
+					//api->SetTile_TEST(x, y);
 				}
 			}
 		}
@@ -517,6 +538,9 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
 				tile->setCannotHaveHouse();
+
+				// UE TEST DEBUG: show affected tiles
+				//api->SetTile_TEST(x, y);
 			}
 		}
 	}
@@ -553,6 +577,22 @@ void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* locatio
 
 void LogicManager::addPossibleHouseLocation(Models::Tile* tile)
 {
+	// DEBUG Test
+	if (tile == nullptr) {
+		log("LogicManager::addPossibleHouseLocation: null tile");
+		return;
+	}
+
+	// Sanity: check the tile pointer still corresponds to town's tile at that coord
+	Models::Tile* townTile = this->town->getTileAt(tile->getX(), tile->getY());
+	if (townTile != tile) {
+		log("LogicManager::addPossibleHouseLocation: stale tile pointer at "
+			+ std::to_string(tile->getX()) + "," + std::to_string(tile->getY())
+			+ " (addr=" + std::to_string(reinterpret_cast<uintptr_t>(tile)) + ") - not adding");
+		return;
+	}
+	// ===========================================
+
 	if (std::find(possibleHouseLocations.begin(), possibleHouseLocations.end(), tile) == possibleHouseLocations.end()) {
 		// La liste des emplacements possibles ne contient pas encore ce tile, on l'ajoute
 		possibleHouseLocations.push_back(tile);
@@ -575,7 +615,8 @@ Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 	vector<Models::Tile*> candidates;
 	int32 bestScore = minimumAttractiveness;
 
-	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base 
+	/*
+	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base
 	for (Models::Tile* tile : possibleHouseLocations) {
 		int32 score = tile->getAttractiveness(Models::Pop::Gueux);
 		if (score > bestScore) {
@@ -592,6 +633,39 @@ Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 	if (!candidates.empty()) {
 		int32 index = this->randRange(0, candidates.size() - 1);
 		return candidates[index];
+	}
+
+	return nullptr;
+	// OLD VERSION*/
+
+	// Walk list but remove null/stale entries on the fly
+	for (auto it = possibleHouseLocations.begin(); it != possibleHouseLocations.end(); ) {
+		Models::Tile* tile = *it;
+		if (tile == nullptr) {
+			log("LogicManager::getBestHouseLocation: null pointer found in possibleHouseLocations - removing");
+			it = possibleHouseLocations.erase(it);
+			continue;
+		}
+		// Validate pointer still matches town's tile at that coord
+		Models::Tile* townTile = this->town->getTileAt(tile->getX(), tile->getY());
+		if (townTile != tile) {
+			log("LogicManager::getBestHouseLocation: stale pointer detected at "
+				+ std::to_string(tile->getX()) + "," + std::to_string(tile->getY())
+				+ " - removing (addr=" + std::to_string(reinterpret_cast<uintptr_t>(tile)) + ")");
+			it = possibleHouseLocations.erase(it);
+			continue;
+		}
+
+		int32 score = tile->getAttractiveness(Models::Pop::Gueux);
+		if (score > bestScore) {
+			bestScore = score;
+			candidates.clear();
+			candidates.push_back(tile);
+		}
+		else if (score == bestScore) {
+			candidates.push_back(tile);
+		}
+		++it;
 	}
 
 	return nullptr;
