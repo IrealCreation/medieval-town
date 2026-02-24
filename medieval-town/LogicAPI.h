@@ -31,7 +31,5 @@ class ALogicAPI
 		void spawnHouseConstruction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
 		// Spawn a house in the world
 		void spawnHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
-
-		// Adding such an important line.
 };
 

@@ -351,7 +351,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	town->addConstruction(std::move(construction));
 
 	// UE: Spawn construction house
-	api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, niveau);
+	api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level);
 }
 
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
@@ -375,7 +375,7 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 	// On déplace le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
-	api->spawnHouse(x, y, rotation, sizeX, sizeY, niveau);
+	api->spawnHouse(x, y, rotation, sizeX, sizeY, level);
 }
 
 void LogicManager::destroyHouse(Models::House* house)
