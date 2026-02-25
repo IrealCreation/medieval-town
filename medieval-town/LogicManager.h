@@ -35,6 +35,9 @@ public:
 	// On supprime l'opérateur de copie pour ne pas que notre instance soit dupliquée
 	LogicManager(const LogicManager&) = delete;
 
+	// Destructeur
+	~LogicManager();
+
 	// Référence au GameManager unique de la partie
 	static LogicManager& getInstance();
 
@@ -115,6 +118,10 @@ public:
 	int32 getFamilyGold(int32 familyId) const;
 	int32 getFamilyPrestige(int32 familyId) const;
 
+	// UE: don't accept ticks when not ready
+	bool isReady = false;
+	bool isTownStarted = false;
+
 protected:
 	LogicManager();
 
@@ -154,12 +161,7 @@ protected:
 	void updateCanHaveHouseAroundDestruction(Models::Location* location); 
 	
 	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)
-	vector<Models::Tile*> possibleHouseLocations; 
-
-	// TEST DEBUG UE: don't accept ticks when not ready
-public:
-	bool isReady = false;
-	bool isTownStarted = false;
+	vector<Models::Tile*> possibleHouseLocations;
 
 private:
 	ALogicAPI* api; // Interface avec le moteur de jeu (nullptr si on n'est pas dans le moteur)

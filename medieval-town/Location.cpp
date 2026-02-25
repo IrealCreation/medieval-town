@@ -27,6 +27,12 @@ namespace Models
 		if (sizeY > Location::maxSizeY)
 			Location::maxSizeY = sizeY;
 	}
+
+	// Destructeur
+	Location::~Location() {
+		// On retire l'ID de cette Location de la map du LogicManager
+		LogicManager::getInstance().removeIdLocation(this->id);
+	}
 	
 	// Initialisation des attributs statiques
 	int32 Location::maxSizeX = 1;
@@ -90,12 +96,5 @@ namespace Models
 
 		// On ajoute cette Location à la map du LogicManager
 		LogicManager::getInstance().addIdLocation(this);
-	}
-
-	// Destructeur
-	Location::~Location() {
-		// On retire l'ID de cette Location de la map du LogicManager
-		// BUG: cela entraîne un crash à la fin du programme (le LogicManager est sans doute déjà détruit)
-		// LogicManager::getInstance().removeIdLocation(this->id);
 	}
 }

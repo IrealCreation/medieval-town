@@ -23,6 +23,14 @@ LogicManager LogicManager::instance; // Instanciation du LogicManager statique
 
 LogicManager::LogicManager() {}
 
+LogicManager::~LogicManager()
+{
+	// On s'assure de la destruction de la ville pour que les Locations qu'elle contient soient détruites avant le LogicManager
+	if (this->town != nullptr) {
+		this->town.reset();
+	}
+}
+
 LogicManager& LogicManager::getInstance()
 {
 	return LogicManager::instance;
