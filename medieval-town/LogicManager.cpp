@@ -252,7 +252,9 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	town->addConstruction(std::move(construction));
 
 	// UE: Spawn construction
-	api->spawnConstruction(type, x, y, rotation);
+	if (api != nullptr) {
+		api->spawnConstruction(type, x, y, rotation);
+	}
 }
 void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
 {
@@ -297,7 +299,9 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	town->addBuilding(std::move(building));
 
 	// UE : spawn l'objet Building
-	api->spawnBuilding(type, x, y, rotation);
+	if (api != nullptr) {
+		api->spawnBuilding(type, x, y, rotation);
+	}
 }
 
 void LogicManager::destroyBuilding(Models::Building* building)
@@ -351,7 +355,9 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	town->addConstruction(std::move(construction));
 
 	// UE: Spawn construction house
-	api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level);
+	if (api != nullptr) {
+		api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level);
+	}
 }
 
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
@@ -375,7 +381,9 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 	// On déplace le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
-	api->spawnHouse(x, y, rotation, sizeX, sizeY, level);
+	if (api != nullptr) {
+		api->spawnHouse(x, y, rotation, sizeX, sizeY, level);
+	}
 }
 
 void LogicManager::destroyHouse(Models::House* house)
@@ -615,37 +623,18 @@ Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 	vector<Models::Tile*> candidates;
 	int32 bestScore = minimumAttractiveness;
 
-	/*
 	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base
-	for (Models::Tile* tile : possibleHouseLocations) {
-		int32 score = tile->getAttractiveness(Models::Pop::Gueux);
-		if (score > bestScore) {
-			bestScore = score;
-			candidates.clear();
-			candidates.push_back(tile);
-		}
-		else if (score == bestScore) {
-			candidates.push_back(tile);
-		}
-	}
-
-	// On choisit un tile au hasard parmi les meilleurs candidats
-	if (!candidates.empty()) {
-		int32 index = this->randRange(0, candidates.size() - 1);
-		return candidates[index];
-	}
-
-	return nullptr;
-	// OLD VERSION*/
-
-	// Walk list but remove null/stale entries on the fly
+	// Le for ci-dessous permet de récupérer l'itérateur plutôt que directement le pointeur, afin de pouvoir supprimer les pointeurs nuls ou obsolètes de la liste des emplacements possibles (just UE things)
 	for (auto it = possibleHouseLocations.begin(); it != possibleHouseLocations.end(); ) {
 		Models::Tile* tile = *it;
+
+		// Check for null pointer
 		if (tile == nullptr) {
 			log("LogicManager::getBestHouseLocation: null pointer found in possibleHouseLocations - removing");
 			it = possibleHouseLocations.erase(it);
 			continue;
 		}
+
 		// Validate pointer still matches town's tile at that coord
 		Models::Tile* townTile = this->town->getTileAt(tile->getX(), tile->getY());
 		if (townTile != tile) {
@@ -666,6 +655,12 @@ Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 			candidates.push_back(tile);
 		}
 		++it;
+	}
+
+	// On choisit un tile au hasard parmi les meilleurs candidats
+	if (!candidates.empty()) {
+		int32 index = this->randRange(0, candidates.size() - 1);
+		return candidates[index];
 	}
 
 	return nullptr;
