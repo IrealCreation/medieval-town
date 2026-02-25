@@ -33,6 +33,8 @@ namespace Models
 
 		// Possède un operator==
 
+		~Location(); // Destructeur
+
 	protected:
 		int32 x;
 		int32 y;
