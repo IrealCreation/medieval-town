@@ -1,7 +1,7 @@
-#pragma once
+ï»¿#pragma once
 
 namespace Models {
-	// Ressources matérielles produites ou consommées par les bâtiments. ATTENTION : on l'écrit avec un seul "s", à l'anglaise, pour rester cohérent avec le reste de la nomenclature des classes
+	// Ressources matÃ©rielles produites ou consommÃ©es par les bÃ¢timents. ATTENTION : on l'Ã©crit avec un seul "s", Ã  l'anglaise, pour rester cohÃ©rent avec le reste de la nomenclature des classes
 	enum class Resource {
 		// --- Nourriture ---
 		// Nourriture basique
@@ -9,10 +9,10 @@ namespace Models {
 		Legumes,
 		Fruits,
 		Viande,
-		// Ingrédient de nourriture transformée
+		// IngrÃ©dient de nourriture transformÃ©e
 		Farine,
 		Epices,
-		// Nourriture transformée
+		// Nourriture transformÃ©e
 		Pain,
 		Patisserie,
 		Mets,
@@ -23,7 +23,7 @@ namespace Models {
 		Laine,
 		Fer,
 		Or,
-		// Produits transformés
+		// Produits transformÃ©s
 		Biere,
 		Liqueur,
 		Ferronnerie,

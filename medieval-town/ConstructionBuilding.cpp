@@ -1,4 +1,4 @@
-#include "ConstructionBuilding.h"
+Ôªø#include "ConstructionBuilding.h"
 #include "LogicManager.h"
 #include "BuildingType.h"
 #include "Town.h"
@@ -8,9 +8,9 @@ namespace Models
 	ConstructionBuilding::ConstructionBuilding(const BuildingType& type, Family* family, int32 x, int32 y, int32 rotation)
 		: Construction(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family) 
 	{
-		constructionTime = type.getConstructionTime(); // On initialise le temps de construction ‡ partir du type de b‚timent
+		constructionTime = type.getConstructionTime(); // On initialise le temps de construction √† partir du type de b√¢timent
 
-		// GÈnÈration de l'ID
+		// G√©n√©ration de l'ID
 		setId("Construction" + type.getName(), dateStart);
 	}
 

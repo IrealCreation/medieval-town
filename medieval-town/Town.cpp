@@ -1,4 +1,4 @@
-#include "Town.h"
+Ôªø#include "Town.h"
 #include "Family.h"
 #include "Service.h"
 #include "Tile.h"
@@ -18,7 +18,7 @@ namespace Models
 	}
 
 	void Town::startTown() {
-		// GÈnÈration des tiles (le Tile 0,0 est en bas ‡ gauche)
+		// G√©n√©ration des tiles (le Tile 0,0 est en bas √† gauche)
 		for (int32 x = 0; x < sizeX; x++) {
 			for (int32 y = 0; y < sizeY; y++) {
 				mapTiles[x][y] = std::make_unique<Tile>(x, y);
@@ -31,7 +31,7 @@ namespace Models
 		// -- Passage d'un nouveau jour
 		date++;
 
-		// -- Pression dÈmographique et Èventuel accroissement de la population
+		// -- Pression d√©mographique et √©ventuel accroissement de la population
 		this->demographicGrowthTick();
 
 		// La liste des constructions peut changer pendant le tick (fin de construction), donc on en fait une copie avant de la parcourir
@@ -44,14 +44,14 @@ namespace Models
 		for (const auto& construction : constructionsCopy) {
 			construction->logicTick();
 		}
-		// Tick des b‚timents : production
+		// Tick des b√¢timents : production
 		for (int32 queue = 0; queue < 2; queue++) {
-			// On itËre sur les queues de production qui permettent de respecter l'ordre de production des b‚timents (ressources primaires d'abord, celles qui en dÈcoulent ensuite)
+			// On it√®re sur les queues de production qui permettent de respecter l'ordre de production des b√¢timents (ressources primaires d'abord, celles qui en d√©coulent ensuite)
 			for (const auto& building : buildings) {
 				building->logicTick_production(queue);
 			}
 		}
-		// Tick des b‚timents : services
+		// Tick des b√¢timents : services
 		for (const auto& building : buildings) {
 			building->logicTick_service();
 		}
@@ -63,15 +63,15 @@ namespace Models
 
 	void Town::demographicGrowthTick() {
 
-		int32 minimumAttractiveness = 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux); // Seuil d'attractivitÈ ‡ dÈpasser pour que la croissance dÈmographique puisse se faire
+		int32 minimumAttractiveness = 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux); // Seuil d'attractivit√© √† d√©passer pour que la croissance d√©mographique puisse se faire
 
 		// Trouvons la maison existante la plus attractive pouvant accueillir un nouvel habitant
 		House* existingHouseCandidate = LogicManager::getInstance().getMostAttractiveHouse(minimumAttractiveness);
 		// Trouvons l'emplacement le plus attractif pour construire une nouvelle maison
 		Tile* newHouseCandidate = LogicManager::getInstance().getBestHouseLocation(minimumAttractiveness);
 
-		int32 attractiveness = minimumAttractiveness; // AttractivitÈ de l'emplacement retenu et de la ville
-		bool newHouse = false; // True si on construit une nouvelle maison, false si on Èmigre dans une maison existante
+		int32 attractiveness = minimumAttractiveness; // Attractivit√© de l'emplacement retenu et de la ville
+		bool newHouse = false; // True si on construit une nouvelle maison, false si on √©migre dans une maison existante
 
 		// Regardons qu'est-ce qui est le plus attractif
 		if(existingHouseCandidate != nullptr) {
@@ -86,23 +86,23 @@ namespace Models
 			}
 		}
 
-		// Si l'attractivitÈ est restÈe ‡ 0, pas de croissance ‡ ce tick
+		// Si l'attractivit√© est rest√©e √† 0, pas de croissance √† ce tick
 		if (attractiveness == minimumAttractiveness) {
 			return;
 		}
 		
-		// Plus l'attractivitÈ dÈpasse le seuil minimum, plus la pression dÈmographique augmente (rappel : l'attractivitÈ est un nombre nÈgatif)
+		// Plus l'attractivit√© d√©passe le seuil minimum, plus la pression d√©mographique augmente (rappel : l'attractivit√© est un nombre n√©gatif)
 		demographicPressure += 100 * (minimumAttractiveness - attractiveness) * -1;
 
 		if (demographicPressure >= 100) {
-			// Assez de pression dÈmographique pour accroitre la population
+			// Assez de pression d√©mographique pour accroitre la population
 
 			int32 incomingPops = demographicPressure / 100; // Nombre de pops souhaitant s'installer en ville
 
 			if(newHouse) {
 				// On construit une nouvelle maison
 				incomingPops = this->demographicGrowth_newHouse(newHouseCandidate, incomingPops);
-				// La population de cette maison sera ajoutÈe ‡ celle de la ville quand elle sera achevÈe, dans Town::addHouse (sinon la population apparaÓt dans le compteur pendant que la maison est encore en construction et que ses habitants ne consomment aucun service)
+				// La population de cette maison sera ajout√©e √† celle de la ville quand elle sera achev√©e, dans Town::addHouse (sinon la population appara√Æt dans le compteur pendant que la maison est encore en construction et que ses habitants ne consomment aucun service)
 			}
 			else {
 				// On agrandit une maison existante
@@ -111,7 +111,7 @@ namespace Models
 				this->population += incomingPops;
 			}
 
-			// On diminue la pression dÈmographique de 100 par nouvel habitant
+			// On diminue la pression d√©mographique de 100 par nouvel habitant
 			demographicPressure -= 100 * incomingPops;
 		}
 	}
@@ -120,7 +120,7 @@ namespace Models
 		// 60% de chance d'essayer d'avoir une grande maison
 		bool largeHouse = LogicManager::getInstance().randRange(0, 100) < 60;
 		if (largeHouse) {
-			// VÈrifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
+			// V√©rifions que l'emplacement puisse accueillir une grande maison, sinon on mettra une petite maison
 			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 9)) {
 				largeHouse = false;
 			}
@@ -128,7 +128,7 @@ namespace Models
 
 		if (largeHouse) {
 			// On fait une grande maison
-			// On vÈrifie que le nombre de pops entrants ne dÈpasse pas la capacitÈ maximale de la maison
+			// On v√©rifie que le nombre de pops entrants ne d√©passe pas la capacit√© maximale de la maison
 			int32 maxIncomingPops = House::getBaseCapacity(5, 9);
 			if (incomingPops > maxIncomingPops) {
 				incomingPops = maxIncomingPops;
@@ -139,7 +139,7 @@ namespace Models
 		}
 		else {
 			// On fait une petite maison
-			// On vÈrifie que le nombre de pops entrants ne dÈpasse pas la capacitÈ maximale de la maison
+			// On v√©rifie que le nombre de pops entrants ne d√©passe pas la capacit√© maximale de la maison
 			int32 maxIncomingPops = House::getBaseCapacity(4, 6);
 			if (incomingPops > maxIncomingPops) {
 				incomingPops = maxIncomingPops;
@@ -151,11 +151,11 @@ namespace Models
 
 		return incomingPops;
 
-		// TODO: faire spawn des maisons d'un niveau plus ÈlevÈ si la ville est assez ÈvoluÈe
+		// TODO: faire spawn des maisons d'un niveau plus √©lev√© si la ville est assez √©volu√©e
 	}
 
 	int32 Town::demographicGrowth_existingHouse(House* house, int32 incomingPops) {
-		// VÈrifions les capacitÈs de la maison
+		// V√©rifions les capacit√©s de la maison
 		if(incomingPops >= house->getFreePop(Pop::Gueux)) {
 			incomingPops = house->getFreePop(Pop::Gueux);
 		}
@@ -192,9 +192,9 @@ namespace Models
 	void Town::removeBuilding(Building* building)
 	{
 		/*
-		// On utilise std::find pour trouver le b‚timent dans le vecteur
+		// On utilise std::find pour trouver le b√¢timent dans le vecteur
 		auto it = std::find(buildings.begin(), buildings.end(), building);
-		// On retire le b‚timent du vecteur
+		// On retire le b√¢timent du vecteur
 		buildings.erase(it);
 		*/
 	}
@@ -205,7 +205,7 @@ namespace Models
 	}
 	void Town::removeConstruction(Construction* construction)
 	{
-		// On rÈcupËre l'itÈrateur vers l'unique_ptr correspondant au raw pointer
+		// On r√©cup√®re l'it√©rateur vers l'unique_ptr correspondant au raw pointer
 		auto it = std::find_if(constructions.begin(), constructions.end(), [&construction](const unique_ptr<Construction>& c) {
 			return c.get() == construction;
 		});
@@ -214,9 +214,9 @@ namespace Models
 
 	int32 Town::addFamily(unique_ptr<Family> family)
 	{
-		// On ajoute la famille ‡ la fin du vecteur
+		// On ajoute la famille √† la fin du vecteur
 		families.push_back(std::move(family));
-		// On renvoie l'index (ID) de la famille dans la liste, ‡ savoir la taille du vecteur - 1
+		// On renvoie l'index (ID) de la famille dans la liste, √† savoir la taille du vecteur - 1
 		return families.size() - 1;
 	}
 	vector<Family*> Town::getFamilies() {
@@ -226,7 +226,7 @@ namespace Models
 			std::back_inserter(tmp_families),
 			[](const std::unique_ptr<Family>& mon_in) { return mon_in.get(); });
 		return tmp_families;
-		// TODO: typiquement le genre de fonction qui pourrait Ítre un template
+		// TODO: typiquement le genre de fonction qui pourrait √™tre un template
 	}
 	Family* Town::getFamily(int32 id) {
 		if (id >= 0 && id < families.size()) {
@@ -237,14 +237,14 @@ namespace Models
 
 	void Town::addHouse(unique_ptr<House> house)
 	{
-		// On ajoute la population de la maison ‡ celle de la ville
+		// On ajoute la population de la maison √† celle de la ville
 		this->population += house->getPopTotal();
 		// On ajoute la maison au vecteur
 		houses.push_back(std::move(house));
 	}
 	void Town::removeHouse(House* house)
 	{
-		// On rÈcupËre l'itÈrateur vers l'unique_ptr correspondant au raw pointer
+		// On r√©cup√®re l'it√©rateur vers l'unique_ptr correspondant au raw pointer
 		auto it = std::find_if(houses.begin(), houses.end(), [&house](const unique_ptr<House>& h) {
 			return h.get() == house;
 		});
@@ -263,7 +263,7 @@ namespace Models
 		if (mapTiles.find(x) != mapTiles.end() && mapTiles[x].find(y) != mapTiles[x].end()) {
 			return mapTiles[x][y].get();
 		}
-		LogicManager::getInstance().log("Town::getTileAt : coordonnÈes invalides (" + std::to_string(x) + "," + std::to_string(y) + ")");
+		LogicManager::getInstance().log("Town::getTileAt : coordonn√©es invalides (" + std::to_string(x) + "," + std::to_string(y) + ")");
 		return nullptr;
 	}
 
@@ -279,18 +279,18 @@ namespace Models
 
 	void Town::takeResource(Resource resource, int32 amount, Family taker)
 	{
-		// On prÈlËve la ressource Èquitablement parmi les familles possÈdant la ressource
+		// On pr√©l√®ve la ressource √©quitablement parmi les familles poss√©dant la ressource
 		while (amount > 0) {
-			// On compte combien de familles possËdent la ressource
+			// On compte combien de familles poss√®dent la ressource
 			int32 familiesWithResource = 0;
 			for (const auto& family : families) {
 				if (family->getResource(resource)) {
 					familiesWithResource++;
 				}
 			}
-			// On prÈlËve Èquitablement la ressource
+			// On pr√©l√®ve √©quitablement la ressource
 			int32 amountPerFamily = amount / familiesWithResource;
-			// Au cas o˘ un arrondi ferait passer le montant ‡ prÈlever ‡ 0
+			// Au cas o√π un arrondi ferait passer le montant √† pr√©lever √† 0
 			if (amountPerFamily == 0) {
 				amountPerFamily = 1;
 			}
@@ -306,6 +306,6 @@ namespace Models
 				}
 			}
 		}
-		// TODO: implÈmenter le paiement
+		// TODO: impl√©menter le paiement
 	}
 }

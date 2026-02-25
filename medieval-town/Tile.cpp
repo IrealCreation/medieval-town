@@ -1,4 +1,4 @@
-#include "Tile.h"
+ï»¿#include "Tile.h"
 #include "House.h"
 #include "LogicManager.h"
 #include "Town.h"
@@ -7,7 +7,7 @@ namespace Models
 {
 	Tile::Tile(int32 x, int32 y) : Location(x, y, 0), ServiceReceiver()
 	{
-		// Au début de la partie, toutes les tuiles peuvent recevoir une maison, sauf celles situées trop près du bord de la map
+		// Au dÃ©but de la partie, toutes les tuiles peuvent recevoir une maison, sauf celles situÃ©es trop prÃ¨s du bord de la map
 		if (x < House::minSizeX / 2 
 			|| y < House::minSizeY / 2 
 			|| x > LogicManager::getInstance().getTown()->getSizeX() - House::minSizeX / 2 
@@ -29,7 +29,7 @@ namespace Models
 		if(canHaveHouse == true)
 			return; // Pas de changement
 		canHaveHouse = true;
-		// On ajoute ce tile à la liste des emplacements possibles pour une maison si son attractivité est supérieure au minimum
+		// On ajoute ce tile Ã  la liste des emplacements possibles pour une maison si son attractivitÃ© est supÃ©rieure au minimum
 		if (getAttractiveness(Pop::Gueux) > 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux)) {
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}
@@ -55,12 +55,12 @@ namespace Models
 		if (checkMaxY >= LogicManager::getInstance().getTown()->getSizeY())
 			checkMaxY = LogicManager::getInstance().getTown()->getSizeY() - 1;
 
-		// On regarde s'il y a une collision avec une autre Location dans la zone définie
+		// On regarde s'il y a une collision avec une autre Location dans la zone dÃ©finie
 		for (int32 checkX = checkMinX; checkX <= checkMaxX; checkX++) {
 			for (int32 checkY = checkMinY; checkY <= checkMaxY; checkY++) {
 				Models::Location* otherLocation = LogicManager::getInstance().getLocationAt(checkX, checkY);
 				if (otherLocation && otherLocation != this && this->collisionWith(*otherLocation)) {
-					// Collision avec une autre structure détectée : on ne peut pas avoir de maison, fin de la vérification
+					// Collision avec une autre structure dÃ©tectÃ©e : on ne peut pas avoir de maison, fin de la vÃ©rification
 					setCannotHaveHouse();
 					return getCanHaveHouse();
 				}
@@ -74,19 +74,19 @@ namespace Models
 
 		int32 attractivenessBefore = getAttractiveness(Pop::Gueux);
 
-		// On appelle la méthode parente pour mettre à jour l'attractivité en fonction des services disponibles
+		// On appelle la mÃ©thode parente pour mettre Ã  jour l'attractivitÃ© en fonction des services disponibles
 		ServiceReceiver::updateAttractiveness();
 
 		int32 attractivenessAfter = getAttractiveness(Pop::Gueux);
 
-		// Si l'attractivité est passée de plus de du minimum au minimum...
+		// Si l'attractivitÃ© est passÃ©e de plus de du minimum au minimum...
 		if (attractivenessBefore > minimumAttractiveness && attractivenessAfter <= minimumAttractiveness) {
 			// ... on retire ce tile de la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().removePossibleHouseLocation(this);
 		}
-		// Si l'attractivité est passée du minimum à plus du minimum, et que le tile peut recevoir une maison...
+		// Si l'attractivitÃ© est passÃ©e du minimum Ã  plus du minimum, et que le tile peut recevoir une maison...
 		else if (attractivenessBefore <= minimumAttractiveness && attractivenessAfter > minimumAttractiveness && getCanHaveHouse()) {
-			// ... on ajoute ce tile à la liste des emplacements possibles pour une maison
+			// ... on ajoute ce tile Ã  la liste des emplacements possibles pour une maison
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}
 	}

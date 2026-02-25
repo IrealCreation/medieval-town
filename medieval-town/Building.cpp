@@ -1,4 +1,4 @@
-#include "Building.h"
+ï»¿#include "Building.h"
 #include "BuildingType.h"
 #include "Family.h"
 #include "LogicManager.h"
@@ -12,13 +12,13 @@ namespace Models {
 		: Location(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family), name(type.getName()), dateCreation(0) 
 	{
 
-		// On initialise la date de création à la date actuelle de la ville
+		// On initialise la date de crÃ©ation Ã  la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
-		// Génération de l'ID
+		// GÃ©nÃ©ration de l'ID
 		setId(type.getName(), dateCreation);
 
-		// On trouve les maisons desservies par ce bâtiment
+		// On trouve les maisons desservies par ce bÃ¢timent
 		// TEST: on appelle cette fonction dans le tick, donc pas besoin de le faire ici
 		// this->updateHousesServed();
 	}
@@ -28,13 +28,13 @@ namespace Models {
 			if(cycle.getQueue() == queue) {
 				// C'est le tour de cette file de production
 								
-				// On vérifie si on a les ressources nécessaires en input
-				float maxInputRatio = INT32_MAX; // Pourcentage du cycle de production pouvant être réalisé avec des ressources disponibles en input
+				// On vÃ©rifie si on a les ressources nÃ©cessaires en input
+				float maxInputRatio = INT32_MAX; // Pourcentage du cycle de production pouvant Ãªtre rÃ©alisÃ© avec des ressources disponibles en input
 				for (const auto& inputPair : cycle.getResourceInputs()) {
 					Resource resource = inputPair.first;
 					float possibleProductions = inputPair.second;
 					if (possibleProductions > LogicManager::getInstance().getTown()->getResource(resource)) {
-						// Déficit de ressources, on limite la production
+						// DÃ©ficit de ressources, on limite la production
 						possibleProductions = LogicManager::getInstance().getTown()->getResource(resource) / possibleProductions;
 					}
 					if(possibleProductions < maxInputRatio) {
@@ -48,14 +48,14 @@ namespace Models {
 					for (const auto& inputPair : cycle.getResourceInputs()) {
 						Resource resource = inputPair.first;
 						int32 quantity = inputPair.second;
-						// Ressources internes à la famille
+						// Ressources internes Ã  la famille
 						int32 available = family->getResource(resource);
 						if (available > quantity * maxInputRatio) {
 							// La famille a assez de ressources, on les prend directement
 							family->addResource(resource, quantity * maxInputRatio);
 						}
 						else {
-							// La famille n'a pas assez de ressources, on prend ce qu'elle a et on complète avec la ville
+							// La famille n'a pas assez de ressources, on prend ce qu'elle a et on complÃ¨te avec la ville
 							family->addResource(resource, available);
 							LogicManager::getInstance().getTown()->takeResource(resource, (quantity * maxInputRatio) - available, *family);
 						}
@@ -64,20 +64,20 @@ namespace Models {
 					for (const auto& outputPair : cycle.getResourceOutputs()) {
 						Resource resource = outputPair.first;
 						int32 quantity = outputPair.second;
-						// On ajoute les ressources produites à la famille
+						// On ajoute les ressources produites Ã  la famille
 						family->addResource(resource, quantity * maxInputRatio);
 					}
 				}
-				// Cycles de production avec pénurie de ressources en input
+				// Cycles de production avec pÃ©nurie de ressources en input
 				if (maxInputRatio < 1) {
 					float shortageRatio = 1 - maxInputRatio;
 					// Outputs
 					for (const auto& outputPair : cycle.getResourceOutputs()) {
 						Resource resource = outputPair.first;
 						int32 quantity = outputPair.second;
-						// On ajoute les ressources produites à la famille avec une efficacité de 50% dûe à la pénurie
+						// On ajoute les ressources produites Ã  la famille avec une efficacitÃ© de 50% dÃ»e Ã  la pÃ©nurie
 						family->addResource(resource, quantity * shortageRatio / 2);
-						// TODO: augmenter le coût d'entretien à cause de la pénurie
+						// TODO: augmenter le coÃ»t d'entretien Ã  cause de la pÃ©nurie
 					}
 				}
 			}
@@ -85,12 +85,12 @@ namespace Models {
 	}
 
 	void Building::logicTick_service() {
-		// TEST: on met à jour les maisons servies à chaque tick. Pas optimisé, à améliorer : update quand un bâtiment ou une maison est construite (TODO) ou détruite (DONE) à proximité
+		// TEST: on met Ã  jour les maisons servies Ã  chaque tick. Pas optimisÃ©, Ã  amÃ©liorer : update quand un bÃ¢timent ou une maison est construite (TODO) ou dÃ©truite (DONE) Ã  proximitÃ©
 		//if(mustUpdateHousesServed)
 			this->updateServed();
 		mustUpdateServed = false;
 
-		// Décompte des populations servies
+		// DÃ©compte des populations servies
 		// TODO : consommation de ressources par les populations servies
 		map<Pop, int32> totalPopsServed = {
 			{ Pop::Gueux, 0 },
@@ -98,21 +98,21 @@ namespace Models {
 			{ Pop::Noble, 0 }
 		};
 		for (auto house : housesServed) {
-			// On ajoute les pops de la maison à notre total
+			// On ajoute les pops de la maison Ã  notre total
 			for (const auto& pair : totalPopsServed) {
 				totalPopsServed[pair.first] += house->getPop(pair.first);
 			}
 		}
 
 		if (family) {
-			// Le bâtiment a une famille propriétaire
+			// Le bÃ¢timent a une famille propriÃ©taire
 
-			// Coût total en or du bâtiment
+			// CoÃ»t total en or du bÃ¢timent
 			int32 goldCost = type.getGoldMaintenanceCost();
-			// Coût en ressource du bâtiment
+			// CoÃ»t en ressource du bÃ¢timent
 			std::map<Resource, int32> resourceCosts = {};
 			float resourceShortageRatio = 0;
-			// Gain d'or et de prestige grâce aux pops servies
+			// Gain d'or et de prestige grÃ¢ce aux pops servies
 			int32 goldGain = 0;
 			int32 prestigeGain = 0;
 
@@ -123,7 +123,7 @@ namespace Models {
 				goldGain += popCount * type.getGoldGainPerPopulation(pop);
 				prestigeGain += popCount * type.getPrestigeGainPerPopulation(pop);
 
-				// Coûts en ressources
+				// CoÃ»ts en ressources
 				for (const auto& pairResourceQuantity : type.getResourcesCostPerPopulation(pop)) {
 					Resource resource = pairResourceQuantity.first;
 					int32 quantity = pairResourceQuantity.second * popCount;
@@ -136,11 +136,11 @@ namespace Models {
 				}
 			}
 
-			// On retire les ressources à la famille (et à la ville si besoin) et considérons les éventuelles pénuries
+			// On retire les ressources Ã  la famille (et Ã  la ville si besoin) et considÃ©rons les Ã©ventuelles pÃ©nuries
 			for (const auto& pair : resourceCosts) {
 				Resource resource = pair.first;
 				int32 quantity = pair.second;
-				// Ressources internes à la famille
+				// Ressources internes Ã  la famille
 				int32 availableInFamily = family->getResource(resource);
 				// La famille a-t-elle assez de ressources ?
 				if (availableInFamily >= quantity) {
@@ -150,7 +150,7 @@ namespace Models {
 				else {
 					// La famille n'a pas assez de ressources, on prend ce qu'elle a...
 					family->addResource(resource, -availableInFamily);
-					// ... et on complète avec la ville
+					// ... et on complÃ¨te avec la ville
 					int32 quantityLeft = quantity - availableInFamily;
 					int32 availableInTown = LogicManager::getInstance().getTown()->getResource(resource);
 					if (availableInTown >= quantityLeft) {
@@ -158,7 +158,7 @@ namespace Models {
 						LogicManager::getInstance().getTown()->takeResource(resource, quantityLeft, *family);
 					}
 					else {
-						// La ville n'a pas assez de ressources, on prend ce qu'elle a et on déclare une pénurie
+						// La ville n'a pas assez de ressources, on prend ce qu'elle a et on dÃ©clare une pÃ©nurie
 						LogicManager::getInstance().getTown()->takeResource(resource, availableInTown, *family);
 						quantityLeft -= availableInTown;
 						float thisShortage = quantityLeft / quantity;
@@ -168,17 +168,17 @@ namespace Models {
 					}
 				}
 			}
-			// Effets de l'éventuelle pénurie de ressources
+			// Effets de l'Ã©ventuelle pÃ©nurie de ressources
 			if (resourceShortageRatio > 0) {
-				// On réduit les gains d'or et de prestige en fonction de la pénurie : efficacité réduite à 50% de la pénurie
+				// On rÃ©duit les gains d'or et de prestige en fonction de la pÃ©nurie : efficacitÃ© rÃ©duite Ã  50% de la pÃ©nurie
 				goldGain = goldGain * (1 - resourceShortageRatio / 2); 
 				prestigeGain = prestigeGain * (1 - resourceShortageRatio / 2);
 			}
 
-			// Maintenance du bâtiment
+			// Maintenance du bÃ¢timent
 			family->removeGold(goldCost);
 
-			// On ajoute l'or et le prestige à la famille
+			// On ajoute l'or et le prestige Ã  la famille
 			family->addGold(goldGain);
 			family->addPrestige(prestigeGain);
 		}
@@ -211,9 +211,9 @@ namespace Models {
 		auto it = std::find(housesServed.begin(), housesServed.end(), house);
 		if (it != housesServed.end()) {
 			housesServed.erase(it);
-			// Mise à jour de la capacité utilisée
+			// Mise Ã  jour de la capacitÃ© utilisÃ©e
 			capacityUsed -= house->getPopTotal();
-			// On doit update les maisons servies au prochain tick pour voir s'il y a des gens intéressés par les places libérées
+			// On doit update les maisons servies au prochain tick pour voir s'il y a des gens intÃ©ressÃ©s par les places libÃ©rÃ©es
 			this->setMustUpdateServed();
 		}
 	}
@@ -223,39 +223,39 @@ namespace Models {
 	}
 
 	void Building::updateServed() {
-		// On récupère les maisons à portée
+		// On rÃ©cupÃ¨re les maisons Ã  portÃ©e
 		auto houses = LogicManager::getInstance().getHousesInRange(this->getX(), this->getY(), this->type.getRange());
 
-		// Nombre de places restantes dans le bâtiment
+		// Nombre de places restantes dans le bÃ¢timent
 		int32 capacityLeft = this->type.getMaxCapacity() - capacityUsed;
 
 		for (auto house : houses) {
 			int32 housePop = house->getPopTotal();
 			if (house->getServiceBuilding(this->type.getService()) == nullptr && housePop < capacityLeft) {
-				// La maison n'a pas encore de bâtiment pour ce service, on la récupère dans notre clientèle
+				// La maison n'a pas encore de bÃ¢timent pour ce service, on la rÃ©cupÃ¨re dans notre clientÃ¨le
 				house->addService(this->type.getService(), this);
 				this->housesServed.push_back(house);
-				// Mise à jour de la capacité utilisée
+				// Mise Ã  jour de la capacitÃ© utilisÃ©e
 				capacityUsed += housePop;
 				capacityLeft -= housePop;
 
-				// Si on n'a plus de places, on arrête de chercher des maisons
+				// Si on n'a plus de places, on arrÃªte de chercher des maisons
 				if (capacityLeft <= 0)
 					break;
 			}
 		}
 
 		if(capacityLeft > 0) {
-			// Il reste de la capacité, on peut mettre à jour le service marginal, c'est-à-dire les House et les Tile qui peuvent bénéficier des services de ce bâtiment pour une nouvelle unité de population (permet le calcul de l'attractivité)
+			// Il reste de la capacitÃ©, on peut mettre Ã  jour le service marginal, c'est-Ã -dire les House et les Tile qui peuvent bÃ©nÃ©ficier des services de ce bÃ¢timent pour une nouvelle unitÃ© de population (permet le calcul de l'attractivitÃ©)
 			
-			// Maisons bénéficiant du service marginal
+			// Maisons bÃ©nÃ©ficiant du service marginal
 			marginalHousesServed.clear();
 			for (auto house : houses) {
 				marginalHousesServed.push_back(house);
 				house->addMarginalService(this->type.getService(), this);
 			}
 
-			// Tiles bénéficiant du service marginal
+			// Tiles bÃ©nÃ©ficiant du service marginal
 			marginalTilesServed.clear();
 			auto tiles = LogicManager::getInstance().getTilesInRange(this->getX(), this->getY(), this->type.getRange());
 			for (auto tile : tiles) {
@@ -263,7 +263,7 @@ namespace Models {
 				tile->addMarginalService(this->type.getService(), this);
 			}
 		} else {
-			// Pas de capacité restante : pas de service marginal
+			// Pas de capacitÃ© restante : pas de service marginal
 			for (auto house : marginalHousesServed) {
 				house->removeMarginalService(this->type.getService(), this);
 			}

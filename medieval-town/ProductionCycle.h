@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <cstdint>
 #include <map>
 #include "Resource.h"
@@ -6,7 +6,7 @@ using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 
 namespace Models {
-	// Cycle de production de ressources des bâtiments
+	// Cycle de production de ressources des bÃ¢timents
 	class ProductionCycle
 	{
 		public:
@@ -18,8 +18,8 @@ namespace Models {
 			const std::map<Resource, int32>& getResourceOutputs() const;
 
 		protected:
-			int32 queue; // Ordre d'exécution lors du tick de production (0 à 2 : 0 étant les ressources primaires ne nécessitant aucune autre ressource pour être produites, puis chaque queue successive utilisant les ressources produites dans la queue inférieure)
-			std::map<Resource, int32> resourceInputs; // Ressources consommées par le cycle de production
+			int32 queue; // Ordre d'exÃ©cution lors du tick de production (0 Ã  2 : 0 Ã©tant les ressources primaires ne nÃ©cessitant aucune autre ressource pour Ãªtre produites, puis chaque queue successive utilisant les ressources produites dans la queue infÃ©rieure)
+			std::map<Resource, int32> resourceInputs; // Ressources consommÃ©es par le cycle de production
 			std::map<Resource, int32> resourceOutputs; // Ressources produites par le cycle de production
 
 	};

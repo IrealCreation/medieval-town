@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Location.h"
 #include <map>
 #include "Pop.h"
@@ -19,10 +19,10 @@ namespace Models
 
         // Getters
         int32 getLevel() const;
-        int32 getPop(Pop pop) const; // Retourne le nombre de pops résidentes dans la maison pour le type de pop donné
-		int32 getPopTotal() const; // Retourne le nombre total de pops résidentes dans la maison
-        int32 getMaxPop(Pop pop) const; // Retourne le nombre maximum d'habitants pour le type de pop donné
-		int32 getFreePop(Pop pop) const; // Retourne le nombre de places libres pour le type de pop donné
+        int32 getPop(Pop pop) const; // Retourne le nombre de pops rÃ©sidentes dans la maison pour le type de pop donnÃ©
+		int32 getPopTotal() const; // Retourne le nombre total de pops rÃ©sidentes dans la maison
+        int32 getMaxPop(Pop pop) const; // Retourne le nombre maximum d'habitants pour le type de pop donnÃ©
+		int32 getFreePop(Pop pop) const; // Retourne le nombre de places libres pour le type de pop donnÃ©
 
 		void logicTick();
 
@@ -31,24 +31,24 @@ namespace Models
         static const int32 minSizeX = 4; // Taille minimale sur l'axe X d'une maison
         static const int32 minSizeY = 7; // Taille minimale sur l'axe Y d'une maison
 
-		static int32 getBaseCapacity(int32 sizeX, int32 sizeY); // Retourne la capacité de base d'une maison en fonction de sa taille
+		static int32 getBaseCapacity(int32 sizeX, int32 sizeY); // Retourne la capacitÃ© de base d'une maison en fonction de sa taille
 
-		bool canUpgrade() const; // La maison peut-elle être améliorée ?
+		bool canUpgrade() const; // La maison peut-elle Ãªtre amÃ©liorÃ©e ?
 
     protected:
-		int32 dateCreation = 0; // Date de création de la maison (fin du chantier de construction)
+		int32 dateCreation = 0; // Date de crÃ©ation de la maison (fin du chantier de construction)
 		int32 level = 1; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
-        std::map<Pop, int32> pops; // Populations résidentes dans la maison
+        std::map<Pop, int32> pops; // Populations rÃ©sidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
 
-		void updateMaxPops(); // Met à jour le nombre maximum d'habitants en fonction de la taille et du niveau
+		void updateMaxPops(); // Met Ã  jour le nombre maximum d'habitants en fonction de la taille et du niveau
 
-		bool upgradeInProgress = false; // Indique si une amélioration de la maison est en cours
-		int32 upgradePressure = 0; // Pression accumulée pour l'évolution de la maison. Augmente de 1 par jour si canUpgrade() est true. Chaque point donne 10% de chances d'évolution par jour.
-		int32 upgradeDateStart = 0; // Date de début de l'amélioration
-		int32 upgradeTime = 0; // Durée nécessaire à l'amélioration, en jours
-		int32 upgradeDaysDone = 0; // Jours d'amélioration effectués
+		bool upgradeInProgress = false; // Indique si une amÃ©lioration de la maison est en cours
+		int32 upgradePressure = 0; // Pression accumulÃ©e pour l'Ã©volution de la maison. Augmente de 1 par jour si canUpgrade() est true. Chaque point donne 10% de chances d'Ã©volution par jour.
+		int32 upgradeDateStart = 0; // Date de dÃ©but de l'amÃ©lioration
+		int32 upgradeTime = 0; // DurÃ©e nÃ©cessaire Ã  l'amÃ©lioration, en jours
+		int32 upgradeDaysDone = 0; // Jours d'amÃ©lioration effectuÃ©s
     };
 }
 

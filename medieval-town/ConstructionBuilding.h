@@ -1,11 +1,11 @@
-#pragma once
+Ôªø#pragma once
 #include "Construction.h"
 #include <cstdint>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Chantier de construction d'un b‚timent de service
+	// Chantier de construction d'un b√¢timent de service
 	class ConstructionBuilding : public Construction
 	{
 	public:
@@ -18,8 +18,8 @@ namespace Models
 		void logicTick() override;
 
 	protected:
-		const BuildingType& type; // Type de b‚timent en cours de construction. Un building ne change jamais de type, donc on le stocke par rÈfÈrence et en const
-		Family* family; // Famille propriÈtaire du b‚timent ; nullptr si pas de propriÈtaire, donc on le stocke par pointeur
+		const BuildingType& type; // Type de b√¢timent en cours de construction. Un building ne change jamais de type, donc on le stocke par r√©f√©rence et en const
+		Family* family; // Famille propri√©taire du b√¢timent ; nullptr si pas de propri√©taire, donc on le stocke par pointeur
 	};
 }
 

@@ -1,17 +1,17 @@
-#pragma once
+ï»¿#pragma once
 #include <cstdint>
 #include <string>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Elément positionné dans la ville
+	// ElÃ©ment positionnÃ© dans la ville
 	class Location
 	{
 	public:
-		// Location avec une taille par défaut de 1x1 (un tile)
+		// Location avec une taille par dÃ©faut de 1x1 (un tile)
 		Location(int32 x, int32 y, float rotation);
-		// Location avec une taille spécifiée
+		// Location avec une taille spÃ©cifiÃ©e
 		Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
 
 		int32 getX() const;
@@ -28,10 +28,10 @@ namespace Models
 		float getDistance(const Location& other) const;
 		float getDistance(int32 otherX, int32 otherY) const;
 
-		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
+		// DÃ©tection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
 		bool collisionWith(const Location& other) const;
 
-		// Possède un operator==
+		// PossÃ¨de un operator==
 
 		~Location(); // Destructeur
 
@@ -42,8 +42,8 @@ namespace Models
 		int32 sizeX; // Taille totale sur l'axe X
 		int32 sizeY; // Taille totale sur l'axe Y
 
-		std::string id; // ID généré à la création sur le modèle : [Type]_[X]_[Y]_[dateCreation]
-		void setId(std::string type, int32 dateCreation); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager
+		std::string id; // ID gÃ©nÃ©rÃ© Ã  la crÃ©ation sur le modÃ¨le : [Type]_[X]_[Y]_[dateCreation]
+		void setId(std::string type, int32 dateCreation); // GÃ©nÃ¨re l'ID Ã  partir du type et de la date de crÃ©ation, puis ajoute cette Location Ã  la map du LogicManager
 
 		static int32 maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
 		static int32 maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations

@@ -1,4 +1,4 @@
-#include "ConstructionHouse.h"
+Ôªø#include "ConstructionHouse.h"
 #include "LogicManager.h"
 
 namespace Models
@@ -6,9 +6,9 @@ namespace Models
     ConstructionHouse::ConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Pop, int32> previewPops)
 		: Construction(x, y, rotation, sizeX, sizeY), level(level), previewPops(previewPops)
     {
-		this->constructionTime = sizeX * (sizeY - 1) / 8; // Temps de construction Ègal ‡ la surface de la maison divisÈ par 8 (-1 sur Y pour la faÁade avec la porte)
+		this->constructionTime = sizeX * (sizeY - 1) / 8; // Temps de construction √©gal √† la surface de la maison divis√© par 8 (-1 sur Y pour la fa√ßade avec la porte)
 
-		// GÈnÈration de l'ID
+		// G√©n√©ration de l'ID
         setId("ConstructionHouse", dateStart);
     }
 

@@ -1,4 +1,4 @@
-#include "House.h"
+ï»¿#include "House.h"
 #include "LogicManager.h"
 #include "Town.h"
 
@@ -7,10 +7,10 @@ namespace Models
 	House::House(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Pop, int32> startingPops)
 		: Location(x, y, rotation, sizeX, sizeY), level(level), pops(startingPops), ServiceReceiver()
 	{ 
-		// On initialise la date de création à la date actuelle de la ville
+		// On initialise la date de crÃ©ation Ã  la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
-		// Génération de l'ID
+		// GÃ©nÃ©ration de l'ID
 		setId("House", dateCreation);
 
 		// Calcul du nombre maximum d'habitants
@@ -50,33 +50,33 @@ namespace Models
 
 	void House::logicTick()
 	{
-		// La maison est en cours d'amélioration ?
+		// La maison est en cours d'amÃ©lioration ?
 		if (upgradeInProgress) {
 			upgradeDaysDone++;
-			// L'amélioration est-elle terminée ?
+			// L'amÃ©lioration est-elle terminÃ©e ?
 			if (upgradeDaysDone >= upgradeTime) {
-				// On finalise l'amélioration
+				// On finalise l'amÃ©lioration
 				upgradeInProgress = false;
 				level++;
-				upgradePressure = 0; // On réinitialise la pression d'évolution
-				updateMaxPops(); // On met à jour les capacités d'accueil
-				updateAttractiveness(); // On met à jour l'attractivité
+				upgradePressure = 0; // On rÃ©initialise la pression d'Ã©volution
+				updateMaxPops(); // On met Ã  jour les capacitÃ©s d'accueil
+				updateAttractiveness(); // On met Ã  jour l'attractivitÃ©
 				// Log
-				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " a évolué au niveau " + std::to_string(level));
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " a Ã©voluÃ© au niveau " + std::to_string(level));
 			}
 		}
 
-		// La maison peut-elle évoluer ?
+		// La maison peut-elle Ã©voluer ?
 		if (canUpgrade()) {
 			upgradePressure++;
-			// Chaque point de pression donne 10% de chances d'évolution par jour
+			// Chaque point de pression donne 10% de chances d'Ã©volution par jour
 			if (LogicManager::getInstance().randRange(1, 10) <= upgradePressure) {
-				// On lance l'amélioration
+				// On lance l'amÃ©lioration
 				upgradeInProgress = true;
 				upgradeDateStart = LogicManager::getInstance().getTown()->getDate();
-				upgradeTime = 5; // TODO: définir la durée en fonction du niveau et de la taille
+				upgradeTime = 5; // TODO: dÃ©finir la durÃ©e en fonction du niveau et de la taille
 				upgradeDaysDone = 0;
-				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " commence à évoluer");
+				LogicManager::getInstance().log("La maison en " + std::to_string(getX()) + "," + std::to_string(getY()) + " commence Ã  Ã©voluer");
 			}
 		}
 	}
@@ -88,16 +88,16 @@ namespace Models
 
 	int32 House::getBaseCapacity(int32 sizeX, int32 sizeY)
 	{
-		return sizeX * (sizeY - 1) / 4; // Capacité de base : 1 pop par 4 mètres carrés (-1 sur l'axe Y car il y a la porte)
+		return sizeX * (sizeY - 1) / 4; // CapacitÃ© de base : 1 pop par 4 mÃ¨tres carrÃ©s (-1 sur l'axe Y car il y a la porte)
 	}
 
 	bool House::canUpgrade() const
 	{
-		// Une maison peut être améliorée si :
-		// - Elle n'est pas déjà en cours d'amélioration
+		// Une maison peut Ãªtre amÃ©liorÃ©e si :
+		// - Elle n'est pas dÃ©jÃ  en cours d'amÃ©lioration
 		// - Elle n'a pas atteint le niveau maximum (9)
-		// - Elle a atteint son maximum d'habitants pour la strate la plus élevée de population qu'elle peut accueillir
-		// - Elle offre une satisfaction de service suffisante pour la strate la plus élevée de population qu'elle peut accueillir
+		// - Elle a atteint son maximum d'habitants pour la strate la plus Ã©levÃ©e de population qu'elle peut accueillir
+		// - Elle offre une satisfaction de service suffisante pour la strate la plus Ã©levÃ©e de population qu'elle peut accueillir
 
 		// Aucune upgrade en cours
 		if (upgradeInProgress) {
@@ -109,7 +109,7 @@ namespace Models
 			return false;
 		}
 
-		// On identifie la strate de population la plus élevée pouvant être accueillie : niveaux 1-3 : Gueux, 4-6 : Bourgeois, 7-9 : Nobles
+		// On identifie la strate de population la plus Ã©levÃ©e pouvant Ãªtre accueillie : niveaux 1-3 : Gueux, 4-6 : Bourgeois, 7-9 : Nobles
 		Pop highestPop;
 		if (level >= 7) {
 			highestPop = Pop::Noble;
@@ -126,7 +126,7 @@ namespace Models
 			return false;
 		}
 
-		// Au niveau 1/4/7, on demande -2 d'attractivité, au niveau 2/5/8 -1, au niveau 3/6 0
+		// Au niveau 1/4/7, on demande -2 d'attractivitÃ©, au niveau 2/5/8 -1, au niveau 3/6 0
 		int32 requiredAttractiveness;
 		if(level == 1 || level == 4 || level == 7) {
 			requiredAttractiveness = -2;
@@ -141,15 +141,15 @@ namespace Models
 			return false;
 		}
 
-		// On a passé toutes les vérifications : la maison est digne d'évoluer
+		// On a passÃ© toutes les vÃ©rifications : la maison est digne d'Ã©voluer
 		return true;
 	}
 
 	void House::updateMaxPops()
 	{
-		// Capacité de base en fonction de la taille
+		// CapacitÃ© de base en fonction de la taille
 		int32 baseCapacity = House::getBaseCapacity(getSizeX(), getSizeY());
-		// On calcule les capacités maximales en fonction du niveau
+		// On calcule les capacitÃ©s maximales en fonction du niveau
 		switch (level) {
 			case 1:
 				maxPops[Pop::Gueux] = baseCapacity;

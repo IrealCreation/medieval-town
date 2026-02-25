@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Construction.h"
 #include <map>
 #include <cstdint>
@@ -25,7 +25,7 @@ namespace Models
 
 	protected: 
 		int32 level = 1; // Niveau de la maison qui sera construite
-		std::map<Pop, int32> previewPops = {}; // Populations pr�vues dans la maison une fois construite
+		std::map<Pop, int32> previewPops = {}; // Populations prévues dans la maison une fois construite
     };
 }
 

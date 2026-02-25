@@ -1,4 +1,4 @@
-#include "LogicManager.h"
+ï»¿#include "LogicManager.h"
 #include "Location.h"
 #include "Town.h"
 #include "BuildingType.h"
@@ -25,7 +25,7 @@ LogicManager::LogicManager() {}
 
 LogicManager::~LogicManager()
 {
-	// On s'assure de la destruction de la ville pour que les Locations qu'elle contient soient détruites avant le LogicManager
+	// On s'assure de la destruction de la ville pour que les Locations qu'elle contient soient dÃ©truites avant le LogicManager
 	if (this->town != nullptr) {
 		this->town.reset();
 	}
@@ -43,7 +43,7 @@ void LogicManager::setAPI(ALogicAPI* newApi)
 
 void LogicManager::startGame()
 {
-	// Réinitialisation des tableaux de pointeurs, pour aider le moteur qui semble mal le faire en cas de redémarrages multiples
+	// RÃ©initialisation des tableaux de pointeurs, pour aider le moteur qui semble mal le faire en cas de redÃ©marrages multiples
 	mapLocations.clear();
 	mapBuildings.clear();
 	mapHouses.clear();
@@ -51,12 +51,12 @@ void LogicManager::startGame()
 	buildingTypes.clear();
 	mapIdLocations.clear();
 
-	// Création de la ville
+	// CrÃ©ation de la ville
 	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 200, 200);
 	town->startTown();
 	isTownStarted = true;
 
-	// Création des familles
+	// CrÃ©ation des familles
 	this->addFamily("Salviati", true);
 	this->addFamily("Legrand", true);
 
@@ -76,7 +76,7 @@ void LogicManager::logicTick()
 
 	this->town->logicTick();
 
-	// Log de l'état des familles
+	// Log de l'Ã©tat des familles
 	for (const auto family : this->getTown()->getFamilies()) {
 		this->log("Famille " + family->getName() + " : or " + std::to_string(family->getGold()) + " - prestige : " + std::to_string(family->getPrestige()));
 	}
@@ -202,7 +202,7 @@ void LogicManager::initBuildingTypes()
 		prestigeGainPerPopulation,
 		resourcesCostPerPopulation,
 		20, 50, 3,
-		Models::Service::Eau // TODO: implémenter la distribution des ressources
+		Models::Service::Eau // TODO: implÃ©menter la distribution des ressources
 	);
 	buildingType_Ferme->addProductionCycle(
 		Models::ProductionCycle(
@@ -231,25 +231,25 @@ void LogicManager::addBuildingType(unique_ptr<Models::BuildingType> buildingType
 
 void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
 {
-	// Test de la validité de l'emplacement
+	// Test de la validitÃ© de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, type.getSizeX(), type.getSizeY())) {
 		this->log("Erreur : emplacement invalide pour la construction de " + type.getName() + " a " + std::to_string(x) + "," + std::to_string(y));
 		return;
 	}
 
-	// Création de la Construction
+	// CrÃ©ation de la Construction
 	unique_ptr<Models::ConstructionBuilding> construction = make_unique<Models::ConstructionBuilding>(type, family, x, y, rotation);
 
 	string id = construction->getId();
 
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Debut de la construction de " + id + (family != nullptr ? " par " + family->getName() : ""));
 
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
 
 	if (family != nullptr) {
-		// Coût pour la famille
+		// CoÃ»t pour la famille
 		family->removeGold(type.getGoldConstructionCost());
 
 		// On informe la Family de la nouvelle Construction
@@ -259,7 +259,7 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
 	this->updateCanHaveHouseAroundConstruction(construction.get());
 
-	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
+	// Enfin, on bouge le unique_ptr dans Town qui en a dÃ©sormais la charge
 	town->addConstruction(std::move(construction));
 
 	// UE: Spawn construction
@@ -271,7 +271,7 @@ void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32
 {
 	Models::BuildingType* type = this->getBuildingType(buildingTypeId);
 	if (type == nullptr) {
-		this->log("Erreur : BuildingType inconnu pour la construction de bâtiment avec l'ID " + buildingTypeId);
+		this->log("Erreur : BuildingType inconnu pour la construction de bÃ¢timent avec l'ID " + buildingTypeId);
 		return;
 	}
 	Models::Family* family = this->getTown()->getFamily(familyId);
@@ -280,15 +280,15 @@ void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32
 
 void LogicManager::constructionBuildingDone(Models::ConstructionBuilding* construction)
 {
-	// On crée le nouveau Building qui vient remplacer la Construction
+	// On crÃ©e le nouveau Building qui vient remplacer la Construction
 	this->createBuilding(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
-	// Pas besoin de retirer la Construction du cache de localisation car le Building l'écrase
+	// Pas besoin de retirer la Construction du cache de localisation car le Building l'Ã©crase
 
 	// On supprime le chantier de construction
 	construction->getFamily()->removeConstruction(construction);
 	town->removeConstruction(construction);
 
-	// UE : despawn l'objet Construction, petite animation de construction achevée
+	// UE : despawn l'objet Construction, petite animation de construction achevÃ©e
 }
 
 void LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
@@ -297,7 +297,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 
 	string id = building->getId();
 
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Construction achevee de " + id + (family != nullptr ? " par " + family->getName() : ""));
 
 	// On ajoute le Building dans les caches de localisation
@@ -308,7 +308,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	if (family != nullptr)
 		family->addBuilding(building.get());
 
-	// On déplace le pointeur unique dans la Town
+	// On dÃ©place le pointeur unique dans la Town
 	town->addBuilding(std::move(building));
 
 	// UE : spawn l'objet Building
@@ -319,7 +319,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 
 void LogicManager::destroyBuilding(Models::Building* building)
 {
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Destruction de " + building->getName() + (building->getFamily() != nullptr ? " par " + building->getFamily()->getName() : "") + " a " + std::to_string(building->getX()) + "," + std::to_string(building->getY()));
 
 	// On retire le Building des caches de localisation
@@ -335,7 +335,7 @@ void LogicManager::destroyBuilding(Models::Building* building)
 		house->removeService(building->getType().getService());
 	}
 
-	// On met à jour le canHaveHouse des tiles autour du Building détruit
+	// On met Ã  jour le canHaveHouse des tiles autour du Building dÃ©truit
 	updateCanHaveHouseAroundDestruction(building);
 
 	// On supprime le Building de la Town
@@ -346,18 +346,18 @@ void LogicManager::destroyBuilding(Models::Building* building)
 
 void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops)
 {
-	// Test de la validité de l'emplacement
+	// Test de la validitÃ© de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
 		this->log("Erreur : emplacement invalide pour la construction de House a " + std::to_string(x) + "," + std::to_string(y));
 		return;
 	}
 
-	// Création de la Construction
+	// CrÃ©ation de la Construction
 	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, level, previewPops);
 
 	string id = construction->getId();
 
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
 
 	// On ajoute la Construction dans le cache de localisation
@@ -366,7 +366,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
 	this->updateCanHaveHouseAroundConstruction(construction.get());
 
-	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
+	// Enfin, on bouge le unique_ptr dans Town qui en a dÃ©sormais la charge
 	town->addConstruction(std::move(construction));
 
 	// UE: Spawn construction house
@@ -377,12 +377,12 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 
 void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
 {
-	// On crée la nouvelle House qui vient remplacer la Construction
+	// On crÃ©e la nouvelle House qui vient remplacer la Construction
 	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getLevel(), construction->getPreviewPops());
 	// Pas besoin de retirer la Construction du cache de localisation car
 	// On supprime le chantier de construction
 	town->removeConstruction(construction);
-	// UE : despawn l'objet Construction, petite animation de construction achevée
+	// UE : despawn l'objet Construction, petite animation de construction achevÃ©e
 }
 
 void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops)
@@ -391,12 +391,12 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 
 	string id = house->getId();
 
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Maison achevee a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation
 	mapLocations[house->getX()][house->getY()] = house.get();
 	mapHouses[house->getX()][house->getY()] = house.get();
-	// On déplace le pointeur unique dans la Town
+	// On dÃ©place le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
 	if (api != nullptr) {
@@ -406,19 +406,19 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 
 void LogicManager::destroyHouse(Models::House* house)
 {
-	// On log l'événement
+	// On log l'Ã©vÃ©nement
 	this->log("Destruction d'une maison a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
 
 	// On retire la House des caches de localisation
 	mapLocations[house->getX()][house->getY()] = nullptr;
 	mapHouses[house->getX()][house->getY()] = nullptr;
 
-	// On retire cette House des bâtiments de service qu'elle utilisait
+	// On retire cette House des bÃ¢timents de service qu'elle utilisait
 	for(auto pair : house->getAllServiceBuildings()) {
 		pair.second->removeHouseServed(house);
 	}
 
-	// On met à jour le canHaveHouse des tiles autour de la maison détruite
+	// On met Ã  jour le canHaveHouse des tiles autour de la maison dÃ©truite
 	updateCanHaveHouseAroundDestruction(house);
 
 	// On supprime la House de la Town
@@ -436,7 +436,7 @@ Models::Location* LogicManager::getLocationAt(int32 x, int32 y)
 
 vector<Models::House*> LogicManager::getHousesInRange(int32 centerX, int32 centerY, int32 range) 
 {
-	// On utilise une multimap pour stocker nos résultats avec la distance au point d'origine comme clé
+	// On utilise une multimap pour stocker nos rÃ©sultats avec la distance au point d'origine comme clÃ©
 	multimap<float, Models::House*> ordered_list;
 
 	// On parcourt tous les maisons via le cache de localisation
@@ -457,14 +457,14 @@ vector<Models::House*> LogicManager::getHousesInRange(int32 centerX, int32 cente
 			if (house) {
 				float distance = house->getDistance(centerX, centerY);
 				if (distance <= range) {
-					// La maison est dans le rayon, on l'ajoute à la liste ordonnée
+					// La maison est dans le rayon, on l'ajoute Ã  la liste ordonnÃ©e
 					ordered_list.insert(std::make_pair(distance, house));
 				}
 			}
 		}
 	}
 
-	// On transforme notre multimap en un vecteur trié
+	// On transforme notre multimap en un vecteur triÃ©
 	vector<Models::House*> result;
 	for (const auto& pair : ordered_list) {
 		result.push_back(pair.second);
@@ -493,7 +493,7 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY
 			if (tile) {
 				float distance = tile->getDistance(centerX, centerY);
 				if (distance <= range) {
-					// La tile est dans le rayon, on l'ajoute à la liste
+					// La tile est dans le rayon, on l'ajoute Ã  la liste
 					result.push_back(tile);
 
 					// TEST UE: Show influence
@@ -507,17 +507,17 @@ vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY
 
 bool LogicManager::isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY)
 {
-	// On crée une Location temporaire pour vérifier les collisions
+	// On crÃ©e une Location temporaire pour vÃ©rifier les collisions
 	Models::Location tempLocation(x, y, rotation, sizeX, sizeY);
 
-	// On vérifie si la Location est dans les limites de la ville
+	// On vÃ©rifie si la Location est dans les limites de la ville
 	if (x - sizeX / 2 < 0 || x + sizeX / 2 >= this->town->getSizeX() ||
 		y - sizeY / 2 < 0 || y + sizeY / 2 >= this->town->getSizeY()) {
-		// La Location dépasse les limites de la ville
+		// La Location dÃ©passe les limites de la ville
 		return false;
 	}
 
-	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	// On dÃ©finit les bornes de la zone Ã  vÃ©rifier, avec la taille de la Location actuelle et la taille maximale des Locations
 	int32 minX = x - (sizeX + Models::Location::getMaxSizeX()) / 2;
 	int32 maxX = x + (sizeX + Models::Location::getMaxSizeX()) / 2;
 	int32 minY = y - (sizeY + Models::Location::getMaxSizeY()) / 2;
@@ -529,26 +529,26 @@ bool LogicManager::isValidLocation(int32 x, int32 y, float rotation, int32 sizeX
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
 
-	// On parcourt uniquement les Locations dans la zone définie
+	// On parcourt uniquement les Locations dans la zone dÃ©finie
 	for (int32 x = minX; x <= maxX; x++) {
 		for (int32 y = minY; y <= maxY; y++) {
 			Models::Location* location = mapLocations[x][y];
 			if (location) {
 				if (tempLocation.collisionWith(*location)) {
-					// Collision détectée
+					// Collision dÃ©tectÃ©e
 					return false;
 				}
 			}
 		}
 	}
 
-	// Pas de collision détectée
+	// Pas de collision dÃ©tectÃ©e
 	return true;
 }
 
 void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
 {
-	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	// On dÃ©finit les bornes de la zone Ã  vÃ©rifier, avec la taille de la Location actuelle et la taille maximale des Locations
 	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
@@ -558,7 +558,7 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
 	if (minY < 0) minY = 0;
 	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
-	// On parcourt uniquement les Tiles dans la zone définie pour les marquer comme ne pouvant pas recevoir de maison
+	// On parcourt uniquement les Tiles dans la zone dÃ©finie pour les marquer comme ne pouvant pas recevoir de maison
 	for (int32 x = minX; x <= maxX; x++) {
 		for (int32 y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
@@ -574,7 +574,7 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 
 void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* location)
 {
-	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
+	// On dÃ©finit les bornes de la zone Ã  vÃ©rifier, avec la taille de la Location actuelle et la taille maximale des Locations
 	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 minY = location->getY() - (location->getSizeY() + Models::House::minSizeY) / 2;
@@ -589,12 +589,12 @@ void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* locatio
 	if (maxY >= this->town->getSizeY()) 
 		maxY = this->town->getSizeY() - 1;
 
-	// On parcourt uniquement les Tiles dans la zone définie
+	// On parcourt uniquement les Tiles dans la zone dÃ©finie
 	for (int32 x = minX; x <= maxX; x++) {
 		for (int32 y = minY; y <= maxY; y++) {
 			Models::Tile* tile = this->town->getTileAt(x, y);
 			if (tile) {
-				// On met à jour la capacité de recevoir une maison de ce tile
+				// On met Ã  jour la capacitÃ© de recevoir une maison de ce tile
 				tile->updateCanHaveHouse();
 			}
 		}
@@ -642,7 +642,7 @@ Models::Tile* LogicManager::getBestHouseLocation(int32 minimumAttractiveness)
 	int32 bestScore = minimumAttractiveness;
 
 	// On parcourt les emplacements possibles pour trouver le meilleur pour une maison de base
-	// Le for ci-dessous permet de récupérer l'itérateur plutôt que directement le pointeur, afin de pouvoir supprimer les pointeurs nuls ou obsolètes de la liste des emplacements possibles (just UE things)
+	// Le for ci-dessous permet de rÃ©cupÃ©rer l'itÃ©rateur plutÃ´t que directement le pointeur, afin de pouvoir supprimer les pointeurs nuls ou obsolÃ¨tes de la liste des emplacements possibles (just UE things)
 	for (auto it = possibleHouseLocations.begin(); it != possibleHouseLocations.end(); ) {
 		Models::Tile* tile = *it;
 
@@ -707,7 +707,7 @@ Models::House* LogicManager::getMostAttractiveHouse(int32 minimumAttractiveness)
 		int32 index = this->randRange(0, candidates.size() - 1);
 		return candidates[index];
 	}
-	// Si aucune maison n'a été trouvée, on retourne nullptr
+	// Si aucune maison n'a Ã©tÃ© trouvÃ©e, on retourne nullptr
 	return nullptr;
 }
 

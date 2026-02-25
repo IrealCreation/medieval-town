@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 using std::string;
 #include <vector>
@@ -20,20 +20,20 @@ using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Forward declarations pour Èviter les dÈpendances circulaires
+	// Forward declarations pour √©viter les d√©pendances circulaires
 	class Family;
 	//class Building;
 	class BuildingType;
 	class Location;
 	//class Construction;
 	
-	// Ville dans laquelle se dÈroule une partie
+	// Ville dans laquelle se d√©roule une partie
 	class Town
 	{
 		public:
 			Town(const string name, int32 sizeX, int32 sizeY);
-			void startTown(); // Inititialisation du dÈbut de partie
-			void logicTick(); // Tick de progression du jeu appelÈ ‡ chaque unitÈ standard de temps (jour ?)
+			void startTown(); // Inititialisation du d√©but de partie
+			void logicTick(); // Tick de progression du jeu appel√© √† chaque unit√© standard de temps (jour ?)
 
 			string getName() const;
 
@@ -42,7 +42,7 @@ namespace Models
 			int32 getDate() const;
 			int32 getPopulation() const;
 
-			// Ajoute une famille ‡ la ville ; retourne son index (ID) dans la liste des familles
+			// Ajoute une famille √† la ville ; retourne son index (ID) dans la liste des familles
 			int32 addFamily(unique_ptr<Family> family);
 			vector<Family*> getFamilies();
 			Family* getFamily(int32 id);
@@ -57,29 +57,29 @@ namespace Models
 			void removeHouse(House* house);
 			vector<House*> getHouses();
 
-			int32 getResource(Resource resource); // RÈcupËre la quantitÈ de la ressource dans la ville (addition de celles possÈdÈes par les familles)
-			void takeResource(Resource resource, int32 amount, Family taker); // Permet ‡ une famille d'acheter une certaine quantitÈ de la ressource donnÈe
+			int32 getResource(Resource resource); // R√©cup√®re la quantit√© de la ressource dans la ville (addition de celles poss√©d√©es par les familles)
+			void takeResource(Resource resource, int32 amount, Family taker); // Permet √† une famille d'acheter une certaine quantit√© de la ressource donn√©e
 
-			Tile* getTileAt(int32 x, int32 y); // Retourne un raw pointer vers la Tile ‡ la position donnÈe ; nullptr si pas de Tile (coordonnÈes invalides)
+			Tile* getTileAt(int32 x, int32 y); // Retourne un raw pointer vers la Tile √† la position donn√©e ; nullptr si pas de Tile (coordonn√©es invalides)
 
 		protected:
 			string name = ""; // Nom de la ville
 			int32 sizeX = 0; // Taille de la ville en X
 			int32 sizeY = 0; // Taille de la ville en Y
-			// On triche un peu : la taille de la ville est de 1 case supÈrieure, car il y a la Tile 0,0
+			// On triche un peu : la taille de la ville est de 1 case sup√©rieure, car il y a la Tile 0,0
 
-			int32 date = 1; // Date actuelle de la ville (en jours depuis le dÈbut de la partie)
+			int32 date = 1; // Date actuelle de la ville (en jours depuis le d√©but de la partie)
 			int32 population = 0; // Population actuelle de la ville
-			int32 demographicPressure = 100; // Pression dÈmographique actuelle, accumulÈe ‡ chaque tick et dÈclenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint. On commence avec une pression initiale ÈlevÈe pour immÈdiatement avoir de nouvelles maisons dËs que des emplacements sont attractifs.
+			int32 demographicPressure = 100; // Pression d√©mographique actuelle, accumul√©e √† chaque tick et d√©clenche l'accroissement de la population par la construction ou l'aggrandissement de maisons quand un seuil est atteint. On commence avec une pression initiale √©lev√©e pour imm√©diatement avoir de nouvelles maisons d√®s que des emplacements sont attractifs.
 
-			void demographicGrowthTick(); // GËre l'Èventuelle croissance dÈmographique de la ville ‡ chaque tick (appelÈ depuis LogicTick)
-			int32 demographicGrowth_newHouse(Tile* newHouseLocation, int32 incomingPops); // GËre la construction d'une nouvelle maison d'habitation (appelÈ depuis demographicGrowthTick). Retourne la quantitÈ de nouveaux habitants prÈvus dans la nouvelle maison
-			int32 demographicGrowth_existingHouse(House* house, int32 incomingPops); // GËre l'agrandissement d'une maison existante (appelÈ depuis demographicGrowthTick). Retourne la quantitÈ de nouveaux habitants
+			void demographicGrowthTick(); // G√®re l'√©ventuelle croissance d√©mographique de la ville √† chaque tick (appel√© depuis LogicTick)
+			int32 demographicGrowth_newHouse(Tile* newHouseLocation, int32 incomingPops); // G√®re la construction d'une nouvelle maison d'habitation (appel√© depuis demographicGrowthTick). Retourne la quantit√© de nouveaux habitants pr√©vus dans la nouvelle maison
+			int32 demographicGrowth_existingHouse(House* house, int32 incomingPops); // G√®re l'agrandissement d'une maison existante (appel√© depuis demographicGrowthTick). Retourne la quantit√© de nouveaux habitants
 
-			// Les vecteurs ci-dessous contiennent des unique_ptr car Town gËre leur cycle de vie ; ils seront communiquÈs sous forme de raw pointers 
+			// Les vecteurs ci-dessous contiennent des unique_ptr car Town g√®re leur cycle de vie ; ils seront communiqu√©s sous forme de raw pointers 
 			vector<unique_ptr<Family>> families; // Liste des familles dirigeantes de la ville
 			vector<unique_ptr<Construction>> constructions; // Liste des chantiers de construction de la ville
-			vector<unique_ptr<Building>> buildings; // Liste des b‚timents de service de la ville
+			vector<unique_ptr<Building>> buildings; // Liste des b√¢timents de service de la ville
 			vector<unique_ptr<House>> houses; // Liste des maisons d'habitation de la ville
 
 			// Grille des Tiles [x => [y => Tile]]

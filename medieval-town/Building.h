@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 #include <vector>
 #include "Location.h" // Classe parent : on doit inclure son header
@@ -7,50 +7,50 @@ using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Forward declarations pour Èviter les dÈpendances circulaires
+	// Forward declarations pour √©viter les d√©pendances circulaires
 	class Family;
 	class BuildingType;
 	class House;
 	class Tile;
 
-	// B‚timent prodiguant des services aux alentours. C'est un lieu (Location) qui a un type (BuildingType) et Èventuellement une famille propriÈtaire (Family)
+	// B√¢timent prodiguant des services aux alentours. C'est un lieu (Location) qui a un type (BuildingType) et √©ventuellement une famille propri√©taire (Family)
 	class Building : public Location
 	{
 	public:
 		Building(const BuildingType& type, Family* family, int32 x, int32 y, float rotation);
 
-		void logicTick_production(int32 queue); // Tick appelÈ ‡ chaque jour dans le jeu, pour la production des ressources. ItËre sur les files de production (queue) pour respecter leur ordre
-		void logicTick_service(); // Tick appelÈ ‡ chaque jour dans le jeu, pour la logique des services
+		void logicTick_production(int32 queue); // Tick appel√© √† chaque jour dans le jeu, pour la production des ressources. It√®re sur les files de production (queue) pour respecter leur ordre
+		void logicTick_service(); // Tick appel√© √† chaque jour dans le jeu, pour la logique des services
 
 		std::string getName();
 		void setName(const std::string& newName);
 
-		const BuildingType& getType() const; // Retourne le type du b‚timent
+		const BuildingType& getType() const; // Retourne le type du b√¢timent
 
-		Family* getFamily() const; // Retourne la famille propriÈtaire du b‚timent ; nullptr si pas de propriÈtaire
+		Family* getFamily() const; // Retourne la famille propri√©taire du b√¢timent ; nullptr si pas de propri√©taire
 
-		void changeCapacityUsed(int32 delta); // Change la capacitÈ utilisÈe du b‚timent de delta (positif ou nÈgatif)
+		void changeCapacityUsed(int32 delta); // Change la capacit√© utilis√©e du b√¢timent de delta (positif ou n√©gatif)
 
-		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce b‚timent
-		void removeHouseServed(House* house); // Retire une maison desservie par ce b‚timent
+		std::vector<House*> getHousesServed() const; // Retourne la liste des maisons desservies par ce b√¢timent
+		void removeHouseServed(House* house); // Retire une maison desservie par ce b√¢timent
 
-		std::vector<Tile*> getMarginalTilesServed() const; // Retourne la liste des tuiles desservies par ce b‚timent
+		std::vector<Tile*> getMarginalTilesServed() const; // Retourne la liste des tuiles desservies par ce b√¢timent
 
-		void updateServed(); // Met ‡ jour la liste des emplacements (House et Tiles) desservis par ce b‚timent
-		void setMustUpdateServed(); // Indique que la liste des emplacements (House et Tiles) desservis doit Ítre mise ‡ jour au prochain tick
+		void updateServed(); // Met √† jour la liste des emplacements (House et Tiles) desservis par ce b√¢timent
+		void setMustUpdateServed(); // Indique que la liste des emplacements (House et Tiles) desservis doit √™tre mise √† jour au prochain tick
 
 	private:
-		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par rÈfÈrence et en const
-		Family* family; // Famille propriÈtaire du b‚timent ; nullptr si pas de propriÈtaire, donc on le stocke par pointeur
-		std::string name = ""; // Nom personnalisÈ du b‚timent (nom de son BuildingType sinon)
-		int32 dateCreation = 0; // Date de crÈation du b‚timent (fin du chantier de construction)
-		int32 capacityUsed = 0; // CapacitÈ actuellement utilisÈe (nombre de pops servies)
+		const BuildingType& type; // Un building ne change jamais de type, donc on le stocke par r√©f√©rence et en const
+		Family* family; // Famille propri√©taire du b√¢timent ; nullptr si pas de propri√©taire, donc on le stocke par pointeur
+		std::string name = ""; // Nom personnalis√© du b√¢timent (nom de son BuildingType sinon)
+		int32 dateCreation = 0; // Date de cr√©ation du b√¢timent (fin du chantier de construction)
+		int32 capacityUsed = 0; // Capacit√© actuellement utilis√©e (nombre de pops servies)
 
-		std::vector<House*> housesServed; // Maisons desservies par ce b‚timent
-		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit Ítre mise ‡ jour au prochain tick
+		std::vector<House*> housesServed; // Maisons desservies par ce b√¢timent
+		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit √™tre mise √† jour au prochain tick
 
-		std::vector<House*> marginalHousesServed; // Maisons pouvant accueillir un habitant de plus servi par ce b‚timent
-		std::vector<Tile*> marginalTilesServed; // Tuiles pouvant accueillir un habitant de plus servi par ce b‚timent
+		std::vector<House*> marginalHousesServed; // Maisons pouvant accueillir un habitant de plus servi par ce b√¢timent
+		std::vector<Tile*> marginalTilesServed; // Tuiles pouvant accueillir un habitant de plus servi par ce b√¢timent
 	};
 }
 

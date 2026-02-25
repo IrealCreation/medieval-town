@@ -1,29 +1,29 @@
-#pragma once
+Ôªø#pragma once
 #include "Location.h" // Classe parent : on doit inclure son header
 #include <cstdint>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Forward declarations pour Èviter les dÈpendances circulaires
+	// Forward declarations pour √©viter les d√©pendances circulaires
 	class Family; 
 	class BuildingType;
 
-	// Chantier de construction. Classe parent de ConstructionBuilding (pour un b‚timent de service) et ConstructionHouse (pour une maison d'habitation)
+	// Chantier de construction. Classe parent de ConstructionBuilding (pour un b√¢timent de service) et ConstructionHouse (pour une maison d'habitation)
 	class Construction : public Location
 	{
 	public:
-		virtual void logicTick(); // Tick de progression du jeu appelÈ ‡ chaque unitÈ standard de temps (jour ?)
+		virtual void logicTick(); // Tick de progression du jeu appel√© √† chaque unit√© standard de temps (jour ?)
 
-		int32 getDaysDone() const; // Jours de construction effectuÈs
+		int32 getDaysDone() const; // Jours de construction effectu√©s
 		int32 getDaysRemaining() const; // Jours restants avant la fin de la construction
-		int32 percentDone() const; // Pourcentage de la construction effectuÈe
+		int32 percentDone() const; // Pourcentage de la construction effectu√©e
 
 	protected:
 		Construction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY);
-		int32 dateStart = 0; // Date de dÈbut du chantier de construction
-		int32 constructionTime = 0; // DurÈe nÈcessaire ‡ la construction, en jours
-		int32 daysDone = 0; // Jours de construction effectuÈs
+		int32 dateStart = 0; // Date de d√©but du chantier de construction
+		int32 constructionTime = 0; // Dur√©e n√©cessaire √† la construction, en jours
+		int32 daysDone = 0; // Jours de construction effectu√©s
 	};
 
 }

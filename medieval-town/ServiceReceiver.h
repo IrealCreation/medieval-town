@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <map>
 #include <vector>
 #include "Service.h"
@@ -12,7 +12,7 @@ namespace Models
 	class Building;
 
 
-	// Classe de base pour les entitÈs pouvant recevoir des services : maisons, tuiles...
+	// Classe de base pour les entit√©s pouvant recevoir des services : maisons, tuiles...
 	class ServiceReceiver
 	{
 	public:
@@ -20,28 +20,28 @@ namespace Models
 
 		static const std::map<Pop, std::vector<Service>> popServices; // Services requis par chaque type de population
 
-		Building* getServiceBuilding(Service service) const; // Retourne le b‚timent de service desservant cet endroit pour le service donnÈ ; nullptr si pas de b‚timent
-		std::map<Service, Building*> getAllServiceBuildings() const; // Retourne la liste des b‚timents de service desservant cet endroit
+		Building* getServiceBuilding(Service service) const; // Retourne le b√¢timent de service desservant cet endroit pour le service donn√© ; nullptr si pas de b√¢timent
+		std::map<Service, Building*> getAllServiceBuildings() const; // Retourne la liste des b√¢timents de service desservant cet endroit
 
-		void addService(Service service, Building* building); // Ajoute un b‚timent de service desservant cet endroit
-		void removeService(Service service); // Retire le b‚timent de service desservant cet endroit pour le service donnÈ
+		void addService(Service service, Building* building); // Ajoute un b√¢timent de service desservant cet endroit
+		void removeService(Service service); // Retire le b√¢timent de service desservant cet endroit pour le service donn√©
 
-		void addMarginalService(Service service, Building* building); // Ajoute un b‚timent de service pouvant desservir cet endroit pour un nouvel habitant
-		void removeMarginalService(Service service, Building* building); // Retire le b‚timent de service pouvant desservir cet endroit pour le service donnÈ pour un nouvel habitant
+		void addMarginalService(Service service, Building* building); // Ajoute un b√¢timent de service pouvant desservir cet endroit pour un nouvel habitant
+		void removeMarginalService(Service service, Building* building); // Retire le b√¢timent de service pouvant desservir cet endroit pour le service donn√© pour un nouvel habitant
 
-		int32 getAttractiveness(Pop pop) const; // Retourne l'attractivitÈ pour une population en fonction des services disponibles : 0 signifie que tous les services requis sont disponibles, et chaque service indisponible rÈduit l'attractivitÈ de 1
+		int32 getAttractiveness(Pop pop) const; // Retourne l'attractivit√© pour une population en fonction des services disponibles : 0 signifie que tous les services requis sont disponibles, et chaque service indisponible r√©duit l'attractivit√© de 1
 
-		static int32 getNumberOfServicesForPop(Pop pop); // Retourne le nombre de services requis pour une population donnÈe
+		static int32 getNumberOfServicesForPop(Pop pop); // Retourne le nombre de services requis pour une population donn√©e
 
 	protected:
-		virtual void updateAttractiveness(); // Met ‡ jour l'attractivitÈ aprËs que les services disponibles aient ÈvoluÈs (virtual pour laisser Tile l'override)
+		virtual void updateAttractiveness(); // Met √† jour l'attractivit√© apr√®s que les services disponibles aient √©volu√©s (virtual pour laisser Tile l'override)
 
 	private:
-		std::map<Service, Building*> serviceBuildings; // B‚timents de service desservant cet endroit
+		std::map<Service, Building*> serviceBuildings; // B√¢timents de service desservant cet endroit
 
-		std::map<Service, std::vector<Building*>> marginalServiceBuildings; // Pour chaque service, liste des b‚timents de service ‡ portÈe pouvant accueillir un habitant de plus, afin de calculer l'attractivitÈ. PrivÈe car toute modification doit passer par les setters afin que soit appelÈ updateAttractiveness()
+		std::map<Service, std::vector<Building*>> marginalServiceBuildings; // Pour chaque service, liste des b√¢timents de service √† port√©e pouvant accueillir un habitant de plus, afin de calculer l'attractivit√©. Priv√©e car toute modification doit passer par les setters afin que soit appel√© updateAttractiveness()
 
-		std::map<Pop, int32> attractiveness; // AttractivitÈ pour une population en fonction des services disponibles
+		std::map<Pop, int32> attractiveness; // Attractivit√© pour une population en fonction des services disponibles
 	};
 }
 

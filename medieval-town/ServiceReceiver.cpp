@@ -1,4 +1,4 @@
-#include "ServiceReceiver.h"
+ï»¿#include "ServiceReceiver.h"
 #include "Building.h"
 #include "LogicManager.h"
 #include <algorithm>
@@ -10,7 +10,7 @@ namespace Models
 {
 	ServiceReceiver::ServiceReceiver() 
 	{
-		// Attractivité à 0 - nombre de services requis par défaut
+		// AttractivitÃ© Ã  0 - nombre de services requis par dÃ©faut
 		attractiveness = {
 			{ Pop::Gueux, 0 - getNumberOfServicesForPop(Pop::Gueux) },
 			{ Pop::Bourgeois, 0 - getNumberOfServicesForPop(Pop::Bourgeois) },
@@ -18,7 +18,7 @@ namespace Models
 		};
 	}
 
-	// Définition de la map statique des services requis par chaque pop
+	// DÃ©finition de la map statique des services requis par chaque pop
 	const std::map<Pop, std::vector<Service>> ServiceReceiver::popServices = {
 		{
 			Pop::Gueux,
@@ -62,14 +62,14 @@ namespace Models
 	}
 	void ServiceReceiver::removeMarginalService(Service service, Building* building)
 	{
-		// On retire le bâtiment de la liste des bâtiments marginaux pour ce service
+		// On retire le bÃ¢timent de la liste des bÃ¢timents marginaux pour ce service
 		auto& buildings = marginalServiceBuildings[service];
 		auto it = find(buildings.begin(), buildings.end(), building);
 		if (it != buildings.end()) {
 			buildings.erase(it);
 		}
 
-		// S'il n'y a plus de bâtiment pour ce service, on retire l'entrée de la map et on met à jour l'attractivité
+		// S'il n'y a plus de bÃ¢timent pour ce service, on retire l'entrÃ©e de la map et on met Ã  jour l'attractivitÃ©
 		if (buildings.empty()) {
 			marginalServiceBuildings.erase(service);
 			this->updateAttractiveness();
@@ -95,7 +95,7 @@ namespace Models
 		};
 
 		if (marginalServiceBuildings.empty()) {
-			// Il n'y a aucun bâtiment de service qui nous dessert
+			// Il n'y a aucun bÃ¢timent de service qui nous dessert
 			attractiveness = scoreByPop;
 			return;
 		}
@@ -103,23 +103,23 @@ namespace Models
 		// On parcourt tous les services marginaux disponibles
 		for(const auto& service_building : marginalServiceBuildings)
 		{
-			// Pour chaque service desservi, on regarde chaque pop afin de vérifier si elle désire ce service
+			// Pour chaque service desservi, on regarde chaque pop afin de vÃ©rifier si elle dÃ©sire ce service
 			for (const auto& pop_services : popServices)
 			{
-				// Est-ce que le service de ce bâtiment est présent dans la liste de services de cette population ?
+				// Est-ce que le service de ce bÃ¢timent est prÃ©sent dans la liste de services de cette population ?
 				if (find(pop_services.second.begin(), pop_services.second.end(), service_building.first) != pop_services.second.end()) 
 				{
-					// Si oui, on accroit le score d'attractivité pour cette pop de 1
+					// Si oui, on accroit le score d'attractivitÃ© pour cette pop de 1
 					scoreByPop[pop_services.first]++;
 				}
 			}
 		}
 
-		// Déprécié : on garde juste le nombre de services disponibles pour chaque pop plutôt que de faire une moyenne
-		// On divise le score d'attractivité pour chaque pop par la quantité de services que cette pop requiert
+		// DÃ©prÃ©ciÃ© : on garde juste le nombre de services disponibles pour chaque pop plutÃ´t que de faire une moyenne
+		// On divise le score d'attractivitÃ© pour chaque pop par la quantitÃ© de services que cette pop requiert
 		/* for (auto& pop_score : scoreByPop)
 		{
-			// Pas besoin de diviser si le score est à 0
+			// Pas besoin de diviser si le score est Ã  0
 			if (pop_score.second == 0.0f)
 				continue;
 
@@ -127,13 +127,13 @@ namespace Models
 			pop_score.second /= static_cast<float>(it->second.size());
 		}*/
 
-		// On attribue les nouveaux score d'attractivité
+		// On attribue les nouveaux score d'attractivitÃ©
 		attractiveness = scoreByPop;
 	}
 
 	int32 ServiceReceiver::getNumberOfServicesForPop(Pop pop)
 	{
-		// TODO: peut-être utiliser plutôt un cache statique pour éviter de faire un size() à chaque appel ?
+		// TODO: peut-Ãªtre utiliser plutÃ´t un cache statique pour Ã©viter de faire un size() Ã  chaque appel ?
 		return static_cast<int32>(popServices.find(pop)->second.size());
 	}
 

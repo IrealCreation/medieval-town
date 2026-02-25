@@ -1,4 +1,4 @@
-#include "Location.h"
+ï»¿#include "Location.h"
 #include "LogicManager.h"
 #include <cmath> // Pour std::sqrt
 #include <wtypes.h>
@@ -10,7 +10,7 @@ namespace Models
 		this->x = x;
 		this->y = y;
 		this->rotation = rotation;
-		// Taille par défaut
+		// Taille par dÃ©faut
 		this->sizeX = 1; 
 		this->sizeY = 1;
 	}
@@ -21,7 +21,7 @@ namespace Models
 		this->rotation = rotation;
 		this->sizeX = sizeX;
 		this->sizeY = sizeY;
-		// Mise à jour des tailles maximales si nécessaire
+		// Mise Ã  jour des tailles maximales si nÃ©cessaire
 		if (sizeX > Location::maxSizeX)
 			Location::maxSizeX = sizeX;
 		if (sizeY > Location::maxSizeY)
@@ -85,16 +85,16 @@ namespace Models
 			(std::abs(static_cast<int>(this->y - other.y) * 2) < this->getSizeY() + other.getSizeY());
 	}
 
-	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille
+	// Comparateur d'Ã©galitÃ© entre deux Locations pour std::find et std::remove : deux Locations sont Ã©gales si elles ont les mÃªmes coordonnÃ©es et la mÃªme taille
 	static bool operator== (Location const& lhs, Location const& rhs) {
 		return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY() && lhs.getSizeX() == rhs.getSizeX() && lhs.getSizeY() == rhs.getSizeY();
 	}
 
 	void Location::setId(std::string type, int32 dateCreation) {
-		// Génération de l'ID : [Type]_[X]_[Y]_[dateCreation]
+		// GÃ©nÃ©ration de l'ID : [Type]_[X]_[Y]_[dateCreation]
 		this->id = type + "_" + std::to_string(this->x) + "_" + std::to_string(this->y) + "_" + std::to_string(dateCreation);
 
-		// On ajoute cette Location à la map du LogicManager
+		// On ajoute cette Location Ã  la map du LogicManager
 		LogicManager::getInstance().addIdLocation(this);
 	}
 }

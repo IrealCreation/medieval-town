@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 #include <memory>
 #include <map>
@@ -11,7 +11,7 @@ using std::vector;
 #include <cstdint>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
-// Forward declarations pour Èviter les dÈpendances circulaires
+// Forward declarations pour √©viter les d√©pendances circulaires
 namespace Models {
 	class Town;
 	class BuildingType;
@@ -27,72 +27,72 @@ namespace Models {
 }
 class ALogicAPI;
 
-// Le GameManager remplit deux utilisÈs : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
+// Le GameManager remplit deux utilis√©s : servir de chef d'orchestre entre toutes les classes Models ; et servir de point d'interaction entre les classes Models et le moteur de jeu
 class LogicManager
 {
 
 public:
-	// On supprime l'opÈrateur de copie pour ne pas que notre instance soit dupliquÈe
+	// On supprime l'op√©rateur de copie pour ne pas que notre instance soit dupliqu√©e
 	LogicManager(const LogicManager&) = delete;
 
 	// Destructeur
 	~LogicManager();
 
-	// RÈfÈrence au GameManager unique de la partie
+	// R√©f√©rence au GameManager unique de la partie
 	static LogicManager& getInstance();
 
-	// DÈfinit l'interface avec le moteur de jeu 
+	// D√©finit l'interface avec le moteur de jeu 
 	void setAPI(ALogicAPI* newApi);
 
-	// DÈbut de la partie
+	// D√©but de la partie
 	void startGame();
 
-	// Tick de progression du jeu appelÈ ‡ chaque unitÈ standard de temps (jour ?)
+	// Tick de progression du jeu appel√© √† chaque unit√© standard de temps (jour ?)
 	void logicTick();
 
 	// Log de debug
 	void log(string message) const;
 
-	// Retourne un raw pointer vers la ville ; le cycle de vie de la ville reste gÈrÈ par le LogicManager
+	// Retourne un raw pointer vers la ville ; le cycle de vie de la ville reste g√©r√© par le LogicManager
 	Models::Town* getTown();
 
-	// Ajoute une famille ‡ partie, et renvoie son ID
+	// Ajoute une famille √† partie, et renvoie son ID
 	int32 addFamily(const string& name, const bool isAi);
 
 	// Initialise les BuildingTypes
 	void initBuildingTypes();
 
-	// Retourne un raw pointer vers le BuildingType correspondant ‡ l'ID donnÈ ; nullptr si pas trouvÈ
+	// Retourne un raw pointer vers le BuildingType correspondant √† l'ID donn√© ; nullptr si pas trouv√©
 	Models::BuildingType* getBuildingType(const string& id);
 
-	// DÈbute la construction d'un b‚timent de service
+	// D√©bute la construction d'un b√¢timent de service
 	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
-	// DÈbute la construction d'un b‚timent de service (surcharge avec l'ID du BuildingType et de la Family)
+	// D√©bute la construction d'un b√¢timent de service (surcharge avec l'ID du BuildingType et de la Family)
 	void startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation);
-	// Termine la construction d'un b‚timent de service
+	// Termine la construction d'un b√¢timent de service
 	void constructionBuildingDone(Models::ConstructionBuilding* construction);
-	// Ajoute un b‚timent de service achevÈ
+	// Ajoute un b√¢timent de service achev√©
 	void createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
-	// DÈtruire un b‚timent de service
+	// D√©truire un b√¢timent de service
 	void destroyBuilding(Models::Building* building);
 
-	// DÈbute la construction d'une maison d'habitation
+	// D√©bute la construction d'une maison d'habitation
 	void startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops);
 	// Termine la construction d'une maison d'habitation
 	void constructionHouseDone(Models::ConstructionHouse* construction);
-	// Ajoute une maison d'habitation achevÈe
+	// Ajoute une maison d'habitation achev√©e
 	void createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops);
-	// DÈtruire une maison d'habitation
+	// D√©truire une maison d'habitation
 	void destroyHouse(Models::House* house);
 
-	Models::Location* getLocationAt(int32 x, int32 y); // Retourne un raw pointer vers la Location ‡ la position donnÈe ; nullptr si pas de Location
+	Models::Location* getLocationAt(int32 x, int32 y); // Retourne un raw pointer vers la Location √† la position donn√©e ; nullptr si pas de Location
 
-	// RÈcupËre les maisons situÈes dans un rayon donnÈ autour d'un point (ordonnÈes de la plus proche ‡ la plus ÈloignÈe)
+	// R√©cup√®re les maisons situ√©es dans un rayon donn√© autour d'un point (ordonn√©es de la plus proche √† la plus √©loign√©e)
 	vector<Models::House*> getHousesInRange(int32 x, int32 y, int32 range);
-	// RÈcupËre les tiles situÈs dans un rayon donnÈ autour d'un point (non ordonnÈs)
+	// R√©cup√®re les tiles situ√©s dans un rayon donn√© autour d'un point (non ordonn√©s)
 	vector<Models::Tile*> getTilesInRange(int32 x, int32 y, int32 range);
 
-	// VÈrifie si une Location peut Ítre placÈe ‡ cet endroit (collision avec d'autres Locations)
+	// V√©rifie si une Location peut √™tre plac√©e √† cet endroit (collision avec d'autres Locations)
 	bool isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
 
 	// Ajoute un tile dans la liste des candidats pour la construction d'une maison
@@ -100,13 +100,13 @@ public:
 	// Retire un tile de la liste des candidats pour la construction d'une maison
 	void removePossibleHouseLocation(Models::Tile* tile);
 
-	// SÈlectionne l'emplacement le plus attractif disponible pour accueillir une nouvelle maison
+	// S√©lectionne l'emplacement le plus attractif disponible pour accueillir une nouvelle maison
 	Models::Tile* getBestHouseLocation(int32 minimumAttractiveness);
-	// SÈlectionne la maison la plus attractive pouvant accueillir un nouvel habitant
+	// S√©lectionne la maison la plus attractive pouvant accueillir un nouvel habitant
 	Models::House* getMostAttractiveHouse(int32 minimumAttractiveness);
 
-	int32 randRange(int32 min, int32 max); // Retourne un entier alÈatoire entre min et max inclus
-	float randRange(float min, float max); // Retourne un float alÈatoire entre min et max inclus
+	int32 randRange(int32 min, int32 max); // Retourne un entier al√©atoire entre min et max inclus
+	float randRange(float min, float max); // Retourne un float al√©atoire entre min et max inclus
 
 	// Getters / setters des caches by ID
 	Models::Location* getLocationById(const string& id);
@@ -125,17 +125,17 @@ public:
 protected:
 	LogicManager();
 
-	unique_ptr<Models::Town> town; // La ville dans laquelle se dÈroule la partie
+	unique_ptr<Models::Town> town; // La ville dans laquelle se d√©roule la partie
 
 	static LogicManager instance; // Instance unique du LogicManager
 
-	// Liste des BuildingTypes avec leur ID comme clÈ
+	// Liste des BuildingTypes avec leur ID comme cl√©
 	map<string, unique_ptr<Models::BuildingType>> buildingTypes;
 
-	// Ajoute un BuildingType ‡ la liste
+	// Ajoute un BuildingType √† la liste
 	void addBuildingType(unique_ptr<Models::BuildingType> buildingType);
 
-	// Cache de localisation pour plus facilement accÈder aux ÈlÈments en fonction de leur emplacement
+	// Cache de localisation pour plus facilement acc√©der aux √©l√©ments en fonction de leur emplacement
 	// Liste de toutes les Locations [x => [y => Location*]]
 	map<int32, map<int32, Models::Location*>> mapLocations;
 	// Liste des Buildings [x => [y => Building*]]
@@ -143,21 +143,21 @@ protected:
 	// Liste des Houses [x => [y => House*]]
 	map<int32, map<int32, Models::House*>> mapHouses;
 
-	// Map des Locations avec leur id comme clÈ
+	// Map des Locations avec leur id comme cl√©
 	map<string, Models::Location*> mapIdLocations;
 
-	// Fonction permettant de rÈcupÈrer les ÈlÈments des caches de localisation sitiÈes dans un rayon donnÈ autour d'un point (ordonnÈes de la plus proche ‡ la plus ÈloignÈe)
-	// TODO: essayer d'Èviter la duplication de code dans les fonctions getXInRange, genre avec un template et un static_assert( std::is_base_of<> ... ) ?
-	// (Rappel : comme le C++ est un langage qui aime les blagues, on ne peut pas dÈclarer de templates dans le header)
+	// Fonction permettant de r√©cup√©rer les √©l√©ments des caches de localisation siti√©es dans un rayon donn√© autour d'un point (ordonn√©es de la plus proche √† la plus √©loign√©e)
+	// TODO: essayer d'√©viter la duplication de code dans les fonctions getXInRange, genre avec un template et un static_assert( std::is_base_of<> ... ) ?
+	// (Rappel : comme le C++ est un langage qui aime les blagues, on ne peut pas d√©clarer de templates dans le header)
 	/* 
 	template<typename T>
 	vector<T*> getInRange(int32 x, int32 y, int32 range, map<int32, map<int32, T>>);
 	*/
 
-	// Met ‡ jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison
+	// Met √† jour les tiles autour de la location d'une construction pour indiquer qu'ils ne peuvent plus recevoir de maison
 	void updateCanHaveHouseAroundConstruction(Models::Location* location); 
 
-	// Met ‡ jour les tiles autour de la location d'une destruction pour indiquer qu'ils peuvent ‡ nouveau recevoir une maison
+	// Met √† jour les tiles autour de la location d'une destruction pour indiquer qu'ils peuvent √† nouveau recevoir une maison
 	void updateCanHaveHouseAroundDestruction(Models::Location* location); 
 	
 	// Liste des tiles candidats pour la construction d'une maison (canHaveHouse == true et attractiveness > 0)

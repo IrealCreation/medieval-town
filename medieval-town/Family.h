@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 #include <vector>
 #include <cstdint>
@@ -8,17 +8,17 @@ using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
 {
-	// Forward declarations pour Èviter les dÈpendances circulaires
+	// Forward declarations pour √©viter les d√©pendances circulaires
 	class Building;
 	class Construction;
 
-	// Famille dirigeante de la ville, incarnÈe par un joueur ou par l'IA
+	// Famille dirigeante de la ville, incarn√©e par un joueur ou par l'IA
 	class Family
 	{
 	public:
 		Family(const std::string name, const bool isAi);
 
-		void logicTick(); // Tick de progression du jeu appelÈ ‡ chaque unitÈ standard de temps (jour ?)
+		void logicTick(); // Tick de progression du jeu appel√© √† chaque unit√© standard de temps (jour ?)
 
 		int32 getId() const;
 		void setId(int32 newId);
@@ -36,18 +36,18 @@ namespace Models
 		void addConstruction(Construction* construction);
 		void removeConstruction(Construction* construction);
 
-		int32 getResource(Resource resource); // RÈcupËre la quantitÈ de la ressource donnÈe
-		void addResource(Resource resource, int32 amount); // Ajoute une certaine quantitÈ de la ressource donnÈe
+		int32 getResource(Resource resource); // R√©cup√®re la quantit√© de la ressource donn√©e
+		void addResource(Resource resource, int32 amount); // Ajoute une certaine quantit√© de la ressource donn√©e
 
 	protected:
 		int32 id = 0; // ID unique de la famille dans la ville
-		bool isAi = false; // Indique si la famille est contrÙlÈe par l'IA
+		bool isAi = false; // Indique si la famille est contr√¥l√©e par l'IA
 		std::string name = ""; // Nom de la famille
-		int32 gold = 0; // QuantitÈ d'or possÈdÈe par la famille
+		int32 gold = 0; // Quantit√© d'or poss√©d√©e par la famille
 		int32 prestige = 0; // Niveau de prestige de la famille
-		std::vector<Building*> buildings; // Liste des b‚timents de la famille (en rÈfÈrence pour Èviter les copies)
-		std::vector<Construction*> constructions; // Liste des chantiers de construction de la famille (en rÈfÈrence pour Èviter les copies)
-		std::map<Resource, int32> resources = {}; // Ressources possÈdÈes par la famille
+		std::vector<Building*> buildings; // Liste des b√¢timents de la famille (en r√©f√©rence pour √©viter les copies)
+		std::vector<Construction*> constructions; // Liste des chantiers de construction de la famille (en r√©f√©rence pour √©viter les copies)
+		std::map<Resource, int32> resources = {}; // Ressources poss√©d√©es par la famille
 	};
 
 }

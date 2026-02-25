@@ -1,4 +1,4 @@
-#include "Family.h"
+ï»¿#include "Family.h"
 #include "Town.h"
 #include "Building.h"
 #include "Construction.h"
@@ -10,7 +10,7 @@ namespace Models
 		: name(name), isAi(isAi), gold(1000), prestige(100) {}
 
 	void Family::logicTick() {
-		// Logique de progression du jeu pour la famille, par exemple, mise à jour des ressources
+		// Logique de progression du jeu pour la famille, par exemple, mise Ã  jour des ressources
 	}
 	int32 Family::getId() const {
 		return id;
@@ -59,10 +59,10 @@ namespace Models
 	int32 Family::getResource(Resource resource) {
 		auto it = resources.find(resource);
 		if (it != resources.end()) {
-			// Ressource trouvée, on peut l'utiliser
+			// Ressource trouvÃ©e, on peut l'utiliser
 			return it->second;
 		} else {
-			// Ressource non trouvée, quantité nulle
+			// Ressource non trouvÃ©e, quantitÃ© nulle
 			return 0;
 		}
 	}
