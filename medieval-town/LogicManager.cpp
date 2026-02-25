@@ -41,6 +41,7 @@ void LogicManager::startGame()
 	mapHouses.clear();
 	possibleHouseLocations.clear();
 	buildingTypes.clear();
+	mapIdLocations.clear();
 
 	// Création de la ville
 	this->town = make_unique<Models::Town>("Lorrez-le-Bocage", 200, 200);
@@ -231,8 +232,10 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	// Création de la Construction
 	unique_ptr<Models::ConstructionBuilding> construction = make_unique<Models::ConstructionBuilding>(type, family, x, y, rotation);
 
+	string id = construction->getId();
+
 	// On log l'événement
-	this->log("Debut de la construction de " + construction->getType().getName() +  (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
+	this->log("Debut de la construction de " + id + (family != nullptr ? " par " + family->getName() : ""));
 
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
@@ -253,7 +256,7 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 
 	// UE: Spawn construction
 	if (api != nullptr) {
-		api->spawnConstruction(type, x, y, rotation);
+		api->spawnConstruction(type, x, y, rotation, id);
 	}
 }
 void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
@@ -284,8 +287,10 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 {
 	unique_ptr <Models::Building> building = make_unique<Models::Building>(type, family, x, y, rotation);
 
+	string id = building->getId();
+
 	// On log l'événement
-	this->log("Construction achevee de " + building->getName() + (family != nullptr ? " par " + family->getName() : "") + " a " + std::to_string(building->getX()) + "," + std::to_string(building->getY()));
+	this->log("Construction achevee de " + id + (family != nullptr ? " par " + family->getName() : ""));
 
 	// On ajoute le Building dans les caches de localisation
 	mapLocations[building->getX()][building->getY()] = building.get();
@@ -300,7 +305,7 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 
 	// UE : spawn l'objet Building
 	if (api != nullptr) {
-		api->spawnBuilding(type, x, y, rotation);
+		api->spawnBuilding(type, x, y, rotation, id);
 	}
 }
 
@@ -342,6 +347,8 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	// Création de la Construction
 	unique_ptr<Models::ConstructionHouse> construction = make_unique<Models::ConstructionHouse>(x, y, rotation, sizeX, sizeY, level, previewPops);
 
+	string id = construction->getId();
+
 	// On log l'événement
 	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
 
@@ -356,7 +363,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 
 	// UE: Spawn construction house
 	if (api != nullptr) {
-		api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level);
+		api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level, id);
 	}
 }
 
@@ -373,6 +380,9 @@ void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction
 void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops)
 {
 	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, level, startingPops);
+
+	string id = house->getId();
+
 	// On log l'événement
 	this->log("Maison achevee a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
 	// On ajoute la House dans les caches de localisation
@@ -382,7 +392,7 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
 	if (api != nullptr) {
-		api->spawnHouse(x, y, rotation, sizeX, sizeY, level);
+		api->spawnHouse(x, y, rotation, sizeX, sizeY, level, id);
 	}
 }
 
@@ -709,6 +719,22 @@ float LogicManager::randRange(float min, float max)
 		return api->RandRange(min, max);
 	}
 	return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
+}
+
+Models::Location* LogicManager::getLocationById(const string& id) {
+	auto it = this->mapIdLocations.find(id);
+	if (it != this->mapIdLocations.end()) {
+		return it->second;
+	}
+	return nullptr;
+}
+
+void LogicManager::addIdLocation(Models::Location* location) {
+	this->mapIdLocations[location->getId()] = location;
+}
+
+void LogicManager::removeIdLocation(const string& id) {
+	this->mapIdLocations.erase(id);
 }
 
 int32 LogicManager::getPopulation() const {

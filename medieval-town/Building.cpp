@@ -11,8 +11,12 @@ namespace Models {
 	Building::Building(const BuildingType& type, Family* family, int32 x, int32 y, float rotation)
 		: Location(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family), name(type.getName()), dateCreation(0) 
 	{
+
 		// On initialise la date de création à la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
+
+		// Génération de l'ID
+		setId(type.getName(), dateCreation);
 
 		// On trouve les maisons desservies par ce bâtiment
 		// TEST: on appelle cette fonction dans le tick, donc pas besoin de le faire ici

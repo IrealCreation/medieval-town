@@ -10,6 +10,9 @@ namespace Models
 		// On initialise la date de création à la date actuelle de la ville
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
+		// Génération de l'ID
+		setId("House", dateCreation);
+
 		// Calcul du nombre maximum d'habitants
 		updateMaxPops();
 	}

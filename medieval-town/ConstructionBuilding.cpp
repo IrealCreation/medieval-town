@@ -9,6 +9,9 @@ namespace Models
 		: Construction(x, y, rotation, type.getSizeX(), type.getSizeY()), type(type), family(family) 
 	{
 		constructionTime = type.getConstructionTime(); // On initialise le temps de construction à partir du type de bâtiment
+
+		// Génération de l'ID
+		setId("Construction" + type.getName(), dateStart);
 	}
 
 	void ConstructionBuilding::logicTick() 

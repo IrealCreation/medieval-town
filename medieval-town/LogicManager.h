@@ -105,6 +105,11 @@ public:
 	int32 randRange(int32 min, int32 max); // Retourne un entier aléatoire entre min et max inclus
 	float randRange(float min, float max); // Retourne un float aléatoire entre min et max inclus
 
+	// Getters / setters des caches by ID
+	Models::Location* getLocationById(const string& id);
+	void addIdLocation(Models::Location* location);
+	void removeIdLocation(const string& id);
+
 	// Getters des infos de la ville et des familles pour le LogicAPI
 	int32 getPopulation() const;
 	int32 getFamilyGold(int32 familyId) const;
@@ -130,6 +135,9 @@ protected:
 	map<int32, map<int32, Models::Building*>> mapBuildings;
 	// Liste des Houses [x => [y => House*]]
 	map<int32, map<int32, Models::House*>> mapHouses;
+
+	// Map des Locations avec leur id comme clé
+	map<string, Models::Location*> mapIdLocations;
 
 	// Fonction permettant de récupérer les éléments des caches de localisation sitiées dans un rayon donné autour d'un point (ordonnées de la plus proche à la plus éloignée)
 	// TODO: essayer d'éviter la duplication de code dans les fonctions getXInRange, genre avec un template et un static_assert( std::is_base_of<> ... ) ?

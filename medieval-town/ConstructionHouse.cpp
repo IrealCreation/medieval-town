@@ -7,6 +7,9 @@ namespace Models
 		: Construction(x, y, rotation, sizeX, sizeY), level(level), previewPops(previewPops)
     {
 		this->constructionTime = sizeX * (sizeY - 1) / 8; // Temps de construction égal à la surface de la maison divisé par 8 (-1 sur Y pour la façade avec la porte)
+
+		// Génération de l'ID
+        setId("ConstructionHouse", dateStart);
     }
 
     int32 ConstructionHouse::getLevel() const

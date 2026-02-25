@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <string>
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
@@ -19,6 +20,8 @@ namespace Models
 		int32 getSizeX() const;
 		int32 getSizeY() const;
 
+		std::string getId() const;
+
 		static int32 getMaxSizeX();
 		static int32 getMaxSizeY();
 
@@ -36,6 +39,9 @@ namespace Models
 		float rotation;
 		int32 sizeX; // Taille totale sur l'axe X
 		int32 sizeY; // Taille totale sur l'axe Y
+
+		std::string id; // ID généré à la création sur le modèle : [Type]_[X]_[Y]_[dateCreation]
+		void setId(std::string type, int32 dateCreation); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager
 
 		static int32 maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
 		static int32 maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations

@@ -24,12 +24,12 @@ class ALogicAPI
 		};
 
 		// Spawn a construction in the world
-		void spawnConstruction(const Models::BuildingType& type, int32 x, int32 y, int32 rot) {}
+		void spawnConstruction(const Models::BuildingType& type, int32 x, int32 y, int32 rot, string id) {}
 		// Spawn a building in the world
-		void spawnBuilding(const Models::BuildingType& type, int32 x, int32 y, int32 rot) {}
+		void spawnBuilding(const Models::BuildingType& type, int32 x, int32 y, int32 rot, string id) {}
 		// Spawn a house construction in the world
-		void spawnHouseConstruction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
+		void spawnHouseConstruction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, string id) {}
 		// Spawn a house in the world
-		void spawnHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 niveau) {}
+		void spawnHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, string id) {}
 };
 

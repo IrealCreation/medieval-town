@@ -1,4 +1,5 @@
 #include "Location.h"
+#include "LogicManager.h"
 #include <cmath> // Pour std::sqrt
 #include <wtypes.h>
 
@@ -49,6 +50,10 @@ namespace Models
 		return this->sizeY;
 	}
 
+	std::string Location::getId() const {
+		return this->id;
+	}
+
 	int32 Location::getMaxSizeX() {
 		return Location::maxSizeX;
 	}
@@ -77,5 +82,13 @@ namespace Models
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille
 	static bool operator== (Location const& lhs, Location const& rhs) {
 		return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY() && lhs.getSizeX() == rhs.getSizeX() && lhs.getSizeY() == rhs.getSizeY();
+	}
+
+	void Location::setId(std::string type, int32 dateCreation) {
+		// Génération de l'ID : [Type]_[X]_[Y]_[dateCreation]
+		this->id = type + "_" + std::to_string(this->x) + "_" + std::to_string(this->y) + "_" + std::to_string(dateCreation);
+
+		// On ajoute cette Location à la map du LogicManager
+		LogicManager::getInstance().addIdLocation(this);
 	}
 }
