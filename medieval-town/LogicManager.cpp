@@ -758,6 +758,7 @@ int32 LogicManager::getFamilyPrestige(int32 familyId) const {
 }
 
 int32 LogicManager::getHousePop(string houseId) {
-	Models::House* house = dynamic_cast<Models::House*>(this->getLocationById(houseId));
+	Models::Location* location = this->getLocationById(houseId);
+	Models::House* house = static_cast<Models::House*>(location);
 	return house ? house->getPopTotal() : 0;
 }
