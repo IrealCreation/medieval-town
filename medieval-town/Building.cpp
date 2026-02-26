@@ -16,7 +16,7 @@ namespace Models {
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
 		// Génération de l'ID
-		setId(type.getName(), dateCreation);
+		setId();
 
 		// On trouve les maisons desservies par ce bâtiment
 		// TEST: on appelle cette fonction dans le tick, donc pas besoin de le faire ici
@@ -276,6 +276,12 @@ namespace Models {
 	}
 	void Building::setMustUpdateServed() {
 		mustUpdateServed = true;
+	}
+
+	void Building::setId()
+	{
+		this->id = type.getName() + "_" + std::to_string(this->getX()) + "_" + std::to_string(this->getY()) + "_" + std::to_string(dateCreation);
+		Location::setId();
 	}
 
 } // namespace Models

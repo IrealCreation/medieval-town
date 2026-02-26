@@ -90,9 +90,8 @@ namespace Models
 		return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY() && lhs.getSizeX() == rhs.getSizeX() && lhs.getSizeY() == rhs.getSizeY();
 	}
 
-	void Location::setId(std::string type, int32 dateCreation) {
-		// Génération de l'ID : [Type]_[X]_[Y]_[dateCreation]
-		this->id = type + "_" + std::to_string(this->x) + "_" + std::to_string(this->y) + "_" + std::to_string(dateCreation);
+	void Location::setId() {
+		// La génération de l'ID doit être effectuée au niveau des classes enfants : [Type]_[X]_[Y]_[dateCreation]
 
 		// On ajoute cette Location à la map du LogicManager
 		LogicManager::getInstance().addIdLocation(this);

@@ -9,7 +9,7 @@ namespace Models
 		this->constructionTime = sizeX * (sizeY - 1) / 8; // Temps de construction égal à la surface de la maison divisé par 8 (-1 sur Y pour la façade avec la porte)
 
 		// Génération de l'ID
-        setId("ConstructionHouse", dateStart);
+        setId();
     }
 
     int32 ConstructionHouse::getLevel() const
@@ -29,5 +29,12 @@ namespace Models
             // Fin de la construction
             LogicManager::getInstance().constructionHouseDone(this);
 		}
+    }
+    void ConstructionHouse::setId()
+    {
+        // ID généré à partir du type et de la date de début de construction
+        id = "ConstructionHouse_" + std::to_string(getX()) + "_" + std::to_string(getY()) + "_" + std::to_string(dateStart);
+        // Appel de la fonction parente pour ajouter cette Location à la map du LogicManager
+        Location::setId();
     }
 }

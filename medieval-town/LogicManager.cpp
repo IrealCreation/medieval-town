@@ -756,3 +756,8 @@ int32 LogicManager::getFamilyGold(int32 familyId) const {
 int32 LogicManager::getFamilyPrestige(int32 familyId) const {
 	return this->town->getFamily(familyId)->getPrestige();
 }
+
+int32 LogicManager::getHousePop(string houseId) {
+	Models::House* house = dynamic_cast<Models::House*>(this->getLocationById(houseId));
+	return house ? house->getPopTotal() : 0;
+}

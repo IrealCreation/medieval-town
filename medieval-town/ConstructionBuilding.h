@@ -20,6 +20,8 @@ namespace Models
 	protected:
 		const BuildingType& type; // Type de bâtiment en cours de construction. Un building ne change jamais de type, donc on le stocke par référence et en const
 		Family* family; // Famille propriétaire du bâtiment ; nullptr si pas de propriétaire, donc on le stocke par pointeur
+
+		void setId() override;
 	};
 }
 

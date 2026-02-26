@@ -11,7 +11,7 @@ namespace Models
 		dateCreation = LogicManager::getInstance().getTown()->getDate();
 
 		// Génération de l'ID
-		setId("House", dateCreation);
+		setId();
 
 		// Calcul du nombre maximum d'habitants
 		updateMaxPops();
@@ -143,6 +143,13 @@ namespace Models
 
 		// On a passé toutes les vérifications : la maison est digne d'évoluer
 		return true;
+	}
+
+	void House::setId()
+	{
+		id = "House_" + std::to_string(getX()) + "_" + std::to_string(getY()) + "_" + std::to_string(dateCreation);
+		// Appel de la fonction parente pour ajouter cette Location à la map du LogicManager
+		Location::setId();
 	}
 
 	void House::updateMaxPops()

@@ -43,7 +43,7 @@ namespace Models
 		int32 sizeY; // Taille totale sur l'axe Y
 
 		std::string id; // ID généré à la création sur le modèle : [Type]_[X]_[Y]_[dateCreation]
-		void setId(std::string type, int32 dateCreation); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager
+		virtual void setId(); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager
 
 		static int32 maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
 		static int32 maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations

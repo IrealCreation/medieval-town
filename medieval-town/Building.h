@@ -46,6 +46,8 @@ namespace Models
 		int32 dateCreation = 0; // Date de création du bâtiment (fin du chantier de construction)
 		int32 capacityUsed = 0; // Capacité actuellement utilisée (nombre de pops servies)
 
+		void setId() override;
+
 		std::vector<House*> housesServed; // Maisons desservies par ce bâtiment
 		bool mustUpdateServed = true; // Indique si la liste des emplacements (House et Tiles) desservis doit être mise à jour au prochain tick
 

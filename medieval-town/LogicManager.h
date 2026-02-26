@@ -117,6 +117,7 @@ public:
 	int32 getPopulation() const;
 	int32 getFamilyGold(int32 familyId) const;
 	int32 getFamilyPrestige(int32 familyId) const;
+	int32 getHousePop(string houseId);
 
 	// UE: don't accept ticks when not ready
 	bool isReady = false;

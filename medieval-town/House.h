@@ -39,6 +39,8 @@ namespace Models
 		int32 dateCreation = 0; // Date de création de la maison (fin du chantier de construction)
 		int32 level = 1; // Niveau de la maison, lui permettant d'accueillir plus de pop et de meilleures pops
 
+		void setId() override;
+
         std::map<Pop, int32> pops; // Populations résidentes dans la maison
         std::map<Pop, int32> maxPops; // Nombre maximum d'habitants dans la maison
 
