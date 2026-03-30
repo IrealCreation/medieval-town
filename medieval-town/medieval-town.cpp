@@ -1,11 +1,11 @@
-// medieval-town.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
+﻿// medieval-town.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
 
 #include <iostream>
 #include "LogicManager.h"
 #include "Family.h"
 #include "Town.h"
-#include "BuildingType.h"
+#include "Geometry.h"
 #include <memory>
 using std::unique_ptr;
 using std::shared_ptr;
@@ -13,6 +13,7 @@ using std::make_unique;
 using std::make_shared;
 
 #include <windows.h> // Ajout nécessaire pour SetConsoleOutputCP et CP_UTF8
+
 
 int32 main()
 {
