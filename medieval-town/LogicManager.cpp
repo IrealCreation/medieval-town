@@ -358,7 +358,7 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	string id = construction->getId();
 
 	// On log l'événement
-	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()));
+	this->log("Debut de la construction d'une maison a " + std::to_string(construction->getX()) + "," + std::to_string(construction->getY()) + "," + std::to_string(construction->getRotation()) + "°");
 
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();

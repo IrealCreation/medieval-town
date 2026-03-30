@@ -126,28 +126,39 @@ namespace Models
 			}
 		}
 
+		int houseSizeX;
+		int houseSizeY;
 		if (largeHouse) {
 			// On fait une grande maison
-			// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
-			int32 maxIncomingPops = House::getBaseCapacity(5, 9);
-			if (incomingPops > maxIncomingPops) {
-				incomingPops = maxIncomingPops;
-			}
-			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 5, 9, 1,
-				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
-			);
+			houseSizeX = 5;
+			houseSizeY = 9;
 		}
 		else {
 			// On fait une petite maison
-			// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
-			int32 maxIncomingPops = House::getBaseCapacity(4, 6);
-			if (incomingPops > maxIncomingPops) {
-				incomingPops = maxIncomingPops;
-			}
-			LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), 0, 4, 7, 1,
-				{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
-			);
+			houseSizeX = 4;
+			houseSizeY = 6;
 		}
+
+		// On vérifie que le nombre de pops entrants ne dépasse pas la capacité maximale de la maison
+		int32 maxIncomingPops = House::getBaseCapacity(houseSizeX, houseSizeY);
+		if (incomingPops > maxIncomingPops) {
+			incomingPops = maxIncomingPops;
+		}
+
+		// On essaie une rotation aléatoire...
+		int rotation = LogicManager::getInstance().randRange(0, 360);
+		if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
+			// ...si ça ne passe pas, on essaie de la pivoter à 90 degrés...
+			rotation = (rotation + 90) % 360;
+			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
+				// ...si ça ne passe toujours pas, on fait sans rotation
+				rotation = 0;
+			}
+		}
+
+		LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY, 1,
+			{ {Pop::Gueux, incomingPops}, {Pop::Bourgeois, 0}, {Pop::Noble, 0} }
+		);
 
 		return incomingPops;
 
