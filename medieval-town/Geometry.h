@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 using std::string;
+using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -86,6 +87,6 @@ namespace Geometry {
     // Only works for convex quads!
     bool isPointInQuad(const Point& P, const Quad& Q);
 
-	Quad createQuad(Point center, float sizeX, float sizeY, float rotationDegrees);
-	Quad createQuad(float x, float y, float sizeX, float sizeY, float rotationDegrees);
+	Quad createQuad(Point center, int32 sizeX, int32 sizeY, int32 rotationDegrees);
+	Quad createQuad(int32 x, int32 y, int32 sizeX, int32 sizeY, int32 rotationDegrees);
 }

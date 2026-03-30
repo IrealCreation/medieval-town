@@ -729,6 +729,12 @@ float LogicManager::randRange(float min, float max)
 	return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
 }
 
+int32 LogicManager::randRotation() {
+	// Les rotations valides sont des mutiples de 15°. 360 / 15 = 24
+	int32 rand = this->randRange(0, 23);
+	return rand * 15;
+}
+
 Models::Location* LogicManager::getLocationById(const string& id) {
 	auto it = this->mapIdLocations.find(id);
 	if (it != this->mapIdLocations.end()) {

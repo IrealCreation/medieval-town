@@ -66,7 +66,7 @@ namespace Geometry {
 			isPointInTriangle(P, Q.ACD);
 	}
 
-	Quad createQuad(Point center, float sizeX, float sizeY, float rotationDegrees) {
+	Quad createQuad(Point center, int32 sizeX, int32 sizeY, int32 rotationDegrees) {
 		std::vector<Point> corners(4);
 
 		// 1. Conversion de l'angle en radians
@@ -105,8 +105,8 @@ namespace Geometry {
 		return Quad(corners[0], corners[1], corners[2], corners[3]);
 	}
 
-	Quad createQuad(float x, float y, float sizeX, float sizeY, float rotationDegrees) {
-		return createQuad(Point{ x, y }, sizeX, sizeY, rotationDegrees);
+	Quad createQuad(int32 x, int32 y, int32 sizeX, int32 sizeY, int32 rotationDegrees) {
+		return createQuad(Point{ static_cast<float>(x), static_cast<float>(y) }, sizeX, sizeY, rotationDegrees);
 	}
 
 }

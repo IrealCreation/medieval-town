@@ -11,13 +11,13 @@ namespace Models
 	{
 	public:
 		// Location avec une taille par défaut de 1x1 (un tile)
-		Location(int32 x, int32 y, float rotation);
+		Location(int32 x, int32 y, int32 rotation);
 		// Location avec une taille spécifiée
-		Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
+		Location(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY);
 
 		int32 getX() const;
 		int32 getY() const;
-		float getRotation() const;
+		int32 getRotation() const;
 		int32 getSizeX() const;
 		int32 getSizeY() const;
 		Geometry::Quad getQuad() const;
@@ -40,7 +40,7 @@ namespace Models
 	protected:
 		int32 x; // Coordonnée X du centre de la Location
 		int32 y; // Coordonnée Y du centre de la Location
-		float rotation;
+		int32 rotation;
 		int32 sizeX; // Taille totale sur l'axe X
 		int32 sizeY; // Taille totale sur l'axe Y
 		Geometry::Quad quad; // Quad représentant la surface occupée par la Location, utilisé pour la détection de collision

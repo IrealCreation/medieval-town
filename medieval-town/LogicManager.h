@@ -107,6 +107,7 @@ public:
 
 	int32 randRange(int32 min, int32 max); // Retourne un entier aléatoire entre min et max inclus
 	float randRange(float min, float max); // Retourne un float aléatoire entre min et max inclus
+	int32 randRotation(); // Retourne une rotation aléatoire valide (multiple de 15°)
 
 	// Getters / setters des caches by ID
 	Models::Location* getLocationById(const string& id);

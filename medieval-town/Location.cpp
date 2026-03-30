@@ -5,7 +5,7 @@
 
 namespace Models
 {
-	Location::Location(int32 x, int32 y, float rotation)
+	Location::Location(int32 x, int32 y, int32 rotation)
 	{
 		this->x = x;
 		this->y = y;
@@ -16,7 +16,7 @@ namespace Models
 		// Création de la géométrie
 		this->quad = Geometry::createQuad(x, y, sizeX, sizeY, rotation);
 	}
-	Location::Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY)
+	Location::Location(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY)
 	{
 		this->x = x;
 		this->y = y;
@@ -50,7 +50,7 @@ namespace Models
 	int32 Location::getY() const {
 		return this->y;
 	}
-	float Location::getRotation() const {
+	int32 Location::getRotation() const {
 		return this->rotation;
 	}
 	int32 Location::getSizeX() const {

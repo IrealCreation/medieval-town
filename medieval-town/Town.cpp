@@ -146,7 +146,7 @@ namespace Models
 		}
 
 		// On essaie une rotation aléatoire...
-		int rotation = LogicManager::getInstance().randRange(0, 360);
+		int rotation = LogicManager::getInstance().randRotation();
 		if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
 			// ...si ça ne passe pas, on essaie de la pivoter à 90 degrés...
 			rotation = (rotation + 90) % 360;
