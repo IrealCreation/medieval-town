@@ -21,6 +21,18 @@ namespace Geometry {
 		return ABC.area() + ACD.area();
 	}
 
+	bool Quad::collideWith(const Quad& otherQuad) const {
+		// On vérifie si un des coins de Q1 est dans otherQuad
+		if (isPointInQuad(this->A, otherQuad) || isPointInQuad(this->B, otherQuad) || isPointInQuad(this->C, otherQuad) || isPointInQuad(this->D, otherQuad)) {
+			return true;
+		}
+		// On vérifie si un des coins de otherQuad est dans Q1
+		if (isPointInQuad(otherQuad.A, *this) || isPointInQuad(otherQuad.B, *this) || isPointInQuad(otherQuad.C, *this) || isPointInQuad(otherQuad.D, *this)) {
+			return true;
+		}
+		return false;
+	}
+
 	string Quad::toString() const {
 		return "Quad(" + std::to_string(A.x) + "," + std::to_string(A.y) + " ; "
 			+ std::to_string(B.x) + "," + std::to_string(B.y) + " ; "
@@ -39,7 +51,6 @@ namespace Geometry {
 		float side1 = whichSide(P, T.A, T.B);
 		float side2 = whichSide(P, T.B, T.C);
 		float side3 = whichSide(P, T.C, T.A);
-
 
 		bool hasNegative =
 			(side1 < -EPS) || (side2 < -EPS) || (side3 < -EPS);

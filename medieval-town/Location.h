@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <cstdint>
 #include <string>
+#include "Geometry.h"
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 namespace Models
@@ -19,6 +20,7 @@ namespace Models
 		float getRotation() const;
 		int32 getSizeX() const;
 		int32 getSizeY() const;
+		Geometry::Quad getQuad() const;
 
 		std::string getId() const;
 
@@ -36,11 +38,12 @@ namespace Models
 		~Location(); // Destructeur
 
 	protected:
-		int32 x;
-		int32 y;
+		int32 x; // Coordonnée X du centre de la Location
+		int32 y; // Coordonnée Y du centre de la Location
 		float rotation;
 		int32 sizeX; // Taille totale sur l'axe X
 		int32 sizeY; // Taille totale sur l'axe Y
+		Geometry::Quad quad; // Quad représentant la surface occupée par la Location, utilisé pour la détection de collision
 
 		std::string id; // ID généré à la création sur le modèle : [Type]_[X]_[Y]_[dateCreation]
 		virtual void setId(); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager

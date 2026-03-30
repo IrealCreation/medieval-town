@@ -9,13 +9,13 @@ using std::string;
 ///// Let's do some geometry! /////
 namespace Geometry {
 
-    // This represents each point of our geometric shapes.
+    // Point in spaaaaace.
     struct Point {
         float x = 0.0f;
         float y = 0.0f;
     };
 
-    // Trace a line between two points.
+    // Line between two points.
     struct Segment {
         Point p1;
         Point p2;
@@ -49,9 +49,14 @@ namespace Geometry {
         float area() const;
     };
 
-    // Trace a Quad.
+	// Quadrilateral, represented as two triangles (ABC and ACD). The summit A is at the "top left" of the quad, and the other summits are ordered clockwise.
     struct Quad {
 
+        // Constructeur par défaut
+		Quad() : A({ 0, 0 }), B({ 0, 0 }), C({ 0, 0 }), D({ 0, 0 }),
+            ABC(A, B, C),
+            ACD(A, C, D) {
+		}
         Quad(Point A, Point B, Point C, Point D) : A(A), B(B), C(C), D(D),
             ABC(A, B, C),
             ACD(A, C, D) {
@@ -65,11 +70,12 @@ namespace Geometry {
         Triangle ABC;
         Triangle ACD;
 
+        bool collideWith(const Quad& otherQuad) const;
+
         // Might be usefull later?
         float area() const;
 
         string toString() const;
-
     };
 
     // On which side of the line is our point placed?
@@ -77,7 +83,7 @@ namespace Geometry {
 
     bool isPointInTriangle(const Point& P, const Triangle& T);
 
-    // !By the way: the following only works for convex quads!
+    // Only works for convex quads!
     bool isPointInQuad(const Point& P, const Quad& Q);
 
 	Quad createQuad(Point center, float sizeX, float sizeY, float rotationDegrees);

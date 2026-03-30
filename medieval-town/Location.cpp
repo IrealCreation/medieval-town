@@ -13,6 +13,8 @@ namespace Models
 		// Taille par défaut
 		this->sizeX = 1; 
 		this->sizeY = 1;
+		// Création de la géométrie
+		this->quad = Geometry::createQuad(x, y, sizeX, sizeY, rotation);
 	}
 	Location::Location(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY)
 	{
@@ -26,6 +28,8 @@ namespace Models
 			Location::maxSizeX = sizeX;
 		if (sizeY > Location::maxSizeY)
 			Location::maxSizeY = sizeY;
+		// Création de la géométrie
+		this->quad = Geometry::createQuad(x, y, sizeX, sizeY, rotation);
 	}
 
 	// Destructeur
@@ -55,6 +59,9 @@ namespace Models
 	int32 Location::getSizeY() const {
 		return this->sizeY;
 	}
+	Geometry::Quad Location::getQuad() const {
+		return this->quad;
+	}
 
 	std::string Location::getId() const {
 		return this->id;
@@ -77,12 +84,17 @@ namespace Models
 	}
 
 	bool Location::collisionWith(const Location& other) const {
-		// AABB collision detection
+		// Let's check if the quads collide (obligatory Apocalyptica reference)
+		return this->quad.collideWith(other.getQuad());
+
+		// AABB collision detection (doesn't take rotation into account)
+		/*
 		return 
 			(std::abs(static_cast<int>(this->x - other.x) * 2)
 				< this->getSizeX() + other.getSizeX())
 			&&
 			(std::abs(static_cast<int>(this->y - other.y) * 2) < this->getSizeY() + other.getSizeY());
+		*/
 	}
 
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille
