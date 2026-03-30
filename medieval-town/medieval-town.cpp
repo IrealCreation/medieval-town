@@ -19,6 +19,21 @@ int32 main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
+	// --- Test de la géométrie ---
+    /*
+	// Rectangle de 10x8 centré en 20,20 sans rotation
+    Geometry::Quad quad = Geometry::createQuad(20, 20, 10, 8, 0);
+    std::cout << quad.toString() << "\n";
+
+    // Rectangle de 10x8 centré en 20,20 avec une rotation de 45°
+    quad = Geometry::createQuad(20, 20, 10, 8, 45);
+    std::cout << quad.toString() << "\n";
+
+    // Rectangle de 10x8 centré en 20,20 avec une rotation de 90°
+    quad = Geometry::createQuad(20, 20, 10, 8, 90);
+    std::cout << quad.toString() << "\n";
+    */
+
     std::cout << "Lancement de Medieval Town\n";
 
     LogicManager& logicManager = LogicManager::getInstance();

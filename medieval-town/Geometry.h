@@ -1,4 +1,10 @@
 ﻿#pragma once
+#include <string>
+using std::string;
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 ///// Let's do some geometry! /////
 namespace Geometry {
@@ -14,7 +20,7 @@ namespace Geometry {
         Point p1;
         Point p2;
 
-        float Length() const;
+        float length() const;
     };
 
     // Basic triangle.
@@ -40,7 +46,7 @@ namespace Geometry {
         Segment CA;
 
         // Might be usefull later?
-        float Area() const;
+        float area() const;
     };
 
     // Trace a Quad.
@@ -60,15 +66,20 @@ namespace Geometry {
         Triangle ACD;
 
         // Might be usefull later?
-        float Area() const;
+        float area() const;
+
+        string toString() const;
 
     };
 
     // On which side of the line is our point placed?
-    float WhichSide(const Point& p1, const Point& p2, const Point& p3);
+    float whichSide(const Point& p1, const Point& p2, const Point& p3);
 
-    bool IsPointInTriangle(const Point& P, const Triangle& T);
+    bool isPointInTriangle(const Point& P, const Triangle& T);
 
     // !By the way: the following only works for convex quads!
-    bool IsPointInQuad(const Point& P, const Quad& Q);
+    bool isPointInQuad(const Point& P, const Quad& Q);
+
+	Quad createQuad(Point center, float sizeX, float sizeY, float rotationDegrees);
+	Quad createQuad(float x, float y, float sizeX, float sizeY, float rotationDegrees);
 }
