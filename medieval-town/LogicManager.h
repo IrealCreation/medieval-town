@@ -82,11 +82,11 @@ public:
 	void destroyBuilding(Models::Building* building);
 
 	// Débute la construction d'une maison d'habitation
-	void startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops);
+	Models::ConstructionHouse* startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops);
 	// Termine la construction d'une maison d'habitation
-	void constructionHouseDone(Models::ConstructionHouse* construction);
+	Models::House* constructionHouseDone(Models::ConstructionHouse* construction);
 	// Ajoute une maison d'habitation achevée
-	void createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops);
+	Models::House* createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops);
 	// Détruire une maison d'habitation
 	void destroyHouse(Models::House* house);
 

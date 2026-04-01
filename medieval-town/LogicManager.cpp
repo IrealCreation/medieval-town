@@ -366,7 +366,7 @@ void LogicManager::destroyBuilding(Models::Building* building)
 }
 
 
-void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops)
+Models::ConstructionHouse* LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, std::map<Models::Pop, int32> previewPops)
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, sizeX, sizeY)) {
@@ -385,8 +385,11 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	// On ajoute la Construction dans le cache de localisation
 	mapLocations[construction->getX()][construction->getY()] = construction.get();
 
+	// Récupération du raw pointer
+	Models::ConstructionHouse* constructionPtr = construction.get();
+
 	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
-	this->updateCanHaveHouseAroundConstruction(construction.get());
+	this->updateCanHaveHouseAroundConstruction(constructionPtr);
 
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
@@ -395,19 +398,33 @@ void LogicManager::startConstructionHouse(int32 x, int32 y, int32 rotation, int3
 	if (api != nullptr) {
 		api->spawnHouseConstruction(x, y, rotation, sizeX, sizeY, level, id);
 	}
+
+	return constructionPtr;
 }
 
-void LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
+Models::House* LogicManager::constructionHouseDone(Models::ConstructionHouse* construction)
 {
 	// On crée la nouvelle House qui vient remplacer la Construction
-	this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getLevel(), construction->getPreviewPops());
+	Models::House* housePtr = this->createHouse(construction->getX(), construction->getY(), construction->getRotation(), construction->getSizeX(), construction->getSizeY(), construction->getLevel(), construction->getPreviewPops());
+
+	// On informe les House de la noHouseZone de la Construction qu'elles sont désormais dans la zone de la House
+	housePtr->addNoHouseZoneTiles(construction->getNoHouseZoneTiles());
+	// On informe les tiles de la noHouseZone qu'ils sont désormais dans la zone du Building
+	for (Models::Tile* tile : housePtr->getNoHouseZoneTiles()) {
+		tile->removeNoHouseCause(construction);
+		tile->addNoHouseCause(housePtr);
+	}
+
 	// Pas besoin de retirer la Construction du cache de localisation car
 	// On supprime le chantier de construction
 	town->removeConstruction(construction);
+
 	// UE : despawn l'objet Construction, petite animation de construction achevée
+
+	return housePtr;
 }
 
-void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops)
+Models::House* LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, map<Models::Pop, int32> startingPops)
 {
 	unique_ptr<Models::House> house = make_unique<Models::House>(x, y, rotation, sizeX, sizeY, level, startingPops);
 
@@ -415,15 +432,22 @@ void LogicManager::createHouse(int32 x, int32 y, int32 rotation, int32 sizeX, in
 
 	// On log l'événement
 	this->log("Maison achevee a " + std::to_string(house->getX()) + "," + std::to_string(house->getY()));
+
+	// Récupération du raw pointer
+	Models::House* housePtr = house.get();
+
 	// On ajoute la House dans les caches de localisation
-	mapLocations[house->getX()][house->getY()] = house.get();
-	mapHouses[house->getX()][house->getY()] = house.get();
+	mapLocations[house->getX()][house->getY()] = housePtr;
+	mapHouses[house->getX()][house->getY()] = housePtr;
+
 	// On déplace le pointeur unique dans la Town
 	town->addHouse(std::move(house));
 	// UE : spawn l'objet House
 	if (api != nullptr) {
 		api->spawnHouse(x, y, rotation, sizeX, sizeY, level, id);
 	}
+
+	return housePtr;
 }
 
 void LogicManager::destroyHouse(Models::House* house)
@@ -445,6 +469,7 @@ void LogicManager::destroyHouse(Models::House* house)
 
 	// On supprime la House de la Town
 	town->removeHouse(house);
+
 	// UE : despawn l'objet House, petite animation de destruction
 }
 
