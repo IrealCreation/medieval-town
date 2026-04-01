@@ -9,6 +9,17 @@ namespace Geometry {
 		return std::sqrt(dx * dx + dy * dy);
 	}
 
+	Triangle::Triangle(Point A, Point B, Point C) {
+
+		this->A = A;
+		this->B = B;
+		this->C = C;
+
+		AB = { A, B };
+		BC = { B, C };
+		CA = { C, A };
+	}
+
 	float Triangle::area() const {
 		float a = AB.length();
 		float b = BC.length();
@@ -31,6 +42,19 @@ namespace Geometry {
 			return true;
 		}
 		return false;
+	}
+
+	float Quad::getMinX() const {
+		return std::min({ A.x, B.x, C.x, D.x });
+	}
+	float Quad::getMaxX() const {
+		return std::max({ A.x, B.x, C.x, D.x });
+	}
+	float Quad::getMinY() const {
+		return std::min({ A.y, B.y, C.y, D.y });
+	}
+	float Quad::getMaxY() const {
+		return std::max({ A.y, B.y, C.y, D.y });
 	}
 
 	string Quad::toString() const {

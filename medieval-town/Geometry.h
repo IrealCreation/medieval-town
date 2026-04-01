@@ -12,6 +12,10 @@ namespace Geometry {
 
     // Point in spaaaaace.
     struct Point {
+
+		Point() : x(0), y(0) {}
+		Point(float x, float y) : x(x), y(y) {}
+
         float x = 0.0f;
         float y = 0.0f;
     };
@@ -27,16 +31,7 @@ namespace Geometry {
     // Basic triangle.
     struct Triangle {
 
-        Triangle(Point A, Point B, Point C) {
-
-            this->A = A;
-            this->B = B;
-            this->C = C;
-
-            AB = { A, B };
-            BC = { B, C };
-            CA = { C, A };
-        }
+        Triangle(Point A, Point B, Point C);
 
         Point A;
         Point B;
@@ -53,7 +48,7 @@ namespace Geometry {
 	// Quadrilateral, represented as two triangles (ABC and ACD). The summit A is at the "top left" of the quad, and the other summits are ordered clockwise.
     struct Quad {
 
-        // Constructeur par défaut
+        // Constructeurs
 		Quad() : A({ 0, 0 }), B({ 0, 0 }), C({ 0, 0 }), D({ 0, 0 }),
             ABC(A, B, C),
             ACD(A, C, D) {
@@ -72,6 +67,11 @@ namespace Geometry {
         Triangle ACD;
 
         bool collideWith(const Quad& otherQuad) const;
+
+		float getMinX() const;
+		float getMaxX() const;
+		float getMinY() const;
+		float getMaxY() const;
 
         // Might be usefull later?
         float area() const;

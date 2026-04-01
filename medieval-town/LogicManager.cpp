@@ -472,7 +472,7 @@ vector<Models::House*> LogicManager::getHousesInRange(int32 centerX, int32 cente
 	return result;
 }
 
-vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY, int32 range) 
+vector<Models::Tile*> LogicManager::getTilesInRange(int32 centerX, int32 centerY, int32 range)
 {
 	vector<Models::Tile*> result;
 	// On parcourt toutes les tiles via le cache de localisation
@@ -546,8 +546,59 @@ bool LogicManager::isValidLocation(int32 x, int32 y, float rotation, int32 sizeX
 	return true;
 }
 
+vector<Models::Tile*> LogicManager::getTilesInQuad(const Geometry::Quad& quad) {
+	vector<Models::Tile*> results;
+
+	// On récupère les coordonnées minimum et maximum du quadrilatère pour chercher les tiles dans cette zone
+	int32 minX = static_cast<int32>(std::floor(quad.getMinX()));
+	int32 maxX = static_cast<int32>(std::ceil(quad.getMaxX()));
+	int32 minY = static_cast<int32>(std::floor(quad.getMinY()));
+	int32 maxY = static_cast<int32>(std::ceil(quad.getMaxY()));
+
+	// On ajuste les bornes pour qu'elles restent dans les limites de la ville
+	if (minX < 0) minX = 0;
+	if (maxX >= this->town->getSizeX()) maxX = this->town->getSizeX() - 1;
+	if (minY < 0) minY = 0;
+	if (maxY >= this->town->getSizeY()) maxY = this->town->getSizeY() - 1;
+
+	// On parcourt uniquement les coordonnées dans la zone définie et on vérifie si elles sont dans le quadrilatère
+	for (int32 x = minX; x <= maxX; x++) {
+		for (int32 y = minY; y <= maxY; y++) {
+			if (Geometry::isPointInQuad(Geometry::Point(x, y), quad)) {
+				// Le point est dans le quadrilatère, on ajoute la tile correspondante à la liste des résultats
+				Models::Tile* tile = this->town->getTileAt(x, y);
+				if(tile) {
+					results.push_back(tile);
+				}
+			}
+		}
+	}
+	return results;
+}
+
 void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
 {
+	// Définissons une zone inconstructible autour de la Location, en créant un quad qui additionne la dimension de la Locations et la demi-dimension dimensions minimales d'une maison
+	int32 halfSizeX = location->getSizeX() + Models::House::minSizeX / 2;
+	int32 halfSizeY = location->getSizeY() + Models::House::minSizeY / 2;
+	Geometry::Quad noHouseQuad = Geometry::createQuad(
+		location->getX(), location->getY(),
+		halfSizeX, halfSizeY,
+		location->getRotation()
+	);
+
+	// Récupérons les tiles concernés par cette zone
+	vector<Models::Tile*> noHouseTiles = getTilesInQuad(noHouseQuad);
+	// Appliquons l'effet aux tiles concernés
+	for (Models::Tile* tile : noHouseTiles) {
+		tile->setCannotHaveHouse();
+
+		// UE TEST DEBUG: show affected tiles
+		//api->SetTile_TEST(tile->getX(), tile->getY());
+	}
+	
+	// Le code ci-dessous ne prend pas en compte les rotations
+	/*
 	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
 	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
@@ -570,10 +621,32 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 			}
 		}
 	}
+	*/
 }
 
 void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* location)
 {
+	// Définissons une zone inconstructible autour de la Location, en créant un quad qui additionne la dimension de la Locations et la demi-dimension dimensions minimales d'une maison
+	int32 halfSizeX = location->getSizeX() + Models::House::minSizeX / 2;
+	int32 halfSizeY = location->getSizeY() + Models::House::minSizeY / 2;
+	Geometry::Quad noHouseQuad = Geometry::createQuad(
+		location->getX(), location->getY(),
+		halfSizeX, halfSizeY,
+		location->getRotation()
+	);
+
+	// Récupérons les tiles concernés par cette zone
+	vector<Models::Tile*> noHouseTiles = getTilesInQuad(noHouseQuad);
+	// Appliquons l'effet aux tiles concernés
+	for (Models::Tile* tile : noHouseTiles) {
+		tile->updateCanHaveHouse();
+
+		// UE TEST DEBUG: show affected tiles
+		//api->SetTile_TEST(tile->getX(), tile->getY());
+	}
+
+	// Le code ci-dessous ne prend pas en compte les rotations
+	/*
 	// On définit les bornes de la zone à vérifier, avec la taille de la Location actuelle et la taille maximale des Locations
 	int32 minX = location->getX() - (location->getSizeX() + Models::House::minSizeX) / 2;
 	int32 maxX = location->getX() + (location->getSizeX() + Models::House::minSizeX) / 2;
@@ -599,6 +672,7 @@ void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* locatio
 			}
 		}
 	}
+	*/
 }
 
 void LogicManager::addPossibleHouseLocation(Models::Tile* tile)

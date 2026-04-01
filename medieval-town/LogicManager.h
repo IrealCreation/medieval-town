@@ -9,6 +9,7 @@ using std::string;
 using std::map;
 using std::vector;
 #include <cstdint>
+#include "Geometry.h"
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
 
 // Forward declarations pour éviter les dépendances circulaires
@@ -91,6 +92,8 @@ public:
 	vector<Models::House*> getHousesInRange(int32 x, int32 y, int32 range);
 	// Récupère les tiles situés dans un rayon donné autour d'un point (non ordonnés)
 	vector<Models::Tile*> getTilesInRange(int32 x, int32 y, int32 range);
+	// Récupère la liste des tiles intersectant un Quad
+	vector<Models::Tile*> getTilesInQuad(const Geometry::Quad& quad);
 
 	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
 	bool isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);
