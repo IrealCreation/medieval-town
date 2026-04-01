@@ -31,5 +31,11 @@ class ALogicAPI
 		void spawnHouseConstruction(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, string id) {}
 		// Spawn a house in the world
 		void spawnHouse(int32 x, int32 y, int32 rotation, int32 sizeX, int32 sizeY, int32 level, string id) {}
+
+		// Destroy structures
+		void destroyConstruction(std::string id) {}
+		void destroyBuilding(std::string id) {}
+		void destroyHouseConstruction(std::string id) {}
+		void destroyHouse(std::string id) {}
 };
 
