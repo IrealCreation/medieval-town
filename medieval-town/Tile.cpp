@@ -19,54 +19,41 @@ namespace Models
 		}
 	}
 
+	bool Tile::getCanHaveHouse() const {
+		return canHaveHouse;
+	}
+
+	void Tile::addNoHouseCause(Location* location) {
+		if (std::find(noHouseCauses.begin(), noHouseCauses.end(), location) == noHouseCauses.end()) {
+			noHouseCauses.push_back(location);
+			setCannotHaveHouse();
+		}
+	}
+
+	void Tile::removeNoHouseCause(Location* location) {
+		auto it = std::find(noHouseCauses.begin(), noHouseCauses.end(), location);
+		if (it != noHouseCauses.end()) {
+			noHouseCauses.erase(it);
+			if (noHouseCauses.empty()) {
+				setCanHaveHouse();
+			}
+		}
+	}
+
 	void Tile::setCannotHaveHouse() {
-		if(canHaveHouse == false)
+		if (canHaveHouse == false)
 			return; // Pas de changement
 		LogicManager::getInstance().removePossibleHouseLocation(this);
 		canHaveHouse = false;
 	}
 	void Tile::setCanHaveHouse() {
-		if(canHaveHouse == true)
+		if (canHaveHouse == true)
 			return; // Pas de changement
 		canHaveHouse = true;
 		// On ajoute ce tile à la liste des emplacements possibles pour une maison si son attractivité est supérieure au minimum
 		if (getAttractiveness(Pop::Gueux) > 0 - ServiceReceiver::getNumberOfServicesForPop(Pop::Gueux)) {
 			LogicManager::getInstance().addPossibleHouseLocation(this);
 		}
-	}
-
-	bool Tile::getCanHaveHouse() const {
-		return canHaveHouse;
-	}
-
-	bool Tile::updateCanHaveHouse() {
-		int32 checkMinX = this->getX() - (House::minSizeX + Location::getMaxSizeX()) / 2;
-		int32 checkMaxX = this->getX() + (House::minSizeX + Location::getMaxSizeX()) / 2;
-		int32 checkMinY = this->getY() - (House::minSizeY + Location::getMaxSizeY()) / 2;
-		int32 checkMaxY = this->getY() + (House::minSizeY + Location::getMaxSizeY()) / 2;
-
-		// On ajuste les bornes pour qu'elles restent dans les limites de la ville
-		if (checkMinX < 0)
-			checkMinX = 0;
-		if (checkMaxX >= LogicManager::getInstance().getTown()->getSizeX())
-			checkMaxX = LogicManager::getInstance().getTown()->getSizeX() - 1;
-		if (checkMinY < 0)
-			checkMinY = 0;
-		if (checkMaxY >= LogicManager::getInstance().getTown()->getSizeY())
-			checkMaxY = LogicManager::getInstance().getTown()->getSizeY() - 1;
-
-		// On regarde s'il y a une collision avec une autre Location dans la zone définie
-		for (int32 checkX = checkMinX; checkX <= checkMaxX; checkX++) {
-			for (int32 checkY = checkMinY; checkY <= checkMaxY; checkY++) {
-				Models::Location* otherLocation = LogicManager::getInstance().getLocationAt(checkX, checkY);
-				if (otherLocation && otherLocation != this && this->collisionWith(*otherLocation)) {
-					// Collision avec une autre structure détectée : on ne peut pas avoir de maison, fin de la vérification
-					setCannotHaveHouse();
-					return getCanHaveHouse();
-				}
-			}
-		}
-		return getCanHaveHouse();
 	}
 
 	void Tile::updateAttractiveness() {

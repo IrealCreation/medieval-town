@@ -97,6 +97,13 @@ namespace Models
 		*/
 	}
 
+	vector<Tile*> Location::getNoHouseZoneTiles() {
+		return this->noHouseZoneTiles;
+	}
+	void Location::addNoHouseZoneTiles(const vector<Tile*>& tiles) {
+		this->noHouseZoneTiles.insert(this->noHouseZoneTiles.end(), tiles.begin(), tiles.end());
+	}
+
 	// Comparateur d'égalité entre deux Locations pour std::find et std::remove : deux Locations sont égales si elles ont les mêmes coordonnées et la même taille
 	static bool operator== (Location const& lhs, Location const& rhs) {
 		return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY() && lhs.getSizeX() == rhs.getSizeX() && lhs.getSizeY() == rhs.getSizeY();

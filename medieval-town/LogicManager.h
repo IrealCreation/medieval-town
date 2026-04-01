@@ -67,13 +67,17 @@ public:
 	Models::BuildingType* getBuildingType(const string& id);
 
 	// Débute la construction d'un bâtiment de service
-	void startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
+	Models::Construction* startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
+
 	// Débute la construction d'un bâtiment de service (surcharge avec l'ID du BuildingType et de la Family)
-	void startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation);
+	Models::Construction* startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation);
+
 	// Termine la construction d'un bâtiment de service
-	void constructionBuildingDone(Models::ConstructionBuilding* construction);
+	Models::Building* constructionBuildingDone(Models::ConstructionBuilding* construction);
+
 	// Ajoute un bâtiment de service achevé
-	void createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
+	Models::Building* createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation);
+
 	// Détruire un bâtiment de service
 	void destroyBuilding(Models::Building* building);
 
@@ -94,6 +98,9 @@ public:
 	vector<Models::Tile*> getTilesInRange(int32 x, int32 y, int32 range);
 	// Récupère la liste des tiles intersectant un Quad
 	vector<Models::Tile*> getTilesInQuad(const Geometry::Quad& quad);
+
+	// Récupère les tiles dans la zone ne pouvant pas recevoir de maison autour d'une Location (vérification minimale d'espace disponible)
+	vector<Models::Tile*> getTilesInNoHouseZone(const Models::Location* location);
 
 	// Vérifie si une Location peut être placée à cet endroit (collision avec d'autres Locations)
 	bool isValidLocation(int32 x, int32 y, float rotation, int32 sizeX, int32 sizeY);

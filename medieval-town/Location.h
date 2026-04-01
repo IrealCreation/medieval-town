@@ -2,7 +2,14 @@
 #include <cstdint>
 #include <string>
 #include "Geometry.h"
+#include <vector>
+using std::vector;
 using int32 = int32_t; // Match le type "int" d'Unreal Engine
+
+// Forward declarations pour éviter les dépendances circulaires
+namespace Models {
+	class Tile;
+}
 
 namespace Models
 {
@@ -33,6 +40,9 @@ namespace Models
 		// Détection de collision entre deux Locations en "axis-aligned bounding boxes" (AABB). TODO: prendre en compte la rotation
 		bool collisionWith(const Location& other) const;
 
+		vector<Tile*> getNoHouseZoneTiles();
+		void addNoHouseZoneTiles(const vector<Tile*>& tiles);
+
 		// Possède un operator==
 
 		~Location(); // Destructeur
@@ -47,6 +57,9 @@ namespace Models
 
 		std::string id; // ID généré à la création sur le modèle : [Type]_[X]_[Y]_[dateCreation]
 		virtual void setId(); // Génère l'ID à partir du type et de la date de création, puis ajoute cette Location à la map du LogicManager
+
+		// Tiles impactés par la zone de non-construction de maisons autour de cette Location, calculés lors de sa création
+		vector<Tile*> noHouseZoneTiles = {};
 
 		static int32 maxSizeX; // Taille maximale sur l'axe X parmi toutes les Locations
 		static int32 maxSizeY; // Taille maximale sur l'axe Y parmi toutes les Locations

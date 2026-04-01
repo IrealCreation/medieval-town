@@ -229,12 +229,12 @@ void LogicManager::addBuildingType(unique_ptr<Models::BuildingType> buildingType
 	this->buildingTypes[buildingType->getId()] = std::move(buildingType);
 }
 
-void LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
+Models::Construction* LogicManager::startConstructionBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
 {
 	// Test de la validité de l'emplacement
 	if (!this->isValidLocation(x, y, rotation, type.getSizeX(), type.getSizeY())) {
 		this->log("Erreur : emplacement invalide pour la construction de " + type.getName() + " a " + std::to_string(x) + "," + std::to_string(y));
-		return;
+		return nullptr;
 	}
 
 	// Création de la Construction
@@ -256,8 +256,11 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 		family->addConstruction(construction.get());
 	}
 
+	// On récupère un raw pointer qu'on pourra renvoyer
+	Models::Construction* constructionPtr = construction.get();
+
 	// On informe les tiles aux alentours qu'ils ne peuvent plus recevoir de maison
-	this->updateCanHaveHouseAroundConstruction(construction.get());
+	this->updateCanHaveHouseAroundConstruction(constructionPtr);
 
 	// Enfin, on bouge le unique_ptr dans Town qui en a désormais la charge
 	town->addConstruction(std::move(construction));
@@ -266,32 +269,46 @@ void LogicManager::startConstructionBuilding(const Models::BuildingType& type, M
 	if (api != nullptr) {
 		api->spawnConstruction(type, x, y, rotation, id);
 	}
+
+	return constructionPtr;
 }
-void LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
+
+Models::Construction* LogicManager::startConstructionBuilding(const string& buildingTypeId, int32 familyId, int32 x, int32 y, int32 rotation)
 {
 	Models::BuildingType* type = this->getBuildingType(buildingTypeId);
 	if (type == nullptr) {
 		this->log("Erreur : BuildingType inconnu pour la construction de bâtiment avec l'ID " + buildingTypeId);
-		return;
+		return nullptr;
 	}
 	Models::Family* family = this->getTown()->getFamily(familyId);
-	this->startConstructionBuilding(*type, family, x, y, rotation);
+	Models::Construction* constructionPtr = this->startConstructionBuilding(*type, family, x, y, rotation);
+	return constructionPtr;
 }
 
-void LogicManager::constructionBuildingDone(Models::ConstructionBuilding* construction)
+Models::Building* LogicManager::constructionBuildingDone(Models::ConstructionBuilding* construction)
 {
 	// On crée le nouveau Building qui vient remplacer la Construction
-	this->createBuilding(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
+	Models::Building* buildingPtr = this->createBuilding(construction->getType(), construction->getFamily(), construction->getX(), construction->getY(), construction->getRotation());
 	// Pas besoin de retirer la Construction du cache de localisation car le Building l'écrase
+
+	// On transfère la noHouseZone de la Construction au Building achevé
+	buildingPtr->addNoHouseZoneTiles(construction->getNoHouseZoneTiles());
+	// On informe les tiles de la noHouseZone qu'ils sont désormais dans la zone du Building
+	for (Models::Tile* tile : buildingPtr->getNoHouseZoneTiles()) {
+		tile->removeNoHouseCause(construction);
+		tile->addNoHouseCause(buildingPtr);
+	}
 
 	// On supprime le chantier de construction
 	construction->getFamily()->removeConstruction(construction);
 	town->removeConstruction(construction);
 
 	// UE : despawn l'objet Construction, petite animation de construction achevée
+
+	return buildingPtr;
 }
 
-void LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
+Models::Building* LogicManager::createBuilding(const Models::BuildingType& type, Models::Family* family, int32 x, int32 y, int32 rotation)
 {
 	unique_ptr <Models::Building> building = make_unique<Models::Building>(type, family, x, y, rotation);
 
@@ -308,6 +325,9 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	if (family != nullptr)
 		family->addBuilding(building.get());
 
+	// On récupère un raw pointer vers le Building pour le renvoyer
+	Models::Building* buildingPtr = building.get();
+
 	// On déplace le pointeur unique dans la Town
 	town->addBuilding(std::move(building));
 
@@ -315,6 +335,8 @@ void LogicManager::createBuilding(const Models::BuildingType& type, Models::Fami
 	if (api != nullptr) {
 		api->spawnBuilding(type, x, y, rotation, id);
 	}
+
+	return buildingPtr;
 }
 
 void LogicManager::destroyBuilding(Models::Building* building)
@@ -576,8 +598,7 @@ vector<Models::Tile*> LogicManager::getTilesInQuad(const Geometry::Quad& quad) {
 	return results;
 }
 
-void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
-{
+vector<Models::Tile*> LogicManager::getTilesInNoHouseZone(const Models::Location* location) {
 	// Définissons une zone inconstructible autour de la Location, en créant un quad qui additionne la dimension de la Locations et la demi-dimension dimensions minimales d'une maison
 	int32 halfSizeX = location->getSizeX() + Models::House::minSizeX / 2;
 	int32 halfSizeY = location->getSizeY() + Models::House::minSizeY / 2;
@@ -587,11 +608,15 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 		location->getRotation()
 	);
 
-	// Récupérons les tiles concernés par cette zone
-	vector<Models::Tile*> noHouseTiles = getTilesInQuad(noHouseQuad);
-	// Appliquons l'effet aux tiles concernés
-	for (Models::Tile* tile : noHouseTiles) {
-		tile->setCannotHaveHouse();
+	// Renvoyons les tiles concernés par cette zone
+	return getTilesInQuad(noHouseQuad);
+}
+
+void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* location)
+{
+	// Récupérons les tiles inconstructibles autour de la Location et appliquons-leur l'effet de ne pas pouvoir recevoir de maison
+	for (Models::Tile* tile : this->getTilesInNoHouseZone(location)) {
+		tile->addNoHouseCause(location);
 
 		// UE TEST DEBUG: show affected tiles
 		//api->SetTile_TEST(tile->getX(), tile->getY());
@@ -626,20 +651,9 @@ void LogicManager::updateCanHaveHouseAroundConstruction(Models::Location* locati
 
 void LogicManager::updateCanHaveHouseAroundDestruction(Models::Location* location)
 {
-	// Définissons une zone inconstructible autour de la Location, en créant un quad qui additionne la dimension de la Locations et la demi-dimension dimensions minimales d'une maison
-	int32 halfSizeX = location->getSizeX() + Models::House::minSizeX / 2;
-	int32 halfSizeY = location->getSizeY() + Models::House::minSizeY / 2;
-	Geometry::Quad noHouseQuad = Geometry::createQuad(
-		location->getX(), location->getY(),
-		halfSizeX, halfSizeY,
-		location->getRotation()
-	);
-
-	// Récupérons les tiles concernés par cette zone
-	vector<Models::Tile*> noHouseTiles = getTilesInQuad(noHouseQuad);
-	// Appliquons l'effet aux tiles concernés
-	for (Models::Tile* tile : noHouseTiles) {
-		tile->updateCanHaveHouse();
+	// Récupérons les tiles de la zone inconstructible de la Location et demandons-leur de mettre à jour leur capacité à recevoir une maison (ils vont vérifier si une autre Location les bloque encore ou pas)
+	for (Models::Tile* tile : location->getNoHouseZoneTiles()) {
+		tile->removeNoHouseCause(location);
 
 		// UE TEST DEBUG: show affected tiles
 		//api->SetTile_TEST(tile->getX(), tile->getY());
