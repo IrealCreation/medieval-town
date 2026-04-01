@@ -146,14 +146,27 @@ namespace Models
 		}
 
 		// On essaie une rotation aléatoire...
-		int rotation = LogicManager::getInstance().randRotation();
-		if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
-			// ...si ça ne passe pas, on essaie de la pivoter à 90 degrés...
-			rotation = (rotation + 90) % 360;
-			if (!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
-				// ...si ça ne passe toujours pas, on fait sans rotation
-				rotation = 0;
+		int32 rotation = LogicManager::getInstance().randRotation();
+		int32 rotationTotal = 0; // Fusible de sécurité de la boucle
+		// On essaie de faire passer la maison à cette rotation, et 15 degrés supplémentaires jusqu'à ce que ça passe ou qu'on ait fait un tour complet (360 degrés)
+		while(!LogicManager::getInstance().isValidLocation(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY)) {
+			rotationTotal += 15;
+			if (rotationTotal >= 360) {
+				// On a fait un tour complet et ça ne passe pas
+				// Si c'est une grande maison : on repart de 0 avec une petite 
+				if (largeHouse) {
+					houseSizeX = 4;
+					houseSizeY = 6;
+					rotationTotal = 0;
+					largeHouse = false;
+				}
+				else {
+					// Même avec une petite maison ça ne passe pas : on abandonne et on log l'erreur
+					LogicManager::getInstance().log("Erreur : impossible de construire une maison en " + std::to_string(newHouseLocation->getX()) + "," + std::to_string(newHouseLocation->getY()) + " (toutes rotations essayees)");
+					return 0; // Aucune population ajoutée ce tour
+				}
 			}
+			rotation = (rotation + 15) % 360;
 		}
 
 		LogicManager::getInstance().startConstructionHouse(newHouseLocation->getX(), newHouseLocation->getY(), rotation, houseSizeX, houseSizeY, 1,
